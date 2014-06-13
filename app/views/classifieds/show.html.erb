@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @classified.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @classified.description %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @classified.image %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @classified.user_id %>
+</p>
+
+<p>
+  <strong>College:</strong>
+  <%= @classified.college_id %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @classified.price %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @classified.type %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @classified.status %>
+</p>
+
+<%= link_to 'Edit', edit_classified_path(@classified) %> |
+<%= link_to 'Back', classifieds_path %>
