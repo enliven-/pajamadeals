@@ -5,16 +5,19 @@ class Classified < ActiveRecord::Base
 	UNSOLD = 0
 	SOLD = 1
 
-	validates :title, present: true, length: { maximum: 255 }
-	validates :price, numericality: { greater_than_or_equal_to: 0.01,
-				   	  allow_blank: true }
-	validates :user_id, present: true
-	validates :college_id, present: true
+	include HasToken
+	# validates :title, presenence: true, length: { maximum: 255 }
+	# validates :price, numericality: { greater_than_or_equal_to: 0.01,
+				   	  # allow_blank: true }
+	# validates :user_id, present: true
+	# validates :college_id, present: true
 
 	belongs_to :user
 	belongs_to :college
 
 	before_save :set_status, :set_college
+
+	has_token
 
 	def buy?
 		type == BUY
