@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613042646) do
+ActiveRecord::Schema.define(version: 20140613064958) do
 
   create_table "classifieds", force: true do |t|
     t.string   "title"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20140613042646) do
     t.integer  "user_id"
     t.integer  "college_id"
     t.string   "price"
-    t.integer  "type"
-    t.integer  "status"
+    t.integer  "listing_type"
+    t.boolean  "list",         default: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
@@ -34,15 +34,16 @@ ActiveRecord::Schema.define(version: 20140613042646) do
     t.datetime "updated_at"
     t.string   "abbr"
     t.string   "token"
+    t.string   "zip_code"
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140613042646) do
     t.string   "name"
     t.string   "avatar"
     t.string   "token"
+    t.boolean  "active",                 default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

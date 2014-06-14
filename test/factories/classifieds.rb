@@ -1,19 +1,21 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+ActionDispatch::TestProcess
 
-FactoryGirl.define do
+FactoryGirl.define do		
   factory :buy, class: Classified do
 	  title Faker::Lorem.sentence(4)
 	  description Faker::Lorem.paragraph
 	  price Faker::Number.number(3)
-	  type { Classified::BUY }
+	  listing_type { Classified::BUY }
 	  association :user, factory: :ankush
+	  before(:create) { |classified| classified.send(:set_college) }
   end
 
   factory :sell, class: Classified do
 	  title Faker::Lorem.sentence(4)
 	  description Faker::Lorem.paragraph
 	  price Faker::Number.number(2)
-	  type { Classified::SELL }
+	  listing_type { Classified::SELL }
 	  association :user, factory: :ankush
+	  before(:create) { |classified| classified.send(:set_college) }
   end
 end

@@ -7,8 +7,8 @@ class CreateClassifieds < ActiveRecord::Migration
       t.integer :user_id
       t.integer :college_id
       t.string :price
-      t.integer :type
-      t.integer :status
+      t.integer :listing_type
+      t.boolean :list, default: true
 
       t.timestamps
     end

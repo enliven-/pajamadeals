@@ -69,6 +69,6 @@ class ClassifiedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def classified_params
-      params.require(:classified).permit(:title, :description, :image, :user_id, :college_id, :price, :type, :status)
+      params.require(:classified).permit(:title, :description, :image, :user_id, :college_id, :price, :listing_type, :status)
     end
 end

@@ -45,3 +45,5 @@ gem "less-rails"
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'faker'
 gem 'factory_girl_rails'
+gem 'carrierwave'
+gem 'mini_magick'
