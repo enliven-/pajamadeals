@@ -2,3 +2,4 @@ log/development.log
 .rvmrc
 doc
 .DS_Store
+tmp/*
