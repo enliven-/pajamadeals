@@ -10,6 +10,7 @@ class Classified < ActiveRecord::Base
 				   	  allow_blank: true }
 	validates :user_id, presence: true
 	validates :college_id, presence: true
+	validates :image, presence: true
 
 	belongs_to :user
 	belongs_to :college

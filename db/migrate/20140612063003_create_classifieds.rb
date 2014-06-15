@@ -13,7 +13,7 @@ class CreateClassifieds < ActiveRecord::Migration
       t.boolean :list, default: true
       t.string :token
       t.string :isbn
-      t.string :editionm
+      t.string :edition
       t.string :condition
       
       t.timestamps

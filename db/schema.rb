@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613064958) do
+ActiveRecord::Schema.define(version: 20140613022738) do
 
   create_table "classifieds", force: true do |t|
     t.string   "title"
@@ -19,22 +19,31 @@ ActiveRecord::Schema.define(version: 20140613064958) do
     t.string   "image"
     t.integer  "user_id"
     t.integer  "college_id"
-    t.string   "price"
+    t.string   "expected_price"
+    t.string   "retail_price"
+    t.string   "suggested_price"
     t.integer  "listing_type"
-    t.boolean  "list",         default: true
+    t.boolean  "list",            default: true
+    t.string   "token"
+    t.string   "isbn"
+    t.string   "edition"
+    t.string   "condition"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "token"
   end
 
   create_table "colleges", force: true do |t|
     t.string   "name",       null: false
+    t.string   "abbr",       null: false
     t.string   "location",   null: false
+    t.string   "zipcode",    null: false
+    t.string   "city",       null: false
+    t.string   "address",    null: false
+    t.string   "state",      null: false
+    t.string   "country",    null: false
+    t.string   "token",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "abbr"
-    t.string   "token"
-    t.string   "zip_code"
   end
 
   create_table "users", force: true do |t|
@@ -51,10 +60,14 @@ ActiveRecord::Schema.define(version: 20140613064958) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "college_id"
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "avatar"
     t.string   "token"
     t.boolean  "active",                 default: true
+    t.string   "college_i_card_number"
+    t.string   "college_i_card"
+    t.string   "graduation_year"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
