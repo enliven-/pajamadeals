@@ -51,3 +51,4 @@ gem 'mini_magick'
 # facebook
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'koala'

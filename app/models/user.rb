@@ -1,15 +1,11 @@
 class User < ActiveRecord::Base
-
 	include HasToken
 
-	# Include default devise modules. Others available are:
-	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
 		:recoverable, :rememberable, :trackable, :validatable
 	devise :omniauthable, omniauth_providers: [:facebook]
 
 	has_many :classifieds
-
 	belongs_to :college
 
 	has_token
@@ -38,6 +34,12 @@ class User < ActiveRecord::Base
 			    session['devise.facebook_data']['extra']['raw_info']
 				user.email = data['email'] if user.email.blank?
 			end
+		end
+	end
+
+	def facebook_it(classified)
+		if oauth_token_expires_at > Time.now
+			@facebook ||= Koala::Facebook::API.new(oauth_token)
 		end
 	end
 end
