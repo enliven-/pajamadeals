@@ -5,3 +5,5 @@ log/development.log log/test.log
 tmp/cache tmp/pids tmp/sessions tmp/sockets
 tmp/
 log/
+test/fixtures/
+.powrc

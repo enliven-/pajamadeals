@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 			user.password    = Devise.friendly_token[0, 20]
 			user.first_name  = auth.info.first_name
 			user.last_name   = auth.info.last_name
-			user.avatar      = auth.info.image
+			user.remote_avatar_url = auth.info.image
 			user.oauth_token = auth.credentials.token
 			user.oauth_token_expires_at =
 					    Time.at(auth.credentials.expires_at)
