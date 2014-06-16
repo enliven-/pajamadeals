@@ -18,7 +18,7 @@ class ClassifiedsControllerTest < ActionController::TestCase
 
   # test "should create classified" do
   #   assert_difference('Classified.count') do
-  #     post :create, classified: { college: @classified.college, description: @classified.description, image: @classified.image, price: @classified.price, title: @classified.title, listing_type: @classified.listing_type, user: @classified.user }
+  #     post :create, classified: { college: @classified.college, description: @classified.description, image: @classified.image, price: @classified.expected_price, title: @classified.title, listing_type: @classified.listing_type, user: @classified.user }
   #   end
 
   #   assert_redirected_to classified_path(assigns(:classified))
@@ -35,7 +35,7 @@ class ClassifiedsControllerTest < ActionController::TestCase
   # end
 
   # test "should update classified" do
-  #   patch :update, id: @classified, classified: { description: @classified.description, image: @classified.image, price: @classified.price, title: @classified.title, listing_type: @classified.listing_type, user: @classified.user }
+  #   patch :update, id: @classified, classified: { description: @classified.description, image: @classified.image, price: @classified.expected_price, title: @classified.title, listing_type: @classified.listing_type, user: @classified.user }
   #   assert_redirected_to classified_path(assigns(:classified))
   # end
 

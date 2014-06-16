@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 	devise :omniauthable, omniauth_providers: [:facebook]
 
 	has_many :classifieds
+	#has_many :images, as: :imageable
 	belongs_to :college
 
 	has_token

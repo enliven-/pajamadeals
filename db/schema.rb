@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140616051958) do
+ActiveRecord::Schema.define(version: 20140616135624) do
 
   create_table "classifieds", force: true do |t|
     t.string   "title"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20140616051958) do
     t.string   "state",      null: false
     t.string   "country",    null: false
     t.string   "token",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", force: true do |t|
+    t.string   "file"
+    t.string   "imageable_type"
+    t.integer  "imageable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
