@@ -47,3 +47,7 @@ gem 'faker'
 gem 'factory_girl_rails'
 gem 'carrierwave'
 gem 'mini_magick'
+
+# facebook
+gem 'omniauth'
+gem 'omniauth-facebook'
