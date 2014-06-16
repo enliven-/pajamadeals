@@ -52,3 +52,7 @@ gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'koala'
+
+# search engine
+gem 'sunspot_rails'
+gem 'sunspot_solr'

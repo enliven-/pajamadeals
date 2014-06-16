@@ -20,6 +20,20 @@ class Classified < ActiveRecord::Base
 	has_token
 	mount_uploader :image, ImageUploader
 
+	# search classified
+
+	searchable do
+		text :title, boost: 3.0
+		text :description
+		text :isbn
+
+		time    :created_at
+		string  :expected_price
+		integer :listing_type
+		integer :college_id
+		boolean :list
+	end
+
 	def buy?
 		listing_type == BUY
 	end
@@ -29,7 +43,7 @@ class Classified < ActiveRecord::Base
 	end
 
 	def unlist
-		list = false
+		self.list = false
 		save
 	end
 

@@ -4,7 +4,18 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
-    @classifieds = Classified.all
+	  @search = Classified.search do
+		  fulltext params[:search]
+
+		  with :college_id, current_user.college_id ||
+				    session[:college_id]    ||
+				    params[:college_id]
+		  with :listing_type, params[:listing_type]
+		  order_by :created_at, :desc
+		  paginate per_page: 15
+	  end
+	  @classifieds = @search.results
+   # @classifieds = Classified.all
   end
 
   # GET /classifieds/1
