@@ -1,5 +1,7 @@
-log/development.log
-.rvmrc
-doc
+db/development.sqlite3
 .DS_Store
-tmp/*
+.rvmrc
+log/development.log log/test.log
+tmp/cache tmp/pids tmp/sessions tmp/sockets
+tmp/
+log/
