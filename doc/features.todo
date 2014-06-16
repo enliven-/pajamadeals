@@ -1,14 +1,65 @@
-Version 0 (beta)
-Pre-Launch
-1. User Authentication
-2. Facebook login
-3. Twitter login
-4. 
+Pre launch
 
-Post-Launch
-1. Include renting module
 
-TBD
-1. User as a legit student verification
-	- College I-card verification
-2. 
+   * user authentication
+      * ? twitter/fb/google
+   * post classified
+   * 
+      * want to buy
+      * want to sell
+   * buy posted classified
+   * ? post classified to fb/twitter with permission
+   * 
+      * e.g. link of “looking to buy x”
+      * “looking to sell y”
+   * ? send notification to fb friends when u join
+   * ? outside app notification
+   * 
+      * via email
+      * or phone
+   * (M) Push notifications for
+   * 
+      * interest to buy
+      * wishlisted item restocked
+      * etc. 
+   * Logger : decide on features for prelaunch
+   * 
+      * google analytics
+      * where does the user browse from mostly?
+      * 
+         * ip / geolocation
+      * where do most postings happen for a user?
+      * 
+         * ip / geolocation
+      * how many visitors go converted to stable users
+      * diff bw suggested price and transaction price db
+      * ips for each page
+      * average time spent per page
+      * avg time spent on website
+      * highest bounce rate page
+      * incoming referrer
+      * error logging and email
+      * traffic analysis
+      * 
+         * what college
+         * what year 1,2,3,4
+         * what kind of books
+         * no of visits for a book
+         * no of visits for a book category
+         * best transaction rate item
+         * most searched items
+   * Books database
+   * 
+      * from college websites
+      * hire someone
+   * Ankush is going to help with marketing with PCCOE
+   * Generate quote
+   * Launching and hosting
+   * 
+      * domain name
+      * was
+
+      * own server
+      * keep scalability in mind
+   * ? whatsapp and call integration for mobile app
+   * Search engine
