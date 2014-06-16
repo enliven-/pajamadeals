@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
 	has_token
 
+	mount_uploader :avatar, ImageUploader
+
 	# facebook
 
 	def self.find_for_facebook_auth(auth)
