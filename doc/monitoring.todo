@@ -1,0 +1,65 @@
+Features
+   * Logger : decide on features for prelaunch
+
+      * google analytics
+      * where does the user browse from mostly?
+
+         * ip / geolocation
+
+      * where do most postings happen for a user?
+
+         * ip / geolocation
+
+      * how many visitors go converted to stable users
+      * diff bw suggested price and transaction price db
+      * ips for each page
+      * average time spent per page
+      * avg time spent on website
+      * highest bounce rate page
+      * incoming referrer
+      * error logging and email
+      * traffic analysis
+
+         * what college
+         * what year 1,2,3,4
+         * what kind of books
+         * no of visits for a book
+         * no of visits for a book category
+         * best transaction rate item
+         * most searched items
+
+
+
+
+Options
+ - mongodb_logger
+	  'action'           : action_name,
+	  'application_name' : application_name (rails root),
+	  'controller'       : controller_name,
+	  'ip'               : ip_address,
+	  'messages'         : {
+	                         'info'  : [ ],
+	                         'debug' : [ ],
+	                         'error' : [ ],
+	                         'warn'  : [ ],
+	                         'fatal' : [ ]
+	                       },
+	  'params'           : { },
+	  'path'             : path,
+	  'request_time'     : date_of_request,
+	  'runtime'          : elapsed_execution_time_in_milliseconds,
+	  'url'              : full_url,
+	  'method'           : request method (GET, POST, OPTIONS),
+	  'session'          : information from session,
+	  'is_exception'     : true only for exceptions (in other cases this field miss)
+
+- New Relic
+	performace monitoring
+
+- Errnit
+	Exception notification
+
+-exception_notification
+ 	Exception notification
+ 	
+

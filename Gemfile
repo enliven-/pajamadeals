@@ -56,3 +56,8 @@ gem 'koala'
 # search engine
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+
+# logging and monitoring
+gem 'mongodb_logger'
+gem "mongo"
+gem "bson_ext"
