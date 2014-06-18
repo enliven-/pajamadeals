@@ -40,9 +40,7 @@ gem 'spring',        group: :development
 
 gem 'devise'
 gem 'simple_form'
-gem "therubyracer"
-gem "less-rails"
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
 gem 'faker'
 gem 'factory_girl_rails'
 gem 'carrierwave'
@@ -61,3 +59,9 @@ gem 'sunspot_solr'
 gem 'mongodb_logger'
 gem "mongo"
 gem "bson_ext"
+
+# view helper
+gem "therubyracer"
+gem "less-rails"
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
