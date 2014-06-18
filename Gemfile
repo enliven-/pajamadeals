@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -38,13 +38,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'devise'
 gem 'simple_form'
-
-gem 'faker'
-gem 'factory_girl_rails'
-gem 'carrierwave'
-gem 'mini_magick'
 
 # facebook
 gem 'omniauth'
@@ -64,4 +58,16 @@ gem "bson_ext"
 gem "therubyracer"
 gem "less-rails"
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
+# test helper
+gem 'faker'
+gem 'factory_girl_rails'
+
+# user session
+gem 'devise'
+
+# file upload
+gem 'carrierwave'
+gem 'mini_magick'
+
 
