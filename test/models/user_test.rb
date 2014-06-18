@@ -7,7 +7,7 @@ class UserTest < ActiveSupport::TestCase
 
   	assert user.valid?
   	assert user.save
-  	assert user.active
+  	assert user.active	
   	assert_not_nil user.token
   	assert_not user.admin?
   end
