@@ -1,14 +1,14 @@
 FactoryGirl.define do
 	factory :user do
-		email Faker::Internet.email
-		password Faker::Internet.password
-		name Faker::Name.name
+		email 'foo@bar.com'
+		password 'password'
 	end
 
 	factory :ankush, class: User do
 		email 'ankush@pajamadeals.in'
 		password 'password'
-		name 'Ankush Zanwar'
+		first_name 'Ankush'
+		last_name 'Zanwar'
 		association :college, factory: :vit
 	end
 end

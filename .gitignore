@@ -8,3 +8,4 @@ log/
 test/fixtures/
 .powrc
 solr/
+public/uploads

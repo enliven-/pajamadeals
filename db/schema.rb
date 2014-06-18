@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140616135624) do
+ActiveRecord::Schema.define(version: 20140618092230) do
 
   create_table "classifieds", force: true do |t|
     t.string   "title"
@@ -33,15 +33,14 @@ ActiveRecord::Schema.define(version: 20140616135624) do
   end
 
   create_table "colleges", force: true do |t|
-    t.string   "name",       null: false
-    t.string   "abbr",       null: false
-    t.string   "location",   null: false
-    t.string   "zipcode",    null: false
-    t.string   "city",       null: false
-    t.string   "address",    null: false
-    t.string   "state",      null: false
-    t.string   "country",    null: false
-    t.string   "token",      null: false
+    t.string   "name"
+    t.string   "abbr"
+    t.string   "zipcode"
+    t.string   "city"
+    t.string   "address"
+    t.string   "state"
+    t.string   "country"
+    t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

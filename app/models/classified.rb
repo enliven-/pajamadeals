@@ -12,13 +12,15 @@ class Classified < ActiveRecord::Base
 	validates :college_id, presence: true
 	validates :image, presence: true
 
-	has_many :images, as: :imageable
+	#has_many :images, as: :imageable
 	belongs_to :user
 	belongs_to :college
 
 	before_create :set_college
 
 	has_token
+
+	mount_uploader :image, ImageUploader
 
 	# search classified
 

@@ -62,6 +62,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 # test helper
 gem 'faker'
 gem 'factory_girl_rails'
+gem 'mocha'
 
 # user session
 gem 'devise'
