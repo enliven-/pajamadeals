@@ -3,13 +3,19 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   
   test "creates user" do
-  	ankush = build(:ankush)
+  	user = build(:user)
 
-  	assert ankush.valid?
+  	assert user.valid?
+  	assert user.save
+  	assert user.active
+  	assert_not_nil user.token
+  	assert_not user.admin?
+  end
 
-  	ankush.save
+  test "creates admin user" do
+  	user = create(:admin)
 
-  	assert ankush.active
-  	assert_not_nil ankush.token
+  	assert user.valid?
+  	assert user.admin?
   end
 end

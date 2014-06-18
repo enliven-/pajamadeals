@@ -9,3 +9,5 @@ test/fixtures/
 .powrc
 solr/
 public/uploads
+db/test.sqlite3
+log
