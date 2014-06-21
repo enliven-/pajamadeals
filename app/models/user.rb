@@ -2,8 +2,7 @@ class User < ActiveRecord::Base
 	include HasToken
 
 	devise :database_authenticatable, :registerable,
-		:recoverable, :rememberable, :trackable, :validatable
-	devise :omniauthable, omniauth_providers: [:facebook]
+		:recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
 	has_many :classifieds
 	#has_many :images, as: :imageable
