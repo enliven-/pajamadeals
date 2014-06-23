@@ -122,18 +122,17 @@
 
           <div class="results">
             
-          <% for classified in @classifieds %>
+          <% for classified in @classifieds[0..20] %>
               <div class="row col-md-4 result">
                 <div class="contact-box">
                   <a href="show.html">
                     <div class="col-sm-4">
                       <div class="text-center">
-                        <img alt="image" class="img-circle m-t-xs img-responsive" src="assets/a2.jpg">
-                        <div class="m-t-xs font-bold"><%= classified.title %></div>
+                      <%= image_tag classified.image, class: 'img-circle m-t-xs img-responsive'%>
                       </div>
                     </div>
                     <div class="col-sm-8">
-                      <h3><strong>John Smith</strong></h3>
+                      <h3><strong><%= classified.title %></strong></h3>
                       <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
                       <address>
                         <strong>Twitter, Inc.</strong><br>
