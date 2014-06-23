@@ -5,12 +5,12 @@ class Classified < ActiveRecord::Base
 
 	include HasToken
 
-	validates :title, presence: true, length: { maximum: 255 }
-	validates :expected_price, numericality: { greater_than_or_equal_to: 0.01,
-				   	  allow_blank: true }
-	validates :user_id, presence: true
-	validates :college_id, presence: true
-	validates :listing_type, presence: true
+	# validates :title, presence: true, length: { maximum: 255 }
+	# validates :expected_price, numericality: { greater_than_or_equal_to: 0.01,
+	# 			   	  allow_blank: true }
+	# validates :user_id, presence: true
+	# validates :college_id, presence: true
+	# validates :listing_type, presence: true
 
 	#has_many :images, as: :imageable
 	belongs_to :user

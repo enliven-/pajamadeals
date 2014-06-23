@@ -6,7 +6,7 @@ profile_images = [File.open("#{image_path}/profile1.jpg"), File.open("#{image_pa
 				  File.open("#{image_path}/profile3.jpg"), File.open("#{image_path}/profile4.jpg")]
 
 
-create colleges
+#create colleges
 10.times do
 	College.create(name: 	Faker::Company.name,
 							   abbr: 	Faker::Lorem.characters(3),
@@ -20,7 +20,7 @@ foo = User.create(first_name: 'foo',
 				  email: 	  'bhushanlodha@gmail.com',
 	              password:   'password',
 	              avatar: 	   File.open("#{Rails.root}/test/fixtures/test1.jpg"),
-	              college: 	   colleges.sample
+	              college: 	   College.all.sample
 	              )
 
 # create users
@@ -29,7 +29,7 @@ foo = User.create(first_name: 'foo',
 						 last_name:  Faker::Name.last_name,
 						 email: 	 Faker::Internet.email,
 						 password: 	 Faker::Internet.password,
-						 college: 	 Colleges.all.sample,
+						 college: 	 College.all.sample,
 						 avatar: 	 profile_images.sample
 						 )
 end
