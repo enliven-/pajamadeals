@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+# ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -47,7 +47,7 @@ gem 'koala'
 
 # search engine
 gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'sunspot_solr', :git => 'git@github.com:sunspot/sunspot.git'
 
 # logging and monitoring
 gem 'mongodb_logger'
