@@ -57,6 +57,7 @@ gem "bson_ext"
 # view helper
 gem "therubyracer"
 gem "less-rails"
+gem 'font-awesome-rails'
 
 # test helper
 gem 'faker'
