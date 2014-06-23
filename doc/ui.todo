@@ -1,0 +1,22 @@
+Viksit
+	Misc
+	 - Move search bar in header
+
+	Home page
+	 - Dropdown for sign in and sign up
+	 - Center 'Find your school' text
+	 - Why you would love it
+	 - How it works
+	 - Hide search bar from header
+
+	Index page
+	 - make list view for result like on flipkart and amazon
+	 - Background color is broken
+	 - Put filters on left
+
+
+
+Bhushan
+	Misc
+	- Extract header in partial
+	- Fill in the book details for list view
