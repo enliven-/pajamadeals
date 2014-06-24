@@ -47,7 +47,7 @@ gem 'koala'
 
 # search engine
 gem 'sunspot_rails'
-gem 'sunspot_solr' #, :git => 'git@github.com:sunspot/sunspot.git'
+gem 'sunspot_solr', :git => 'git@github.com:sunspot/sunspot.git'
 
 # logging and monitoring
 gem 'mongodb_logger'
