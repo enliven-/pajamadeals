@@ -130,25 +130,28 @@
 
           <div class="results">
             
-          <% for classified in @classifieds[0..20] %>
+          <% for classified in @classifieds[1..20] %>
               <div class="row col-md-10 result">
 
                 <div class="contact-box">
                   <a href="show.html">
                     <div class="col-sm-4">
                       <div class="text-center">
-                      <%= image_tag classified.image, class: 'img-circle m-t-xs img-responsive'%>
+                      <%= image_tag classified.image.s160x160, class: 'img-circle m-t-xs img-responsive'%>
                       </div>
                     </div>
                     <div class="col-sm-8">
-                      <h3><strong><%= classified.title %></strong></h3>
-                      <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
-                      <address>
-                        <strong>Twitter, Inc.</strong><br>
-                        795 Folsom Ave, Suite 600<br>
-                        San Francisco, CA 94107<br>
-                        <abbr title="Phone">P:</abbr> (123) 456-7890
-                      </address>
+                      <h3><strong><%= classified.title %></strong></h3> by <p><%= classified.authors %></p>                      
+                      <p><i class="fa fa-map-marker"></i><%= classified.college.abbr %></p>
+                      <p>Rs <%= classified.expected_price %> <span><%= classified.retail_price %></span> <span><%= classified.percent_off %> </span> </p>
+                      <p>Publisher: <%= classified.publisher %></p>
+                      <p>Edition: <%= classified.edition %></p>
+                      <p>Condition: <%= classified.condition %></p>
+                      <!-- this goes on right side, refer flipkart listing --> 
+                      <p>Seller</p>
+                      <p><%= classified.user.name %></p>
+                      <p><%= classified.user.email %></p>
+                      <p><%= classified.user.mobile_number %></p>
                     </div>
                     <div class="clearfix"></div>
                   </a>

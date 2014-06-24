@@ -7,7 +7,7 @@ profile_images = [File.open("#{image_path}/profile1.jpg"), File.open("#{image_pa
 
 
 #create colleges
-10.times do
+2.times do
 	College.create(name: 	Faker::Company.name,
 							   abbr: 	Faker::Lorem.characters(3),
 							   zipcode: Faker::Address.zip,
@@ -24,7 +24,7 @@ foo = User.create(first_name: 'foo',
 	              )
 
 # create users
-50.times do
+5.times do
   User.create(first_name: Faker::Name.first_name,
 						 last_name:  Faker::Name.last_name,
 						 email: 	 Faker::Internet.email,
@@ -35,7 +35,7 @@ foo = User.create(first_name: 'foo',
 end
 
 # create classifieds
-1000.times do
+10.times do
 	Classified.create(title: Faker::Lorem.words(1+rand(2)).join(' '),
 					  description: Faker::Lorem.paragraph,
 					  user: User.all.sample,

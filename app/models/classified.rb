@@ -49,6 +49,14 @@ class Classified < ActiveRecord::Base
 		save
 	end
 
+	# calcs
+
+	def percent_off
+		if retail_price.present? && retail_price.to_i > 0
+			((retail_price.to_i - expected_price.to_i) / retail_price.to_i) * 100
+		end
+	end
+
 	private
 
 	def set_college

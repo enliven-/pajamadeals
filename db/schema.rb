@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618120422) do
+ActiveRecord::Schema.define(version: 20140624093612) do
 
   create_table "classifieds", force: true do |t|
     t.string   "title"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20140618120422) do
     t.string   "condition"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "publisher"
+    t.string   "authors"
   end
 
   create_table "colleges", force: true do |t|
