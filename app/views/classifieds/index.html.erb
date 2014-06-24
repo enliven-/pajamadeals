@@ -40,15 +40,24 @@
 
       <header>
         <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01"> <span class="sr-only">Toggle navigation</span>
-            </button>
-          </div>
           <div class="collapse navbar-collapse" id="navbar-collapse-01">
-            <ul class="nav navbar-nav navbar-left">
-              <li><a href="">pajama deals</a>
+
+            <ul class="nav navbar-nav">
+              <li><a href="" style="font-size: 17px; color: white;">pajama deals</a>
               </li>
             </ul>
+
+            <div style="display: inline-block;">
+              <form class="navbar-form _navbar-left" role="search" style="width: 700px; margin-left: 10%; margin-right: 10%">
+                <div class="input-group _col-sm-offset-3 _col-sm-4">
+                  <input type="text" placeholder="Search by title or isbn" class="form-control" id="search-box"> <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" style="padding: 6.5px 15px 6.5px 15px;">Search</button>
+                      </span>
+                  </input>                  
+                </div>
+              </form>
+            </div>
+
             <ul class="nav navbar-nav navbar-right">
               <li><a href="">Sign In</a>
               </li>
@@ -56,10 +65,9 @@
               <li><a href="">Sign Up</a>
               </li>
             </ul>
+
           </div>
-          <!-- /.navbar-collapse -->
         </nav>
-        <!-- /navbar -->
       </header>
 
 
