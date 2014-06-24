@@ -1,5 +1,5 @@
 class ClassifiedsController < ApplicationController
-  # before_action :set_classified, only: [:show, :edit, :update, :destroy]
+  before_action :set_classified, only: [:show, :edit, :update, :destroy]
 
   # GET /classifieds
   # GET /classifieds.json
