@@ -1,3 +1,5 @@
+require 'csv'
+
 image_path = "#{Rails.root}/test/fixtures"
 book_images = [File.open("#{image_path}/book1.jpg"), File.open("#{image_path}/book2.jpg"),
 		 	   File.open("#{image_path}/book3.jpg"), File.open("#{image_path}/book4.jpg"),
@@ -50,3 +52,16 @@ end
 					  condition: [0, 1, 2].sample
 					  )
 end
+
+# Import CSV data for books
+CSV.foreach('techmax/techmax.csv') do |row|
+	Book.create(
+		title: 	row[0],
+		author: row[3],
+		university: row[4],
+
+		)
+
+
+
+

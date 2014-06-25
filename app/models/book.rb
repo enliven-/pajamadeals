@@ -1,3 +1,3 @@
 class Book < ActiveRecord::Base
-	mount :image, ImageUploader
+	mount_uploader :image, ImageUploader
 end
