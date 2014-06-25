@@ -10,4 +10,4 @@ Steps necessary to get application up and running
   bundle exec rake sunspot:solr:start # or sunspot:solr:run to start in foreground
 
 * Setup mongodb logging
- start mongodb server
+  start mongodb server (ubuntu: #sudo /etc/init.d/mongod start)

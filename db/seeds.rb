@@ -43,7 +43,7 @@ end
 					  retail_price: Faker::Number.number(1+rand(2)),
 					  suggested_price: Faker::Number.number(1+rand(2)),
 					  listing_type: [0, 1].sample,
-					  list: [true, false].sample,
+					  # list: [true, false].sample,
 					  image: book_images.sample,
 					  isbn: Faker::Code.isbn,
 					  edition: 1+rand(3),
