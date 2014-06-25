@@ -12,7 +12,7 @@ class Classified < ActiveRecord::Base
 	# validates :college_id, presence: true
 	# validates :listing_type, presence: true
 
-	#has_many :images, as: :imageable
+	has_many :images
 	belongs_to :user
 	belongs_to :college
 
@@ -20,7 +20,7 @@ class Classified < ActiveRecord::Base
 
 	has_token
 
-	mount_uploader :image, ImageUploader
+	#mount_uploader :image, ImageUploader
 
 	# search classified
 
@@ -44,15 +44,14 @@ class Classified < ActiveRecord::Base
 		!buy?
 	end
 
-	def unlist
-		self.list = false
-		save
+	def primary_image
+		images.where(primary_image: true).first
 	end
 
 	# calcs
 
 	def percent_off
-		if retail_price.present? && retail_price.to_i > 0
+		if retail_price.present? && retail_price.to_i > expected_price.to_i
 			((retail_price.to_i - expected_price.to_i) / retail_price.to_i) * 100
 		end
 	end

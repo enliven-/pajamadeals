@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624093612) do
+ActiveRecord::Schema.define(version: 20140625025115) do
 
   create_table "classifieds", force: true do |t|
     t.string   "title"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20140624093612) do
     t.string   "retail_price"
     t.string   "suggested_price"
     t.integer  "listing_type"
-    t.boolean  "list",            default: true
     t.string   "token"
     t.string   "isbn"
     t.string   "edition"
@@ -32,6 +31,8 @@ ActiveRecord::Schema.define(version: 20140624093612) do
     t.datetime "updated_at"
     t.string   "publisher"
     t.string   "authors"
+    t.boolean  "active",          default: false
+    t.boolean  "sold",            default: false
   end
 
   create_table "colleges", force: true do |t|
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140624093612) do
     t.integer  "imageable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "primary"
   end
 
   create_table "users", force: true do |t|
