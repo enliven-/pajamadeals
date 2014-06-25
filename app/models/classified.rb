@@ -20,7 +20,7 @@ class Classified < ActiveRecord::Base
 
 	has_token
 
-	#mount_uploader :image, ImageUploader
+	mount_uploader :image, ImageUploader
 
 	# search classified
 
@@ -46,6 +46,10 @@ class Classified < ActiveRecord::Base
 
 	def primary_image
 		images.where(primary_image: true).first
+	end
+
+	def list
+
 	end
 
 	# calcs
