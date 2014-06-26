@@ -54,13 +54,24 @@ end
 end
 
 # Import CSV data for books
-CSV.foreach('techmax/techmax.csv') do |row|
-	Book.create(
-		title: 	row[0],
-		author: row[3],
-		university: row[4],
-
-		)
+CSV.foreach("#{Rails.root}/resources/books/books.csv", headers: true) do |row|
+	if row[3] == 'Pune University'
+		Book.create(
+			title: 		 row[0].camelize,
+			publisher: 	 row[1],
+			author: 	 (row[2].camelize),
+			university:  row[3],
+			department:  (row[4].camelize rescue ''),
+			semester: 	 row[5],
+			isbn: 		 row[6],
+			retail_price: row[7],
+			image:       (File.open("#{Rails.root}/resources/books/#{row[8]}") rescue ''),
+			edition: 	 row[9],
+			pages: 		 row[10],
+			description: row[11]	
+			)
+	end
+end
 
 
 
