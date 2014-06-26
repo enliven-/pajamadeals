@@ -10,5 +10,3 @@ solr/
 public/uploads
 db/test.sqlite3
 log
-Gemfile
-Gemfile.lock
