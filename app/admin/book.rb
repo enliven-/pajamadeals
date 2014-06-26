@@ -10,12 +10,8 @@ ActiveAdmin.register Book do
 	    column :released_year
 	    column :retail_price
 	    column :university
+	    column :image
 
 	    actions
 	end
-
-  collection_action :import_csv, :method => :post do
-    # Do some CSV importing work here...
-    redirect_to :action => :index, :notice => "CSV imported successfully!"
-  end
 end
