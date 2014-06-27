@@ -42,7 +42,7 @@ CSV.foreach("#{Rails.root}/resources/books/books.csv", headers: true) do |row|
 		Book.create(
 			title: 		 row[0].camelize,
 			publisher: 	 row[1],
-			author: 	 (row[2].split(',').map(&:camelize).join(','),
+			author: 	 (row[2].split(',').map(&:camelize).join(',')),
 			university:  row[3],
 			department:  (row[4].camelize rescue ''),
 			semester: 	 row[5],

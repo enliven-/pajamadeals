@@ -20,6 +20,8 @@ class Classified < ActiveRecord::Base
 	before_create :set_college
 
 	has_token
+
+	scope :sold, -> { where(sold: true) }
 	# search classified
 
 	# searchable do
@@ -47,8 +49,8 @@ class Classified < ActiveRecord::Base
 	# calcs
 
 	def percent_off
-		if retail_price.present? && retail_price.to_i > expected_price.to_i
-			((retail_price.to_i - expected_price.to_i) / retail_price.to_i) * 100
+		if retail_price.present? && retail_price.to_f > expected_price.to_f
+			(((retail_price.to_f - expected_price.to_f) / retail_price.to_f) * 100).round
 		end
 	end
 
