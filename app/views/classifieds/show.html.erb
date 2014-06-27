@@ -1,51 +1,4 @@
-<!-- <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @classified.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @classified.description %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @classified.image %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @classified.user_id %>
-</p>
-
-<p>
-  <strong>College:</strong>
-  <%= @classified.college_id %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @classified.expected_price %>
-</p>
-
-
-
-<%= link_to 'Edit', edit_classified_path(@classified) %> |
-<%= link_to 'Back', classifieds_path %>
- -->
-
-<!--  <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>pajama | product page </title>
-</head>
-
-<body> -->
   <div id="wrapper">
     <div id="page-wrapper" class="gray-bg">
 
@@ -81,58 +34,91 @@
         </nav>
       </header>
 
+<style type="text/css">
+h3.selling-price {
+  /*padding-left: 15px;*/
+  /*padding-top: 5px;*/
+  /*padding-right: 10px;*/
+  display: inline-block;
+  color: #ef5352;
+}
+
+.list-price {
+  text-decoration: line-through;
+}
+
+.book-info-container {
+  padding-left: 0px !important;
+  margin-top: 15px;
+}
+
+.item-main-info table td {
+  /*border: 1px solid gray;*/
+  padding-bottom: 1px;
+  font-size: 11px;
+  min-width: 15px;
+}
+
+.item-related-info table.item-table tr td:nth-child(2) {
+  padding-left: 130px;
+}
+
+.fe-sub-heading {
+  display: block;
+  margin-bottom: 10px;
+  /*color: #1b7ab7;*/
+}
+
+table.other-choices a:hover {
+  background-color: white;
+  text-decoration: underline;
+  color: #1b7ab7;
+}
+
+.widget-head-color-box {
+  /*padding-top: 0px !important;*/
+  /*margin-top: 0px;*/
+  border-radius: 0px;
+}
+
+</style>
+
       <div class="row wrapper ?border-bottom ?white-bg ?page-heading">
-<!--         
-        <div class="row col-md-12 animated fadeInRight" style="margin-left: 10px; margin-right: 10px;">
-          <div class="row col-lg-8 col-lg-offset-2 search-bar" style="">
-            <div class="input-group m-b">
-              <input type="text" placeholder="Search by title or isbn" class="form-control"> <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary">Search</button>
-                  </span>
-              </input>
-            </div>
-          </div>
-        </div>
- -->
+
         <div class="row col-md-12 animated fadeInRight" style="margin-left: 10px; margin-right: 10px;">
 
-          <div class="col-md-4">
+          <div class="col-md-4 item-main-info">
 
             <div class="ibox float-e-margins">
+
               <div class="ibox-title">
-                <h5><%= @classified.title %></h5>
+                <!-- <h5><%= @classified.title %></h5> -->
+                <h5>Introduction to Algorithms</h5>, 2nd Edition
               </div>
+            
               <div>
+                
                 <div class="ibox-content no-padding border-left-right">
-                <%= image_tag 'algoclrs.jpg', class: 'img-responsive' %>
+                  <%= image_tag 'algoclrs.jpg', class: 'img-responsive' %>
                 </div>
+
                 <div class="ibox-content profile-content">
-                  <h4 style="display: inline-block"><strong>Intro to Algorithms</strong></h4>, 2nd Edition
 
-                  <p><i class="fa fa-map-marker"></i> VIT, Bibwewadi</p>
-                  
-                  <br/>
-                  <h5>Description</h5>
+                  <h4><i class="fa fa-map-marker"></i> VIT, Bibwewadi</p></h4>
 
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.</p>
-                  <div class="row m-t-lg">
-                    <div class="col-md-4"> <span class="bar">5,3,9,6,5,9,7,3,5,2</span>
-                      <h5><strong>169</strong> Posts</h5>
-                    </div>
-                    <div class="col-md-4"> <span class="line">5,3,9,6,5,9,7,3,5,2</span>
-                      <h5><strong>28</strong> Following</h5>
-                    </div>
-                    <div class="col-md-4"> <span class="bar">5,3,2,-1,-3,-2,2,3,5,2</span>
-                      <h5><strong>240</strong> Followers</h5>
-                    </div>
+                  <div class="col-sm-12 ?bordered">
+                    <!-- <h3 class="expected-price"><strong>Rs 230</strong></h3> -->
                   </div>
+                  <span class="list-price">Rs. 99</span>
+                  <h3 class="selling-price"><strong>Rs 230</strong></h3>
+
                   <div class="user-button">
                     <div class="row">
                       <div class="col-md-6">
-                        <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</button>
+                        <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-coffee"></i>Pickup for me</button>
                       </div>
                       <div class="col-md-6">
-                        <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-coffee"></i> Buy a coffee</button>
+                        <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</button>
                       </div>
                     </div>
                   </div>
@@ -178,7 +164,7 @@
           </div>
 
 
-          <div class="col-md-8">
+          <div class="col-md-8 item-related-info">
             <div class="ibox float-e-margins">
               <div class="ibox-title">
                 <h5>Related Information</h5>
@@ -202,77 +188,88 @@
 
                   <div class="feed-activity-list">
 
-
-
                     <div class="feed-element">
 
-                      <!-- <div class="col-lg-12"> -->
-                        <div class="ibox float-e-margins">
+                      <div class="media-body">
 
-                          <div class="ibox-title">
-                            <h5>Product Details</h5>
+                        <div class="row">
+
+                          <div class="col-sm-6">
+                            <div class="col-sm-12" style="padding-left: 0px;">
+                              <span class="fe-sub-heading"><strong> Product Details</strong></span>
+
+                              <table class="table item-table">
+                                <tbody>
+                                  <tr>
+                                    <td><strong>Publisher</strong></td>
+                                    <td>Penguin House</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Authors</strong></td>
+                                    <td>Cormen Rivest</td>
+                                  </tr>                                                          
+                                  <tr>
+                                    <td><strong>ISBN 10</strong></td>
+                                    <td>9876543210</td>
+                                  </tr>                              
+                                  <tr>
+                                    <td><strong>ISBN 13</strong></td>
+                                    <td>9876543210123</td>
+                                  </tr>                            
+                                  <tr>
+                                    <td><strong>ISBN 13</strong></td>
+                                    <td>9876543210123</td>
+                                  </tr>                           
+                                </tbody>
+                              </table>
+                            </div>                            
                           </div>
-                          
-                          <div class="ibox-content">
 
-                            <table class="table table-bordered">
-<!--                               <thead>
-                                <tr>
-                                  <th>Product Details</th>
-                                  <th> </th>
-                                </tr>
-                              </thead> -->
-                              <tbody>
-                                <tr>
-                                  <td>Publisher</td>
-                                  <td>Penguin House</td>
-                                </tr>                              
-                                <tr>
-                                  <td>ISBN 10</td>
-                                  <td>9876543210</td>
-                                </tr>                              
-                         
-                                <tr>
-                                  <td>ISBN 13</td>
-                                  <td>9876543210123</td>
-                                </tr>
-                           
-                              </tbody>
-                            </table>
+                          <div class="col-sm-6">
+                            <div class="row col-sm-12">
+                              <span class="fe-sub-heading"><strong> Description </strong></span>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.</p>
+                            </div>                            
                           </div>
                         </div>
-                      <!-- </div> -->
+
+                      </div>
                     </div>
 
 
                     <div class="feed-element">
                       <div class="media-body ">
-                        <strong>Photos by seller</strong>
-                        <div class="photos">
-                          <a target="_blank" href="http://24.media.tumblr.com/20a9c501846f50c1271210639987000f/tumblr_n4vje69pJm1st5lhmo1_1280.jpg">
-                          <%= image_tag 'p1.jpg', class: 'feed-photo' %>
-                          </a>
-                          <a target="_blank" href="http://37.media.tumblr.com/9afe602b3e624aff6681b0b51f5a062b/tumblr_n4ef69szs71st5lhmo1_1280.jpg">
-                            <%= image_tag 'p3.jpg', class: 'feed-photo' %>
-                          </a>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="col-sm-12" style="padding-left: 0px;">
+                              <span class="fe-sub-heading"><strong> Photos by Seller</strong></span>                      
+                              <div class="photos">
+                                <a target="_blank" href="http://24.media.tumblr.com/20a9c501846f50c1271210639987000f/tumblr_n4vje69pJm1st5lhmo1_1280.jpg">
+                                <%= image_tag 'user1.jpg', class: 'feed-photo' %>
+                                </a>
+                                <a target="_blank" href="http://37.media.tumblr.com/9afe602b3e624aff6681b0b51f5a062b/tumblr_n4ef69szs71st5lhmo1_1280.jpg">
+                                  <%= image_tag 'user2.jpg', class: 'feed-photo' %>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="row col-sm-12">
+                              <span class="fe-sub-heading"><strong> Condition </strong></span>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.</p>
+                            </div>                            
+                          </div>
                         </div>
+
                       </div>
                     </div>
 
-
-
                     <div class="feed-element">
-
-                      <!-- <div class="col-lg-12"> -->
-                        <div class="ibox float-e-margins">
-
-                          <div class="ibox-title">
-                            <h5>Other Choices</h5>
-                          </div>
-                          
-                          <div class="ibox-content">
-
-                            <table class="table table-bordered">
+                      <div class="media-body">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <span class="fe-sub-heading"><strong> Other Choices </strong></span>
+                            <table class="table table-bordered other-choices">
                               <thead>
                                 <tr>
                                   <th>Seller</th>
@@ -303,25 +300,34 @@
                             </table>
                           </div>
                         </div>
-                      <!-- </div> -->
+                      </div>
                     </div>
 
 
+
+
                     <div class="feed-element">
-                      <a href="profile.html#" class="pull-left">
-                        <img alt="image" class="img-circle" src="assets/a4.jpg">
-                      </a>
-                      <div class="media-body "> <small class="pull-right text-navy">5h ago</small>
-                        <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>.
-                        <br> <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
-                        <div class="actions"> <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                          <a class="btn btn-xs btn-white"><i class="fa fa-heart"></i> Love</a>
+                      <div class="media-body">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <span class="fe-sub-heading" style="margin-bottom: 20px;"><strong> Comments </strong></span>
+                            <a href="profile.html#" class="pull-left">
+                              <%= image_tag("a4.jpg", class: "img-circle") %>
+                            </a>
+                            <div class="media-body "> <small class="pull-right text-navy">5h ago</small>
+                              <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>.
+                              <br> <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                              <div class="actions"> <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
+                                <a class="btn btn-xs btn-white"><i class="fa fa-heart"></i> Love</a>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                     <div class="feed-element">
                       <a href="profile.html#" class="pull-left">
-                        <img alt="image" class="img-circle" src="assets/a5.jpg">
+                        <%= image_tag("a5.jpg", class: "img-circle") %>
                       </a>
                       <div class="media-body "> <small class="pull-right">2h ago</small>
                         <strong>Kim Smith</strong> posted message on <strong>Monica Smith</strong> site.
@@ -333,7 +339,7 @@
                     </div>
                     <div class="feed-element">
                       <a href="profile.html#" class="pull-left">
-                        <img alt="image" class="img-circle" src="assets/profile.jpg">
+                        <%= image_tag("profile.jpg", class: "img-circle") %>
                       </a>
                       <div class="media-body "> <small class="pull-right">23h ago</small>
                         <strong>Monica Smith</strong> love <strong>Kim Smith</strong>.
@@ -342,7 +348,7 @@
                     </div>
                     <div class="feed-element">
                       <a href="profile.html#" class="pull-left">
-                        <img alt="image" class="img-circle" src="assets/a7.jpg">
+                        <%= image_tag("a7.jpg", class: "img-circle") %>
                       </a>
                       <div class="media-body "> <small class="pull-right">46h ago</small>
                         <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>.
