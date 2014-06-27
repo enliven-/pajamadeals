@@ -20,22 +20,15 @@ class Classified < ActiveRecord::Base
 	before_create :set_college
 
 	has_token
-
-	mount_uploader :image, ImageUploader
-
 	# search classified
 
-	searchable do
-		text :title, boost: 3.0
-		text :description
-		text :isbn
-
-		time    :created_at
-		string  :expected_price
-		integer :listing_type
-		integer :college_id
-		boolean :list
-	end
+	# searchable do
+		
+	# 	time    :created_at
+	# 	string  :expected_price
+	# 	integer :listing_type
+	# 	integer :college_id
+	# end
 
 	def buy?
 		listing_type == BUY
@@ -45,8 +38,10 @@ class Classified < ActiveRecord::Base
 		!buy?
 	end
 
-	def list
-
+	def method_missing(method, *args, &block)
+		self.book.send(method)
+	rescue NoMethodError
+		super
 	end
 
 	# calcs

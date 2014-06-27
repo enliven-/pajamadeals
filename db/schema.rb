@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627042031) do
+ActiveRecord::Schema.define(version: 20140627103144) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -74,11 +74,12 @@ ActiveRecord::Schema.define(version: 20140627042031) do
     t.string   "condition"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",          default: false
-    t.boolean  "sold",            default: false
+    t.boolean  "active",             default: false
+    t.boolean  "sold",               default: false
     t.text     "comment"
     t.string   "book_id"
     t.string   "ip"
+    t.string   "contact_preference"
   end
 
   create_table "colleges", force: true do |t|
@@ -101,23 +102,6 @@ ActiveRecord::Schema.define(version: 20140627042031) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "primary"
-  end
-
-  create_table "item_books", force: true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "publisher"
-    t.string   "author"
-    t.string   "isbn"
-    t.string   "edition"
-    t.string   "released_year"
-    t.string   "retail_price"
-    t.string   "university"
-    t.string   "pages"
-    t.string   "department"
-    t.string   "semester"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -149,6 +133,7 @@ ActiveRecord::Schema.define(version: 20140627042031) do
     t.string   "location"
     t.string   "mobile_number"
     t.boolean  "admin",                  default: false
+    t.string   "contact_preference"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
