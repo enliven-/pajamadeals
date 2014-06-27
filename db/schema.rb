@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625183931) do
+ActiveRecord::Schema.define(version: 20140627042031) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -65,25 +65,20 @@ ActiveRecord::Schema.define(version: 20140625183931) do
   end
 
   create_table "classifieds", force: true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "image"
     t.integer  "user_id"
     t.integer  "college_id"
     t.string   "expected_price"
-    t.string   "retail_price"
     t.string   "suggested_price"
     t.integer  "listing_type"
     t.string   "token"
-    t.string   "isbn"
-    t.string   "edition"
     t.string   "condition"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "publisher"
-    t.string   "authors"
     t.boolean  "active",          default: false
     t.boolean  "sold",            default: false
+    t.text     "comment"
+    t.string   "book_id"
+    t.string   "ip"
   end
 
   create_table "colleges", force: true do |t|
@@ -106,6 +101,23 @@ ActiveRecord::Schema.define(version: 20140625183931) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "primary"
+  end
+
+  create_table "item_books", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "publisher"
+    t.string   "author"
+    t.string   "isbn"
+    t.string   "edition"
+    t.string   "released_year"
+    t.string   "retail_price"
+    t.string   "university"
+    t.string   "pages"
+    t.string   "department"
+    t.string   "semester"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

@@ -15,6 +15,7 @@ class Classified < ActiveRecord::Base
 	has_many :images
 	belongs_to :user
 	belongs_to :college
+	belongs_to :book
 
 	before_create :set_college
 
@@ -42,10 +43,6 @@ class Classified < ActiveRecord::Base
 
 	def sell?
 		!buy?
-	end
-
-	def primary_image
-		images.where(primary_image: true).first
 	end
 
 	def list

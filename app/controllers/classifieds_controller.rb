@@ -36,7 +36,7 @@ class ClassifiedsController < ApplicationController
   # POST /classifieds.json
   def create
     @classified = Classified.new(classified_params)
-
+    @classified.ip = request.ip
     respond_to do |format|
       if @classified.save
         format.html { redirect_to @classified, notice: 'Classified was successfully created.' }
