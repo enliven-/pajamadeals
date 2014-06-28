@@ -1,60 +1,7 @@
-<%# <%= form_for(@classified) do |f| %1> %>
-<%#   <% if @classified.errors.any? %1> %>
-<%#     <div id="error_explanation"> %>
-<%#       <h2><%= pluralize(@classified.errors.count, "error") %1> prohibited this classified from being saved:</h2> %>
 
-<%#       <ul> %>
-<%#       <% @classified.errors.full_messages.each do |message| %1> %>
-<%#         <li><%= message %1></li> %>
-<%#       <% end %1> %>
-<%#       </ul> %>
-<%#     </div> %>
-<%#   <% end %1> %>
-
-<%#   <div class="field"> %>
-<%#     <%= f.label :title %1><br> %>
-<%#     <%= f.text_field :title %1> %>
-<%#   </div> %>
-<%#   <div class="field"> %>
-<%#     <%= f.label :description %1><br> %>
-<%#     <%= f.text_area :description %1> %>
-<%#   </div> %>
-<%#   <div class="field"> %>
-<%#     <%= f.label :image %1><br> %>
-<%#     <%= f.text_field :image %1> %>
-<%#   </div> %>
-<%#   <div class="field"> %>
-<%#     <%= f.label :user_id %1><br> %>
-<%#     <%= f.number_field :user_id %1> %>
-<%#   </div> %>
-<%#   <div class="field"> %>
-<%#     <%= f.label :college_id %1><br> %>
-<%#     <%= f.number_field :college_id %1> %>
-<%#   </div> %>
-<%#   <div class="field"> %>
-<%#     <%= f.label :expected_price %1><br> %>
-<%#     <%= f.text_field :expected_price %1> %>
-<%#   </div> %>
-  
-<%#   <div class="actions"> %>
-<%#     <%= f.submit %1> %>
-<%#   </div> %>
-<%# <% end %1> %>
-
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>pajama | form </title>
-</head>
-
-<body class="boxed-layout"> -->
   <div id="wrapper">
     <div id="page-wrapper" class="gray-bg">
 
-    
       <header>
         <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
           <div class="collapse navbar-collapse" id="navbar-collapse-01">
@@ -66,7 +13,7 @@
 
             <div style="display: inline-block;">
               <form class="navbar-form _navbar-left" role="search" style="width: 805px; margin-left: 6%; margin-right: 10%">
-                <div class="input-group _col-sm-offset-3 _col-sm-4">
+                <div class="input-group .ui-widget _col-sm-offset-3 _col-sm-4">
                   <input type="text" placeholder="Search by title or isbn" class="form-control" id="search-box"> <span class="input-group-btn">
                         <button type="button" class="btn btn-primary" style="padding: 6.5px 15px 6.5px 15px;">Search</button>
                       </span>
@@ -87,20 +34,8 @@
         </nav>
       </header>
 
-      <div class="row wrapper ?border-bottom ?white-bg ?page-heading">
+      <div class="row wrapper">
 
-<!-- 
-        <div class="row col-md-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
-          <div class="row col-lg-8 col-lg-offset-2 search-bar" style="">
-            <div class="input-group m-b">
-              <input type="text" placeholder="Search by title or isbn" class="form-control" id="search-box"> <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary">Search</button>
-                  </span>
-              </input>
-            </div>
-          </div>
-        </div>
- -->
         <div class="row col-md-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
 
 
@@ -110,8 +45,8 @@
                 <h5>Intro to Algorithms</h5>
               </div>
               <div class="auto result-item">
-                <div class="ibox-content no-padding border-left-right">
-                  <img alt="image" class="img-responsive" src="assets/algoclrs.jpg">
+                <div class="ibox-content ?no-padding border-left-right">
+                  <%= image_tag("book1.jpg", class: "img-responsive") %>
                 </div>
                 <div class="ibox-content profile-content">
                   <table class="table table-bordered">
@@ -462,9 +397,6 @@
                       .appendTo(ul);
     };
 
-    // $("div.result-item").slideUp();
-    // $("div.item-form").slideUp();
-
 
     $("button.clear").on('click', function(e) {
       e.preventDefault();
@@ -494,12 +426,6 @@
       console.log(isbn10)
       console.log(isbn13)
 
-      // var $form      = $("form.listing-form");
-      // var $title     = $form.find("input.title").val(title);
-      // var $edition   = $form.find("input.edition").val(edition);
-      // var $publisher  = $form.find("input.publisher").val(publisher);
-      // var $isbn10     = $form.find("input.isbn10").val(isbn10);
-      // var $isbn13     = $form.find("input.isbn13").val(isbn13);
 
       var $form = $("form.listing-form");
       console.log($form)

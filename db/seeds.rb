@@ -37,6 +37,7 @@ foo = User.create(first_name: 'foo',
 end
 
 # Import CSV data for books
+count = 1
 CSV.foreach("#{Rails.root}/resources/books/books.csv", headers: true) do |row|
 	if row[3] == 'Pune University'
 		Book.create(
@@ -53,7 +54,10 @@ CSV.foreach("#{Rails.root}/resources/books/books.csv", headers: true) do |row|
 			pages: 		 row[10],
 			description: row[11]	
 			)
+		count += 1
 	end
+	p Book.last
+	return if count >= 10
 end
 
 # create classifieds
