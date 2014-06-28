@@ -114,8 +114,9 @@ table.other-choices a:hover {
                   <div class="user-button">
                     <div class="row">
                       <div class="col-md-6">
-                        <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-coffee"></i>  Pickup for me</button>
-                      </div>
+                      <%= button_to 'Pickup for me', new_pick_path, class: 'btn btn-success btn-sm btn-block' %>
+<!--                         <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-coffee"></i>  Pickup for me</button>
+ -->                      </div>
                       <div class="col-md-6">
                         <button type="button" class="btn btn-primary btn-sm btn-block">
                           <% if @classified.contact_preference == 'phone' %>

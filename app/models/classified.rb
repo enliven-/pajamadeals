@@ -22,10 +22,9 @@ class Classified < ActiveRecord::Base
 	has_token
 
 	scope :sold, -> { where(sold: true) }
+	
 	# search classified
-
 	# searchable do
-		
 	# 	time    :created_at
 	# 	string  :expected_price
 	# 	integer :listing_type
