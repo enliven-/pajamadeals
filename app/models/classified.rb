@@ -13,6 +13,7 @@ class Classified < ActiveRecord::Base
 	# validates :listing_type, presence: true
 
 	has_many :images
+	has_many :picks
 	belongs_to :user
 	belongs_to :college
 	belongs_to :book
