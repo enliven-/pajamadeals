@@ -93,7 +93,7 @@ table.other-choices a:hover {
 
               <div class="ibox-title">
                 <!-- <h5><%= @classified.title %></h5> -->
-                <h5><%= @classified.title %></h5><%= (', ' + @classified.edition + ' edition') if @classified.edition.present? %> 
+                <h5><%= @classified.title %></h5> <%= render_date @classified.created_at %> 
               </div>
             
               <div>
@@ -119,7 +119,7 @@ table.other-choices a:hover {
                       <div class="col-md-6">
                         <button type="button" class="btn btn-primary btn-sm btn-block">
                           <% if @classified.contact_preference == 'phone' %>
-                              <i class="fa fa-phone"></i>  <%= @classified.user.mobile_number %>
+                              <i class="fa fa-phone"></i> <%= @classified.user.mobile_number %>
                           <% else %>
                               <i class="fa fa-envelope"></i> <%= @classified.user.email %>
                           <% end %>
@@ -206,6 +206,12 @@ table.other-choices a:hover {
                                     <td><%= @classified.author %></td>
                                   </tr>
                                 <% end %>
+                                 <% if @classified.edition.present? %>                                                          
+                                  <tr>
+                                    <td><strong>Edition</strong></td>
+                                    <td><%= @classified.edition %></td>
+                                  </tr> 
+                                <% end %>
                                 <% if @classified.isbn.present? %>                                                          
                                   <tr>
                                     <td><strong>ISBN</strong></td>
@@ -223,7 +229,13 @@ table.other-choices a:hover {
                                       <td><strong>Year</strong></td>
                                       <td><%= @classified.released_year %></td>
                                     </tr>  
-                                  <% end %>                                          
+                                  <% end %>  
+                                  <% if @classified.condition.present? %>                            
+                                    <tr>
+                                      <td><strong>Condition</strong></td>
+                                      <td><%= @classified.condition %></td>
+                                    </tr>  
+                                  <% end %>                                         
                                 </tbody>
                               </table>
                             </div>                            

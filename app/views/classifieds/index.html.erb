@@ -150,7 +150,7 @@
                   
                   <h4 class="title"><%= link_to classified.title, classified_path(classified) %></h4>  <%= (', ' + classified.edition + ' edition') if classified.edition.present? %> 
 
-                  <span class="pull-right"><%= classified.created_at.strftime("%d %b, %Y") %></span><br/>
+                  <span class="pull-right"><%= render_date classified.created_at %></span><br/>
                   <span class="authors"><em><%= classified.author.present? ? classified.author : '-' %></em></span>
 
                   <div class="row">
