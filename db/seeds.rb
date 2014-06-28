@@ -1,3 +1,5 @@
+require 'csv'
+
 image_path = "#{Rails.root}/test/fixtures"
 book_images = [File.open("#{image_path}/book1.jpg"), File.open("#{image_path}/book2.jpg"),
 		 	   File.open("#{image_path}/book3.jpg"), File.open("#{image_path}/book4.jpg"),
@@ -34,19 +36,46 @@ foo = User.create(first_name: 'foo',
 						 )
 end
 
+# Import CSV data for books
+count = 1
+CSV.foreach("#{Rails.root}/resources/books/books.csv", headers: true) do |row|
+	if row[3] == 'Pune University'
+		Book.create(
+			title: 		 row[0].camelize,
+			publisher: 	 row[1],
+			author: 	 (row[2].split(',').map(&:camelize).join(',')),
+			university:  row[3],
+			department:  (row[4].camelize rescue ''),
+			semester: 	 row[5],
+			isbn: 		 row[6],
+			retail_price: row[7],
+			image:       (File.open("#{Rails.root}/resources/books/#{row[8]}") rescue ''),
+			edition: 	 row[9],
+			pages: 		 row[10],
+			description: row[11]	
+			)
+		count += 1
+	end
+	p Book.last
+	return if count >= 10
+end
+
 # create classifieds
 10.times do
-	Classified.create(title: Faker::Lorem.words(1+rand(2)).join(' '),
-					  description: Faker::Lorem.paragraph,
+	Classified.create(
+					  comment: Faker::Lorem.paragraph,
 					  user: User.all.sample,
 					  expected_price: Faker::Number.number(1+rand(2)),
-					  retail_price: Faker::Number.number(1+rand(2)),
 					  suggested_price: Faker::Number.number(1+rand(2)),
 					  listing_type: [0, 1].sample,
-					  # list: [true, false].sample,
-					  image: book_images.sample,
-					  isbn: Faker::Code.isbn,
-					  edition: 1+rand(3),
-					  condition: [0, 1, 2].sample
+					  active: [true, false].sample,
+					  condition: ['used', 'heavily used', 'like new'].sample,
+					  contact_preference: ['email', 'phone'].sample,
+					  book: Book.all.sample
 					  )
 end
+
+
+
+
+

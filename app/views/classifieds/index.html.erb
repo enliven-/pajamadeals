@@ -140,69 +140,7 @@
               </div>
             </div>
 
-            <% for classified in @classifieds[1..20] %>
-            <div class="row col-md-12 contact-box result">
 
-              <div class="col-sm-2 classified-img-container">
-                <%= image_tag classified.image.s160x160, class: 'img-circle m-t-xs img-responsive classified-img'%>
-              </div>
-
-              <div class="col-sm-10 row classified-info">
-
-                <h4 class="title"><%= classified.title %></h4>, 2nd Edition
-
-                <span class="posted-on pull-right">Posted: 22 Sept, 2013</span><br/>
-                <span class="authors"><em><%= classified.authors %></em></span>
-
-                <div class="row prices">
-                  <h3 class="expected-price">Rs <%= classified.expected_price %></h3>
-                  <h5 class="retail-price">(MRP: Rs <%= classified.retail_price %>)</h5><br/>
-                  <div class="col-sm-6">
-                  </div>
-                  <div class="row info-tables"></div>
-
-                  <div class="col-sm-4">
-                    <table class="table-left">
-                      <tr>
-                        <td><strong>Publisher:</strong></td>
-                        <td></td>
-                        <td> - </td>
-                      </tr>
-                      <tr>
-                        <td><strong>Released:</strong></td>
-                        <td></td>
-                        <td>2013</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Condition</strong></td>
-                        <td></td>
-                        <td><%= classified.condition %></td>
-                      </tr>    
-                    </table>
-                  </div>
-                  <div class="col-sm-4 col-sm-offset-3">
-                    <table class="table-right">
-                      <tr>
-                        <td><strong>Seller:</strong></td>
-                        <td></td>
-                        <td><%= classified.user.name %></td>
-                      </tr>
-                      <tr>
-                        <td><strong>Contact:</strong></td>
-                        <td></td>
-                        <td><%= classified.user.mobile_number %></td>
-                      </tr>
-                      <tr>
-                        <td><strong>College:</strong></td>
-                        <td></td>
-                        <td><%= classified.college.abbr %></td>
-                      </tr>                                        
-                    </table>                  
-                  </div>
-                </div>
-              </div>
-            </div>
-            <% end %>
 
           </div> <!--results-->
 

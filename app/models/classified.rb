@@ -13,28 +13,24 @@ class Classified < ActiveRecord::Base
 	# validates :listing_type, presence: true
 
 	has_many :images
+	has_many :picks
 	belongs_to :user
 	belongs_to :college
+	belongs_to :book
 
 	before_create :set_college
 
 	has_token
 
-	mount_uploader :image, ImageUploader
-
+	scope :sold, -> { where(sold: true) }
+	
 	# search classified
-
-	searchable do
-		text :title, boost: 3.0
-		text :description
-		text :isbn
-
-		time    :created_at
-		string  :expected_price
-		integer :listing_type
-		integer :college_id
-		boolean :list
-	end
+	# searchable do
+	# 	time    :created_at
+	# 	string  :expected_price
+	# 	integer :listing_type
+	# 	integer :college_id
+	# end
 
 	def buy?
 		listing_type == BUY
@@ -44,19 +40,17 @@ class Classified < ActiveRecord::Base
 		!buy?
 	end
 
-	def primary_image
-		images.where(primary_image: true).first
-	end
-
-	def list
-
+	def method_missing(method, *args, &block)
+		self.book.send(method)
+	rescue NoMethodError
+		super
 	end
 
 	# calcs
 
 	def percent_off
-		if retail_price.present? && retail_price.to_i > expected_price.to_i
-			((retail_price.to_i - expected_price.to_i) / retail_price.to_i) * 100
+		if retail_price.present? && retail_price.to_f > expected_price.to_f
+			(((retail_price.to_f - expected_price.to_f) / retail_price.to_f) * 100).round
 		end
 	end
 

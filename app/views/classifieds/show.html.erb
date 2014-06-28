@@ -45,32 +45,38 @@
 
               <div class="ibox-title">
                 <!-- <h5><%= @classified.title %></h5> -->
-                <h5>Introduction to Algorithms</h5>, 2nd Edition
+                <h5><%= @classified.title %></h5> <%= render_date @classified.created_at %> 
               </div>
             
               <div>
                 
                 <div class="ibox-content no-padding border-left-right">
-                  <%= image_tag 'algoclrs.jpg', class: 'img-responsive' %>
+                  <%= image_tag @classified.image.show, class: 'img-responsive' %>
                 </div>
 
                 <div class="ibox-content profile-content">
 
-                  <h4><i class="fa fa-map-marker"></i> VIT, Bibwewadi</p></h4>
+                  <h4><i class="fa fa-map-marker"></i> <%= @classified.college.name %></h4>
 
                   <div class="col-sm-12 ?bordered">
                     <!-- <h3 class="expected-price"><strong>Rs 230</strong></h3> -->
                   </div>
-                  <span class="list-price">Rs. 99</span>
-                  <h3 class="selling-price"><strong>Rs 230</strong></h3>
-
+                  <h3 class="selling-price"><strong>Rs. <%= @classified.expected_price %>  </strong></h3>
+                  <span class="list-price">Rs. <%= @classified.retail_price %></span>
                   <div class="user-button">
                     <div class="row">
                       <div class="col-md-6">
-                        <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-coffee"></i>Pickup for me</button>
-                      </div>
+                      <%= button_to 'Pickup for me', new_pick_path(@classified), class: 'btn btn-success btn-sm btn-block', method: :get %>
+<!--                         <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-coffee"></i>  Pickup for me</button>
+ -->                      </div>
                       <div class="col-md-6">
-                        <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</button>
+                        <button type="button" class="btn btn-primary btn-sm btn-block">
+                          <% if @classified.contact_preference == 'phone' %>
+                              <i class="fa fa-phone"></i> <%= @classified.user.mobile_number %>
+                          <% else %>
+                              <i class="fa fa-envelope"></i> <%= @classified.user.email %>
+                          <% end %>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -82,31 +88,20 @@
 
             <div class="ibox float-e-margins">
               <div class="ibox-title">
-                <h5>Seller Info</h5>
+                <h5>Seller</h5>
               </div>
               <div>
                 <div class="ibox-content no-padding border-left-right">
-
                   <div class="widget-head-color-box lazur-bg p-lg text-center">
                     <div class="m-b-md">
                       <h2 class="font-bold no-margins">
-                        Alex Smith
+                        <%= @classified.user.name %>
                       </h2>
-                      <small>Founder of Groupeq</small>
                     </div>
-                    <%= image_tag "a4.jpg", class: "img-circle circle-border m-b-md", alt: "profile" %>
+                    <%= image_tag @classified.user.avatar.index, class: "img-circle circle-border m-b-md", alt: "profile" %>
                     <div>
-                      <span>100 Tweets</span> |
-                      <span>350 Following</span> |
-                      <span>610 Followers</span>
-                    </div>
-                  </div>
-                  <div class="widget-text-box">
-                    <h4 class="media-heading">Alex Smith</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    <div class="text-right">
-                      <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                      <a class="btn btn-xs btn-primary"><i class="fa fa-heart"></i> Love</a>
+                      <span><%= pluralize @classified.user.classifieds.count, 'Item' %> listed</span> |
+                      <span><%= pluralize @classified.user.classifieds.sold.count, 'Item' %> sold</span>
                     </div>
                   </div>
                 </div>
@@ -119,7 +114,7 @@
           <div class="col-md-8 item-related-info">
             <div class="ibox float-e-margins">
               <div class="ibox-title">
-                <h5>Related Information</h5>
+                <h5>Details</h5>
                 <div class="ibox-tools">
                   <a class="collapse-link"> <i class="fa fa-chevron-up"></i>
                   </a>
@@ -148,41 +143,64 @@
 
                           <div class="col-sm-6">
                             <div class="col-sm-12" style="padding-left: 0px;">
-                              <span class="fe-sub-heading"><strong> Product Details</strong></span>
+                              <span class="fe-sub-heading"><strong>Specifications</strong></span>
 
                               <table class="table item-table">
                                 <tbody>
+                                <% if @classified.publisher.present? %>
                                   <tr>
                                     <td><strong>Publisher</strong></td>
-                                    <td>Penguin House</td>
+                                    <td><%= @classified.publisher %></td>
                                   </tr>
+                                <% end %>
+                                <% if @classified.author.present? %>
                                   <tr>
-                                    <td><strong>Authors</strong></td>
-                                    <td>Cormen Rivest</td>
-                                  </tr>                                                          
+                                    <td><strong>Author</strong></td>
+                                    <td><%= @classified.author %></td>
+                                  </tr>
+                                <% end %>
+                                 <% if @classified.edition.present? %>                                                          
                                   <tr>
-                                    <td><strong>ISBN 10</strong></td>
-                                    <td>9876543210</td>
-                                  </tr>                              
+                                    <td><strong>Edition</strong></td>
+                                    <td><%= @classified.edition %></td>
+                                  </tr> 
+                                <% end %>
+                                <% if @classified.isbn.present? %>                                                          
                                   <tr>
-                                    <td><strong>ISBN 13</strong></td>
-                                    <td>9876543210123</td>
-                                  </tr>                            
-                                  <tr>
-                                    <td><strong>ISBN 13</strong></td>
-                                    <td>9876543210123</td>
-                                  </tr>                           
+                                    <td><strong>ISBN</strong></td>
+                                    <td><%= @classified.isbn %></td>
+                                  </tr> 
+                                <% end %>
+                                <% if @classified.pages.present? %>                            
+                                    <tr>
+                                      <td><strong>Pages</strong></td>
+                                      <td><%= @classified.pages %></td>
+                                    </tr>  
+                                  <% end %>
+                                  <% if @classified.released_year.present? %>                            
+                                    <tr>
+                                      <td><strong>Year</strong></td>
+                                      <td><%= @classified.released_year %></td>
+                                    </tr>  
+                                  <% end %>  
+                                  <% if @classified.condition.present? %>                            
+                                    <tr>
+                                      <td><strong>Condition</strong></td>
+                                      <td><%= @classified.condition %></td>
+                                    </tr>  
+                                  <% end %>                                         
                                 </tbody>
                               </table>
                             </div>                            
                           </div>
-
-                          <div class="col-sm-6">
-                            <div class="row col-sm-12">
-                              <span class="fe-sub-heading"><strong> Description </strong></span>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.</p>
-                            </div>                            
-                          </div>
+                          <% if @classified.description.present? %>
+                            <div class="col-sm-6">
+                              <div class="row col-sm-12">
+                                <span class="fe-sub-heading"><strong> Description </strong></span>
+                                <p><%= @classified.description %></p>
+                              </div>                            
+                            </div>
+                          <% end %>
                         </div>
 
                       </div>
@@ -192,124 +210,32 @@
                     <div class="feed-element">
                       <div class="media-body ">
                         <div class="row">
+                        <% if @classified.images.present? %>
                           <div class="col-sm-6">
                             <div class="col-sm-12" style="padding-left: 0px;">
                               <span class="fe-sub-heading"><strong> Photos by Seller</strong></span>                      
                               <div class="photos">
-                                <a target="_blank" href="http://24.media.tumblr.com/20a9c501846f50c1271210639987000f/tumblr_n4vje69pJm1st5lhmo1_1280.jpg">
-                                <%= image_tag 'user1.jpg', class: 'feed-photo' %>
-                                </a>
-                                <a target="_blank" href="http://37.media.tumblr.com/9afe602b3e624aff6681b0b51f5a062b/tumblr_n4ef69szs71st5lhmo1_1280.jpg">
-                                  <%= image_tag 'user2.jpg', class: 'feed-photo' %>
-                                </a>
+                              <% for image in @classified.images %>
+                                  <%= image_tag image %>
+                              <% end %>
                               </div>
                             </div>
                           </div>
+                          <% end %>
+                          <% if @classified.comment.present? %>
                           <div class="col-sm-6">
                             <div class="row col-sm-12">
-                              <span class="fe-sub-heading"><strong> Condition </strong></span>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.</p>
+                              <span class="fe-sub-heading"><strong> Comment </strong></span>
+                              <p><%= @classified.comment %></p>
                             </div>                            
                           </div>
                         </div>
+                        <% end %> 
 
                       </div>
                     </div>
-
-                    <div class="feed-element">
-                      <div class="media-body">
-                        <div class="row">
-                          <div class="col-sm-12">
-                            <span class="fe-sub-heading"><strong> Other Choices </strong></span>
-                            <table class="table table-bordered other-choices">
-                              <thead>
-                                <tr>
-                                  <th>Seller</th>
-                                  <th>Price</th>
-                                  <th>Delivery</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>Flipkart</td>
-                                  <td><a href="">Rs 300</a></td>
-                                  <td>3-5 Days</td>
-
-                                </tr>
-                                <tr>
-                                  <td>Amazon</td>
-                                  <td><a href="">Rs 330</a></td>
-                                  <td>2-3 Days</td>
-
-                                </tr>
-                                <tr>
-                                  <td>Flipkart</td>
-                                  <td><a href="">Rs 350</a></td>
-                                  <td>5-6 Days</td>
-
-                                </tr>                            
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-
-
-
-                    <div class="feed-element">
-                      <div class="media-body">
-                        <div class="row">
-                          <div class="col-sm-12">
-                            <span class="fe-sub-heading" style="margin-bottom: 20px;"><strong> Comments </strong></span>
-                            <a href="profile.html#" class="pull-left">
-                              <%= image_tag("a4.jpg", class: "img-circle") %>
-                            </a>
-                            <div class="media-body "> <small class="pull-right text-navy">5h ago</small>
-                              <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>.
-                              <br> <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
-                              <div class="actions"> <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                                <a class="btn btn-xs btn-white"><i class="fa fa-heart"></i> Love</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="feed-element">
-                      <a href="profile.html#" class="pull-left">
-                        <%= image_tag("a5.jpg", class: "img-circle") %>
-                      </a>
-                      <div class="media-body "> <small class="pull-right">2h ago</small>
-                        <strong>Kim Smith</strong> posted message on <strong>Monica Smith</strong> site.
-                        <br> <small class="text-muted">Yesterday 5:20 pm - 12.06.2014</small>
-                        <div class="well">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
-                        <div class="pull-right"> <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="feed-element">
-                      <a href="profile.html#" class="pull-left">
-                        <%= image_tag("profile.jpg", class: "img-circle") %>
-                      </a>
-                      <div class="media-body "> <small class="pull-right">23h ago</small>
-                        <strong>Monica Smith</strong> love <strong>Kim Smith</strong>.
-                        <br> <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
-                      </div>
-                    </div>
-                    <div class="feed-element">
-                      <a href="profile.html#" class="pull-left">
-                        <%= image_tag("a7.jpg", class: "img-circle") %>
-                      </a>
-                      <div class="media-body "> <small class="pull-right">46h ago</small>
-                        <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>.
-                        <br> <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="btn btn-primary btn-block m"><i class="fa fa-arrow-down"></i> Show More</button>
-                </div>
+                  
+                 </div>
               </div>
             </div>
           </div>

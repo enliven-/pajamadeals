@@ -1,3 +1,4 @@
 class Book < ActiveRecord::Base
-	mount :image, ImageUploader
+	has_many :classifieds
+	mount_uploader :image, ImageUploader
 end

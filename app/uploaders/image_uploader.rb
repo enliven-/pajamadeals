@@ -36,33 +36,22 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [50, 50]
   end
 
-  version :s160x160 do
+  version :profile do
+    process resize_to_fit: [130, 130]
+  end
+
+  version :index do
     process resize_to_fit: [160, 160]
   end
-  version :s180x180 do
-    process resize_to_fit: [180, 180]
+
+  version :show do
+    process resize_to_fit: [450, 350]
   end
-  version :s160x180 do
-    process resize_to_fit: [160, 180]
+
+  version :s135x180 do
+    process resize_to_fit: [135, 180]
   end
-  version :s200x200 do
-    process resize_to_fit: [200, 200]
-  end
-  version :s250x250 do
-    process resize_to_fit: [250, 250]
-  end
-  version :s250x200 do
-    process resize_to_fit: [250, 200]
-  end
-  version :s180x200 do
-    process resize_to_fit: [180, 200]
-  end
-  version :s200x180 do
-    process resize_to_fit: [200, 180]
-  end
-  version :s325x250 do
-    process resize_to_fit: [325, 250]
-  end
+ 
 
 
   # Override the filename of the uploaded files:

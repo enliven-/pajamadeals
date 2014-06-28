@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 		:recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
 	has_many :classifieds
-	#has_many :images, as: :imageable
+	has_many :picks
 	belongs_to :college
 
 	has_token

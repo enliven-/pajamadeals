@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get 'pages/home'
 
   get 'pages/about'
 
   get 'pages/contact_us'
 
-  resources :classifieds
+  resources :classifieds do
+    member do
+      resources :picks, only: [:new, :create]
+    end
+  end
 
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 

@@ -10,5 +10,5 @@ solr/
 public/uploads
 db/test.sqlite3
 log
-Gemfile
-Gemfile.lock
+public/uploads
+resources
