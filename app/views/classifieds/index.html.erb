@@ -1,5 +1,4 @@
 
-
 <div class="row wrapper wrapper-content ?animated ?fadeInRight">
 
   <div class="row col-md-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
@@ -41,7 +40,13 @@
         </div>
       </div>
     </div>
-      
+
+    <%= form_tag classifieds_path, :method => :get do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+    <% end %>         
 
     <div class="col-sm-8 results">
     <% for classified in @classifieds %>

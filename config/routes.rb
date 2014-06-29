@@ -2,11 +2,9 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'pages/home'
-
   get 'pages/about'
-
   get 'pages/contact_us'
-
+  get 'books/search'
   resources :classifieds do
     member do
       resources :picks, only: [:new, :create]
@@ -20,7 +18,7 @@ Rails.application.routes.draw do
   mount MongodbLogger::Server.new, :at => "/logs"
 
   # for autocomplete
-  get '/queries/json_completion' => 'classifieds#json_completion'
+  get '/queries/json_completion' => 'books#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

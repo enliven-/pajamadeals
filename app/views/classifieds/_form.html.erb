@@ -412,8 +412,13 @@ $(document).ready(function () {
 
   $("#search-box").autocomplete({
     source: get_airports,
-    minLength: 2
-  });
+    minLength: 5
+  })
+  .data("ui-autocomplete")._renderItem = function (ul, item) {
+    return $("<li>")
+                    .append("<a> <img src=" + item.image_url + "></img>" + item.book.title + "--" + "</a>")
+                    .appendTo(ul);
+  };
 
   function get_airports(request, response) {
     var params = {
