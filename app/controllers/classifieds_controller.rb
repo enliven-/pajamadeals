@@ -72,6 +72,22 @@ class ClassifiedsController < ApplicationController
     end
   end
 
+
+
+def json_completion
+  # search = Sunspot.search(Classified) do
+  #   keywords(params["keywords"])
+  # end
+  # bucket = []
+  # bucket << search.rows.first(5)
+  # p bucket
+  # render :json => bucket
+  bucket = ["apple", "art", "bees", "butter", "charlie", "cool", "delta", "dirac", "elephant", "egg beater", "foo", "foobar"]
+  render :json => bucket
+end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_classified

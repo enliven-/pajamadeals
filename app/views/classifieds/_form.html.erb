@@ -338,29 +338,29 @@
                      ];
 
 
-    $("#search-box").autocomplete({
+    // $("#search-box").autocomplete({
 
-      source: books_data,
-      search: function(event, ui) {
-        $("div.search-result").slideUp();
-        $("div.item-info").slideUp();
-      }, 
-      focus: function (event, ui) {
-        $("#search-box").val(ui.item.label);
-        return false;
-      },
-      select: function (event, ui) {
-        console.log("selected");
-        $("div.search-result").slideDown();
-        $("#search-box").val("");
-        return false;
-      }
-    })
-    .data("ui-autocomplete")._renderItem = function (ul, item) {
-      return $("<li>")
-                      .append("<a> <img src=" + item.img_src + "></img>" + item.label + item.desc + "</a>")
-                      .appendTo(ul);
-    };
+    //   source: books_data,
+    //   search: function(event, ui) {
+    //     $("div.search-result").slideUp();
+    //     $("div.item-info").slideUp();
+    //   }, 
+    //   focus: function (event, ui) {
+    //     $("#search-box").val(ui.item.label);
+    //     return false;
+    //   },
+    //   select: function (event, ui) {
+    //     console.log("selected");
+    //     $("div.search-result").slideDown();
+    //     $("#search-box").val("");
+    //     return false;
+    //   }
+    // })
+    // .data("ui-autocomplete")._renderItem = function (ul, item) {
+    //   return $("<li>")
+    //                   .append("<a> <img src=" + item.img_src + "></img>" + item.label + item.desc + "</a>")
+    //                   .appendTo(ul);
+    // };
 
 
     $("button.clear").on('click', function(e) {
@@ -405,4 +405,25 @@
 
 
   });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+  $("#search-box").autocomplete({
+    source: get_airports,
+    minLength: 2
+  });
+
+  function get_airports(request, response) {
+    var params = {
+      keywords: request.term
+    };
+    $.get("/queries/json_completion", params, function (data) {
+      response(data);
+    }, "json");
+  }
+
+});
+
 </script>
