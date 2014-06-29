@@ -46,22 +46,22 @@
             
 
           <div class="col-sm-8 results">
-
+          <% for classified in @classifieds %>
             <div class="row col-md-12 contact-box result">
 
               <div class="col-sm-2">
-                <%= image_tag("s160x160_book3.jpg", class: "img-circle ?m-t-xs img-responsive classified-img") %>
+                <%= link_to (image_tag classified.image.index, class: 'img-circle m-t-xs img-responsive book-img'), classified_path(classified) %>
               </div>
 
               <div class="col-sm-10 row ?pull-right classified-info">
-                <h4 class="title">Introduction to Algorithms</h4>, 2nd Edition 
-                <span class="pull-right">Posted: 22 Sept, 2013</span>
+                <h4 class="title"><%= link_to classified.title, classified_path(classified) %></h4>  <%= (', ' + classified.edition + ' edition') if classified.edition.present? %>  
+                <span class="pull-right"><%= render_date classified.created_at %></span>
                 <br/>
-                <span class="authors"><em>Cormen Rivest</em></span>
+                <span class="authors"><em><%= classified.author.present? ? classified.author : '-' %></em></span>
 
                 <div class="row prices">
-                  <h3 class="expected-price"><strong>Rs 230</strong></h3>
-                  <h5 class="retail-price">(MRP: Rs 450)</h5><br/>
+                  <h3 class="expected-price"><strong>Rs <%= classified.expected_price %></strong></h3>
+                  <h5 class="retail-price">(MRP: Rs <%= classified.retail_price %>)</h5><br/>
                 </div>
 
                 <div class="row info-tables">
@@ -70,43 +70,45 @@
                       <tr>
                         <td><strong>Publisher:</strong></td>
                         <td></td>
-                        <td>Penguin House</td>
+                        <td><%= classified.publisher.present? ? classified.publisher : '-' %></td>
                       </tr>
                       <tr>
                         <td><strong>Released:</strong></td>
                         <td></td>
-                        <td>2013</td>
+                        <td><%= classified.released_year.present? ? classified.released_year : '-' %></td>
                       </tr>
                       <tr>
-                        <td><strong>MRP:</strong></td>
-                        <td></td>
-                        <td>Rs 450</td>
-                      </tr>                                                             
+                          <td><strong>Condition</strong></td>
+                          <td></td>
+                          <td><%= classified.condition %></td>
+                        </tr>                                                           
                     </table>
                   </div>
                   <div class="col-sm-4 col-sm-offset-3">
                     <table class="table-right">
-                      <tr>
-                        <td><strong>Seller:</strong></td>
-                        <td></td>
-                        <td>Viksit Arora</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Contact:</strong></td>
-                        <td></td>
-                        <td>+91-9779860223</td>
-                      </tr>
-                      <tr>
-                        <td><strong>College:</strong></td>
-                        <td></td>
-                        <td>VIT</td>
-                      </tr>                                        
-                    </table>                  
+                        <tr>
+                          <td><strong>Seller:</strong></td>
+                          <td></td>
+                          <td><%= classified.user.name %></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Contact:</strong></td>
+                          <td></td>
+                          <td><%= classified.contact_preference == 'phone' ? classified.user.mobile_number : classified.user.email %></td>
+                        </tr>
+                        <tr>
+                          <td><strong>College:</strong></td>
+                          <td></td>
+                          <td><%= classified.college.abbr %></td>
+                        </tr>                                        
+                      </table>                
                   </div>
                 </div>
               </div>
             </div>
 
+
+            <% end %>
 
 
           </div> <!--results-->
