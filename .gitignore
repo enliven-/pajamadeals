@@ -5,9 +5,12 @@ log/development.log log/test.log
 tmp/cache tmp/pids tmp/sessions tmp/sockets
 tmp/
 log/
-test/fixtures/
 .powrc
 solr/
 public/uploads
 db/test.sqlite3
 log
+public/uploads
+resources
+.ruby-version
+.ruby-gemset

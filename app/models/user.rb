@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 		:recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
 	has_many :classifieds
-	#has_many :images, as: :imageable
+	has_many :picks
 	belongs_to :college
 
 	has_token
@@ -43,5 +43,11 @@ class User < ActiveRecord::Base
 		if oauth_token_expires_at > Time.now
 			@facebook ||= Koala::Facebook::API.new(oauth_token)
 		end
+	end
+
+	# helpers
+
+	def name
+		first_name + ' ' + last_name
 	end
 end

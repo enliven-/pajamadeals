@@ -6,9 +6,17 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="?boxed-layout">
+	<%= render 'layouts/header' %>
 
-<%= yield %>
+	<%= yield %>
 
 </body>
 </html>
+
+<style type="text/css">
+body.boxed-layout {
+  /*background: url('assets/shattered.png');*/
+  background-color: lightgray;
+}
+</style>

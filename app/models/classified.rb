@@ -5,35 +5,42 @@ class Classified < ActiveRecord::Base
 
 	include HasToken
 
-	validates :title, presence: true, length: { maximum: 255 }
-	validates :expected_price, numericality: { greater_than_or_equal_to: 0.01,
-				   	  allow_blank: true }
-	validates :user_id, presence: true
-	validates :college_id, presence: true
-	validates :listing_type, presence: true
+	# validates :title, presence: true, length: { maximum: 255 }
+	# validates :expected_price, numericality: { greater_than_or_equal_to: 0.01,
+	# 			   	  allow_blank: true }
+	# validates :user_id, presence: true
+	# validates :college_id, presence: true
+	# validates :listing_type, presence: true
 
-	#has_many :images, as: :imageable
+	has_many :images
+	has_many :picks
 	belongs_to :user
 	belongs_to :college
+	belongs_to :book
 
 	before_create :set_college
 
 	has_token
 
-	mount_uploader :image, ImageUploader
+	scope :sold, -> { where(sold: true) }
 
 	# search classified
-
 	searchable do
-		text :title, boost: 3.0
-		text :description
-		text :isbn
+		# Searches on following fields
+		text :title  do
+			book.title
+		end
+		text :author do
+			book.author
+		end
+		text :isbn do
+			book.isbn
+		end
 
-		time    :created_at
-		string  :expected_price
-		integer :listing_type
-		integer :college_id
-		boolean :list
+		# Constrainsts
+		time :created_at
+		boolean :active
+		boolean :sold
 	end
 
 	def buy?
@@ -44,9 +51,18 @@ class Classified < ActiveRecord::Base
 		!buy?
 	end
 
-	def unlist
-		self.list = false
-		save
+	def method_missing(method, *args, &block)
+		self.book.send(method)
+	rescue NoMethodError
+		super
+	end
+
+	# calcs
+
+	def percent_off
+		if retail_price.present? && retail_price.to_f > expected_price.to_f
+			(((retail_price.to_f - expected_price.to_f) / retail_price.to_f) * 100).round
+		end
 	end
 
 	private

@@ -1,35 +1,260 @@
-<h1>Listing classifieds</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th>User</th>
-      <th>College</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
 
-  <tbody>
-    <% @classifieds.each do |classified| %>
-      <tr>
-        <td><%= classified.title %></td>
-        <td><%= classified.description %></td>
-        <td><%= classified.image %></td>
-        <td><%= classified.user_id %></td>
-        <td><%= classified.college_id %></td>
-        <td><%= classified.expected_price %></td>
-        <td><%= link_to 'Show', classified %></td>
-        <td><%= link_to 'Edit', edit_classified_path(classified) %></td>
-        <td><%= link_to 'Destroy', classified, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="row wrapper wrapper-content ?animated ?fadeInRight">
 
-<br>
+        <div class="row col-md-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
+        
+          <div class="col-md-3 pull-left">
+            <div class="ibox-content">
+              <div>
+                <div>
+                  <span>Memory</span>
+                  <small class="pull-right">10/200 GB</small>
+                </div>
+                <div class="progress progress-small">
+                  <div style="width: 60%;" class="progress-bar"></div>
+                </div>
 
-<%= link_to 'New Classified', new_classified_path %>
+                <div>
+                  <span>Bandwidth</span>
+                  <small class="pull-right">20 GB</small>
+                </div>
+                <div class="progress progress-small">
+                  <div style="width: 50%;" class="progress-bar"></div>
+                </div>
+
+                <div>
+                  <span>Activity</span>
+                  <small class="pull-right">73%</small>
+                </div>
+                <div class="progress progress-small">
+                  <div style="width: 40%;" class="progress-bar"></div>
+                </div>
+
+                <div>
+                  <span>FTP</span>
+                  <small class="pull-right">400 GB</small>
+                </div>
+                <div class="progress progress-small">
+                  <div style="width: 20%;" class="progress-bar progress-bar-danger"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <%= form_tag classifieds_path, :method => :get do %>
+            <p>
+              <%= text_field_tag :search, params[:search] %>
+              <%= submit_tag "Search", :name => nil %>
+            </p>
+          <% end %>            
+
+          <div class="col-sm-8 results">
+          <% for classified in @classifieds %>
+            <div class="row col-md-12 contact-box result">
+
+              <div class="col-sm-2">
+                <%= link_to (image_tag classified.image.index, class: 'img-circle m-t-xs img-responsive book-img'), classified_path(classified) %>
+              </div>
+
+              <div class="col-sm-10 row ?pull-right classified-info">
+                <h4 class="title"><%= link_to classified.title, classified_path(classified) %></h4>  <%= (', ' + classified.edition + ' edition') if classified.edition.present? %>  
+                <span class="pull-right"><%= render_date classified.created_at %></span>
+                <br/>
+                <span class="authors"><em><%= classified.author.present? ? classified.author : '-' %></em></span>
+
+                <div class="row prices">
+                  <h3 class="expected-price"><strong>Rs <%= classified.expected_price %></strong></h3>
+                  <h5 class="retail-price">(MRP: Rs <%= classified.retail_price %>)</h5><br/>
+                </div>
+
+                <div class="row info-tables">
+                  <div class="col-sm-4">
+                    <table class="table-left">
+                      <tr>
+                        <td><strong>Publisher:</strong></td>
+                        <td></td>
+                        <td><%= classified.publisher.present? ? classified.publisher : '-' %></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Released:</strong></td>
+                        <td></td>
+                        <td><%= classified.released_year.present? ? classified.released_year : '-' %></td>
+                      </tr>
+                      <tr>
+                          <td><strong>Condition</strong></td>
+                          <td></td>
+                          <td><%= classified.condition %></td>
+                        </tr>                                                           
+                    </table>
+                  </div>
+                  <div class="col-sm-4 col-sm-offset-3">
+                    <table class="table-right">
+                        <tr>
+                          <td><strong>Seller:</strong></td>
+                          <td></td>
+                          <td><%= classified.user.name %></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Contact:</strong></td>
+                          <td></td>
+                          <td><%= classified.contact_preference == 'phone' ? classified.user.mobile_number : classified.user.email %></td>
+                        </tr>
+                        <tr>
+                          <td><strong>College:</strong></td>
+                          <td></td>
+                          <td><%= classified.college.abbr %></td>
+                        </tr>                                        
+                      </table>                
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <% end %>
+
+
+          </div> <!--results-->
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+<style type="text/css">
+
+table {
+  margin-top: 0px;
+}
+
+.result {
+  padding: 15px 15px 15px 5px;
+  margin-bottom: 0px;
+}
+
+.classified-img-container {
+  /*padding: 0px !important;*/
+  /*margin: 0px !important;*/
+}
+
+.classified-info {
+  margin-left: 15px;
+}
+
+.classified-info > .info-tables {
+  margin-top: 5px;
+}
+
+.table-right td,
+.table-left td {
+  padding-bottom: 1px;
+  font-size: 11px;
+  min-width: 5px;
+}
+
+.classified-img {
+  max-width: 100px;
+  max-height: 130px;
+}
+
+.result > div.img-container {
+  padding: 0px;
+}
+
+.result h4.title {
+  margin-bottom: 2px;
+  display: inline-block;
+  margin-top: 0px;
+  color: #004b91;
+}
+.classified-info > .authors {
+  color: #787878;
+}
+
+.classified-info > .row  > h3.expected-price {
+  padding-left: 15px;
+  margin-top: 15px;
+  padding-right: 10px;
+  display: inline-block;
+  color: #e34e4d;
+}
+
+.classified-info > .row > h5.retail-price {
+  display: inline-block;
+  color: #808080;
+}
+
+</style>
+
+
+<style type="text/css">
+
+
+.bordered {
+  border: 1px solid gray;
+}
+
+#page-wrapper {
+  margin: 0px;
+  padding: 0px;
+}
+.navbar-inverse {
+  background-color: #2a3947;
+  border-color: #2a3947;
+}
+#navbar-collapse-01 > ul.nav.navbar-nav.navbar-left > li > a {
+  color: white;
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+}
+#navbar-collapse-01 > ul.nav.navbar-nav.navbar-right > li > a {
+  color: white;
+}
+.wrapper {
+  padding: 0px;
+}
+.banner-top {
+  /*border: 1px solid gray;*/
+  margin-top: -40px !important;
+  min-height: 400px;
+  /*background-image: url('img/pajama/books.jpg')*/
+  background-color: #29aae1;
+}
+.row.search {
+  margin-top: 80px;
+}
+.search button {
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+* {
+  border-radius: 0px !important;
+}
+.navbar .divider-vertical {
+  height: 20px;
+  /*margin: 10px -5px 10px -5px;*/
+  margin-top: 15px;
+  border-right: 1px solid #ffffff;
+  border-left: 1px solid #f2f2f2;
+  /*color: white;*/
+}
+.navbar-inverse .divider-vertical {
+  /*  border-right-color: #222222;
+border-left-color: #111111;*/
+  border-right: 1px solid #ffffff;
+  border-left: 1px solid #f2f2f2;
+}
+@media (max-width: 767px) {
+  .navbar-collapse .nav > .divider-vertical {
+    display: none;
+  }
+}
+
+
+</style>

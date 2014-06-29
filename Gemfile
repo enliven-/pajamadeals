@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 # ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -48,6 +48,7 @@ gem 'koala'
 # search engine
 gem 'sunspot_rails'
 gem 'sunspot_solr', :git => 'git@github.com:sunspot/sunspot.git'
+gem 'progress_bar'
 
 # logging and monitoring
 gem 'mongodb_logger'
@@ -57,7 +58,7 @@ gem "bson_ext"
 # view helper
 gem "therubyracer"
 gem "less-rails"
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'font-awesome-rails', :git => 'git@github.com:bokmann/font-awesome-rails.git'
 
 # test helper
 gem 'faker'
@@ -71,4 +72,5 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 
-
+# active admin
+gem 'activeadmin', github: 'gregbell/active_admin'

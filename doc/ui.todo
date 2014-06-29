@@ -1,0 +1,25 @@
+Viksit
+	Misc
+	 - Move search bar in header
+
+	Home page
+	 - Dropdown for sign in and sign up
+	 - Center 'Find your school' text
+	 - Why you would love it
+	 - How it works
+	 - Hide search bar from header
+
+	Index page
+	 - Positioning image rightly
+	 - Hover link background color
+	 - gap b/w publisher and value
+
+	Show page (classified#show)
+	 - kill the 3 step process to make new posting
+
+
+
+Bhushan
+	Misc
+	- Extract header in partial
+	- Fill in the book details for list view

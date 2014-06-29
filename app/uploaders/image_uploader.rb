@@ -4,7 +4,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
    #include CarrierWave::RMagick
-   include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -35,6 +35,24 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :thumb do
     process resize_to_fit: [50, 50]
   end
+
+  version :profile do
+    process resize_to_fit: [130, 130]
+  end
+
+  version :index do
+    process resize_to_fit: [160, 160]
+  end
+
+  version :show do
+    process resize_to_fit: [450, 350]
+  end
+
+  version :s135x180 do
+    process resize_to_fit: [135, 180]
+  end
+ 
+
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
