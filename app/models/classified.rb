@@ -23,14 +23,25 @@ class Classified < ActiveRecord::Base
 	has_token
 
 	scope :sold, -> { where(sold: true) }
-	
+
 	# search classified
-	# searchable do
-	# 	time    :created_at
-	# 	string  :expected_price
-	# 	integer :listing_type
-	# 	integer :college_id
-	# end
+	searchable do
+		# Searches on following fields
+		text :title  do
+			book.title
+		end
+		text :author do
+			book.author
+		end
+		text :isbn do
+			book.isbn
+		end
+
+		# Constrainsts
+		time :created_at
+		boolean :active, :sold
+		integer :college_id
+	end
 
 	def buy?
 		listing_type == BUY
