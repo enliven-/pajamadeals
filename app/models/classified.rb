@@ -39,8 +39,8 @@ class Classified < ActiveRecord::Base
 
 		# Constrainsts
 		time :created_at
-		boolean :active, :sold
-		integer :college_id
+		boolean :active
+		boolean :sold
 	end
 
 	def buy?
