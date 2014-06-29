@@ -12,3 +12,5 @@ db/test.sqlite3
 log
 public/uploads
 resources
+.ruby-version
+.ruby-gemset
