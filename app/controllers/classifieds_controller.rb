@@ -12,8 +12,6 @@ class ClassifiedsController < ApplicationController
 			with :active, true
 			with :sold,   false
 			order_by :created_at, :desc
-
-			paginate per_page: 15
 		end
 		@classifieds = @search.results
 	end
