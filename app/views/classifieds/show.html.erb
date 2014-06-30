@@ -113,60 +113,40 @@
 
                               <table class="table item-table">
                                 <tbody>
-                                <% if @classified.publisher.present? %>
                                   <tr>
                                     <td><strong>Publisher</strong></td>
-                                    <td><%= @classified.publisher %></td>
+                                    <td><%= render_field @classified, :publisher %></td>
                                   </tr>
-                                <% end %>
-                                <% if @classified.author.present? %>
                                   <tr>
                                     <td><strong>Author</strong></td>
-                                    <td><%= @classified.author %></td>
+                                    <td><%= render_field @classified, :author %></td>
                                   </tr>
-                                <% end %>
-                                 <% if @classified.edition.present? %>                                                          
                                   <tr>
                                     <td><strong>Edition</strong></td>
-                                    <td><%= @classified.edition %></td>
+                                    <td><%= render_field @classified, :edition %></td>
                                   </tr> 
-                                <% end %>
-                                <% if @classified.isbn.present? %>                                                          
                                   <tr>
                                     <td><strong>ISBN</strong></td>
-                                    <td><%= @classified.isbn %></td>
+                                    <td><%= render_field @classified, :isbn %></td>
                                   </tr> 
-                                <% end %>
-                                <% if @classified.pages.present? %>                            
                                     <tr>
                                       <td><strong>Pages</strong></td>
-                                      <td><%= @classified.pages %></td>
-                                    </tr>  
-                                  <% end %>
-                                  <% if @classified.released_year.present? %>                            
+                                      <td><%= render_field @classified, :pages %></td>
+                                    </tr>                           
                                     <tr>
                                       <td><strong>Year</strong></td>
-                                      <td><%= @classified.released_year %></td>
-                                    </tr>  
-                                  <% end %>  
-                                  <% if @classified.condition.present? %>                            
-                                    <tr>
-                                      <td><strong>Condition</strong></td>
-                                      <td><%= @classified.condition %></td>
-                                    </tr>  
-                                  <% end %>                                         
+                                      <td><%= render_field @classified, :released_year %></td>
+                                    </tr>                                        
                                 </tbody>
                               </table>
                             </div>                            
                           </div>
-                          <% if @classified.description.present? %>
                             <div class="col-sm-6">
                               <div class="row col-sm-12">
                                 <span class="fe-sub-heading"><strong> Description </strong></span>
-                                <p><%= @classified.description %></p>
+                                <p><%= render_field @classified, :description, 'No description' %></p>
                               </div>                            
                             </div>
-                          <% end %>
                         </div>
 
                       </div>
@@ -176,27 +156,27 @@
                     <div class="feed-element">
                       <div class="media-body ">
                         <div class="row">
-                        <% if @classified.images.present? %>
                           <div class="col-sm-6">
                             <div class="col-sm-12" style="padding-left: 0px;">
                               <span class="fe-sub-heading"><strong> Photos by Seller</strong></span>                      
                               <div class="photos">
-                              <% for image in @classified.images %>
-                                  <%= image_tag image %>
+                              <% if @classified.images.present? %>
+                                 <% for image in @classified.images %>
+                                    <%= image_tag image %>
+                                 <% end %>
+                              <% else %>
+                                 No images
                               <% end %>
                               </div>
                             </div>
                           </div>
-                          <% end %>
-                          <% if @classified.comment.present? %>
                           <div class="col-sm-6">
                             <div class="row col-sm-12">
-                              <span class="fe-sub-heading"><strong> Comment </strong></span>
-                              <p><%= @classified.comment %></p>
+                              <span class="fe-sub-heading"><strong> Comment by Seller </strong></span>
+                              <p><%= render_field @classified, :comment, 'No comment' %></p>
                             </div>                            
                           </div>
                         </div>
-                        <% end %> 
 
                       </div>
                     </div>
