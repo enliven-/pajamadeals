@@ -56,18 +56,20 @@
             <div class="row col-md-12 contact-box result">
 
               <div class="col-sm-2">
-                <%= link_to (image_tag classified.image.index, class: 'img-circle m-t-xs img-responsive book-img'), classified_path(classified) %>
+                <%= link_to (image_tag classified.image.index, class: 'img-circle m-t-xs img-responsive classified-img'), classified_path(classified) %>
               </div>
 
               <div class="col-sm-10 row ?pull-right classified-info">
                 <h4 class="title"><%= link_to classified.title, classified_path(classified) %></h4>  <%= (', ' + classified.edition + ' edition') if classified.edition.present? %>  
                 <span class="pull-right"><%= render_date classified.created_at %></span>
                 <br/>
-                <span class="authors"><em><%= classified.author.present? ? classified.author : '-' %></em></span>
+                <span class="authors"><em><%= render_field classified, :author %></em></span>
 
                 <div class="row prices">
                   <h3 class="expected-price"><strong>Rs <%= classified.expected_price %></strong></h3>
-                  <h5 class="retail-price">(MRP: Rs <%= classified.retail_price %>)</h5><br/>
+                  <% if classified.retail_price.present? %>
+                    <h5 class="retail-price">(MRP: Rs <%= classified.retail_price %>)</h5><br/>
+                  <% end %>
                 </div>
 
                 <div class="row info-tables">
@@ -76,17 +78,17 @@
                       <tr>
                         <td><strong>Publisher:</strong></td>
                         <td></td>
-                        <td><%= classified.publisher.present? ? classified.publisher : '-' %></td>
+                        <td><%= render_field classified, :publisher %></td>
                       </tr>
                       <tr>
                         <td><strong>Released:</strong></td>
                         <td></td>
-                        <td><%= classified.released_year.present? ? classified.released_year : '-' %></td>
+                        <td><%= render_field classified, :released_year %></td>
                       </tr>
                       <tr>
                           <td><strong>Condition</strong></td>
                           <td></td>
-                          <td><%= classified.condition %></td>
+                          <td><%= render_field classified, :condition %></td>
                         </tr>                                                           
                     </table>
                   </div>
