@@ -14,19 +14,27 @@
       
         <div>
           
-          <div class="ibox-content no-padding border-left-right">
-            <%= image_tag @classified.image.show, class: 'img-responsive' %>
+          <div class="ibox-content ?no-padding ?border-left-right">
+            <%= image_tag @classified.image.show, class: 'img-responsive classified-image' %>
           </div>
 
           <div class="ibox-content profile-content">
 
-            <h4><i class="fa fa-map-marker"></i> <%= @classified.college.name %></h4>
-
-            <div class="col-sm-12 ?bordered">
-              <!-- <h3 class="expected-price"><strong>Rs 230</strong></h3> -->
+            <div class="location">
+              <h4><i class="fa fa-map-marker"></i> <%= @classified.college.name %></h4>
             </div>
-            <h3 class="selling-price"><strong>Rs. <%= @classified.expected_price %>  </strong></h3>
-            <span class="list-price">Rs. <%= @classified.retail_price %></span>
+            <div class="prices">
+              <h3 class="selling-price"><strong>Rs. <%= @classified.expected_price %>  </strong></h3>
+              <span class="retail-price">Rs. <%= @classified.retail_price %></span>              
+            </div>
+
+
+<style type="text/css">
+.profile-content > .location,
+.profile-content > .prices {
+
+}
+</style>
             <div class="user-button">
               <div class="row">
                 <div class="col-md-6">
@@ -43,6 +51,7 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -281,7 +290,7 @@ h3.selling-price {
   color: #ef5352;
 }
 
-.list-price {
+.retail-price {
   text-decoration: line-through;
 }
 
@@ -319,4 +328,9 @@ table.other-choices a:hover {
   border-radius: 0px;
 }
 
+.classified-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>
