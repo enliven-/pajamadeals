@@ -9,7 +9,8 @@
 
         <div class="ibox-title">
           <!-- <h5><%= @classified.title %></h5> -->
-          <h5><%= @classified.title %></h5> <%= render_date @classified.created_at %> 
+          <h5><%= @classified.title %></h5>
+          <span class="posted-at pull-right"><em><%= render_date @classified.created_at %></em></span>
         </div>
       
         <div>
@@ -58,7 +59,7 @@
 
 
 
-      <div class="ibox float-e-margins">
+      <div class="ibox float-e-margins seller">
         <div class="ibox-title">
           <h5>Seller</h5>
         </div>
@@ -87,7 +88,7 @@
       <div class="ibox float-e-margins">
         <div class="ibox-title">
           <h5>Details</h5>
-          <div class="ibox-tools">
+<!--           <div class="ibox-tools">
             <a class="collapse-link"> <i class="fa fa-chevron-up"></i>
             </a>
             <a class="dropdown-toggle" data-toggle="dropdown" href="profile.html#"> <i class="fa fa-wrench"></i>
@@ -100,7 +101,7 @@
             </ul>
             <a class="close-link"> <i class="fa fa-times"></i>
             </a>
-          </div>
+          </div> -->
         </div>
         <div class="ibox-content">
           <div>
@@ -279,6 +280,10 @@
         display: none;
       }
     }
+
+  .seller .widget-head-color-box {
+    margin-top: 0px;
+  }
   </style>
 
   <style type="text/css">
