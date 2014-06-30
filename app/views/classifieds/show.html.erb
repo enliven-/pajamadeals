@@ -40,7 +40,7 @@
                           <% if @classified.contact_preference == 'phone' %>
                               <i class="fa fa-phone"></i> <%= @classified.user.mobile_number %>
                           <% else %>
-                              <i class="fa fa-envelope"></i> <%= @classified.user.email %>
+                              <i class="fa fa-envelope"></i> <%= mail_to @classified.user.email, 'Email seller' %>
                           <% end %>
                         </button>
                       </div>
