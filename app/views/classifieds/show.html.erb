@@ -87,21 +87,7 @@
     <div class="col-md-8 item-related-info">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5>Details</h5>
-<!--           <div class="ibox-tools">
-            <a class="collapse-link"> <i class="fa fa-chevron-up"></i>
-            </a>
-            <a class="dropdown-toggle" data-toggle="dropdown" href="profile.html#"> <i class="fa fa-wrench"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-user">
-              <li><a href="profile.html#">Config option 1</a>
-              </li>
-              <li><a href="profile.html#">Config option 2</a>
-              </li>
-            </ul>
-            <a class="close-link"> <i class="fa fa-times"></i>
-            </a>
-          </div> -->
+          <h5>Related Info</h5>
         </div>
         <div class="ibox-content">
           <div>
@@ -116,7 +102,7 @@
 
                     <div class="col-sm-6">
                       <div class="col-sm-12" style="padding-left: 0px;">
-                        <span class="fe-sub-heading"><strong>Specifications</strong></span>
+                        <span class="fe-sub-heading"><strong>Product Details</strong></span>
 
                         <table class="table item-table">
                           <tbody>
@@ -198,7 +184,7 @@
                     <% if @classified.comment.present? %>
                     <div class="col-sm-6">
                       <div class="row col-sm-12">
-                        <span class="fe-sub-heading"><strong> Comment </strong></span>
+                        <span class="fe-sub-heading"><strong> Seller Comment </strong></span>
                         <p><%= @classified.comment %></p>
                       </div>                            
                     </div>
@@ -208,6 +194,46 @@
                 </div>
               </div>
             
+              <div class="feed-element">
+                <div class="media-body">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <span class="fe-sub-heading"><strong> Other Choices </strong></span>
+                      <table class="table table-bordered other-choices">
+                        <thead>
+                          <tr>
+                            <th>Seller</th>
+                            <th>Price</th>
+                            <th>Delivery</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Flipkart</td>
+                            <td><a href="">Rs 300</a></td>
+                            <td>3-5 Days</td>
+
+                          </tr>
+                          <tr>
+                            <td>Amazon</td>
+                            <td><a href="">Rs 330</a></td>
+                            <td>2-3 Days</td>
+
+                          </tr>
+                          <tr>
+                            <td>Flipkart</td>
+                            <td><a href="">Rs 350</a></td>
+                            <td>5-6 Days</td>
+
+                          </tr>                            
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
            </div>
         </div>
       </div>
