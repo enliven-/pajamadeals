@@ -3,7 +3,7 @@
 
   <div class="row col-md-12 animated fadeInRight" style="margin-left: 10px; margin-right: 10px;">
 
-    <div class="col-md-4 item-main-info">
+    <div class="col-md-4 classified-main-info">
 
       <div class="ibox float-e-margins">
 
@@ -29,25 +29,22 @@
               <span class="retail-price">Rs. <%= @classified.retail_price %></span>              
             </div>
 
-
-<style type="text/css">
-.profile-content > .location,
-.profile-content > .prices {
-
-}
-</style>
             <div class="user-button">
               <div class="row">
                 <div class="col-md-6">
-                  <%= button_to 'Pickup for me', new_pick_path(@classified), class: 'btn btn-success btn-sm btn-block', method: :get %>
+                  <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-truck"></i> Pickup For Me </button>
+                  <!-- <%= button_to 'Pickup For Me', new_pick_path(@classified), class: 'btn btn-success btn-sm btn-block', method: :get %> -->
                 </div>
                 <div class="col-md-6">
                   <button type="button" class="btn btn-primary btn-sm btn-block">
+<!-- 
                     <% if @classified.contact_preference == 'phone' %>
                         <i class="fa fa-phone"></i> <%= @classified.user.mobile_number %>
                     <% else %>
                         <i class="fa fa-envelope"></i> <%= @classified.user.email %>
                     <% end %>
+ -->                    
+                    <i class="fa fa-user"></i> Contact Seller 
                   </button>
                 </div>
               </div>
@@ -57,7 +54,12 @@
         </div>
       </div>
 
+<style type="text/css">
+.profile-content > .location,
+.profile-content > .prices {
 
+}
+</style>
 
       <div class="ibox float-e-margins seller">
         <div class="ibox-title">
@@ -84,7 +86,7 @@
     </div>
 
 
-    <div class="col-md-8 item-related-info">
+    <div class="col-md-8 classified-related-info">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
           <h5>Related Info</h5>
@@ -104,62 +106,51 @@
                       <div class="col-sm-12" style="padding-left: 0px;">
                         <span class="fe-sub-heading"><strong>Product Details</strong></span>
 
-                        <table class="table item-table">
+                        <table class="table classified-table">
                           <tbody>
-                          <% if @classified.publisher.present? %>
                             <tr>
-                              <td><strong>Publisher</strong></td>
-                              <td><%= @classified.publisher %></td>
+                              <td><span class="field">Publisher</span></td>
+                              <td><%= @classified.publisher || '-' %></td>
                             </tr>
-                          <% end %>
-                          <% if @classified.author.present? %>
                             <tr>
-                              <td><strong>Author</strong></td>
-                              <td><%= @classified.author %></td>
+                              <td><span class="field">Author</span></td>
+                              <td><%= @classified.author || '-' %></td>
                             </tr>
-                          <% end %>
-                           <% if @classified.edition.present? %>                                                          
                             <tr>
-                              <td><strong>Edition</strong></td>
-                              <td><%= @classified.edition %></td>
+                              <td><span class="field">Edition</span></td>
+                              <td><%= @classified.edition || '-' %></td>
                             </tr> 
-                          <% end %>
-                          <% if @classified.isbn.present? %>                                                          
                             <tr>
-                              <td><strong>ISBN</strong></td>
-                              <td><%= @classified.isbn %></td>
+                              <td><span class="field">ISBN</span></td>
+                              <td><%= @classified.isbn || '-' %></td>
                             </tr> 
-                          <% end %>
-                          <% if @classified.pages.present? %>                            
                               <tr>
-                                <td><strong>Pages</strong></td>
-                                <td><%= @classified.pages %></td>
+                                <td><span class="field">Pages</span></td>
+                                <td><%= @classified.pages || '-' %></td>
                               </tr>  
-                            <% end %>
-                            <% if @classified.released_year.present? %>                            
                               <tr>
-                                <td><strong>Year</strong></td>
-                                <td><%= @classified.released_year %></td>
+                                <td><span class="field">Year</span></td>
+                                <td><%= @classified.released_year || '-' %></td>
                               </tr>  
-                            <% end %>  
-                            <% if @classified.condition.present? %>                            
                               <tr>
-                                <td><strong>Condition</strong></td>
-                                <td><%= @classified.condition %></td>
+                                <td><span class="field">Condition</span></td>
+                                <td><%= @classified.condition.capitalize || '-' %></td>
                               </tr>  
-                            <% end %>                                         
                           </tbody>
                         </table>
                       </div>                            
                     </div>
-                    <% if @classified.description.present? %>
-                      <div class="col-sm-6">
-                        <div class="row col-sm-12">
-                          <span class="fe-sub-heading"><strong> Description </strong></span>
-                          <p><%= @classified.description %></p>
-                        </div>                            
-                      </div>
-                    <% end %>
+                    <div class="col-sm-6">
+                      <div class="row col-sm-12">
+                        <span class="fe-sub-heading"><strong> Description </strong></span>
+                        <p><%= @classified.description ||  'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' %></p>
+                      </div>                            
+                    </div>
                   </div>
 
                 </div>
@@ -169,7 +160,7 @@
               <div class="feed-element">
                 <div class="media-body ">
                   <div class="row">
-                  <% if @classified.images.present? %>
+                    
                     <div class="col-sm-6">
                       <div class="col-sm-12" style="padding-left: 0px;">
                         <span class="fe-sub-heading"><strong> Photos by Seller</strong></span>                      
@@ -180,16 +171,14 @@
                         </div>
                       </div>
                     </div>
-                    <% end %>
-                    <% if @classified.comment.present? %>
+
                     <div class="col-sm-6">
                       <div class="row col-sm-12">
-                        <span class="fe-sub-heading"><strong> Seller Comment </strong></span>
+                        <span class="fe-sub-heading"><strong> Seller Comments </strong></span>
                         <p><%= @classified.comment %></p>
                       </div>                            
                     </div>
                   </div>
-                  <% end %> 
 
                 </div>
               </div>
@@ -209,20 +198,20 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td>Flipkart</td>
-                            <td><a href="">Rs 300</a></td>
+                            <td><a href="">Flipkart</a></td>
+                            <td>Rs 300</td>
                             <td>3-5 Days</td>
 
                           </tr>
                           <tr>
-                            <td>Amazon</td>
-                            <td><a href="">Rs 330</a></td>
+                            <td><a href="">Amazon</a></td>
+                            <td>Rs 330</td>
                             <td>2-3 Days</td>
 
                           </tr>
                           <tr>
-                            <td>Flipkart</td>
-                            <td><a href="">Rs 350</a></td>
+                            <td><a href="">SnapDeal</a></td>
+                            <td>Rs 350</td>
                             <td>5-6 Days</td>
 
                           </tr>                            
@@ -243,6 +232,8 @@
 
 
 <!-- </body> -->
+
+
 
   <style type="text/css">
     .bordered {
@@ -310,6 +301,28 @@
   .seller .widget-head-color-box {
     margin-top: 0px;
   }
+
+  .classified-table .field {
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  table.other-choices tr th {
+    font-size: 10px;
+    font-weight: bold;    
+  }
+
+  .feed-element {
+    min-height: 150px;
+  }
+
+  .classified-related-info > .ibox > .ibox-content {
+    min-height: 905px;
+  }
+
+  .classified-related-info .ibox-content .feed-element:last-child {
+    border: none;
+  }
   </style>
 
   <style type="text/css">
@@ -330,15 +343,15 @@ h3.selling-price {
   margin-top: 15px;
 }
 
-.item-main-info table td {
+.classified-main-info table td {
   /*border: 1px solid gray;*/
   padding-bottom: 1px;
   font-size: 11px;
   min-width: 15px;
 }
 
-.item-related-info table.item-table tr td:nth-child(2) {
-  padding-left: 130px;
+.classified-related-info table.classified-table tr td:nth-child(2) {
+  padding-left: 110px;
 }
 
 .fe-sub-heading {
