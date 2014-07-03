@@ -2,21 +2,17 @@
 
 <div class="row wrapper">
 
-  <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
+  <div class="row col-md-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
 
 
-    <div class="col-sm-6 col-sm-offset-3 search-result animated fadeInUp ?hidden" >
+    <div class="col-md-4 search-result animated fadeInUp hidden" >
       <div class="ibox float-e-margins">
         <div class="ibox-title title">
-          <!-- <h5> -->
-            <div class="form-group search-title-container">
-              <input type="text" class="form-control search-title" placeholder="Search by Title" id="search-title">
-            </div>
-          <!-- </h5> -->
+          <h5>Intro to Algorithms</h5>
         </div>
-        <div class="auto result-item hidden">
+        <div class="auto result-item">
           <div class="ibox-content ?no-padding border-left-right">
-            <%= image_tag("_book1.jpg", class: "img-responsive classified-image") %>
+            <%= image_tag("book1.jpg", class: "img-responsive classified-image") %>
           </div>
           <div class="ibox-content profile-content">
             <table class="table table-bordered">
@@ -41,10 +37,10 @@
             <div class="row m-t-lg"></div>
             <div class="user-button">
               <div class="row">
-                <div class="col-sm-6">
+                <div class="col-md-6">
                   <button type="button" class="btn btn-danger btn-sm btn-block clear"><i class="fa fa-times"></i> Clear</button>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-md-6">
                   <button type="button" class="btn btn-primary btn-sm btn-block select"><i class="fa fa-share"></i> Select</button>
                 </div>
               </div>
@@ -55,7 +51,7 @@
     </div>
 
 
-    <div class="col-sm-8 col-sm-offset-4 item-info hidden">
+    <div class="col-md-8 col-md-offset-2 item-info">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
           <h5>Item Information</h5>
@@ -68,7 +64,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Title</label>
                     <div class="col-sm-10">
-                      <input type="text" ?disabled="" class="form-control title" id="title">
+                      <input type="text" ?disabled="" class="form-control title">
                     </div>
                   </div>
            
@@ -197,24 +193,6 @@
 </script>
 <style type="text/css">
 
-.search-title {
-/*  border-top: none;
-  border-left: none;
-  border-right: none;*/
-  font-size: 16px;
-  border: none;
-  /*text-align: center;*/
-}
-
-.search-title:focus {
-  border: none;
-}
-
-.search-title-container {
-  margin-bottom: -8px;
-  width: 70%;
-  margin-left: 10%;
-}
   .bordered {
     border: 1px solid gray;
   }
@@ -426,7 +404,7 @@
 <script type="text/javascript">
 $(document).ready(function () {
 
-  $("#search-title").autocomplete({
+  $("#title").autocomplete({
     source: get_airports,
     minLength: 3,
     select: function (event, ui) { 
@@ -449,7 +427,7 @@ $(document).ready(function () {
   })
   .data("ui-autocomplete")._renderItem = function (ul, item) {
     return $("<li>")
-                    .append("<a> <img src=" + item.image_url + "></img>" + item.book.title + item.book.description + "</a>")
+                    .append("<a> <img src=" + item.image_url + "></img>" + item.book.title + "--" + "</a>")
                     .appendTo(ul);
   };
 

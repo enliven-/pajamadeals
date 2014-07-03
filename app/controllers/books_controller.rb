@@ -10,6 +10,7 @@ class BooksController < ApplicationController
     search.results.each do |b|
       bucket << { book: b, image_url: b.image.thumb.url }
     end
+    p bucket
     render json: bucket
 	end
 end
