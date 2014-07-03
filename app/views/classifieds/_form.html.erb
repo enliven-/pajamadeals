@@ -5,20 +5,16 @@
   <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
 
 
-    <div class="col-sm-6 col-sm-offset-3 search-result animated fadeInUp ?hidden" >
+    <div class="col-sm-4 ?col-sm-offset-3 search-result animated fadeInRight hidden" >
       <div class="ibox float-e-margins">
         <div class="ibox-title title">
-          <!-- <h5> -->
-            <div class="form-group search-title-container">
-              <input type="text" class="form-control search-title" placeholder="Search by Title" id="search-title">
-            </div>
-          <!-- </h5> -->
+          <h5>VLSI Design</h5>
         </div>
-        <div class="auto result-item hidden">
+        <div class="auto result-item">
           <div class="ibox-content ?no-padding border-left-right">
-            <%= image_tag("_book1.jpg", class: "img-responsive classified-image") %>
+            <%= image_tag("book1.jpg", class: "img-responsive classified-image") %>
           </div>
-          <div class="ibox-content profile-content">
+<!--           <div class="ibox-content profile-content">
             <table class="table table-bordered">
               <tbody>
                 <tr class="edition">
@@ -49,13 +45,13 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
 
 
-    <div class="col-sm-8 col-sm-offset-4 item-info hidden">
+    <div class="col-sm-8 col-sm-offset-2 item-info animated ?fadeInRight ?hidden">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
           <h5>Item Information</h5>
@@ -65,14 +61,44 @@
             <div class="?ibox float-e-margins">
               <div class="?ibox-content">
                 <form method="get" class="form-horizontal listing-form">
-                  <div class="form-group">
+                  <div class="form-group ?hidden">
                     <label class="col-sm-2 control-label">Title</label>
                     <div class="col-sm-10">
-                      <input type="text" ?disabled="" class="form-control title" id="title">
+                      <input type="text" class="form-control title" id="search-title">
                     </div>
                   </div>
-           
-                  <div class="form-group">
+
+                  <div class="form-group hidden">
+                    <label class="col-sm-2 control-label">Publisher</label>
+                    <div class="col-sm-10">
+                      <input type="text" disabled="" class="form-control publisher">
+                    </div>
+                  </div>
+
+                  <div class="form-group hidden">
+                    <label class="col-sm-2 control-label">ISBN 10</label>
+                    <div class="col-sm-10">
+                      <input type="text" disabled="" class="form-control isbn10">
+                    </div>
+                  </div>
+<!-- 
+                  <div class="form-group hidden">
+                    <label class="col-sm-2 control-label">ISBN 13</label>
+                    <div class="col-sm-10">
+                      <input type="text" disabled="" class="form-control isbn13">
+                    </div>
+                  </div> -->
+
+                  <div class="form-group hidden">
+                    <label class="col-sm-2 control-label">Retail Price</label>
+                    <div class="col-sm-10">
+                      <p class="form-control-static">Rs 430</p>
+                    </div>
+                  </div>
+
+                  <div class="hr-line-dashed"></div>
+
+                  <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Edition</label>
                     <div class="col-sm-10">
                       <select class="form-control m-b" name="account">
@@ -84,37 +110,8 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Publisher</label>
-                    <div class="col-sm-10">
-                      <input type="text" disabled="" class="form-control publisher">
-                    </div>
-                  </div>
 
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">ISBN 10</label>
-                    <div class="col-sm-10">
-                      <input type="text" disabled="" class="form-control isbn10">
-                    </div>
-                  </div>
-<!-- 
-                  <div class="form-group">
-                    <label class="col-lg-2 control-label">ISBN 13</label>
-                    <div class="col-lg-10">
-                      <input type="text" disabled="" class="form-control isbn13">
-                    </div>
-                  </div> -->
-
-                  <div class="form-group">
-                    <label class="col-lg-2 control-label">Retail Price</label>
-                    <div class="col-lg-10">
-                      <p class="form-control-static">Rs 430</p>
-                    </div>
-                  </div>
-
-                  <div class="hr-line-dashed"></div>
-
-                  <div class="form-group">
+                  <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Condition</label>
                     <div class="col-sm-10">
                       <div id="basic_slider" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
@@ -128,7 +125,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Optional</label>
                     <div class="col-sm-10">
                       <label class="checkbox-inline i-checks">Has pen marks
@@ -148,21 +145,21 @@
                       </label>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label class="col-lg-2 control-label">Suggested Price</label>
-                    <div class="col-lg-10">
+                  <div class="form-group hidden">
+                    <label class="col-sm-2 control-label">Suggested Price</label>
+                    <div class="col-sm-10">
                       <input type="text" disabled="" placeholder="Rs 260" class="form-control">
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Selling Price</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control">
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Upload Pictures</label>
-                    <div class="col-lg-10">
+                    <div class="col-sm-10">
                       <div id="my-awesome-dropzone" class="dropzone dz-clickable" action="/file-upload">
                         <div class="dropzone-previews"></div>
                         <div class="dz-default dz-message"><span>Drop files here to upload</span>
@@ -170,13 +167,13 @@
                       </div>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Comments</label>
                     <div class="col-sm-10">
                       <textarea class="form-control sell-form-comments"></textarea>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group hidden">
                     <div class="col-sm-10 col-sm-offset-2">
                       <button class="btn btn-primary pull" type="submit">Save changes</button>
                       <button class="btn btn-white push" type="submit">Cancel</button>
@@ -197,24 +194,11 @@
 </script>
 <style type="text/css">
 
-.search-title {
-/*  border-top: none;
-  border-left: none;
-  border-right: none;*/
-  font-size: 16px;
-  border: none;
-  /*text-align: center;*/
-}
 
-.search-title:focus {
-  border: none;
-}
 
-.search-title-container {
-  margin-bottom: -8px;
-  width: 70%;
-  margin-left: 10%;
-}
+
+
+
   .bordered {
     border: 1px solid gray;
   }
@@ -429,7 +413,8 @@ $(document).ready(function () {
   $("#search-title").autocomplete({
     source: get_airports,
     minLength: 3,
-    select: function (event, ui) { 
+    select: function (event, ui) {
+              event.preventDefault();
               console.log(ui.item.book);
               // var $item       = $(".auto.result-item > .ibox-content");
               // var title       = $item.find("h4").text();
@@ -439,12 +424,23 @@ $(document).ready(function () {
               // var isbn13      = $item.find(".isbn13 .val").text();
               var book  = ui.item.book;
               var $form = $("form.listing-form");
-              console.log($form)
-              console.log($form.find("input.title"));
+
               $form.find("input.title").val(book.title);
               $form.find("input.edition").val(book.edition);
               $form.find("input.publisher").val(book.publisher);
               $form.find("input.isbn10").val(book.isbn);
+
+              $(".form-group.hidden", $form).removeClass('hidden');
+              $(".item-info").addClass("fadeOutRight")
+                             .addClass("hidden")
+                             .removeClass("fadeOutRight")
+                             .removeClass("col-sm-offset-2")
+                             .addClass("fadeInLeft")
+                             .removeClass("hidden");
+
+              $(".search-result").removeClass("hidden");
+                            
+              // return false;
             }
   })
   .data("ui-autocomplete")._renderItem = function (ul, item) {
@@ -463,6 +459,8 @@ $(document).ready(function () {
       response(data);
     }, "json");
   }
+
+
 
 });
 
