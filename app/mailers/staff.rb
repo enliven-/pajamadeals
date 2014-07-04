@@ -9,4 +9,8 @@ class Staff < ActionMailer::Base
 		mail(to: 'bhushanlodha@gmail.com', from: @buyer.email,
 		     subject: 'Item pickup request')
 	end
+
+	def send_campaign(to)
+		mail(to: to, from: 'bhushanlodha@gmail.com', subject: 'Buy/Sell book among college students')
+	end
 end

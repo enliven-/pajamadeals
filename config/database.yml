@@ -5,13 +5,15 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: hs_dev
+  username: bhushan
+  password:
   mongodb_logger:
     database: pajamdeals_dev               # required (the only required setting)
     capsize: <%= 10.megabytes %>   # default: 250MB
@@ -30,11 +32,11 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: hs_test
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: hs_prod
   # mongodb_logger:
   #   database: pajamdeals_production              # required (the only required setting)
   #   capsize: <%= 512.megabytes %>   # default: 250MB
