@@ -1,6 +1,6 @@
 ---
 - !ruby/object:Rubber::Configuration::InstanceItem
-  name: production
+  name: staging
   domain: pajamadeals.in
   roles:
   - !ruby/object:Rubber::Configuration::RoleItem
@@ -46,18 +46,18 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: web_tools
     options: {}
-  instance_id: i-b3de5e9b
+  instance_id: i-29b8bc01
   image_type: t2.micro
   image_id: ami-987724ca
   security_groups:
   - default
   - web
   - web_tools
-  external_host: ec2-54-179-146-88.ap-southeast-1.compute.amazonaws.com
-  external_ip: 54.179.146.88
-  internal_host: ip-172-31-3-177.ap-southeast-1.compute.internal
-  internal_ip: 172.31.3.177
-  zone: ap-southeast-1a
+  external_host: ec2-54-179-149-161.ap-southeast-1.compute.amazonaws.com
+  external_ip: 54.179.149.161
+  internal_host: ip-172-31-26-32.ap-southeast-1.compute.internal
+  internal_ip: 172.31.26.32
+  zone: ap-southeast-1b
   provider: aws
   platform: linux
   root_device_type: ebs

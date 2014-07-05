@@ -10,6 +10,8 @@ on :load do
   set :assets_role, [:app]
 end
 
+ssh_options[:forward_agent] = true
+
 # Use a simple directory tree copy here to make demo easier.
 # You probably want to use your own repository for a real app
 set :scm, :git
@@ -17,7 +19,6 @@ set :repository, 'git@github.com:enliven-/pajamadeals.git'
 set :deploy_via, :remote_cache
 set :branch, 'passanger-nginx'
 
-ssh_options[:forward_agent] = true
 
 
 # Easier to do system level config as root - probably should do it through
