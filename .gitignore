@@ -13,3 +13,4 @@ public/uploads
 resources
 .ruby-version
 .ruby-gemset
+.rvmrc
