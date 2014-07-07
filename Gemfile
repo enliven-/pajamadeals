@@ -77,4 +77,5 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 
 # deployment tools
 gem 'rubber', '2.10.2'
+gem 'open4'gem 'rubber'
 gem 'open4'
