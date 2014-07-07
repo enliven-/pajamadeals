@@ -33,17 +33,17 @@
               <div class="row">
 
                 <div class="col-sm-4">
-                  <button type="button" class="btn btn-warning btn-sm btn-block">
+                  <button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#cs-modal">
                     <i class="fa fa-user"></i> Contact Seller 
                   </button>
                 </div>
                 <div class="col-sm-4">
-                  <button type="button" class="btn btn-primary btn-sm btn-block">
+                  <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#hi-modal">
                     <i class="fa fa-bookmark"></i> Hold it 
                   </button>
                 </div>
                 <div class="col-sm-4">
-                  <button type="button" class="btn btn-success btn-sm btn-block">
+                  <button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#pu-modal">
                   <i class="fa fa-truck"></i> Pickup For Me </button>
                 </div>
               </div>
@@ -235,11 +235,91 @@
 </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="cs-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Contact Seller</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="hi-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Hold it</h4>
+      </div>
+      <div class="modal-body">
+        <h4>We can hold this book for you for two days, i.e. until July 12th, 2014. Please fill out the details below. </h4> <br/>
+        <form method="get" class="form-horizontal listing-form">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Full Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control publisher">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">College ID No.</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control publisher">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Mobile</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control publisher">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="pu-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ..asdkfjasdkl fjal;skdjf a;lskjdf a;sd.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- </body> -->
 
 
 
   <style type="text/css">
+
+  .modal-body label {
+    font-weight: 200;
+  }
+
     .bordered {
       border: 1px solid gray;
     }
