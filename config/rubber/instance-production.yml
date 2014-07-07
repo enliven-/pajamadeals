@@ -41,23 +41,29 @@
     name: haproxy
     options: {}
   - !ruby/object:Rubber::Configuration::RoleItem
+    name: mongodb
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: solr_sunspot
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
     name: web
     options: {}
   - !ruby/object:Rubber::Configuration::RoleItem
     name: web_tools
     options: {}
-  instance_id: i-563e397e
+  instance_id: i-c9b735e1
   image_type: t2.micro
   image_id: ami-987724ca
   security_groups:
   - default
   - web
   - web_tools
-  external_host: ec2-54-179-156-70.ap-southeast-1.compute.amazonaws.com
-  external_ip: 54.179.156.70
-  internal_host: ip-172-31-23-218.ap-southeast-1.compute.internal
-  internal_ip: 172.31.23.218
-  zone: ap-southeast-1b
+  external_host: ec2-54-179-154-64.ap-southeast-1.compute.amazonaws.com
+  external_ip: 54.179.154.64
+  internal_host: ip-172-31-9-210.ap-southeast-1.compute.internal
+  internal_ip: 172.31.9.210
+  zone: ap-southeast-1a
   provider: aws
   platform: linux
   root_device_type: ebs
