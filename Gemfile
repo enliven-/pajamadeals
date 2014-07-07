@@ -76,5 +76,5 @@ gem 'mini_magick'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 # deployment tools
-gem 'rubber', '2.10.1'
+gem 'rubber', '2.10.2'
 gem 'open4'
