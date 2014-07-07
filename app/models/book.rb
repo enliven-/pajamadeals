@@ -5,9 +5,4 @@ class Book < ActiveRecord::Base
 	searchable do
 		text :title
 	end
-
-  ### touching this ### viksit
-  def description
-    "Lorem ipsum dolor sit amet, consectetur... "
-  end
 end
