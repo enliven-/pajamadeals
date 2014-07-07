@@ -31,21 +31,20 @@
 
             <div class="user-button">
               <div class="row">
-                <div class="col-sm-6">
-                  <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-truck"></i> Pickup For Me </button>
-                  <!-- <%= button_to 'Pickup For Me', new_pick_path(@classified), class: 'btn btn-success btn-sm btn-block', method: :get %> -->
-                </div>
-                <div class="col-sm-6">
-                  <button type="button" class="btn btn-primary btn-sm btn-block">
-<!-- 
-                    <% if @classified.contact_preference == 'phone' %>
-                        <i class="fa fa-phone"></i> <%= @classified.user.mobile_number %>
-                    <% else %>
-                        <i class="fa fa-envelope"></i> <%= @classified.user.email %>
-                    <% end %>
- -->                    
+
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-warning btn-sm btn-block">
                     <i class="fa fa-user"></i> Contact Seller 
                   </button>
+                </div>
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-primary btn-sm btn-block">
+                    <i class="fa fa-bookmark"></i> Hold it 
+                  </button>
+                </div>
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-success btn-sm btn-block">
+                  <i class="fa fa-truck"></i> Pickup For Me </button>
                 </div>
               </div>
             </div>
@@ -58,6 +57,11 @@
 .profile-content > .location,
 .profile-content > .prices {
 
+}
+
+.user-button .col-sm-4 {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 </style>
 
