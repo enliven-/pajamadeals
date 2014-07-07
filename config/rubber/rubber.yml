@@ -87,8 +87,7 @@ cloud_providers:
     #
     # m1.small or m1.large or m1.xlarge
     image_type: t2.micro
-    image_id: ami-eafa5883
-    #ami-987724ca
+    image_id: ami-987724ca
 
     # OPTIONAL: EC2 spot instance request support.
     #
