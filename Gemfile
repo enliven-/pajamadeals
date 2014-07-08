@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 # ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -75,3 +75,5 @@ gem 'mini_magick'
 
 # active admin
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'rubber'
+gem 'open4'
