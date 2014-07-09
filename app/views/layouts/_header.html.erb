@@ -4,26 +4,39 @@
   <div class="container-fluid">
 
     <div class="navbar-header col-sm-2">
-      <a class="navbar-brand" href="#">has stuff</a>
+      <!-- <a class="navbar-brand" href="#">has stuff</a> -->
+      <div class="row logo" style="padding-bottom: 0px; margin-bottom: 0px;">
+        <a href="/"><img src="/assets/logo.png"></a>
+      </div>
+<!--       <div class="row" style="padding-top: 0px; margin-top: -15px; color: white;">
+        <span class="tagline" style="font-size: 10px; color: #F0F8FF">for students. by students.</span>
+      </div> -->
     </div>
 
 
     <div class="col-sm-8 search-container" id="bs-example-navbar-collapse-1">
       <form class="navbar-form" role="search">
         <div class="form-group col-sm-9">
-          <input type="text" class="form-control" id="search-box" placeholder="Search by title or isbn" style="width: 103%">
+          <input type="text" class="form-control" id="search-box" placeholder="Search by title or isbn" style="width: 100%">
         </div>
-        <button type="submit" class="btn btn-primary search">Submit</button>
+        <button type="submit" class="btn btn-primary search">Search</button>
       </form>
-    </div><!-- /.navbar-collapse -->
+    </div>
+    
   </nav>
 </header>
 
 <style type="text/css">
 
-#search-box {
-  height: 35px;
+.logo a:hover {
+  background-color: #2a3947;
+  text-decoration: none;
 }
+.search-container .form-group.col-sm-9 {
+  padding-right: 0px;
+}
+
+
 .navbar-header .navbar-brand {
   font-size: 17px;
   color: white;
