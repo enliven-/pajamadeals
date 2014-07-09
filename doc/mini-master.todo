@@ -1,4 +1,4 @@
-- Pagination show extra blank pages
+- Pagination is showing extra blank pages
 - Remove search bar from classified#new page
 - Put publisher and author information on search autocomplete view
 - Get the book information for just creating classified on classified#new page
@@ -21,3 +21,9 @@
 - Percent price of mrp - put that on classifieds#show page
 - take off the Deliver me button from classifieds#show page
 - integrate pickup to booth pickup functionality
+- Put 'tell them you found listing on hasstuf.com when you call' on contact seller page
+- Setup sending smses thru website
+- Textbox rendering differently on mac
+- pretty animation on index page, consistent with show
+- Navbar search behaviour like google
+- Autofill modals incase signed in
