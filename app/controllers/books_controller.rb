@@ -1,10 +1,16 @@
 class BooksController < ApplicationController
 	def search
 		search = Sunspot.search(Book) do
-			fulltext params[:search] do
-				fields(:title, :author, :isbn)
+      p params[:keywords]
+			fulltext params[:keywords] do
+				fields(:title)
 			end
 		end
-		@books = search.results
+    bucket = []
+    search.results.each do |b|
+      bucket << { book: b, image_url: b.image.thumb.url }
+    end
+    p bucket
+    render json: bucket
 	end
 end

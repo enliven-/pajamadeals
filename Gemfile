@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: :development
+
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -47,8 +49,9 @@ gem 'koala'
 
 # search engine
 gem 'sunspot_rails'
-gem 'sunspot_solr', :git => 'git@github.com:sunspot/sunspot.git'
+gem 'sunspot_solr'
 gem 'progress_bar'
+gem 'will_paginate'
 
 # logging and monitoring
 gem 'mongodb_logger'

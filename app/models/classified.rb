@@ -18,24 +18,22 @@ class Classified < ActiveRecord::Base
 	belongs_to :college
 	belongs_to :book
 
+	#after_touch :index
 	before_create :set_college
 
 	has_token
 
 	scope :sold, -> { where(sold: true) }
 
+	delegate :title, :description, :publisher, :author, :isbn, :edition,
+		 :released_year, :retail_price, :university, :image, :pages,
+		 to: :book
 	# search classified
 	searchable do
 		# Searches on following fields
-		text :title  do
-			book.title
-		end
-		text :author do
-			book.author
-		end
-		text :isbn do
-			book.isbn
-		end
+		text :title
+		text :author
+		text :isbn
 
 		# Constrainsts
 		time :created_at
@@ -51,12 +49,6 @@ class Classified < ActiveRecord::Base
 		!buy?
 	end
 
-	def method_missing(method, *args, &block)
-		self.book.send(method)
-	rescue NoMethodError
-		super
-	end
-
 	# calcs
 
 	def percent_off
@@ -70,5 +62,5 @@ class Classified < ActiveRecord::Base
 	def set_college
 		self.college_id || self.college = user.college
 	end
-
+	
 end

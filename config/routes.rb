@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   mount MongodbLogger::Server.new, :at => "/logs"
 
+  # for autocomplete
+  get '/queries/json_completion' => 'books#search'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

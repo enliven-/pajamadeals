@@ -1,63 +1,36 @@
-<!-- <!DOCTYPE html>
-<html>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>pajama | home </title>
-</head>
-
-<body> -->
-  <div id="wrapper">
-    <div id="page-wrapper" class="gray-bg">
-      <header>
-        <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01"> <span class="sr-only">Toggle navigation</span>
-            </button>
-          </div>
-          <div class="collapse navbar-collapse" id="navbar-collapse-01">
-            <ul class="nav navbar-nav navbar-left">
-              <li><a href="">pajama deals</a>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to 'Sign in', new_user_session_path %>
-              </li>
-              <li class="divider-vertical"></li>
-              <li><a href="">Sign Up</a>
-              </li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-        </nav>
-        <!-- /navbar -->
-      </header>
-      <div class="row wrapper ?border-bottom ?white-bg ?page-heading">
-        <div class="banner-top">
-          <div class="col-lg-6 col-lg-offset-3">
-            <div class="well" style="margin-top:240px; height: 120px;">
-              <div class="find-school-head" style="margin-left: 250px; margin-top: -20px;">
-                <h2> <i class="fa fa-bookmark" style="margin-right: 20px;"></i>Find your school</h2>
-              </div>
-              <div class="input-group m-b">
-                <input type="text" placeholder="Enter then name of your school" class="form-control"> <span class="input-group-btn">
-                      <button type="button" class="btn btn-primary">Search</button>
-                    </span>
-                </input>
-              </div>
-            </div>
-            <!-- </div> -->
-          </div>
+<div class="row wrapper wrapper-content">
+  <div class="banner-top">
+<!-- 
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="well" style="margin-top:140px; height: 120px;">
+        <div class="find-school-head" style="margin-top: -20px;">
+          <h2 style="?margin-right: auto; margin-left: 30%;"> <i class="fa fa-bookmark"></i> Find your school</h2>
+        </div>
+        <div class="input-group m-b">
+          <input type="text" placeholder="Enter then name of your school" class="form-control"> <span class="input-group-btn">
+                <button type="button" class="btn btn-primary find-school-submit">Submit</button>
+              </span>
+          </input>
         </div>
       </div>
     </div>
-  </div>
+ -->
 
-<!-- </body> -->
+    <div class="col-sm-4 col-sm-offset-4" style="text-align: center;">
+      <%= image_tag("1.jpg") %> 
+    </div>    
+  </div>
+</div>
+
 
 </html>
 <style type="text/css">
+
+  .find-school-submit {
+    padding-top: 6.5px;
+    padding-bottom: 6.5px;
+  }
   #page-wrapper {
     margin: 0px;
     padding: 0px;
@@ -78,10 +51,8 @@
     padding: 0px;
   }
   .banner-top {
-    /*border: 1px solid gray;*/
     margin-top: -40px !important;
-    min-height: 400px;
-    /*background-image: url('img/pajama/books.jpg')*/
+    min-height: 350px;
     background-color: #29aae1;
   }
   .row.search {
@@ -100,7 +71,7 @@
     margin-top: 15px;
     border-right: 1px solid #ffffff;
     border-left: 1px solid #f2f2f2;
-    /*color: white;*/
+    color: white;
   }
   .navbar-inverse .divider-vertical {
     /*  border-right-color: #222222;
@@ -166,7 +137,7 @@
     /*border: 1px solid green;*/
   }
   .banner-top {
-    padding-top: 100px;
+    padding-top: 50px;
   }
   .search-school-wrapper {
     /*margin-top: 200px;*/
