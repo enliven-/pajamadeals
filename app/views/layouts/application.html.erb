@@ -6,12 +6,18 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body class="?boxed-layout">
-	<%= render 'layouts/header' %>
+  <div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+      <%= render 'layouts/header' %>
 
-	<%= yield %>
+      <%= yield %>
 
+    </div>
+  </div>
 </body>
+
 </html>
 
 <style type="text/css">

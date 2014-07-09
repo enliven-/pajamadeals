@@ -49,7 +49,7 @@ gem 'koala'
 
 # search engine
 gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'sunspot_solr', :git => 'git@github.com:sunspot/sunspot.git'
 gem 'progress_bar'
 gem 'will_paginate'
 

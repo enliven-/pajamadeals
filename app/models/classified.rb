@@ -62,5 +62,5 @@ class Classified < ActiveRecord::Base
 	def set_college
 		self.college_id || self.college = user.college
 	end
-
+	
 end

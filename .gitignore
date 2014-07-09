@@ -11,6 +11,6 @@ public/uploads
 db/test.sqlite3
 log
 public/uploads
-resources
+resources/
 .ruby-version
 .ruby-gemset
