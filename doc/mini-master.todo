@@ -1,0 +1,23 @@
+- Pagination show extra blank pages
+- Remove search bar from classified#new page
+- Put publisher and author information on search autocomplete view
+- Get the book information for just creating classified on classified#new page
+- Classified#new replace hard coded html form with rails form helper method
+- Merge suggested price and selling price fields, instead selling price will come with pre-filled suggested price with a message bellow that this is suggested price - message disappers if user edits price, instead it shows suggested price in that message now
+- calculated suggested price
+- Form Alignment Vertical or Horizontal
+   - http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php
+   - http://www.lukew.com/ff/entry.asp?1502
+- Change order of fields - According to relevance with each other or according what user will actually fill out i.e importance to user
+  - which fields matter for seller most
+  - which fields matter for buyer most
+  (Above preference is in respective of order)
+- Signup/signin buttons and form
+- Creating classified with user signed in and user not signed in
+- Search in navbar is showing curved in chrome browser in Satan on classifieds#new
+  - probably css missing on one of the pages
+- Change comments to description on classifieds#new
+- Get pictures uploading working on classified#new page
+- Percent price of mrp - put that on classifieds#show page
+- take off the Deliver me button from classifieds#show page
+- integrate pickup to booth pickup functionality
