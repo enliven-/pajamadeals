@@ -2,8 +2,6 @@
 
 FactoryGirl.define do
   factory :pick do
-    classified_id 1
-    user_id 1
     message "MyText"
     picked false
     delivered false

@@ -6,14 +6,14 @@ class ClassifiedsController < ApplicationController
 	def index
 		@search = Sunspot.search(Classified) do
 			fulltext params[:search] do
-				fields(:title)
+				fields(:title, :author, :isbn)
 			end
 
-			# with :active, true
-			# with :sold,   false
+			with :active, true
+			with :sold,   false
 			order_by :created_at, :desc
 
-			paginate per_page: 15
+			paginate page: params[:page]
 		end
 		@classifieds = @search.results
 	end
