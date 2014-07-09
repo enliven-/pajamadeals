@@ -13,11 +13,9 @@ Rails.application.routes.draw do
   resources :classifieds do
     member do
       resources :picks, only: [:new, :create]
+      post :contact_seller
     end
   end
-
-  resources :contact_sellers, only: [:new, :create]
-
 
   root to: 'pages#home'
 
