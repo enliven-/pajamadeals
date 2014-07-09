@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
 
 	mount_uploader :avatar, ImageUploader
 
+	alias_attribute :phone, :mobile_number
+	alias_attribute :phone_number, :mobile_number
+
 	# facebook
 
 	def self.find_for_facebook_auth(auth)
@@ -50,4 +53,5 @@ class User < ActiveRecord::Base
 	def name
 		first_name + ' ' + last_name
 	end
+	alias_method :full_name, :name
 end

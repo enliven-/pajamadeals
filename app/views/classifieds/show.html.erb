@@ -241,23 +241,23 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="myModalLabel">Contact Seller</h4>
-        You can use the seller info provider here to contact him/her directly or fill in your details and submit this form.
+        You can use the seller info provided here to contact him/her directly or fill in your details and submit this form.
       </div>
       <div class="modal-body">
 
-        <h3 style="text-align: center;"> Viksit Arora </h3> 
+        <h3 style="text-align: center;"> <%= @classified.user.full_name %></h3> 
         <div class="row">
           <div class="col-sm-4 col-sm-offset-2">
             <h4>
               <i class="fa fa-phone">
-                <span style="margin-left: 4px;">+91-9779860223</span>
+                <span style="margin-left: 4px;"><%= @classified.user.phone %></span>
               </i>
             </h4>
           </div>
           <div class="col-sm-4">
             <h4>
               <i class="fa fa-envelope">
-                <span style="margin-left: 4px;">viksit@mit.edu</span>
+                <span style="margin-left: 4px;"><%= @classified.user.email %></span>
               </i>
             </h4>            
           </div>

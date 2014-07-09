@@ -27,3 +27,4 @@
 - pretty animation on index page, consistent with show
 - Navbar search behaviour like google
 - Autofill modals incase signed in
+- List phone number and email one below another on contact seller modal (that way we can be consistent if any of the information is missing)
