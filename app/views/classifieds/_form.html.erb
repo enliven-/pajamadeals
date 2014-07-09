@@ -5,7 +5,7 @@
   <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
 
 
-    <div class="col-sm-4 ?col-sm-offset-3 search-result animated fadeInRight hidden" >
+    <div class="col-sm-4 search-result animated fadeInRight hidden" >
       <div class="ibox float-e-margins">
         <div class="ibox-title title">
           <h5>VLSI Design</h5>
@@ -436,7 +436,14 @@ $(document).ready(function () {
                              .removeClass("hidden");
 
               $(".search-result").removeClass("hidden");
-                            
+              var sel = "#page-wrapper > div > div > div.col-sm-4.search-result.animated.fadeInRight > div > div.ibox-title.title > h5";
+              $(sel).text(book.title);
+
+
+              var img = "#page-wrapper > div > div > div.col-sm-4.search-result.animated.fadeInRight > div > div.auto.result-item > div > img";
+              // $(img).src = "<%= @classified.images.first %>";
+              var img_src = "<%= @classified.images.first %>";
+              console.log(img_src + "sssssssssssssssssss");
               // return false;
             }
   })
