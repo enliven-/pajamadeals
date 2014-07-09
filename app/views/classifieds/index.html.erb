@@ -40,13 +40,7 @@
         </div>
       </div>
     </div>
-
-<!--     <%= form_tag classifieds_path, :method => :get do %>
-      <p>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", :name => nil %>
-      </p>
-    <% end %> -->         
+        
 
     <div class="col-sm-8 results">
     <% for classified in @classifieds %>
@@ -113,6 +107,7 @@
 
       <% end %>
 
+      <%= will_paginate @classifieds %>
 
     </div> <!--results-->
 
