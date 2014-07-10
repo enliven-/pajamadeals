@@ -5,7 +5,8 @@ class CreateContactSellers < ActiveRecord::Migration
       t.string :email
       t.string :mobile_number
       t.text :message
-      t.text :user_id
+      t.integer :user_id
+      t.integer :classified_id
 
       t.timestamps
     end

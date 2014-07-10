@@ -14,6 +14,7 @@ class Classified < ActiveRecord::Base
 
 	has_many :images
 	has_many :picks
+  has_many :contact_sellers
 	belongs_to :user
 	belongs_to :college
 	belongs_to :book

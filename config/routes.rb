@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'contact_sellers/new'
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
   ActiveAdmin.routes(self)
@@ -11,8 +9,8 @@ Rails.application.routes.draw do
   get 'books/search'
 
   resources :classifieds do
+    resources :picks, only: [:new, :create]
     member do
-      resources :picks, only: [:new, :create]
       post :contact_seller
     end
   end

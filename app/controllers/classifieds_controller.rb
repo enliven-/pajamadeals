@@ -1,5 +1,5 @@
 class ClassifiedsController < ApplicationController
-	before_action :set_classified, only: [:show, :edit, :update, :destroy]
+	before_action :set_classified, only: [:show, :edit, :update, :destroy, :contact_seller]
 
 	# GET /classifieds
 	# GET /classifieds.json
@@ -71,9 +71,11 @@ class ClassifiedsController < ApplicationController
 			format.json { head :no_content }
 		end
 	end
-
-	def contact_seller
-	end
+  
+  def contact_seller
+    @classified.contact_sellers.create(contact_seller_params)
+    render @classified, notice: 'Message sent to seller'
+  end
 
 	private
 	# Use callbacks to share common setup or constraints between actions.
@@ -83,6 +85,11 @@ class ClassifiedsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def classified_params
-		params.require(:classified).permit(:title, :description, :image, :user_id, :college_id, :expected_price, :listing_type, :status)
+		params.require(:classified).permit(:title, :description, :image, :user_id, :college_id, :expected_price, :listing_type,
+                                       :status)
 	end
+  
+  def contact_seller_params
+    params.require(:contact_seller).permit(:name, :phone, :message)
+  end
 end

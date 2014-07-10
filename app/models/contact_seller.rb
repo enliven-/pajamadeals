@@ -1,15 +1,7 @@
 class ContactSeller < ActiveRecord::Base
 
-	def new
-		@contact_seller = ContactSeller.new
-	end
-
-	def create
-		@contact_seller = ContactSeller(contact_seller_params)
-		if @contact_seller.save
-			#
-		else
-			#
-		end
-	end
+  belongs_to :classified
+  
+  alias_attribute :phone, :mobile_number
+  alias_attribute :phone_number, :mobile_number
 end
