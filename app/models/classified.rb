@@ -57,6 +57,12 @@ class Classified < ActiveRecord::Base
 			(((retail_price.to_f - expected_price.to_f) / retail_price.to_f) * 100).round
 		end
 	end
+  
+  def suggested_price
+    if retail_price.present?
+      (retail_price * 0.55).round
+    end
+  end
 
 	private
 
