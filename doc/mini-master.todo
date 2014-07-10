@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 - Pagination is showing extra blank pages
 - Remove search bar from classified#new page
 - Put publisher and author information on search autocomplete view
@@ -28,3 +29,63 @@
 - Navbar search behaviour like google
 - Autofill modals incase signed in
 - List phone number and email one below another on contact seller modal (that way we can be consistent if any of the information is missing)
+=======
+BHUSHAN:
+  ☐ Classified#new replace hard coded html form with rails form helper method
+  
+  ☐ calculated suggested price 
+
+  ☐ Get pictures uploading working on classified#new page
+
+  ☐ integrate pickup to booth pickup functionality
+
+  ☐ Creating classified with user signed in and user not signed in
+
+
+VIKSIT:
+  ☐ Put publisher and author information on search autocomplete view
+
+  ☐ Merge suggested price and selling price fields, instead selling price will come with pre-filled suggested price with a message bellow that this is suggested price - message disappers if user edits price, instead it shows suggested price in that message now
+ 
+ ☐ Form Alignment Vertical or Horizontal
+       http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php
+       http://www.lukew.com/ff/entry.asp?1502
+
+ ✔ Remove search bar from classified#new page @started(14-07-10 11:03) @done (14-07-10 11:06) @lasted(0:03)
+
+ ☐ Signup/signin buttons and form
+
+ ✔ Search in navbar is showing curved in chrome browser in Satan on classifieds#show @started(14-07-10 11:07) @done (14-07-10 11:10) @lasted(0:03)
+
+ ☐ Change comments to description on classifieds#new
+
+ ☐ Percent price of mrp - put that on classifieds#show page
+
+ ✔ take off the Deliver me button from classifieds#show page @started(14-07-10 13:02) @done (14-07-10 13:02)
+ @lasted(0:00)
+ 
+ ✔ Put 'tell them you found listing on hasstuf.com when you call' on contact seller page @started(14-07-10 11:12) @done (14-07-10 11:13) @lasted(0:01)
+
+ ☐ Textbox rendering differently on mac
+
+ ✔ pretty animation on index page, consistent with show @started(14-07-10 11:16) @done (14-07-10 11:17) @lasted(0:01)
+
+ ☐ Navbar search behaviour like google
+
+ ☐ Autofill modals incase signed in
+
+  ☐ Change order of fields - According to relevance with each other or according what user will actually fill out i.e importance to user
+    - which fields matter for seller most
+    - which fields matter for buyer most
+    (Above preference is in respective of order)
+
+COLLECTIVE:
+  ☐ Pagination is showing extra blank pages
+
+  ☐ Get the book information for just creating classified on classified#new page
+
+  ☐ Setup sending smses thru website
+
+
+
+>>>>>>> mini-master
