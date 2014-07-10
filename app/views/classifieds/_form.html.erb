@@ -194,8 +194,61 @@
 </script>
 <style type="text/css">
 
+
+  input[type=text] {
+    border-radius: 0px !important;
+  }
+
   .bordered {
     border: 1px solid gray;
+  }
+
+/*  ul.ui-corner-all {
+    border-radius: 0px !important;
+  }
+
+  ul a.ui-corner-all {
+    border-radius: 0px;
+    color: red;
+    background-color: white;
+  }*/
+/*  ul.ui-autocomplete a, 
+  ul.ui-autocomplete a.ui-state-focus {
+    border: 0px !important;
+  }*/
+
+  ul.ui-autocomplete a.ui-state-focus {
+    background-color: #eee;
+    /*border-color: #666;*/
+  }
+
+  ul.ui-autocomplete {
+    /*padding: 0px !important;*/
+  }
+
+  ul.ui-autocomplete li div {
+    padding: 5px 0 0 10px;
+    margin-top: 5px;
+  }
+
+  ul.ui-autocomplete img {
+    vertical-align: top;
+    margin-top: 5px;
+  }
+
+  ul.ui-autocomplete span.author {
+    font-style: italic;
+  }
+
+  ul.ui-autocomplete span.author,
+  ul.ui-autocomplete span.publisher {
+    font-size: 12px;
+    color: gray;
+  }
+
+
+  .ui-corner-all {
+    border-radius: 0px !important;
   }
 
   #page-wrapper {
@@ -458,9 +511,14 @@ $(document).ready(function () {
     }
   })
   .data("ui-autocomplete")._renderItem = function (ul, item) {
+    $(".ui-corner-all").removeClass("ui-corner-all");
     return $("<li>")
-                    .append("<a> <img src=" + item.image_url + "></img>" + item.book.title + item.book.description + "</a>")
-                    .appendTo(ul);
+                    .append("<a><img src=" + item.image_url + "></img>" + 
+                      "<div style='display: inline-block;'> <span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +
+                            // "<p class=edition>" + item.book.edition +"</p>" +
+                            "<span class=author>" + item.book.author + "</span>, " +
+                            "<span class=publisher>" + item.book.publisher + " Publications </span>" +
+                      "</div></a>").appendTo(ul);
   };
 
   function get_airports(request, response) {
@@ -473,7 +531,6 @@ $(document).ready(function () {
       response(data);
     }, "json");
   }
-
 
 
 });
