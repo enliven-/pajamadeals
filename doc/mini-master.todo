@@ -31,11 +31,11 @@
 - List phone number and email one below another on contact seller modal (that way we can be consistent if any of the information is missing)
 =======
 BHUSHAN:
-  ☐ Classified#new replace hard coded html form with rails form helper method
+  ✔ Classified#new replace hard coded html form with rails form helper method @done (14-07-11 10:57)
   
   ✔ calculated suggested price @done (14-07-10 17:08)
 
-  ☐ Get pictures uploading working on classified#new page
+  ✔ Get pictures uploading working on classified#new page @done (14-07-11 10:56)
 
   ✔ integrate pickup to booth pickup functionality @done (14-07-10 16:59)
 
