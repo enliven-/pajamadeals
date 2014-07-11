@@ -26,7 +26,9 @@
             </div>
             <div class="prices">
               <h3 class="selling-price"><strong>Rs. <%= @classified.expected_price %>  </strong></h3>
-              <span class="retail-price">Rs. <%= @classified.retail_price %></span>              
+              <span class="retail-price">Rs. <%= @classified.retail_price %></span>   
+              <span class="precent-off">(<%= @classified.percent_off %>% off)</span>              
+
             </div>
 
             <div class="user-button">

@@ -66,9 +66,9 @@ class Classified < ActiveRecord::Base
   end
 
   def suggested_price
-    # if self.try(:retail_price)
-    #   (retail_price * 0.55).round
-    # end
+    if self.try(:retail_price)
+      (retail_price * 0.55).round
+    end
   end
 
   private
