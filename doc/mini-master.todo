@@ -33,7 +33,7 @@
 BHUSHAN:
   ☐ Classified#new replace hard coded html form with rails form helper method
   
-  ☐ calculated suggested price 
+  ✔ calculated suggested price @done (14-07-10 17:08)
 
   ☐ Get pictures uploading working on classified#new page
 
