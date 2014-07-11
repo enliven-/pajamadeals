@@ -39,12 +39,14 @@ class ClassifiedsController < ApplicationController
   def create
     @classified = Classified.new(classified_params)
     @classified.ip = request.ip
-    @classified.user = User.first
     respond_to do |format|
       if @classified.save
+
+        # upload images
         params[:images]['file'].each do |image|
           @classified.images.create(file: image)
         end
+
         format.html { redirect_to @classified, notice: 'Classified was successfully created.' }
         format.json { render :show, status: :created, location: @classified }
       else
