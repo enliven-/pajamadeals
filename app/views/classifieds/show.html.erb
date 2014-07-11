@@ -19,19 +19,19 @@
             <%= image_tag @classified.image.show, class: 'img-responsive classified-image' %>
           </div>
 
-          <div class="ibox-content profile-content">
+          <div class="ibox-content profile-content" >
 
-            <div class="location">
+            <div class="location" style="margin-left: 34%; margin-top: -2%;">
               <h4><i class="fa fa-map-marker"></i> <%= @classified.college.name %></h4>
             </div>
-            <div class="prices">
+            <div class="prices" style="margin-left: 34%" >
               <h3 class="selling-price"><strong>Rs. <%= @classified.expected_price %>  </strong></h3>
-              <span class="retail-price">Rs. <%= @classified.retail_price %></span>   
               <span class="precent-off">(<%= @classified.percent_off %>% off)</span>              
-
+              <br />
+              <span class="retail-price">Rs. <%= @classified.retail_price %></span>   
             </div>
 
-            <div class="user-button">
+            <div class="user-button" style=" margin-top: 5%;">
               <div class="row">
 
                 <div class="col-sm-6">
