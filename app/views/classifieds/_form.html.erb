@@ -1,6 +1,6 @@
 
 
-<div class="row wrapper">
+<div class="row wrapper animated fadeInRight">
 
   <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
 
@@ -60,27 +60,36 @@
           <div class="item-form">
             <div class="?ibox float-e-margins">
               <div class="?ibox-content">
-                <form method="get" class="form-horizontal listing-form">
-                  <div class="form-group ?hidden">
-                    <label class="col-sm-2 control-label">Title</label>
+              <%= form_for @classified, html: { multipart: true } do |f| %>
+              
+                  <%= f.fields_for @book do |b| %>
+                  <div class="form-group">
+                     <%= b.label :title, class: 'col-sm-2, control-label' %>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control title" id="search-title">
+                      <%= b.text_field :title, class: 'form-control title', id: 'search-title' %>
                     </div>
                   </div>
 
                   <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">Publisher</label>
+                    <%= b.label :publisher, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-10">
-                      <input type="text" disabled="" class="form-control publisher">
+                      <%= b.text_field :publisher, class: 'form-control publisher' %>
                     </div>
                   </div>
 
                   <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">ISBN 10</label>
+                    <%= b.label 'ISBN', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-10">
-                      <input type="text" disabled="" class="form-control isbn10">
+                      <%= b.text_field :isbn, class: 'form-control isbn10' %>
                     </div>
                   </div>
+                  <% end %>
+
+                  <%= f.fields_for :images do |image| %>
+                   <%= image.label 'Image' %>
+                   <%= image.file_field :file, multiple: true, name: 'images[file][]' %>
+                   <% end %>
+                   <%= f.submit %>
 <!-- 
                   <div class="form-group hidden">
                     <label class="col-sm-2 control-label">ISBN 13</label>
@@ -112,19 +121,41 @@
 
 
                   <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">Condition</label>
+					          <%= f.label :condition, class: 'col-sm-2 control-label' %>
+                    <%= f.select :condition, [['Like new', 'Like new'], ['Fair', 'Fair'], ['Heavily used', 'Heavily used']] %>
+                  </div>
+
+                  <div class="form-group hidden">
+                    <%= f.label :selling_price, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-10">
-                      <div id="basic_slider" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
-                        <div class="noUi-base">
-                          <div class="noUi-origin noUi-connect" style="left: 49.7076023%;">
-                            <div class="noUi-handle noUi-handle-lower"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div style="padding: 5px;"> <span>Heavily Used</span><span style="margin-left: 35%">Fair</span><span style="float: right">Like New</span>
-                      </div>
+                      <%= f.text_field :selling_price, class: 'form-control', value: @classified.suggested_price %>
                     </div>
                   </div>
+
+                  <div class="form-group hidden">
+                    <%= f.label :description, class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-10">
+                      <%= f.text_area :comment, class: 'form-control sell-form-comments' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group hidden">
+                    <div class="col-sm-10 col-sm-offset-2">
+                      <%= f.button 'Save', class: 'btn btn-primary' %>
+                    </div>
+                  </div>
+
+
+              <% end %>
+
+               <div class="form-group hidden">
+                    <label class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control sell-form-comments"></textarea>
+                    </div>
+                  </div>
+
+
                   <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Optional</label>
                     <div class="col-sm-10">
@@ -145,18 +176,6 @@
                       </label>
                     </div>
                   </div>
-                  <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">Suggested Price</label>
-                    <div class="col-sm-10">
-                      <input type="text" disabled="" placeholder="Rs 260" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">Selling Price</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control">
-                    </div>
-                  </div>
 <!--                   <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Upload Pictures</label>
                     <div class="col-sm-10">
@@ -167,11 +186,7 @@
                       </div>
                     </div>
                   </div> -->
-                  <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">Comments</label>
-                    <div class="col-sm-10">
-                      <textarea class="form-control sell-form-comments"></textarea>
-                    </div>
+            
                   </div>
                   <div class="form-group hidden">
                     <div class="col-sm-10 col-sm-offset-2">
@@ -194,8 +209,61 @@
 </script>
 <style type="text/css">
 
+
+  input[type=text] {
+    border-radius: 0px !important;
+  }
+
   .bordered {
     border: 1px solid gray;
+  }
+
+/*  ul.ui-corner-all {
+    border-radius: 0px !important;
+  }
+
+  ul a.ui-corner-all {
+    border-radius: 0px;
+    color: red;
+    background-color: white;
+  }*/
+/*  ul.ui-autocomplete a, 
+  ul.ui-autocomplete a.ui-state-focus {
+    border: 0px !important;
+  }*/
+
+  ul.ui-autocomplete a.ui-state-focus {
+    background-color: #eee;
+    /*border-color: #666;*/
+  }
+
+  ul.ui-autocomplete {
+    /*padding: 0px !important;*/
+  }
+
+  ul.ui-autocomplete li div {
+    padding: 5px 0 0 10px;
+    margin-top: 5px;
+  }
+
+  ul.ui-autocomplete img {
+    vertical-align: top;
+    margin-top: 5px;
+  }
+
+  ul.ui-autocomplete span.author {
+    font-style: italic;
+  }
+
+  ul.ui-autocomplete span.author,
+  ul.ui-autocomplete span.publisher {
+    font-size: 12px;
+    color: gray;
+  }
+
+
+  .ui-corner-all {
+    border-radius: 0px !important;
   }
 
   #page-wrapper {
@@ -302,6 +370,8 @@
 
 <script type="text/javascript">
   $(document).ready(function () {
+
+    $(".search-container").addClass("hidden");
 
     var books_data  = [
                         {
@@ -456,9 +526,14 @@ $(document).ready(function () {
     }
   })
   .data("ui-autocomplete")._renderItem = function (ul, item) {
+    $(".ui-corner-all").removeClass("ui-corner-all");
     return $("<li>")
-                    .append("<a> <img src=" + item.image_url + "></img>" + item.book.title + item.book.description + "</a>")
-                    .appendTo(ul);
+                    .append("<a><img src=" + item.image_url + "></img>" + 
+                      "<div style='display: inline-block;'> <span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +
+                            // "<p class=edition>" + item.book.edition +"</p>" +
+                            "<span class=author>" + item.book.author + "</span>, " +
+                            "<span class=publisher>" + item.book.publisher + " Publications </span>" +
+                      "</div></a>").appendTo(ul);
   };
 
   function get_airports(request, response) {
@@ -471,7 +546,6 @@ $(document).ready(function () {
       response(data);
     }, "json");
   }
-
 
 
 });

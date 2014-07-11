@@ -19,33 +19,35 @@
             <%= image_tag @classified.image.show, class: 'img-responsive classified-image' %>
           </div>
 
-          <div class="ibox-content profile-content">
+          <div class="ibox-content profile-content" >
 
-            <div class="location">
+            <div class="location" style="margin-left: 34%; margin-top: -2%;">
               <h4><i class="fa fa-map-marker"></i> <%= @classified.college.name %></h4>
             </div>
-            <div class="prices">
+            <div class="prices" style="margin-left: 34%" >
               <h3 class="selling-price"><strong>Rs. <%= @classified.expected_price %>  </strong></h3>
-              <span class="retail-price">Rs. <%= @classified.retail_price %></span>              
+              <span class="precent-off">(<%= @classified.percent_off %>% off)</span>              
+              <br />
+              <span class="retail-price">Rs. <%= @classified.retail_price %></span>   
             </div>
 
-            <div class="user-button">
+            <div class="user-button" style=" margin-top: 5%;">
               <div class="row">
 
-                <div class="col-sm-4">
-                  <button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#cs-modal">
+                <div class="col-sm-6">
+                  <button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#cs-modal">
                     <i class="fa fa-user"></i> Contact Seller 
                   </button>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                   <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#hi-modal">
                     <i class="fa fa-bookmark"></i> Booth Pickup 
                   </button>
                 </div>
-                <div class="col-sm-4">
+<!--                 <div class="col-sm-4">
                   <button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#pu-modal">
                   <i class="fa fa-truck"></i> Deliver to Me </button>
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -57,6 +59,10 @@
 .profile-content > .location,
 .profile-content > .prices {
 
+}
+
+.user-button .btn-success {
+  background-color: #4894c5;
 }
 
 .user-button .col-sm-4 {
@@ -241,61 +247,62 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="myModalLabel">Contact Seller</h4>
-        You can use the seller info provider here to contact him/her directly or fill in your details and submit this form.
+        You can use the seller info provider here to contact him/her directly or fill in your details and submit this form. Tell them you found the listing on hasstuff when you call them.
       </div>
       <div class="modal-body">
 
-        <h3 style="text-align: center;"> Viksit Arora </h3> 
-        <div class="row">
-          <div class="col-sm-4 col-sm-offset-2">
-            <h4>
-              <i class="fa fa-phone">
-                <span style="margin-left: 4px;">+91-9779860223</span>
-              </i>
-            </h4>
-          </div>
-          <div class="col-sm-4">
-            <h4>
-              <i class="fa fa-envelope">
-                <span style="margin-left: 4px;">viksit@mit.edu</span>
-              </i>
-            </h4>            
-          </div>
+        <h3 style="text-align: center; margin-top: 0px; padding-top: 0px;"> <%= @classified.user.full_name %></h3> 
+
+        <div class="row col-sm-4 col-sm-offset-4" style="text-align: center; margin-top: 0px; padding-top: 0px;">
+          <h4 style="margin-top: 0px; padding-top: 0px;">
+            <i class="fa fa-phone">
+              <span style="margin-left: 4px;"><%= @classified.user.phone || '-'%></span>
+            </i>
+          </h4>
         </div>
+
+        <div class="row col-sm-8 col-sm-offset-2" style="text-align: center; margin-top: 0px; padding-top: 0px; margin-bottom: 10px;">
+          <h4 style="margin-top: 0px; padding-top: 0px;">
+            <i class="fa fa-envelope">
+              <span style="margin-left: 4px;"><%= @classified.user.email %></span>
+            </i>
+          </h4>        
+        </div>
+
         <br/>
-        <form method="get" class="form-horizontal listing-form">
-          <div class="form-group">
-            <label class="col-sm-3 control-label">Full Name</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control publisher">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label">Mobile</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control publisher">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label">Message</label>
-            <div class="col-sm-9">
-              <textarea class="form-control publisher"></textarea>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-3 control-label">Send Msg To</label>
-            <div class="col-sm-9">
-              <label class="checkbox-inline i-checks"> <div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" value="option1" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins></div> Phone/Whatsapp </label>
-              <label class="checkbox-inline i-checks"> <div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" value="option2" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins></div>  Email </label>
-            </div>
-          </div>
-
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Submit</button>
+    		<%= form_for ContactSeller.new, url: contact_seller_classified_path(@classified), :html => {:class => 'form-horizontal listing-form' }, method: :post do |f| %>
+    			<div class="form-group">
+    				<%= f.label :full_name, class: 'col-sm-3 control-label' %>
+    				<div class="col-sm-8">
+    					<%= f.text_field :name, class: 'form-control publisher', value: current_user.try(:name) %>
+    				</div>
+    			</div>
+    			
+    			<div class="form-group">
+    				<%= f.label :mobile, class: 'col-sm-3 control-label' %>
+    				<div class="col-sm-8">
+    					<%= f.text_field :phone, class: "form-control publisher", value: current_user.try(:phone) %>
+    				</div>
+    			</div>
+    			
+    			<div class="form-group">
+    				<%= f.label :email, class: 'col-sm-3 control-label' %>
+    				<div class="col-sm-8">
+    					<%= f.text_field :email, class: "form-control publisher", value: current_user.try(:email) %>
+    				</div>
+    			</div>
+    			
+    			<div class="form-group">
+    				<%= f.label :message, class: 'col-sm-3 control-label' %>
+    				<div class="col-sm-8">
+    					<%= f.text_area :message, class: 'form-control publisher' %>
+    				</div>
+    			</div>
+    			<div class="modal-footer">
+    	  		  <%= button_tag 'Cancel', class: 'btn btn-default', data: {dismiss: 'modal'} %>
+    	  		  <%= f.button 'Submit', class: 'btn btn-primary' %>
+    		  </div>
+    		<% end %>
       </div>
     </div>
   </div>
@@ -319,25 +326,25 @@
 
           <div class="form-group">
             <label class="col-sm-3 control-label">Full Name</label>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
               <input type="text" class="form-control publisher">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">College ID No.</label>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
               <input type="text" class="form-control publisher">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">Mobile</label>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
               <input type="text" class="form-control publisher">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">Comments</label>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
               <textarea class="form-control publisher"></textarea>
             </div>
           </div>
@@ -363,32 +370,32 @@
         <form method="get" class="form-horizontal listing-form">
           <div class="form-group">
             <label class="col-sm-3 control-label">Full Name</label>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
               <input type="text" class="form-control publisher">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">College ID No.</label>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
               <input type="text" class="form-control publisher">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">Mobile</label>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
               <input type="text" class="form-control publisher">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">Address</label>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
               <textarea class="form-control publisher"></textarea>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-3 control-label">Delivery Method</label>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
               <label class="checkbox-inline i-checks"> <div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" value="option1" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins></div> Normal (2-3 days) - Rs 30 </label>
               <label class="checkbox-inline i-checks"> <div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" value="option2" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins></div>  Express (24 hrs) - Rs 50 </label>
             </div>
@@ -397,7 +404,7 @@
 
           <div class="form-group">
             <label class="col-sm-3 control-label">Comments</label>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
               <textarea class="form-control publisher"></textarea>
             </div>
           </div>
@@ -416,6 +423,16 @@
 
 
   <style type="text/css">
+
+/*  div.form-group {
+    margin-top: 15px;
+  }*/
+
+
+  .modal-body {
+    padding-top: 5px;
+  }
+
 
   .modal-body label {
     font-weight: 200;
@@ -463,6 +480,7 @@
     .navbar {
       border-radius: 0px !important;
     }
+
     .navbar .divider-vertical {
       height: 20px;
       /*margin: 10px -5px 10px -5px;*/
