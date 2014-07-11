@@ -84,6 +84,12 @@
                     </div>
                   </div>
                   <% end %>
+
+                  <%= f.fields_for :images do |image| %>
+                   <%= image.label 'Image' %>
+                   <%= image.file_field :file, multiple: true, name: 'images[file][]' %>
+                   <% end %>
+                   <%= f.submit %>
 <!-- 
                   <div class="form-group hidden">
                     <label class="col-sm-2 control-label">ISBN 13</label>
