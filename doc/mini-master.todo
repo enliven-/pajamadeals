@@ -1,11 +1,9 @@
 BHUSHAN:
   ☐ Classified#new replace hard coded html form with rails form helper method
   
-  ✔ calculated suggested price @done (14-07-10 17:08) 
 
   ☐ Get pictures uploading working on classified#new page
 
-  ✔ integrate pickup to booth pickup functionality @done (14-07-10 16:59)
 
   ☐ Creating classified with user signed in and user not signed in
 
@@ -17,8 +15,6 @@ VIKSIT:
  ☐ Form Alignment Vertical or Horizontal
        http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php
        http://www.lukew.com/ff/entry.asp?1502
-
- ☐ Signup/signin buttons and form
 
  ☐ Percent price of mrp - put that on classifieds#show page
 
@@ -44,6 +40,9 @@ COLLECTIVE:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ calculated suggested price @done (14-07-10 17:08)  @project(BHUSHAN)
+ ✔ integrate pickup to booth pickup functionality @done (14-07-10 16:59) @project(BHUSHAN)
+ ✔ Signup/signin buttons and form @done (14-07-11 22:18) @project(VIKSIT)
  ✔ Put publisher and author information on search autocomplete view @done (14-07-10 17:38) @project(VIKSIT)
  ✔ Change comments to description on classifieds#new @started(14-07-10 13:20) @done (14-07-10 13:21) @project(VIKSIT)
   @lasted(0:01)
