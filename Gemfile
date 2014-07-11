@@ -74,3 +74,4 @@ gem 'mini_magick'
 
 # active admin
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'will_paginate'
