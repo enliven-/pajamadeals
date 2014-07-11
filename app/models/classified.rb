@@ -7,12 +7,14 @@ class Classified < ActiveRecord::Base
 
   # validates :title, presence: true, length: { maximum: 255 }
   # validates :expected_price, numericality: { greater_than_or_equal_to: 0.01,
-  # 			   	  allow_blank: true }
+  #             allow_blank: true }
   # validates :user_id, presence: true
   # validates :college_id, presence: true
   # validates :listing_type, presence: true
 
   has_many :images
+  accepts_nested_attributes_for :images
+
   has_many :picks
   has_many :contact_sellers
   belongs_to :user
@@ -30,8 +32,8 @@ class Classified < ActiveRecord::Base
   scope :sold, -> { where(sold: true) }
 
   delegate :title, :description, :publisher, :author, :isbn, :edition,
-		   :released_year, :retail_price, :university, :image, :pages,
-		   to: :book
+    :released_year, :retail_price, :university, :image, :pages,
+    to: :book
 
 
   # search classified
