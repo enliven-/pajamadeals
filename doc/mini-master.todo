@@ -18,8 +18,6 @@ VIKSIT:
 
  ☐ Percent price of mrp - put that on classifieds#show page
 
- ☐ Textbox rendering differently on mac
-
  ☐ Navbar search behaviour like google
 
  ☐ Autofill modals incase signed in
@@ -40,6 +38,7 @@ COLLECTIVE:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ Textbox rendering differently on mac @started(14-07-11 22:59) @done (14-07-11 23:08) @lasted(0:09) @project(VIKSIT)
  ✔ calculated suggested price @done (14-07-10 17:08)  @project(BHUSHAN)
  ✔ integrate pickup to booth pickup functionality @done (14-07-10 16:59) @project(BHUSHAN)
  ✔ Signup/signin buttons and form @done (14-07-11 22:18) @project(VIKSIT)
