@@ -476,7 +476,7 @@
 $(document).ready(function () {
 
   $("#search-title").autocomplete({
-    source: get_airports,
+    source: get_results,
     minLength: 3,
     select: function (event, ui) {
               event.preventDefault();
@@ -536,7 +536,7 @@ $(document).ready(function () {
                       "</div></a>").appendTo(ul);
   };
 
-  function get_airports(request, response) {
+  function get_results(request, response) {
     console.log(request.term)
     var params = {
       keywords: request.term

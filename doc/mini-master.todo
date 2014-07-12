@@ -16,8 +16,6 @@ VIKSIT:
        http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php
        http://www.lukew.com/ff/entry.asp?1502
 
- ☐ Navbar search behaviour like google
-
  ☐ Autofill modals incase signed in
 
   ☐ Change order of fields - According to relevance with each other or according what user will actually fill out i.e importance to user
@@ -36,6 +34,7 @@ COLLECTIVE:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ Navbar search behaviour like google @started(14-07-12 10:11) @done (14-07-12 10:37) @lasted(0:26) @project(VIKSIT)
  ✔ Change price and loc to show in center on show @started(14-07-11 23:25) @done (14-07-11 23:33) @lasted(0:08) @project(VIKSIT)
  ✔ Percent price of mrp - put that on classifieds#show page => changed to show percent off; @started(14-07-11 23:15) @done (14-07-11 23:19) @lasted(0:04) @project(VIKSIT)
  ✔ Textbox rendering differently on mac @started(14-07-11 22:59) @done (14-07-11 23:08) @lasted(0:09) @project(VIKSIT)
