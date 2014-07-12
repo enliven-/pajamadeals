@@ -1,5 +1,6 @@
 class ClassifiedsController < ApplicationController
-  before_action :set_classified, only: [:show, :edit, :update, :destroy, :contact_seller]
+  before_action :set_classified, only: [:show, :edit, :update, :destroy,
+                                        :contact_seller]
 
   # GET /classifieds
   # GET /classifieds.json
@@ -26,8 +27,9 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds/new
   def new
     @classified = Classified.new
-    @book     = @classified.build_book
-    @images   = @classified.images.build
+    @classified.build_book
+    @classified.images.build
+    @classified.build_user if !user_signed_in?
   end
 
   # GET /classifieds/1/edit
@@ -37,22 +39,35 @@ class ClassifiedsController < ApplicationController
   # POST /classifieds
   # POST /classifieds.json
   def create
-          raise classified_params.inspect
+    book_attributes = classified_params.delete(:book_attributes)
+    book = Book.find_or_create_by(book_attributes)
+
+    if !user_signed_in?
+      user_attributes = classified_params.delete(:user_attributes)
+      current_user = User.find_by(email: user_attributes[:email]) ||
+        User.create(user_attributes.merge({password: Time.now, guest: true}))
+    end
+
     @classified = Classified.new(classified_params)
-    @classified.ip = request.ip
+    @classified.book = book
+    @classified.user = current_user
+
+
     respond_to do |format|
       if @classified.save
 
-        # upload images
-        params[:images]['file'].each do |image|
-          @classified.images.create(file: image)
-        end
+        # # upload images
+        # params[:images]['file'].each do |image|
+        #   @classified.images.create(file: image)
+        # end
 
-        format.html { redirect_to @classified, notice: 'Classified was successfully created.' }
+        format.html { redirect_to @classified,
+                      notice: 'Classified was successfully created.' }
         format.json { render :show, status: :created, location: @classified }
       else
         format.html { render :new }
-        format.json { render json: @classified.errors, status: :unprocessable_entity }
+        format.json { render json: @classified.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -62,11 +77,13 @@ class ClassifiedsController < ApplicationController
   def update
     respond_to do |format|
       if @classified.update(classified_params)
-        format.html { redirect_to @classified, notice: 'Classified was successfully updated.' }
+        format.html { redirect_to @classified,
+                      notice: 'Classified was successfully updated.' }
         format.json { render :show, status: :ok, location: @classified }
       else
         format.html { render :edit }
-        format.json { render json: @classified.errors, status: :unprocessable_entity }
+        format.json { render json: @classified.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -76,7 +93,8 @@ class ClassifiedsController < ApplicationController
   def destroy
     @classified.destroy
     respond_to do |format|
-      format.html { redirect_to classifieds_url, notice: 'Classified was successfully destroyed.' }
+      format.html { redirect_to classifieds_url,
+                    notice: 'Classified was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -87,14 +105,16 @@ class ClassifiedsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_classified
     @classified = Classified.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def classified_params
-    params.require(:classified).permit(:title, :description, :image, :user_id, :college_id, :expected_price, :listing_type, :status, book_attributes: [:title, :publisher, :author, :isbn, :edition, :retails_price], user_attributes: [:email, :college_id, :phone])
+    params.require(:classified).permit(:title, :description, :image,
+                                       :expected_price, :listing_type, :status,
+                                       :condition, book_attributes: [:title],
+                                       user_attributes: [:email])
   end
 
   def contact_seller_params
