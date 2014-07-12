@@ -223,102 +223,6 @@
 
     $(".search-container").addClass("hidden");
 
-    var books_data  = [
-                        {
-                          value: "jquery",
-                          label: "jQuery",
-                          desc: "the write less, do more, JavaScript library",
-                          icon: "jquery_32x32.png",
-                          img_src: "http://dummyimage.com/60X60"
-                        }, {
-                          value: "jquery-ui",
-                          label: "jQuery UI",
-                          desc: "the official user interface library for jQuery",
-                          icon: "jqueryui_32x32.png",
-                          img_src: "http://dummyimage.com/60X60"
-                        }, {
-                          value: "sizzlejs",
-                          label: "Sizzle JS",
-                          desc: "a pure-JavaScript CSS selector engine",
-                          icon: "sizzlejs_32x32.png",
-                          img_src: "http://dummyimage.com/60X60"
-                        },
-                        {
-                          value: "jquery-ui",
-                          label: "jQuery UI",
-                          desc: "the official user interface library for jQuery",
-                          icon: "jqueryui_32x32.png",
-                          img_src: "http://dummyimage.com/60X60"
-                        }
-                     ];
-
-
-    // $("#search-box").autocomplete({
-
-    //   source: books_data,
-    //   search: function(event, ui) {
-    //     $("div.search-result").slideUp();
-    //     $("div.item-info").slideUp();
-    //   }, 
-    //   focus: function (event, ui) {
-    //     $("#search-box").val(ui.item.label);
-    //     return false;
-    //   },
-    //   select: function (event, ui) {
-    //     console.log("selected");
-    //     $("div.search-result").slideDown();
-    //     $("#search-box").val("");
-    //     return false;
-    //   }
-    // })
-    // .data("ui-autocomplete")._renderItem = function (ul, item) {
-    //   return $("<li>")
-    //                   .append("<a> <img src=" + item.img_src + "></img>" + item.label + item.desc + "</a>")
-    //                   .appendTo(ul);
-    // };
-
-
-    $("button.clear").on('click', function(e) {
-      e.preventDefault();
-      console.log("clicked")
-      console.log($("div.result-item"));
-      $("div.search-result").slideUp();
-      $("div.item-info").slideUp();
-      return false;
-    });
-
-    $("button.select").on('click', function(e) {
-      e.preventDefault();
-      console.log("clicked");
-        $("div.item-info").slideDown();
-
-
-      var $item       = $(".auto.result-item > .ibox-content");
-      var title       = $item.find("h4").text();
-      var edition     = $item.find(".edition .val").text();
-      var publisher   = $item.find(".publisher .val").text();
-      var isbn10      = $item.find(".isbn10 .val").text();
-      var isbn13      = $item.find(".isbn13 .val").text();
-      
-      console.log(title)
-      console.log(edition)
-      console.log(publisher)
-      console.log(isbn10)
-      console.log(isbn13)
-
-
-      var $form = $("form.listing-form");
-      console.log($form)
-      console.log($form.find("input.title"));
-      $form.find("input.title").val(title);
-      $form.find("input.edition").val(edition);
-      $form.find("input.publisher").val(publisher);
-      $form.find("input.isbn10").val(isbn10);
-      $form.find("input.isbn13").val(isbn13);
-
-    });
-
-
   });
 </script>
 
@@ -330,15 +234,6 @@ $(document).ready(function () {
     minLength: 3,
     select: function (event, ui) {
               event.preventDefault();
-              console.log(ui.item.book);
-              // return false;
-              console.log("inhereerererererre")
-              // var $item       = $(".auto.result-item > .ibox-content");
-              // var title       = $item.find("h4").text();
-              // var edition     = $item.find(".edition .val").text();
-              // var publisher   = $item.find(".publisher .val").text();
-              // var isbn10      = $item.find(".isbn10 .val").text();
-              // var isbn13      = $item.find(".isbn13 .val").text();
               var book  = ui.item.book;
               var $form = $("form.listing-form");
 
@@ -361,10 +256,7 @@ $(document).ready(function () {
 
 
               var img = "#page-wrapper > div > div > div.col-sm-4.search-result.animated.fadeInRight > div > div.auto.result-item > div > img";
-              // $(img).src = "<%= @classified.images.first %>";
               var img_src = "<%= @classified.images.first %>";
-              console.log(img_src + "sssssssssssssssssss");
-              // return false;
             }
   })
   .keydown(function(e){
