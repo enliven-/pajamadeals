@@ -10,6 +10,11 @@
   <%= u.text_field :email %>
   <% end %>
 
+   <%= f.fields_for :images do |image| %>
+	   <%= image.label 'Image' %>
+	   <%= image.file_field :file, multiple: true, name: 'images[file][]' %>
+   <% end %>
+
 
 <%= f.submit %>
 <% end %>

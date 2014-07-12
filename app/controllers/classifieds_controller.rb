@@ -59,8 +59,10 @@ class ClassifiedsController < ApplicationController
       if @classified.save
 
         # upload images
-        params[:images]['file'].each do |image|
-          @classified.images.create(file: image)
+        if params[:images].present?
+          params[:images]['file'].each do |image|
+            @classified.images.create(file: image)
+          end
         end
 
         format.html { redirect_to @classified,
