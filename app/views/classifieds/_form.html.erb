@@ -1,20 +1,55 @@
 <%= form_for @classified do |f| %>
-<%= f.text_field :condition %>
 
-<!-- Books field -->
-<%= f.fields_for :book do |b| %>
-<%= b.text_field :title %>
-<% end %>
+<!-- Search field here -->
 
-  <%= f.fields_for :user do |u| %>
-  <%= u.text_field :email %>
-  <% end %>
+	<!-- Book fields -->
+	<%= f.fields_for :book do |book| %>
+		<%= book.text_field :title %><br/>
 
-   <%= f.fields_for :images do |image| %>
-	   <%= image.label 'Image' %>
-	   <%= image.file_field :file, multiple: true, name: 'images[file][]' %>
+		<%= book.label :publisher %><br/>
+		<%= book.text_field :publisher %><br/>
+
+		<%= book.label :author %><br/>
+		<%= book.text_field :author %><br/>
+
+		<%= book.label :retail_price %><br/>
+		<%= book.text_field :retail_price %><br/>
+
+		<%= book.label :isbn %><br/>
+		<%= book.text_field :isbn %><br/>
+	<% end %>
+
+	<!-- Classified fields -->
+	<%= f.label :condition, class: 'col-sm-2 control-label' %><br/>
+    <%= f.select :condition, [['Like new', 'Like new'], ['Fair', 'Fair'], ['Heavily used', 'Heavily used']] %><br/>
+
+    <%= f.label :price %><br/>
+    <%= f.text_field :expected_price, value: @classified.suggested_price %><br/>
+
+    <%= f.fields_for :images do |image| %>
+	   <%= image.label 'Images' %><br/>
+	   <%= image.file_field :file, multiple: true, name: 'images[file][]' %><br/>
    <% end %>
 
 
-<%= f.submit %>
+   <!-- User fields -->
+	<%= f.fields_for :user do |user| %>
+		<%= user.label :first_name %><br/>
+		<%= user.text_field :fname %><br/>
+
+		<%= user.label :last_name %><br/>
+		<%= user.text_field :lname %><br/>
+
+		<%= user.label :email %><br/>
+		<%= user.text_field :email %><br/>
+
+		<%= user.label :mobile_number %><br/>
+		<%= user.text_field :mobile_number %><br/>
+
+		<%= user.label :college %><br/>
+		<%= user.select :college_id, College.all.collect { |college| [college.name, college.id]} %><br/>
+	<% end %>
+
+	<%= f.button 'Save' %>
+
 <% end %>
