@@ -45,14 +45,37 @@ data-toggle="modal" data-target="#hi-modal"
   margin-top: 5px;
 }
 
+.session-options {
+  margin-left: -12px;
+}
+
+.navbar .divider-vertical {
+  height: 20px;
+  margin-top: 15px;
+
+}
+
+@media (max-width: 767px) {
+  .navbar-collapse .nav > .divider-vertical {
+    display: none;
+  }
+}
+
 .session-options .divider-vertical {
-  border-right: 1px solid #999c9e !important;
+  /*border-right: .5px solid #999c9e !important;*/
   border-left: 1px solid #999c9e !important;
+  background-color: #999c9e !important;
+  color: #999c9e !important;
 }
 
 .session-options a {
+  font-family: Arial;
   text-decoration: none;
   color: white;
+  padding: 15px !important;
+  padding-bottom: 0px !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
 }
 
 .logo a:hover {
@@ -85,9 +108,7 @@ data-toggle="modal" data-target="#hi-modal"
   padding: 6.5px 15px 6.5px 15px;
 }
 
-.session-options {
-  margin-left: -12px;
-}
+
 </style>
 
 
