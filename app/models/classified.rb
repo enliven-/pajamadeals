@@ -24,7 +24,7 @@ class Classified < ActiveRecord::Base
 
   alias_attribute :selling_price, :expected_price
 
-  # before_create :set_college
+  before_create :set_college
 
   has_token
 
@@ -65,9 +65,9 @@ class Classified < ActiveRecord::Base
   end
 
   def suggested_price
-    # if self.try(:retail_price)
-    #   (retail_price * 0.55).round
-    # end
+    if self.try(:retail_price)
+      (retail_price * 0.55).round
+    end
   end
 
   private
