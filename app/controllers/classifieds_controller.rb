@@ -37,6 +37,7 @@ class ClassifiedsController < ApplicationController
   # POST /classifieds
   # POST /classifieds.json
   def create
+          raise classified_params.inspect
     @classified = Classified.new(classified_params)
     @classified.ip = request.ip
     respond_to do |format|
@@ -93,8 +94,7 @@ class ClassifiedsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def classified_params
-    params.require(:classified).permit(:title, :description, :image, :user_id, :college_id, :expected_price, :listing_type,
-                                       :status, book_attributes: [:title, :publisher, :author, :isbn, :edition, :retails_price])
+    params.require(:classified).permit(:title, :description, :image, :user_id, :college_id, :expected_price, :listing_type, :status, book_attributes: [:title, :publisher, :author, :isbn, :edition, :retails_price], user_attributes: [:email, :college_id, :phone])
   end
 
   def contact_seller_params

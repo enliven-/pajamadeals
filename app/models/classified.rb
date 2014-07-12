@@ -14,18 +14,16 @@ class Classified < ActiveRecord::Base
 
   has_many :images
   accepts_nested_attributes_for :images
-
   has_many :picks
   has_many :contact_sellers
   belongs_to :user
   belongs_to :college
-
   belongs_to :book
   accepts_nested_attributes_for :book
 
   alias_attribute :selling_price, :expected_price
 
-  before_create :set_college
+  # before_create :set_college
 
   has_token
 
