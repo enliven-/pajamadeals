@@ -58,10 +58,10 @@ class ClassifiedsController < ApplicationController
     respond_to do |format|
       if @classified.save
 
-        # # upload images
-        # params[:images]['file'].each do |image|
-        #   @classified.images.create(file: image)
-        # end
+        # upload images
+        params[:images]['file'].each do |image|
+          @classified.images.create(file: image)
+        end
 
         format.html { redirect_to @classified,
                       notice: 'Classified was successfully created.' }
