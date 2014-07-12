@@ -49,6 +49,7 @@ gem 'koala'
 gem 'sunspot_rails', '~>2.1.1'
 gem 'sunspot_solr', '~>2.1.1'
 gem 'progress_bar'
+gem 'will_paginate'
 
 # logging and monitoring
 gem 'mongodb_logger'
