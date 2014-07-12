@@ -1,8 +1,8 @@
 BHUSHAN:
-  ☐ Classified#new replace hard coded html form with rails form helper method
+  ✔ Classified#new replace hard coded html form with rails form helper method @done (14-07-11 10:57)
   
 
-  ☐ Get pictures uploading working on classified#new page
+  ✔ Get pictures uploading working on classified#new page @done (14-07-11 10:56)
 
 
   ☐ Creating classified with user signed in and user not signed in

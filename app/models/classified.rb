@@ -14,12 +14,11 @@ class Classified < ActiveRecord::Base
 
   has_many :images
   accepts_nested_attributes_for :images
-
   has_many :picks
   has_many :contact_sellers
   belongs_to :user
+  accepts_nested_attributes_for :user
   belongs_to :college
-
   belongs_to :book
   accepts_nested_attributes_for :book
 
@@ -33,7 +32,7 @@ class Classified < ActiveRecord::Base
 
   delegate :title, :description, :publisher, :author, :isbn, :edition,
     :released_year, :retail_price, :university, :image, :pages,
-    to: :book
+    to: :book, allow_nil: true
 
 
   # search classified
