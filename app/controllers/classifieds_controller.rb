@@ -44,13 +44,15 @@ class ClassifiedsController < ApplicationController
 
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
-      current_user = User.find_by(email: user_attributes[:email]) ||
+      email = user_attributes[:email].split('@')
+      user_attributes[:email] = [email.first + '_hasguest', '@', email.last].join
+      user = User.find_by(email: user_attributes[:email]) ||
         User.create(user_attributes.merge({password: Time.now, guest: true}))
     end
 
     @classified = Classified.new(classified_params)
     @classified.book = book
-    @classified.user = current_user
+    @classified.user = current_user || user
 
 
     respond_to do |format|
@@ -113,8 +115,14 @@ class ClassifiedsController < ApplicationController
   def classified_params
     params.require(:classified).permit(:title, :description, :image,
                                        :expected_price, :listing_type, :status,
-                                       :condition, book_attributes: [:title],
-                                       user_attributes: [:email])
+                                       :condition,
+                                       book_attributes: [:title, :publisher,
+                                                         :author, :isbn, :edition,
+                                                         :retail_price],
+                                       user_attributes: [:email, :phone,
+                                                         :fname,
+                                                         :lname]
+                                       )
   end
 
   def contact_seller_params
