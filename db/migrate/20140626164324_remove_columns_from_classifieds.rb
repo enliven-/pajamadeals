@@ -10,6 +10,6 @@ class RemoveColumnsFromClassifieds < ActiveRecord::Migration
   	remove_column :classifieds, :authors
 
   	add_column :classifieds, :comment, :text
-  	add_column :classifieds, :book_id, :string
+  	add_column :classifieds, :book_id, :integer
   end
 end

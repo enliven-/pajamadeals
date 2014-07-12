@@ -38,57 +38,7 @@
     
   </nav>
 </header>
-<style type="text/css">
-data-toggle="modal" data-target="#hi-modal"
 
-.session-options {
-  margin-top: 5px;
-}
-
-.session-options .divider-vertical {
-  border-right: 1px solid #999c9e !important;
-  border-left: 1px solid #999c9e !important;
-}
-
-.session-options a {
-  text-decoration: none;
-  color: white;
-}
-
-.logo a:hover {
-  background-color: #2a3947;
-  text-decoration: none;
-}
-.search-container .form-group {
-  padding-right: 0px;
-}
-
-.navbar .search-container input,
-.navbar .search-container button {
-  border-radius: 0px !important;
-}
-
-.navbar-header .navbar-brand {
-  font-size: 17px;
-  color: white;
-  font-family: Lato, Helvetica, Arial, sans-serif;
-}
-
-#bs-example-navbar-collapse-1.search-container {
-  margin-left: 2%;
-}
-.navbar-header {
-  margin-left: 15px !important;
-}
-
-.btn.search {
-  padding: 6.5px 15px 6.5px 15px;
-}
-
-.session-options {
-  margin-left: -12px;
-}
-</style>
 
 
 <div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -189,3 +139,43 @@ data-toggle="modal" data-target="#hi-modal"
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+  $("#search-box").autocomplete({
+    source: get_results,
+    minLength: 2,
+    select: function (event, ui) {
+              event.preventDefault();
+              console.log(ui);
+              return false;
+            }
+  })
+  .data("ui-autocomplete")._renderItem = function (ul, item) {
+    $(".ui-corner-all").removeClass("ui-corner-all");
+    return $("<li>")
+                    .append("<a><img src=" + item.image_url + "></img>" + 
+                      "<div style='display: inline-block;'> <span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +
+                            // "<p class=edition>" + item.book.edition +"</p>" +
+                            "<span class=author>" + item.book.author + "</span>, " +
+                            "<span class=publisher>" + item.book.publisher + " Publications </span>" +
+                      "</div></a>").appendTo(ul);
+  };
+
+  function get_results(request, response) {
+    console.log(request.term)
+    var params = {
+      keywords: request.term
+    };
+    $.get("/queries/json_completion", params, function (data) {
+      console.log(data)
+      response(data);
+    }, "json");
+  }
+
+
+});
+
+</script>
