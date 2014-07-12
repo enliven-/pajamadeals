@@ -23,6 +23,9 @@ VIKSIT:
     - which fields matter for buyer most
     (Above preference is in respective of order)
 
+ ✔ Compile all styles into one file @started(14-07-12 11:27) @done (14-07-12 12:27) @lasted(1:00)
+   
+ ☐ Compile all js into one file
 COLLECTIVE:
   ☐ Pagination is showing extra blank pages
 
