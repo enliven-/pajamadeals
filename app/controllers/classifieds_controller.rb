@@ -30,7 +30,6 @@ class ClassifiedsController < ApplicationController
     @classified.build_book
     @classified.images.build
     @classified.build_user if !user_signed_in?
-    render '?_form'
   end
 
   # GET /classifieds/1/edit

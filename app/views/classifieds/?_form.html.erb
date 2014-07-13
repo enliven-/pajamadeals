@@ -14,6 +14,38 @@
           <div class="ibox-content ?no-padding border-left-right">
             <%= image_tag("book1.jpg", class: "img-responsive classified-image") %>
           </div>
+<!--           <div class="ibox-content profile-content">
+            <table class="table table-bordered">
+              <tbody>
+                <tr class="edition">
+                  <td>Edition</td>
+                  <td class="val">2</td>
+                </tr>                    
+                <tr class="publisher">
+                  <td>Publisher</td>
+                  <td class="val">Penguin House</td>
+                </tr>
+                <tr class="isbn10">
+                  <td>ISBN 10</td>
+                  <td class="val">9876543210</td>
+                </tr>
+              </tbody>
+            </table>
+            <br/>
+            <h5>Description</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.</p>
+            <div class="row m-t-lg"></div>
+            <div class="user-button">
+              <div class="row">
+                <div class="col-sm-6">
+                  <button type="button" class="btn btn-danger btn-sm btn-block clear"><i class="fa fa-times"></i> Clear</button>
+                </div>
+                <div class="col-sm-6">
+                  <button type="button" class="btn btn-primary btn-sm btn-block select"><i class="fa fa-share"></i> Select</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -28,67 +60,42 @@
           <div class="item-form">
             <div class="?ibox float-e-margins">
               <div class="?ibox-content">
-                <!-- <form method="get" class="form-horizontal listing-form"> -->
-                <%= form_for @classified, class: 'form-horizontal listing-form' do |f| %>
-
-                  <%= f.fields_for :book do |book| %>
-
-                    <div class="form-group">
-                      <%= book.label :title, class: 'col-sm-2 control-label' %>
-                      <div class="col-sm-10">
-                        <%= book.text_field :title, class: 'form-control title', id: 'search-title' %>
-                      </div>
-                    </div>
-
-
-                    <div class="form-group hidden">
-                      <%= book.label :publisher, class: 'col-sm-2 control-label' %>
-                      <div class="col-sm-10">
-                        <%= book.text_field :publisher, class: 'form-control publisher' %>
-                      </div>
-                    </div>
-
-
-                    <div class="form-group hidden">
-                      <%= book.label :author, class: 'col-sm-2 control-label' %>
-                      <div class="col-sm-10">
-                        <%= book.text_field :author, class: 'form-control author' %>
-                      </div>
-                    </div>
-
-                    <div class="form-group hidden">
-                      <%= book.label :isbn, class: 'col-sm-2 control-label' %>
-                      <div class="col-sm-10">
-                        <%= book.text_field :isbn, class: 'form-control isbn' %>
-                      </div>
-                    </div>
-
-
-                    <div class="form-group hidden">
-                      <%= book.label :retail_price, class: 'col-sm-2 control-label' %>
-                      <div class="col-sm-10">
-                        <%= book.text_field :retail_price, class: 'form-control retail-price' %>
-                      </div>
-                    </div>
-
-                  <% end %> 
-
-
-                  <div class="form-group hidden">
-                    <%= f.label  :condition, class: 'col-sm-2 control-label' %>
-                    <div class="col-sm-10"> 
-                      <%= f.select :condition, [['Like new', 'Like new'], ['Fair', 'Fair'], ['Heavily used', 'Heavily used']] %>
+                <form method="get" class="form-horizontal listing-form">
+                  <div class="form-group ?hidden">
+                    <label class="col-sm-2 control-label">Title</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control title" id="search-title">
                     </div>
                   </div>
 
                   <div class="form-group hidden">
-                    <%= f.label  :price, class: 'col-sm-2 control-label' %>
-                    <div class="col-sm-10"> 
-                      <%= f.text_field :expected_price, value: @classified.suggested_price %><br/>
+                    <label class="col-sm-2 control-label">Publisher</label>
+                    <div class="col-sm-10">
+                      <input type="text" disabled="" class="form-control publisher">
                     </div>
                   </div>
 
-<% end %>
+                  <div class="form-group hidden">
+                    <label class="col-sm-2 control-label">ISBN 10</label>
+                    <div class="col-sm-10">
+                      <input type="text" disabled="" class="form-control isbn10">
+                    </div>
+                  </div>
+<!-- 
+                  <div class="form-group hidden">
+                    <label class="col-sm-2 control-label">ISBN 13</label>
+                    <div class="col-sm-10">
+                      <input type="text" disabled="" class="form-control isbn13">
+                    </div>
+                  </div> -->
+
+                  <div class="form-group hidden">
+                    <label class="col-sm-2 control-label">Retail Price</label>
+                    <div class="col-sm-10">
+                      <!-- <p class="form-control-static">Rs 430</p> -->
+                      <input type="text" disabled="" class="form-control isbn10">
+                    </div>
+                  </div>
 
                   <div class="hr-line-dashed"></div>
 
@@ -104,7 +111,7 @@
                   </div>
 
 
-<!--                   <div class="form-group hidden">
+                  <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Condition</label>
                     <div class="col-sm-10">
                       <div id="basic_slider" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
@@ -117,9 +124,39 @@
                       <div style="padding: 5px;"> <span>Heavily Used</span><span style="margin-left: 35%">Fair</span><span style="float: right">Like New</span>
                       </div>
                     </div>
-                  </div> -->
-
-
+                  </div>
+                  <div class="form-group hidden">
+                    <label class="col-sm-2 control-label">Optional</label>
+                    <div class="col-sm-10">
+                      <label class="checkbox-inline i-checks">Has pen marks
+                        <div class="icheckbox_square-green" style="position: relative;">
+                          <input type="checkbox" value="option1" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins>
+                        </div>
+                      </label>
+                      <label class="checkbox-inline i-checks">Lose binding
+                        <div class="icheckbox_square-green" style="position: relative;">
+                          <input type="checkbox" value="option2" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins>
+                        </div>
+                      </label>
+                      <label class="checkbox-inline i-checks">Some pages torn
+                        <div class="icheckbox_square-green" style="position: relative;">
+                          <input type="checkbox" value="option3" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group hidden">
+                    <label class="col-sm-2 control-label">Suggested Price</label>
+                    <div class="col-sm-10">
+                      <input type="text" disabled="" placeholder="Rs 260" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group hidden">
+                    <label class="col-sm-2 control-label">Selling Price</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
                   <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Upload Pictures</label>
                     <div class="col-sm-10">
@@ -130,21 +167,18 @@
                       </div>
                     </div>
                   </div>
-
                   <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Comments</label>
                     <div class="col-sm-10">
                       <textarea class="form-control sell-form-comments"></textarea>
                     </div>
                   </div>
-
                   <div class="form-group hidden">
                     <div class="col-sm-10 col-sm-offset-2">
                       <button class="btn btn-primary pull" type="submit">Save changes</button>
                       <button class="btn btn-white push" type="submit">Cancel</button>
                     </div>
                   </div>
-                  
                 </form>
               </div>
             </div>
@@ -377,7 +411,6 @@ $(document).ready(function () {
     select: function (event, ui) {
               event.preventDefault();
               console.log(ui.item.book);
-              $(".form-group.hidden").removeClass('hidden');
               // return false;
               console.log("inhereerererererre")
               // var $item       = $(".auto.result-item > .ibox-content");

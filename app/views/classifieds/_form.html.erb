@@ -14,38 +14,6 @@
           <div class="ibox-content ?no-padding border-left-right">
             <%= image_tag("book1.jpg", class: "img-responsive classified-image") %>
           </div>
-<!--           <div class="ibox-content profile-content">
-            <table class="table table-bordered">
-              <tbody>
-                <tr class="edition">
-                  <td>Edition</td>
-                  <td class="val">2</td>
-                </tr>                    
-                <tr class="publisher">
-                  <td>Publisher</td>
-                  <td class="val">Penguin House</td>
-                </tr>
-                <tr class="isbn10">
-                  <td>ISBN 10</td>
-                  <td class="val">9876543210</td>
-                </tr>
-              </tbody>
-            </table>
-            <br/>
-            <h5>Description</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.</p>
-            <div class="row m-t-lg"></div>
-            <div class="user-button">
-              <div class="row">
-                <div class="col-sm-6">
-                  <button type="button" class="btn btn-danger btn-sm btn-block clear"><i class="fa fa-times"></i> Clear</button>
-                </div>
-                <div class="col-sm-6">
-                  <button type="button" class="btn btn-primary btn-sm btn-block select"><i class="fa fa-share"></i> Select</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
@@ -60,44 +28,67 @@
           <div class="item-form">
             <div class="?ibox float-e-margins">
               <div class="?ibox-content">
-                <form method="get" class="form-horizontal listing-form">
-                  <div class="form-group ?hidden">
-                    <label class="col-sm-2 control-label">Title</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control title" id="search-title">
+                <!-- <form method="get" class="form-horizontal listing-form"> -->
+                <%= form_for @classified, html: {class: 'form-horizontal listing-form'} do |f| %>
+
+                  <%= f.fields_for :book do |book| %>
+
+                    <div class="form-group">
+                      <%= book.label :title, class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                        <%= book.text_field :title, class: 'form-control title', id: 'search-title' %>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group hidden">
+                      <%= book.label :publisher, class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                        <%= book.text_field :publisher, class: 'form-control publisher' %>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group hidden">
+                      <%= book.label :author, class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                        <%= book.text_field :author, class: 'form-control author' %>
+                      </div>
+                    </div>
+
+                    <div class="form-group hidden">
+                      <%= book.label :isbn, class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                        <%= book.text_field :isbn, class: 'form-control isbn' %>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group hidden">
+                      <%= book.label :retail_price, class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                        <%= book.text_field :retail_price, class: 'form-control retail-price' %>
+                      </div>
+                    </div>
+
+                  <% end %> 
+
+
+                  <div class="form-group hidden">
+                    <%= f.label  :condition, class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-10"> 
+                      <%= f.select :condition, [['Like new', 'Like new'], ['Fair', 'Fair'], ['Heavily used', 'Heavily used']] %>
                     </div>
                   </div>
 
                   <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">Publisher</label>
-                    <div class="col-sm-10">
-                      <input type="text" disabled="" class="form-control publisher">
+                    <%= f.label  :price, class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-10"> 
+                      <%= f.text_field :expected_price, value: @classified.suggested_price, class: 'form-control selling-price' %>
                     </div>
                   </div>
 
-                  <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">ISBN 10</label>
-                    <div class="col-sm-10">
-                      <input type="text" disabled="" class="form-control isbn10">
-                    </div>
-                  </div>
-<!-- 
-                  <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">ISBN 13</label>
-                    <div class="col-sm-10">
-                      <input type="text" disabled="" class="form-control isbn13">
-                    </div>
-                  </div> -->
 
-                  <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">Retail Price</label>
-                    <div class="col-sm-10">
-                      <!-- <p class="form-control-static">Rs 430</p> -->
-                      <input type="text" disabled="" class="form-control isbn10">
-                    </div>
-                  </div>
-
-                  <div class="hr-line-dashed"></div>
 
                   <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Pattern</label>
@@ -112,52 +103,6 @@
 
 
                   <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">Condition</label>
-                    <div class="col-sm-10">
-                      <div id="basic_slider" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
-                        <div class="noUi-base">
-                          <div class="noUi-origin noUi-connect" style="left: 49.7076023%;">
-                            <div class="noUi-handle noUi-handle-lower"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div style="padding: 5px;"> <span>Heavily Used</span><span style="margin-left: 35%">Fair</span><span style="float: right">Like New</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">Optional</label>
-                    <div class="col-sm-10">
-                      <label class="checkbox-inline i-checks">Has pen marks
-                        <div class="icheckbox_square-green" style="position: relative;">
-                          <input type="checkbox" value="option1" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins>
-                        </div>
-                      </label>
-                      <label class="checkbox-inline i-checks">Lose binding
-                        <div class="icheckbox_square-green" style="position: relative;">
-                          <input type="checkbox" value="option2" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins>
-                        </div>
-                      </label>
-                      <label class="checkbox-inline i-checks">Some pages torn
-                        <div class="icheckbox_square-green" style="position: relative;">
-                          <input type="checkbox" value="option3" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins>
-                        </div>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">Suggested Price</label>
-                    <div class="col-sm-10">
-                      <input type="text" disabled="" placeholder="Rs 260" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">Selling Price</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Upload Pictures</label>
                     <div class="col-sm-10">
                       <div id="my-awesome-dropzone" class="dropzone dz-clickable" action="/file-upload">
@@ -167,19 +112,37 @@
                       </div>
                     </div>
                   </div>
+
                   <div class="form-group hidden">
-                    <label class="col-sm-2 control-label">Comments</label>
-                    <div class="col-sm-10">
-                      <textarea class="form-control sell-form-comments"></textarea>
+                    <%= f.label 'Images', class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-10"> 
+                      <%= f.fields_for :images do |image| %>
+                        <%= image.file_field :file, multiple: true, name: 'images[file][]' %><br/>
+                      <% end %>
                     </div>
                   </div>
+
+
+                  <div class="form-group hidden">
+                    <!-- <label class="col-sm-2 control-label">Description</label> -->
+                    <%= f.label 'Description', class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-10">
+                      <!-- <textarea class="form-control sell-form-description"></textarea> -->
+                      <%= f.text_area :comment, class: 'form-control comment' %>
+                    </div>
+                  </div>
+
                   <div class="form-group hidden">
                     <div class="col-sm-10 col-sm-offset-2">
-                      <button class="btn btn-primary pull" type="submit">Save changes</button>
-                      <button class="btn btn-white push" type="submit">Cancel</button>
+                      <button class="btn btn-primary pull submit" id="sbmit" type="submit" data-toggle="modal" data-target="#user-modal">Submit</button>
+                      <button class="btn btn-white push cancel" type="submit">Cancel</button>
                     </div>
                   </div>
-                </form>
+
+
+                  <div class="hr-line-dashed"></div>
+                  
+                <% end %>
               </div>
             </div>
           </div>
@@ -189,119 +152,124 @@
   </div>
 </div>
 
+
+
+<!-- end user form -->
+
+
 <!-- </body> -->
-<script type="text/javascript">
-</script>
+
+
+<!-- nested and hidden user form -->
+<div class="modal fade" id="user-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--   <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">User Details</h4>
+        You are not currently signed in. Please fill in the details about yourself.
+      </div>
+      <div class="modal-body">
+
+        <%= form_for :user, :html => {:class => 'form-horizontal listing-form' }, method: :post do |user| %>
+
+          <div class="form-group">
+            <%= user.label :first_name, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :first_name, class: 'form-control publisher', value: current_user.try(:name) %>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <%= user.label :last_name, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :last_name, class: 'form-control publisher', value: current_user.try(:name) %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= user.label :mobile_number, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :mobile_number, class: "form-control publisher", value: current_user.try(:phone) %>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <%= user.label :email, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :email, class: "form-control publisher", value: current_user.try(:email) %>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <%= user.label :college, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.select :college_id, College.all.collect { |college| [college.name, college.id]}, class: 'form-control college' %>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+              <%= button_tag 'Cancel', class: 'btn btn-default', data: {dismiss: 'modal'} %>
+              <%= user.button 'Submit', class: 'btn btn-primary' %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div> -->
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">User Details</h4>
+        Please either log in or fill in the details below so that we can potential buyers can know how to contact you.
+      </div>
+
+      <div class="modal-body">
+        <form method="get" class="form-horizontal listing-form">
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Full Name</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Mobile</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control mobile">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">College</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control college">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+
+</div>
 <style type="text/css">
-
   .bordered {
-    border: 1px solid gray;
+    border: 1px solid red;
   }
-
-  #page-wrapper {
-    margin: 0px;
-    padding: 0px;
-  }
-
-  .navbar-inverse {
-    background-color: #2a3947;
-    border-color: #2a3947;
-  }
-
-  #navbar-collapse-01 > ul.nav.navbar-nav.navbar-left > li > a {
-    color: white;
-    font-family: Lato, Helvetica, Arial, sans-serif;
-    font-size: 18px;
-  }
-
-  #navbar-collapse-01 > ul.nav.navbar-nav.navbar-right > li > a {
-    color: white;
-  }
-
-  .wrapper {
-    padding: 0px;
-  }
-
-  .banner-top {
-    margin-top: -40px !important;
-    min-height: 400px;
-    background-color: #29aae1;
-  }
-  
-  .row.search {
-    margin-top: 80px;
-  }
-  
-  .search button {
-    font-family: Lato, Helvetica, Arial, sans-serif;
-    font-weight: bold;
-  }
-  
-  .navbar {
-    border-radius: 0px !important;
-  }
-  
-  .navbar .divider-vertical {
-    height: 20px;
-    margin-top: 15px;
-    border-right: 1px solid #ffffff;
-    border-left: 1px solid #f2f2f2;
-  }
-  
-  .navbar-inverse .divider-vertical {
-    border-right: 1px solid #ffffff;
-    border-left: 1px solid #f2f2f2;
-  }
-  
-  @media (max-width: 767px) {
-    .navbar-collapse .nav > .divider-vertical {
-      display: none;
-    }
-  }
-
-  .noUi-background {
-    background: #3FB8AF;
-    box-shadow: inset 0 0 3px rgba(51, 51, 51, 0.45);
-  }
-
-  .noUi-connect {
-    background: #FAFAFA;
-    box-shadow: inset 0 1px 1px #f0f0f0;
-    -webkit-transition: background 450ms;
-    transition: background 450ms;
-  }
-
-  /* to make dropzone fit in the new form */
-  
-  .dropzone {
-    min-height: 200px !important;
-    height: 200px !important;
-  }
-
-  .dropzone .dz-default.dz-message {
-    background-size: 80%;
-    width: 228px;
-    height: 53px;
-    margin-left: -214px;
-    margin-top: -61.5px;
-    top: 65%;
-    left: 60%;
-  }
-
-  .sell-form-comments {
-    min-height: 120px;
-  }
-
-.classified-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 </style>
-
 
 <script type="text/javascript">
   $(document).ready(function () {
+
+    $("#sbmit").on('click', function(e) {
+      e.preventDefault();
+      $("#user-modal").modal();
+      return false;
+    });
 
     var books_data  = [
                         {
@@ -331,31 +299,6 @@
                           img_src: "http://dummyimage.com/60X60"
                         }
                      ];
-
-
-    // $("#search-box").autocomplete({
-
-    //   source: books_data,
-    //   search: function(event, ui) {
-    //     $("div.search-result").slideUp();
-    //     $("div.item-info").slideUp();
-    //   }, 
-    //   focus: function (event, ui) {
-    //     $("#search-box").val(ui.item.label);
-    //     return false;
-    //   },
-    //   select: function (event, ui) {
-    //     console.log("selected");
-    //     $("div.search-result").slideDown();
-    //     $("#search-box").val("");
-    //     return false;
-    //   }
-    // })
-    // .data("ui-autocomplete")._renderItem = function (ul, item) {
-    //   return $("<li>")
-    //                   .append("<a> <img src=" + item.img_src + "></img>" + item.label + item.desc + "</a>")
-    //                   .appendTo(ul);
-    // };
 
 
     $("button.clear").on('click', function(e) {
@@ -411,14 +354,7 @@ $(document).ready(function () {
     select: function (event, ui) {
               event.preventDefault();
               console.log(ui.item.book);
-              // return false;
-              console.log("inhereerererererre")
-              // var $item       = $(".auto.result-item > .ibox-content");
-              // var title       = $item.find("h4").text();
-              // var edition     = $item.find(".edition .val").text();
-              // var publisher   = $item.find(".publisher .val").text();
-              // var isbn10      = $item.find(".isbn10 .val").text();
-              // var isbn13      = $item.find(".isbn13 .val").text();
+              $(".form-group.hidden").removeClass('hidden');
               var book  = ui.item.book;
               var $form = $("form.listing-form");
 
