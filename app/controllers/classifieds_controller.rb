@@ -118,9 +118,10 @@ class ClassifiedsController < ApplicationController
     params.require(:classified).permit(:title, :description, :image,
                                        :expected_price, :listing_type, :status,
                                        :condition, :pattern, :comment,
+                                       :retail_price,
                                        book_attributes: [:title, :publisher,
                                                          :author, :isbn, :edition,
-                                                         :retail_price],
+                                                         ],
                                        user_attributes: [:email, :phone, :fname,
                                                          :lname, :college_id]
                                        )
