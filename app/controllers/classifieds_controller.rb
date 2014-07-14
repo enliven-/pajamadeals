@@ -10,11 +10,11 @@ class ClassifiedsController < ApplicationController
         fields(:title, :author, :isbn)
       end
 
-      with :active, true
+      # with :active, true
       with :sold,   false
       order_by :created_at, :desc
 
-      paginate page: params[:page]
+      paginate page: params[:page], per_page: 10
     end
     @classifieds = @search.results
   end

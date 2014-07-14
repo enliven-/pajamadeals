@@ -10,9 +10,17 @@
   padding: 0px !important;
 }
 
-/** {
-  border-radius: 0px !important;
-}*/
+.wrapper.row {
+  margin-left: 0px;
+  margin-right: 0px;
+  /*margin-left: 20px;*/
+}
+
+.wrapper > .row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
 
 
 /* navbar */
@@ -30,7 +38,9 @@
   color: white !important;
 }
 
-
+.navbar-inverse {
+  border-radius: 0px !important;
+}
 
 
 
@@ -221,6 +231,9 @@ ul.ui-autocomplete span.publisher {
   text-decoration: underline !important;
 }
 
+.results {
+  /*margin-left: 0px;*/
+}
 
 .result {
   padding: 15px 15px 10px 5px !important;
