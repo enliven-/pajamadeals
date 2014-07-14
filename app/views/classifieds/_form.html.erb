@@ -39,7 +39,7 @@
                       <div class="input-group">
                           <%= book.text_field :title, class: 'form-control title', id: 'search-title' %>
                           <div class="input-group-btn">
-                            <button tabindex="-1" class="btn btn-default clear" type="button">Clear</button>
+                            <button tabindex="-1" class="btn btn-info clear" type="button">Clear</button>
                           </div>
                         </div> 
                       </div>
@@ -89,6 +89,7 @@
                     <div class="col-sm-10"> 
                       <%= f.text_field :expected_price, value: @classified.suggested_price, class: 'form-control selling-price' %>
                     </div>
+                    <span class="sp-comment">*We reccomend 55% of retail price.</span>
                   </div>
 
 
@@ -262,12 +263,25 @@
   .bordered {
     border: 1px solid red;
   }
+
+  .form-group.selling-price .sp-comment {
+    font-size: 9px;
+    margin-left: 2%;
+  }
 </style>
 
 <script type="text/javascript">
   $(document).ready(function () {
 
     $('.file-inputs').bootstrapFileInput();
+
+
+    $("#classified_book_attributes_retail_price").on("keyup", function(e) {
+      var retail_price  = Math.floor( $("#classified_book_attributes_retail_price").val() );
+      if (typeof(retail_price)==="number") { console.log("number it is"); }
+      var selling_price = Math.floor( retail_price * 0.55 );
+      $("#classified_expected_price").val(selling_price);
+    });
 
     console.log("printing user");
     var current_user = "<%= current_user && current_user.name %>";
