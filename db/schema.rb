@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140714144005) do
     t.boolean  "active",             default: false
     t.boolean  "sold",               default: false
     t.text     "comment"
-    t.string   "book_id"
+    t.integer  "book_id"
     t.string   "ip"
     t.string   "contact_preference"
     t.string   "pattern"

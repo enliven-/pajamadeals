@@ -159,7 +159,7 @@
                         <span class="fe-sub-heading"><strong> Photos by Seller</strong></span>                      
                         <div class="photos">
                         <% for image in @classified.images %>
-                            <%= image_tag image.file.s135x180 %>
+                            <%= image_tag image.file.s135x180, class: 'img-responsive feed-photo' %>
                         <% end %>
                         </div>
                       </div>

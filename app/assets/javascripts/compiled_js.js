@@ -3,7 +3,7 @@ $(document).ready(function () {
 
   $("#search-box").autocomplete({
     source: get_results_sb,
-    minLength: 2,
+    minLength: 3,
     select: function (event, ui) {
               event.preventDefault();
               console.log(ui);
