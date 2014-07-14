@@ -39,6 +39,7 @@ class ClassifiedsController < ApplicationController
   # POST /classifieds
   # POST /classifieds.json
   def create
+    # raise params.inspect
     book_attributes = classified_params.delete(:book_attributes)
     book = Book.find_or_create_by(book_attributes)
 
@@ -122,8 +123,8 @@ class ClassifiedsController < ApplicationController
                                        book_attributes: [:title, :publisher,
                                                          :author, :isbn, :edition,
                                                          ],
-                                       user_attributes: [:email, :phone, :fname,
-                                                         :lname, :college_id]
+                                       user_attributes: [:email, :phone, :first_name,
+                                                         :last_name, :college_id]
                                        )
   end
 
