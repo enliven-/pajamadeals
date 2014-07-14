@@ -3,15 +3,6 @@ class Classified < ActiveRecord::Base
   BUY = 0
   SELL = 1
 
-  include HasToken
-
-  # validates :title, presence: true, length: { maximum: 255 }
-  # validates :expected_price, numericality: { greater_than_or_equal_to: 0.01,
-  #             allow_blank: true }
-  # validates :user_id, presence: true
-  # validates :college_id, presence: true
-  # validates :listing_type, presence: true
-
   has_many :images
   accepts_nested_attributes_for :images
   has_many :picks
@@ -26,6 +17,7 @@ class Classified < ActiveRecord::Base
 
   before_create :set_college
 
+  include HasToken
   has_token
 
   scope :sold, -> { where(sold: true) }
