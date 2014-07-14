@@ -39,7 +39,7 @@
                       <div class="input-group">
                           <%= book.text_field :title, class: 'form-control title', id: 'search-title' %>
                           <div class="input-group-btn">
-                            <button tabindex="-1" class="btn btn-info clear" type="button">Clear</button>
+                            <button tabindex="-1" class="btn btn-default clear" type="button">Clear</button>
                           </div>
                         </div> 
                       </div>
@@ -276,9 +276,10 @@
     $('.file-inputs').bootstrapFileInput();
 
 
-    $("#classified_book_attributes_retail_price").on("keyup", function(e) {
-      var retail_price  = Math.floor( $("#classified_book_attributes_retail_price").val() );
+    $("#classified_retail_price").on("keyup", function(e) {
+      var retail_price  = Math.floor( $("#classified_retail_price").val() );
       if (typeof(retail_price)==="number") { console.log("number it is"); }
+      console.log("no number guess")
       var selling_price = Math.floor( retail_price * 0.55 );
       $("#classified_expected_price").val(selling_price);
     });
