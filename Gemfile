@@ -61,6 +61,7 @@ gem "bson_ext"
 gem "therubyracer"
 gem "less-rails"
 gem 'font-awesome-rails', :git => 'git@github.com:bokmann/font-awesome-rails.git'
+gem 'will_paginate'
 
 # test helper
 gem 'faker'
