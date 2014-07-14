@@ -10,9 +10,9 @@
   padding: 0px !important;
 }
 
-* {
+/** {
   border-radius: 0px !important;
-}
+}*/
 
 
 /* navbar */
@@ -343,7 +343,7 @@ h3.selling-price {
   color: #ef5352 !important;
 }
 
-.retail-price {
+.classified-main-info .retail-price {
   text-decoration: line-through !important;
 }
 
@@ -463,3 +463,8 @@ table.other-choices a:hover {
   top: 65% !important;
   left: 60% !important;
 }
+
+
+.form-group textarea.comment {
+  min-height: 120px;
+} 
