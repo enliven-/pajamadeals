@@ -231,6 +231,10 @@ ul.ui-autocomplete span.publisher {
   padding: 0px !important;
 }
 
+.result img {
+  border-radius: 0px !important;
+}
+
 .result h4.title {
   margin-bottom: 2px !important;
   display: inline-block !important;
