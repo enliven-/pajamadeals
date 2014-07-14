@@ -61,6 +61,7 @@ gem "bson_ext"
 gem "therubyracer"
 gem "less-rails"
 gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
+gem 'will_paginate'
 
 # test helper
 gem 'faker'

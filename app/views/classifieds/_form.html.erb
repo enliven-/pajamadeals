@@ -51,7 +51,7 @@
                       </div>
                     </div>
 
-                    <div class="form-group hidden">
+                    <div class="form-group publisher hidden">
                       <%= book.label :publisher, class: 'col-sm-2 control-label' %>
                       <div class="col-sm-10">
                         <%= book.text_field :publisher, class: 'form-control publisher' %>
@@ -59,23 +59,24 @@
                     </div>
 
 
-                    <div class="form-group hidden">
+                    <div class="form-group author hidden">
                       <%= book.label :author, class: 'col-sm-2 control-label' %>
                       <div class="col-sm-10">
                         <%= book.text_field :author, class: 'form-control author' %>
                       </div>
                     </div>
 
-                    <div class="form-group hidden">
+                    <div class="form-group isbn hidden">
                       <%= book.label :isbn, class: 'col-sm-2 control-label' %>
                       <div class="col-sm-10">
                         <%= book.text_field :isbn, class: 'form-control isbn' %>
                       </div>
                     </div>
 
+                    <div class="hr-line-dashed"></div>
 
-                    <div class="form-group hidden">
-                      <%= book.label :retail_price, class: 'col-sm-2 control-label' %>
+                    <div class="form-group retail-price hidden">
+                      <%= book.label 'Retail Price (Rs)', class: 'col-sm-2 control-label' %>
                       <div class="col-sm-10">
                         <%= book.text_field :retail_price, class: 'form-control retail-price' %>
                       </div>
@@ -84,15 +85,17 @@
                   <% end %> 
 
 
-                  <div class="form-group hidden">
+
+
+                  <div class="form-group condition hidden">
                     <%= f.label  :condition, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-10"> 
-                      <%= f.select :condition, [['Like new', 'Like new'], ['Fair', 'Fair'], ['Heavily used', 'Heavily used']] %>
+                      <%= f.select :condition, [['Like new', 'Like new'], ['Fair', 'Fair'], ['Heavily used', 'Heavily used']], { include_blank: false }, { class: "form-control" } %>
                     </div>
                   </div>
 
-                  <div class="form-group hidden">
-                    <%= f.label  :price, class: 'col-sm-2 control-label' %>
+                  <div class="form-group selling-price hidden">
+                    <%= f.label  'Selling Price (Rs)', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-10"> 
                       <%= f.text_field :expected_price, value: @classified.suggested_price, class: 'form-control selling-price' %>
                     </div>
@@ -112,7 +115,7 @@
                   </div>
 
 
-                  <div class="form-group hidden">
+<!--                   <div class="form-group hidden">
                     <label class="col-sm-2 control-label">Upload Pictures</label>
                     <div class="col-sm-10">
                       <div id="my-awesome-dropzone" class="dropzone dz-clickable" action="/file-upload">
@@ -121,19 +124,21 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
 
-                  <div class="form-group hidden">
+
+                  <div class="form-group images hidden">
                     <%= f.label 'Images', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-10"> 
                       <%= f.fields_for :images do |image| %>
-                        <%= image.file_field :file, multiple: true, name: 'images[file][]' %><br/>
+                        <a class="file-input-wrapper btn btn-default"><span>Choose File</span>
+                          <%= image.file_field :file, multiple: true, name: 'images[file][]', class: "btn btn-default" %>
+                        </a>
                       <% end %>
                     </div>
                   </div>
 
-
-                  <div class="form-group hidden">
+                  <div class="form-group comment hidden">
                     <!-- <label class="col-sm-2 control-label">Description</label> -->
                     <%= f.label 'Description', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-10">
@@ -144,13 +149,10 @@
 
                   <div class="form-group hidden">
                     <div class="col-sm-10 col-sm-offset-2">
-                      <button class="btn btn-primary pull submit" id="sbmit" type="submit" data-toggle="modal" data-target="#user-modal">Submit</button>
+                      <button class="btn btn-primary pull submit" id="submit" type="submit" data-toggle="modal">Submit</button>
                       <button class="btn btn-white push cancel" type="submit">Cancel</button>
                     </div>
                   </div>
-
-
-                  <div class="hr-line-dashed"></div>
                   
                 <% end %>
               </div>
@@ -275,157 +277,87 @@
 <script type="text/javascript">
   $(document).ready(function () {
 
+    $('.file-inputs').bootstrapFileInput();
 
     console.log("printing user");
-    var current_user = <%= current_user %>
+    var current_user = "<%= current_user && current_user.name %>";
     console.log(current_user);
 
 
-    $("#sbmit").on('click', function(e) {
-      e.preventDefault();
-      $("#user-modal").modal();
-      return false;
+    $(".listing-form #submit").on('click', function(e) {
+      if (current_user) { 
+        $("input").removeAttr("disabled");
+      }
+      else {
+        e.preventDefault();
+        $("#user-modal").modal();
+        return false;
+      }
     });
 
 
-    var books_data  = [
-                        {
-                          value: "jquery",
-                          label: "jQuery",
-                          desc: "the write less, do more, JavaScript library",
-                          icon: "jquery_32x32.png",
-                          img_src: "http://dummyimage.com/60X60"
-                        }, {
-                          value: "jquery-ui",
-                          label: "jQuery UI",
-                          desc: "the official user interface library for jQuery",
-                          icon: "jqueryui_32x32.png",
-                          img_src: "http://dummyimage.com/60X60"
-                        }, {
-                          value: "sizzlejs",
-                          label: "Sizzle JS",
-                          desc: "a pure-JavaScript CSS selector engine",
-                          icon: "sizzlejs_32x32.png",
-                          img_src: "http://dummyimage.com/60X60"
-                        },
-                        {
-                          value: "jquery-ui",
-                          label: "jQuery UI",
-                          desc: "the official user interface library for jQuery",
-                          icon: "jqueryui_32x32.png",
-                          img_src: "http://dummyimage.com/60X60"
-                        }
-                     ];
+
+    $("#search-title").autocomplete({
+      source: get_results,
+      minLength: 3,
+      select: function (event, ui) {
+                event.preventDefault();
+                var book  = ui.item.book;
+                var $form = $("form.listing-form");
+
+                $form.find("input.title").val(book.title).attr("disabled", true);
+                // $form.find("input.edition").val(book.edition).attr("disabled", true);
+                $form.find("input.author").val(book.author).attr("disabled", true);
+                $form.find("input.publisher").val(book.publisher).attr("disabled", true);
+                $form.find("input.isbn").val(book.isbn).attr("disabled", true);
+
+                $(".form-group.hidden", $form).removeClass('hidden');
+                $(".item-info").addClass("fadeOutRight")
+                               .addClass("hidden")
+                               .removeClass("fadeOutRight")
+                               .removeClass("col-sm-offset-2")
+                               .addClass("fadeInLeft")
+                               .removeClass("hidden");
+
+                $(".search-result").removeClass("hidden");
+                var sel = "#page-wrapper > div > div > div.col-sm-4.search-result.animated.fadeInRight > div > div.ibox-title.title > h5";
+                $(sel).text(book.title);
 
 
-    $("button.clear").on('click', function(e) {
-      e.preventDefault();
-      $("#search-title").val("");
-      $(".listing-form .form-group").addClass("hidden");
-      $(".listing-form .form-group.title").removeClass("hidden");
+                var img = "#page-wrapper > div > div > div.col-sm-4.search-result.animated.fadeInRight > div > div.auto.result-item > div > img";
+                var img_src = "<%= @classified.images.first %>";
+              }
+    })
+    .keydown(function(e){
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        $("form.listing-form .form-group.hidden").removeClass('hidden');
+        $("form.listing-form .form-group input").attr("disabled", false);
+        return false;
+      }
+    })
+    .data("ui-autocomplete")._renderItem = function (ul, item) {
+      $(".ui-corner-all").removeClass("ui-corner-all");
+      console.log(item.book.author);
+      return $("<li>")
+                      .append("<a><img src=" + item.image_url + "></img>" + 
+                        "<div style='display: inline-block;'> <span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +
+                              // "<p class=edition>" + item.book.edition +"</p>" +
+                              "<span class=author>" + item.book.author + "</span>, " +
+                              "<span class=publisher>" + item.book.publisher + " Publications </span>" +
+                        "</div></a>").appendTo(ul);
+    };
 
-    });
-
-    $("button.select").on('click', function(e) {
-      e.preventDefault();
-      console.log("clicked");
-        $("div.item-info").slideDown();
-
-
-      var $item       = $(".auto.result-item > .ibox-content");
-      var title       = $item.find("h4").text();
-      var edition     = $item.find(".edition .val").text();
-      var publisher   = $item.find(".publisher .val").text();
-      var isbn10      = $item.find(".isbn10 .val").text();
-      var isbn13      = $item.find(".isbn13 .val").text();
-      
-      console.log(title)
-      console.log(edition)
-      console.log(publisher)
-      console.log(isbn10)
-      console.log(isbn13)
-
-
-      var $form = $("form.listing-form");
-      console.log($form)
-      console.log($form.find("input.title"));
-      $form.find("input.title").val(title);
-      $form.find("input.edition").val(edition);
-      $form.find("input.publisher").val(publisher);
-      $form.find("input.isbn10").val(isbn10);
-      $form.find("input.isbn13").val(isbn13);
-
-    });
-
+    function get_results(request, response) {
+      console.log(request.term)
+      var params = {
+        keywords: request.term
+      };
+      $.get("/queries/json_completion", params, function (data) {
+        console.log(data)
+        response(data);
+      }, "json");
+    }
 
   });
-</script>
-
-<script type="text/javascript">
-$(document).ready(function () {
-
-  $("#search-title").autocomplete({
-    source: get_airports,
-    minLength: 3,
-    select: function (event, ui) {
-              event.preventDefault();
-              console.log(ui.item.book);
-              $(".form-group.hidden").removeClass('hidden');
-              var book  = ui.item.book;
-              var $form = $("form.listing-form");
-
-              $form.find("input.title").val(book.title);
-              $form.find("input.edition").val(book.edition);
-              $form.find("input.publisher").val(book.publisher);
-              $form.find("input.isbn10").val(book.isbn);
-
-              $(".form-group.hidden", $form).removeClass('hidden');
-              $(".item-info").addClass("fadeOutRight")
-                             .addClass("hidden")
-                             .removeClass("fadeOutRight")
-                             .removeClass("col-sm-offset-2")
-                             .addClass("fadeInLeft")
-                             .removeClass("hidden");
-
-              $(".search-result").removeClass("hidden");
-              var sel = "#page-wrapper > div > div > div.col-sm-4.search-result.animated.fadeInRight > div > div.ibox-title.title > h5";
-              $(sel).text(book.title);
-
-
-              var img = "#page-wrapper > div > div > div.col-sm-4.search-result.animated.fadeInRight > div > div.auto.result-item > div > img";
-              // $(img).src = "<%= @classified.images.first %>";
-              var img_src = "<%= @classified.images.first %>";
-              console.log(img_src + "sssssssssssssssssss");
-              // return false;
-            }
-  })
-  .keydown(function(e){
-    if (e.keyCode === 13) {
-      e.preventDefault();
-      $("form.listing-form .form-group.hidden").removeClass('hidden');
-      $("form.listing-form .form-group input").attr("disabled", false);
-      return false;
-    }
-  })
-  .data("ui-autocomplete")._renderItem = function (ul, item) {
-    return $("<li>")
-                    .append("<a> <img src=" + item.image_url + "></img>" + item.book.title + item.book.description + "</a>")
-                    .appendTo(ul);
-  };
-
-  function get_airports(request, response) {
-    console.log(request.term)
-    var params = {
-      keywords: request.term
-    };
-    $.get("/queries/json_completion", params, function (data) {
-      console.log(data)
-      response(data);
-    }, "json");
-  }
-
-
-
-});
-
 </script>
