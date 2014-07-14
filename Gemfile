@@ -60,7 +60,7 @@ gem "bson_ext"
 # view helper
 gem "therubyracer"
 gem "less-rails"
-gem 'font-awesome-rails', :git => 'git@github.com:bokmann/font-awesome-rails.git'
+gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
 
 # test helper
 gem 'faker'
