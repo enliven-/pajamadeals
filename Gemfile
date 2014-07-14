@@ -77,8 +77,5 @@ gem 'mini_magick'
 # active admin
 gem 'activeadmin', github: 'gregbell/active_admin'
 
-# pagination
-gem 'will_paginate'
-
 # older jquery-ui-rails for viksit macbook air
 gem 'jquery-ui-rails', '~> 4.2.1'
