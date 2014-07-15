@@ -51,6 +51,7 @@ gem 'koala'
 gem 'sunspot_rails', '~>2.1.1'
 gem 'sunspot_solr', '~>2.1.1'
 gem 'progress_bar'
+gem 'will_paginate'
 
 # logging and monitoring
 gem 'mongodb_logger'
@@ -61,7 +62,6 @@ gem "bson_ext"
 gem "therubyracer"
 gem "less-rails"
 gem 'font-awesome-rails'
-gem 'will_paginate'
 
 # test helper
 gem 'faker'
@@ -80,5 +80,3 @@ gem 'mini_magick'
 
 # older jquery-ui-rails for viksit macbook air
 gem 'jquery-ui-rails'
-
-gem 'forgery'
