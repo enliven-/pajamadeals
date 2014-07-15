@@ -33,17 +33,11 @@
 
                   <%= f.fields_for :book do |book| %>
 
-<!--                     <div class="form-group">
-                      <%= book.label :title, class: 'col-sm-2 control-label' %>
-                      <div class="col-sm-10">
-                        <%= book.text_field :title, class: 'form-control title', id: 'search-title' %>
-                      </div>
-                    </div> -->
-
                     <div class="form-group title">
                       <%= book.label :title, class: 'col-sm-2 control-label' %>
                       <div class="col-sm-10">
-                      <div class="input-group"><input type="text" class="form-control title", id="search-title">
+                      <div class="input-group">
+                          <%= book.text_field :title, class: 'form-control title', id: 'search-title' %>
                           <div class="input-group-btn">
                             <button tabindex="-1" class="btn btn-default clear" type="button">Clear</button>
                           </div>
@@ -74,18 +68,14 @@
                     </div>
 
                     <div class="hr-line-dashed"></div>
-
-                    <div class="form-group retail-price hidden">
-                      <%= book.label 'Retail Price (Rs)', class: 'col-sm-2 control-label' %>
-                      <div class="col-sm-10">
-                        <%= book.text_field :retail_price, class: 'form-control retail-price' %>
-                      </div>
-                    </div>
-
                   <% end %> 
 
-
-
+                  <div class="form-group retail-price hidden">
+                    <%= f.label 'Retail Price (Rs)', class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-10">
+                      <%= f.text_field :retail_price, class: 'form-control retail-price' %>
+                    </div>
+                  </div>
 
                   <div class="form-group condition hidden">
                     <%= f.label  :condition, class: 'col-sm-2 control-label' %>
@@ -99,6 +89,7 @@
                     <div class="col-sm-10"> 
                       <%= f.text_field :expected_price, value: @classified.suggested_price, class: 'form-control selling-price' %>
                     </div>
+                    <span class="sp-comment">*We reccomend 55% of retail price: Rs <span class="sp-value"></span>.</span>
                   </div>
 
 
@@ -241,7 +232,7 @@
         <form method="get" class="form-horizontal listing-form">
 
           <div class="form-group">
-            <label class="col-sm-3 control-label">Full Name</label>
+            <label class="col-sm-3 control-label">Name</label>
             <div class="col-sm-8">
               <input type="text" class="form-control name">
             </div>
@@ -258,6 +249,12 @@
               <input type="text" class="form-control college">
             </div>
           </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">College ID No.</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control college-id">
+            </div>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
@@ -272,12 +269,56 @@
   .bordered {
     border: 1px solid red;
   }
+
+  .form-group.selling-price .sp-comment {
+    font-size: 10px;
+    margin-left: 2%;
+  }
 </style>
 
 <script type="text/javascript">
   $(document).ready(function () {
 
+    $(".search-container").addClass("hidden");
+
     $('.file-inputs').bootstrapFileInput();
+
+
+    $(".title button.clear").on("click", function(e) {
+      console.log("clear it son!");
+      
+      var $form = $("form.listing-form");
+
+      $(".form-group", $form).addClass('hidden');
+      $(".form-group.title").removeClass('hidden');
+
+      $("#search-title").val("")
+                        .removeAttr("disabled");
+
+      $(".search-result") .removeClass("fadeInRight")
+                          .addClass("fadeOutLeft")
+                          .addClass("hidden");
+
+      $(".item-info")                     
+                     .removeClass("fadeInLeft")
+                     .addClass("fadeInRight")
+                     .addClass("col-sm-offset-2")                     
+    });
+
+
+
+
+
+    $("#classified_retail_price").on("keyup", function(e) {
+      var retail_price  = Math.floor( $("#classified_retail_price").val() );
+      if (typeof(retail_price)==="number") { console.log("number it is"); }
+      console.log("no number guess")
+      var selling_price = Math.floor( retail_price * 0.55 );
+      $("#classified_expected_price").val(selling_price);
+      $(".sp-comment > .sp-value").html(selling_price);
+
+    });
+
 
     console.log("printing user");
     var current_user = "<%= current_user && current_user.name %>";
@@ -312,20 +353,26 @@
                 $form.find("input.isbn").val(book.isbn).attr("disabled", true);
 
                 $(".form-group.hidden", $form).removeClass('hidden');
-                $(".item-info").addClass("fadeOutRight")
-                               .addClass("hidden")
-                               .removeClass("fadeOutRight")
+                $(".item-info")
                                .removeClass("col-sm-offset-2")
+                               .removeClass("fadeInRight")
                                .addClass("fadeInLeft")
                                .removeClass("hidden");
 
-                $(".search-result").removeClass("hidden");
+                $(".search-result")
+                                    .removeClass("fadeOutLeft")
+                                    .addClass("fadeInRight")
+                                    .removeClass("hidden");
+
                 var sel = "#page-wrapper > div > div > div.col-sm-4.search-result.animated.fadeInRight > div > div.ibox-title.title > h5";
                 $(sel).text(book.title);
 
 
                 var img = "#page-wrapper > div > div > div.col-sm-4.search-result.animated.fadeInRight > div > div.auto.result-item > div > img";
-                var img_src = "<%= @classified.images.first %>";
+                var img_src = ui.item.book.image.show.url;
+                // console.log(ui.item.book.image.profile.url);
+                console.log(img_src);
+                $(img).attr("src", img_src);
               }
     })
     .keydown(function(e){

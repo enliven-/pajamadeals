@@ -159,7 +159,7 @@
                         <span class="fe-sub-heading"><strong> Photos by Seller</strong></span>                      
                         <div class="photos">
                         <% for image in @classified.images %>
-                            <%= image_tag image %>
+                            <%= image_tag image.file.s135x180, class: 'img-responsive feed-photo' %>
                         <% end %>
                         </div>
                       </div>
@@ -301,8 +301,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Hold it</h4>
-        We can hold this book for two days, i.e. until July 12th, 2014. You can pick it up at the college booth. Please submit the form below.
+        <h4 class="modal-title" id="myModalLabel">Booth Pickup</h4>
+        You can pick up this book at the booth in your college. We'll hold this book for you for 2 days.
       </div>
       <div class="modal-body">
 

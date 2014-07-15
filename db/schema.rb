@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714051453) do
+ActiveRecord::Schema.define(version: 20140714144005) do
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20140714051453) do
     t.string   "isbn"
     t.string   "edition"
     t.string   "released_year"
-    t.string   "retail_price"
     t.string   "university"
     t.string   "image"
     t.datetime "created_at"
@@ -48,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140714051453) do
     t.string   "ip"
     t.string   "contact_preference"
     t.string   "pattern"
+    t.string   "retail_price"
   end
 
   create_table "colleges", force: true do |t|

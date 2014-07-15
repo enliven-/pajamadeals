@@ -48,7 +48,7 @@ CSV.foreach("#{Rails.root}/resources/books/books.csv", headers: true) do |row|
 			department:  (row[4].camelize rescue ''),
 			semester: 	 row[5],
 			isbn: 		 row[6],
-			retail_price: row[7],
+			# retail_price: row[7],
 			image:       (File.open("#{Rails.root}/resources/books/#{row[8]}") rescue ''),
 			edition: 	 row[9],
 			pages: 		 row[10],
@@ -57,14 +57,15 @@ CSV.foreach("#{Rails.root}/resources/books/books.csv", headers: true) do |row|
 		count += 1
 	end
 	p Book.last
-	return if count >= 10
+	break if count > 25
 end
 
 # create classifieds
-10.times do
+30.times do
 	Classified.create(
 					  comment: Faker::Lorem.paragraph,
 					  user: User.all.sample,
+					  retail_price: Faker::Number.number(1+rand(2)),
 					  expected_price: Faker::Number.number(1+rand(2)),
 					  suggested_price: Faker::Number.number(1+rand(2)),
 					  listing_type: [0, 1].sample,

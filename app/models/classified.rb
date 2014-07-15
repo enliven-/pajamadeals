@@ -14,6 +14,7 @@ class Classified < ActiveRecord::Base
   accepts_nested_attributes_for :book
 
   alias_attribute :selling_price, :expected_price
+  alias_attribute :mrp, :retail_price
 
   before_create :set_college
 
@@ -23,8 +24,7 @@ class Classified < ActiveRecord::Base
   scope :sold, -> { where(sold: true) }
 
   delegate :title, :description, :publisher, :author, :isbn, :edition,
-    :released_year, :retail_price, :university, :image, :pages,
-    to: :book, allow_nil: true
+    :released_year, :university, :image, :pages, to: :book, allow_nil: true
 
 
   # search classified
@@ -57,9 +57,7 @@ class Classified < ActiveRecord::Base
   end
 
   def suggested_price
-    if self.try(:retail_price)
-      (retail_price * 0.55).round
-    end
+    # (retail_price * 0.55).round unless self.try(:retail_price).empty?   
   end
 
   private
