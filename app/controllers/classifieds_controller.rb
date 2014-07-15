@@ -16,6 +16,7 @@ class ClassifiedsController < ApplicationController
 
       paginate page: params[:page], per_page: 10
     end
+    # raise @search.results.inspect
     @classifieds = @search.results
   end
 
@@ -39,7 +40,7 @@ class ClassifiedsController < ApplicationController
   # POST /classifieds
   # POST /classifieds.json
   def create
-    # raise params.inspect
+    raise params.inspect
     book_attributes = classified_params.delete(:book_attributes)
     book = Book.find_or_create_by(book_attributes)
 
@@ -107,6 +108,10 @@ class ClassifiedsController < ApplicationController
   def contact_seller
     @classified.contact_sellers.create(contact_seller_params)
     render @classified, notice: 'Message sent to seller'
+  end
+
+  def search
+    render json: params
   end
 
   private

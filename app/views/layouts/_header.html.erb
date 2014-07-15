@@ -154,18 +154,18 @@
 $(document).ready(function () {
 
   $("#search-box").autocomplete({
-    source: get_results,
+    source: get_results_books,
     minLength: 2,
     select: function (event, ui) {
-              event.preventDefault();
-              console.log(ui);
-              return false;
+              var url = "/search/classifieds?params=" + ui.item.book.title;
+              document.location = url;
             }
   })
   .data("ui-autocomplete")._renderItem = function (ul, item) {
     $(".ui-corner-all").removeClass("ui-corner-all");
+    var url = item.book.title;
     return $("<li>")
-                    .append("<a><img src=" + item.image_url + "></img>" + 
+                    .append("<a class='cf-link' href=" + '/search/classifieds/' + url + "><img src=" + item.image_url + "></img>" + 
                       "<div style='display: inline-block;'> <span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +
                             // "<p class=edition>" + item.book.edition +"</p>" +
                             "<span class=author>" + item.book.author + "</span>, " +
@@ -173,15 +173,22 @@ $(document).ready(function () {
                       "</div></a>").appendTo(ul);
   };
 
-  function get_results(request, response) {
+  function get_results_books(request, response) {
     console.log(request.term)
     var params = {
       keywords: request.term
     };
-    $.get("/queries/json_completion", params, function (data) {
+    $.get("/search/books/", params, function (data) {
       console.log(data)
       response(data);
     }, "json");
+  }
+
+
+  function get_results_clsfds(keywords) {
+    console.log(keywords);
+    var params = { keywords: keywords };
+    console.log(params);
   }
 
 

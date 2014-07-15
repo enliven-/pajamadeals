@@ -484,7 +484,7 @@
       var params = {
         keywords: request.term
       };
-      $.get("/queries/json_completion", params, function (data) {
+      $.get("/search/books", params, function (data) {
         console.log(data)
         response(data);
       }, "json");
