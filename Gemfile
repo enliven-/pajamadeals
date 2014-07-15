@@ -60,7 +60,7 @@ gem "bson_ext"
 # view helper
 gem "therubyracer"
 gem "less-rails"
-gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
+gem 'font-awesome-rails'
 gem 'will_paginate'
 
 # test helper
