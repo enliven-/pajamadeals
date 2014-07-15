@@ -350,8 +350,6 @@ table.other-choices tr th {
   border: none !important;
 }
 
-
-  <style type="text/css">
 h3.selling-price {
   /*padding-left: 15px !important;*/
   /*padding-top: 5px !important;*/
@@ -365,7 +363,7 @@ h3.selling-price {
 }
 
 .book-info-container {
-  padding-left: 0px !important !important;
+  padding-left: 0px !important;
   margin-top: 15px !important;
 }
 
@@ -467,8 +465,8 @@ table.other-choices a:hover {
 /* to make dropzone fit in the new form */
 
 .dropzone {
-  min-height: 200px !important !important;
-  height: 200px !important !important;
+  min-height: 200px !important;
+  height: 200px !important;
 }
 
 .dropzone .dz-default.dz-message {
