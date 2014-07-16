@@ -5,7 +5,7 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
-    
+
     # to check if ajax search is working
     rand = [0,1].sample
     order = rand==0? :desc : :asc
@@ -47,17 +47,15 @@ class ClassifiedsController < ApplicationController
   # POST /classifieds
   # POST /classifieds.json
   def create
-    # raise params.inspect
     book_attributes = classified_params.delete(:book_attributes)
     book = Book.find_or_create_by(book_attributes)
 
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
-      email = user_attributes[:email].split('@')
-      user_attributes[:email] = [email.first + '_hasguest', '@', email.last].join
-      user = User.find_by(email: user_attributes[:email]) ||
-        User.create(user_attributes.merge({password: Time.now, guest: true}))
-    end
+      user = User.find_by(mobile_number: user_attributes[:phone]) ||
+        User.create(user_attributes.merge({password: Time.now.to_s,
+                                           guest: true}))
+        end
 
     @classified = Classified.new(classified_params)
     @classified.book = book
@@ -167,7 +165,8 @@ class ClassifiedsController < ApplicationController
   end
 
   def booth_pickup_params
-    params.require(:pick).permit(:message)
+    params.require(:pick).permit(:message, :name, :phone, :college_id, :college,
+                                 :email)
   end
 
 end
