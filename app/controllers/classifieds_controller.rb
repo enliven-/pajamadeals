@@ -111,7 +111,8 @@ class ClassifiedsController < ApplicationController
   end
 
   def search
-    render json: params
+    p params
+    render text: params
   end
 
   private
