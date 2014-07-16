@@ -44,11 +44,10 @@ class ClassifiedsController < ApplicationController
 
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
-      email = user_attributes[:email].split('@')
-      user_attributes[:email] = [email.first + '_hasguest', '@', email.last].join
-      user = User.find_by(email: user_attributes[:email]) ||
-        User.create(user_attributes.merge({password: Time.now, guest: true}))
-    end
+      user = User.find_by(mobile_number: user_attributes[:phone]) ||
+        User.create(user_attributes.merge({password: Time.now.to_s,
+                                           guest: true}))
+        end
 
     @classified = Classified.new(classified_params)
     @classified.book = book
@@ -122,8 +121,8 @@ class ClassifiedsController < ApplicationController
                                        book_attributes: [:title, :publisher,
                                                          :author, :isbn, :edition,
                                                          ],
-                                       user_attributes: [:email, :phone, :fname,
-                                                         :lname, :college_id]
+                                       user_attributes: [:email, :phone, :first_name,
+                                                         :last_name, :college_id]
                                        )
   end
 
