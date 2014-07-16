@@ -7,11 +7,13 @@ BHUSHAN:
    ☐ sign in / sign up with mobile
    ☐ Results filter from Solr
 
-
+error: 
+undefined method `delay' for Staff:Class
+Staff.delay.pick_request(self)
                    -------------------------------------------------------
 VIKSIT:
    Make sure everything below works.
-   
+
  ☐ sign in sign up in navbar functionality
  ☐ results from navbar search - select book as well as only text
  ☐ handle sets

@@ -1,6 +1,6 @@
 class ClassifiedsController < ApplicationController
   before_action :set_classified, only: [:show, :edit, :update, :destroy,
-                                        :contact_seller]
+                                        :contact_seller, :booth_pickup]
 
   # GET /classifieds
   # GET /classifieds.json
@@ -114,7 +114,14 @@ class ClassifiedsController < ApplicationController
 
   def contact_seller
     @classified.contact_sellers.create(contact_seller_params)
-    render @classified, notice: 'Message sent to seller'
+    # render @classified, notice: 'Message sent to seller'
+    render text: 'Message sent to seller'
+  end
+
+  def booth_pickup
+    @classified.picks.create(booth_pickup_params)
+    # render @classified, notice: 'Message sent to seller'
+    render text: 'Booth pick up done.'
   end
 
   def search
@@ -158,4 +165,9 @@ class ClassifiedsController < ApplicationController
   def contact_seller_params
     params.require(:contact_seller).permit(:name, :phone, :message)
   end
+
+  def booth_pickup_params
+    params.require(:pick).permit(:message)
+  end
+
 end
