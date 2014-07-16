@@ -58,13 +58,26 @@ namespace :deploy do
     end
   end
 
-  task :load_schema do
-    execute "cd #{current_path}; rake db:schema:load"
-  end
-
-  task :drop_db do
-    execute "cd #{current_path}; rake db:drob"
-  end
-
   after :finishing, 'deploy:cleanup'
+end
+
+# Solr tasks
+namespace :solr do
+  task :start do
+    on roles(:app) do
+      execute :rake, 'sunspot:solr:start'
+    end
+  end
+
+  task :stop do
+    on roles(:app) do
+      execute :rake, 'sunspot:solr:stop'
+    end
+  end
+
+  task :reindex do
+    on roles(:app) do
+      execute :rake, 'sunspot:solr:reindex'
+    end
+  end
 end
