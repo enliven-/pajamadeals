@@ -80,3 +80,9 @@ gem 'mini_magick'
 
 # older jquery-ui-rails for viksit macbook air
 gem 'jquery-ui-rails'
+
+# deployment
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+gem 'capistrano-rvm'
