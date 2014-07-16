@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get 'books/search'
 
   resources :classifieds do
-    resources :picks, only: [:new, :create]
     member do
       post :contact_seller
       post :booth_pickup

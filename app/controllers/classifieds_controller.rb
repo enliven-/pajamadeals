@@ -5,7 +5,7 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
-    
+
     # to check if ajax search is working
     rand = [0,1].sample
     order = rand==0? :desc : :asc
@@ -165,7 +165,8 @@ class ClassifiedsController < ApplicationController
   end
 
   def booth_pickup_params
-    params.require(:pick).permit(:message)
+    params.require(:pick).permit(:message, :name, :phone, :college_id, :college,
+                                 :email)
   end
 
 end
