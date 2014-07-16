@@ -1,3 +1,5 @@
+SSHKit.config.command_map[:rake] = "bundle exec rake"
+
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
