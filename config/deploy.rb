@@ -58,5 +58,13 @@ namespace :deploy do
     end
   end
 
+  task :load_schema do
+    execute "cd #{current_path}; rake db:schema:load"
+  end
+
+  task :drop_db do
+    execute "cd #{current_path}; rake db:drob"
+  end
+
   after :finishing, 'deploy:cleanup'
 end

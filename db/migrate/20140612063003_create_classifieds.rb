@@ -15,7 +15,7 @@ class CreateClassifieds < ActiveRecord::Migration
       t.string :isbn
       t.string :edition
       t.string :condition
-      
+
       t.timestamps
     end
   end
