@@ -7,6 +7,10 @@ set :application, 'hasstuff'
 set :repo_url, 'git@github.com:enliven-/pajamadeals.git'
 set :deploy_via, :copy
 set :ssh_options, { forward_agent: true }
+
+# rvm settings
+set :rvm_ruby_version, '2.1.2'
+
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
