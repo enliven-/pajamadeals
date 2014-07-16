@@ -38,6 +38,11 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+# mongodb logger settings
+require 'mongodb_logger/capistrano'
+set :mongodb_logger_assets_dir, "public/assets" # where to put mongodb assets
+after 'deploy:update_code', 'mongodb_logger:precompile'
+
 namespace :deploy do
 
   desc 'Restart application'
