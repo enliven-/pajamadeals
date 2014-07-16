@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   # mondblogger
   mount MongodbLogger::Server.new, :at => "/logs"
 
-  # autocomplete
-  get '/queries/json_completion' => 'books#search'
+  # autocomplete on form
+  get '/search/books/' => 'books#search'
+
+
+  # autocomplete on navbar search
+  get '/search/classifieds/' => 'classifieds#search'
 end
