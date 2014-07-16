@@ -51,22 +51,23 @@ namespace :deploy do
 end
 
 # Solr tasks
-namespace :solr do
-  task :start do
-    on roles(:app) do
-      execute :rake, 'sunspot:solr:start'
-    end
-  end
+# namespace :solr do
+#   task :start do
+#     on roles(:app) do
+#       execute :cd, release_path
+#       execute :rake, 'sunspot:solr:start'
+#     end
+#   end
 
-  task :stop do
-    on roles(:app) do
-      execute :rake, 'sunspot:solr:stop'
-    end
-  end
+#   task :stop do
+#     on roles(:app) do
+#       execute :rake, 'sunspot:solr:stop', "RAILS_ENV=production"
+#     end
+#   end
 
-  task :reindex do
-    on roles(:app) do
-      execute :rake, 'sunspot:solr:reindex'
-    end
-  end
-end
+#   task :reindex do
+#     on roles(:app) do
+#       execute :rake, 'sunspot:solr:reindex', "RAILS_ENV=production"
+#     end
+#   end
+# end
