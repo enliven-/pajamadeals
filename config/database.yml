@@ -35,6 +35,7 @@ test:
 production:
   adapter: mysql2
   host: localhost
+  encoding: utf8
   database: hasstuff_prod
   username: bhushan
   password: bhushan
