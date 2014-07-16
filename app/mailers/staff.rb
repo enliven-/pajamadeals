@@ -7,6 +7,9 @@ class Staff < ActionMailer::Base
 		@seller = @classified.user
 		@buyer = @pick.user
 		mail(to: 'bhushanlodha@gmail.com', from: @buyer.email,
-		     subject: 'Item pickup request')
+		     subject: 'Item pickup request', message: @pick.message)
+
+    mail(to: 'dreamz.unlimitid@gmail.com', from: @buyer.email,
+         subject: 'Item pickup request: ' + @classified.book.title, message: @pick.message)
 	end
 end
