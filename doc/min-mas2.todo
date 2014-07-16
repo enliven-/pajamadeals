@@ -1,3 +1,17 @@
+ 
+
+BHUSHAN:
+   ☐ Booth Pickup Model
+   ☐ Set model
+   ☐ point me to sign in sign up form ka code that I can use in modal
+   ☐ sign in / sign up with mobile
+   ☐ Results filter from Solr
+
+
+                   -------------------------------------------------------
+VIKSIT:
+   Make sure everything below works.
+   
  ☐ sign in sign up in navbar functionality
  ☐ results from navbar search - select book as well as only text
  ☐ handle sets
@@ -11,3 +25,4 @@
  ☐ flash messages for classified creation / msg sent etc.
 
  ☐ sign up / sign in with mobile
+
