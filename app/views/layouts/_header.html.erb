@@ -157,13 +157,13 @@ $(document).ready(function () {
     source: get_results_books,
     minLength: 2,
     select: function (event, ui) {
-              var url = "/search/classifieds?params=" + "vlsi";
-              // var params = { keywords : ui.item.book.title };
-              var params = ui.item.book.title;
-              // document.location = url;
-              var req = new XMLHttpRequest();
-              req.open("GET", url, true);
-              req.send("fname=henry");
+
+              params = { keywords : 'vlsi'};
+              $.get("/search/classifieds/", params, function (data) {
+                var page = $(".results", data);
+                var results = $(page).html();
+                $(".results").html($(page).html());
+              });              
             }
   })
   .data("ui-autocomplete")._renderItem = function (ul, item) {
