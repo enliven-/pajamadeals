@@ -80,3 +80,6 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 
 # older jquery-ui-rails for viksit macbook air
 gem 'jquery-ui-rails', '~> 4.2.1'
+
+
+gem 'sidekiq'
