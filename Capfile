@@ -1,8 +1,11 @@
-# Load DSL and Setup Up Stages
 require 'capistrano/setup'
-
-# Includes default deployment tasks
 require 'capistrano/deploy'
+require 'capistrano/rvm'
+require 'capistrano/bundler'
+require 'capistrano/rails'
+set :rvm_type, :user
+set :rvm_ruby_version, '2.1.2'
+Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 
 # Includes tasks from other gems included in your Gemfile
 #
@@ -22,4 +25,3 @@ require 'capistrano/deploy'
 # require 'capistrano/rails/migrations'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
-Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
