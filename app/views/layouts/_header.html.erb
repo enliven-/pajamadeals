@@ -158,8 +158,8 @@ $(document).ready(function () {
     minLength: 2,
     select: function (event, ui) {
 
-              params = { keywords : 'vlsi'};
-              $.get("/search/classifieds/", params, function (data) {
+              params = { book_id : ui.item.book.id};
+              $.get("/classifieds", params, function (data) {
                 var page = $(".results", data);
                 var results = $(page).html();
                 $(".results").html($(page).html());

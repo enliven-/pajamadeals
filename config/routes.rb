@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
- # ActiveAdmin.routes(self)
+  # ActiveAdmin.routes(self)
 
   get 'pages/home'
   get 'pages/about'
@@ -21,8 +21,4 @@ Rails.application.routes.draw do
 
   # autocomplete on form
   get '/search/books/' => 'books#search'
-
-
-  # autocomplete on navbar search
-  get '/search/classifieds/' => 'classifieds#search'
 end
