@@ -22,7 +22,8 @@ foo = User.create(first_name: 'foo',
 				  email: 	  'bhushanlodha@gmail.com',
 	              password:   'password',
 	              avatar: 	   File.open("#{Rails.root}/test/fixtures/test1.jpg"),
-	              college: 	   College.all.sample
+	              college: 	   College.all.sample,
+	              mobile_number: '9975454384'
 	              )
 
 # create users
@@ -32,7 +33,8 @@ foo = User.create(first_name: 'foo',
 						 email: 	 Faker::Internet.email,
 						 password: 	 Faker::Internet.password,
 						 college: 	 College.all.sample,
-						 avatar: 	 profile_images.sample
+						 avatar: 	 profile_images.sample,
+						 mobile_number: Faker::Phone.cell_phone
 						 )
 end
 

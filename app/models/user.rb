@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   include HasToken
 
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
+    :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
+    omniauth_providers: [:facebook]
 
   has_many :classifieds
   has_many :picks
@@ -16,6 +17,10 @@ class User < ActiveRecord::Base
   alias_attribute :phone_number, :mobile_number
   alias_attribute :fname, :first_name
   alias_attribute :lname, :last_name
+
+  validates :mobile_number, presence: true, uniqueness: true,
+    format: { with: /^[789]\d{9}$/, message: 'Invalid number'}
+
 
   # facebook
 
@@ -56,4 +61,9 @@ class User < ActiveRecord::Base
     first_name + ' ' + last_name
   end
   alias_method :full_name, :name
+
+  private
+  def email_required?
+    false
+  end
 end
