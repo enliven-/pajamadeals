@@ -46,9 +46,7 @@ gem 'omniauth-facebook'
 gem 'koala'
 
 # search engine
-gem 'sunspot_rails', '~>2.1.1'
-gem 'sunspot_solr', '~>2.1.1'
-gem 'progress_bar'
+gem 'searchkick'
 
 # logging and monitoring
 gem 'mongodb_logger'
