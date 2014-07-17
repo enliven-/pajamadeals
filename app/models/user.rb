@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   alias_attribute :lname, :last_name
 
   validates :mobile_number, presence: true, uniqueness: true,
-    format: { with: /^[789]\d{9}$/, message: 'Invalid number'}
+    format: { with: /\A[789]\d{9}\z/, message: 'Invalid number'}
 
 
   # facebook
