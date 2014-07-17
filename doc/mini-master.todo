@@ -10,7 +10,7 @@ BHUSHAN:
 
 VIKSIT:
 
-  ☐ Merge suggested price and selling price fields, instead selling price will come with pre-filled suggested price with a message bellow that this is suggested price - message disappers if user edits price, instead it shows suggested price in that message now
+  ✔ Merge suggested price and selling price fields, instead selling price will come with pre-filled suggested price with a message bellow that this is suggested price - message disappers if user edits price, instead it shows suggested price in that message now @done (14-07-15 22:31)
  
  ☐ Form Alignment Vertical or Horizontal
        http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php

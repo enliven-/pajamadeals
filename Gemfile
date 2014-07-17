@@ -40,17 +40,13 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'simple_form'
-
 # facebook
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'koala'
 
 # search engine
-gem 'sunspot_rails', '~>2.1.1'
-gem 'sunspot_solr', '~>2.1.1'
-gem 'progress_bar'
+gem 'searchkick'
 gem 'will_paginate'
 
 # logging and monitoring
@@ -79,10 +75,13 @@ gem 'mini_magick'
 # gem 'activeadmin', :git => "git://github.com/gregbell/active_admin.git"
 
 # older jquery-ui-rails for viksit macbook air
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '~> 4.2.1'
 
 # deployment
 gem 'capistrano'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
+
+# background jobs
+gem 'sidekiq'

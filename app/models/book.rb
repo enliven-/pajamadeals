@@ -1,11 +1,6 @@
 class Book < ActiveRecord::Base
+  searchkick
+
   has_many :classifieds
   mount_uploader :image, ImageUploader
-
-  # search
-  searchable do
-    text :title
-    text :author
-    text :isbn
-  end
 end
