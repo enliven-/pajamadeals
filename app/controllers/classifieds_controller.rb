@@ -1,21 +1,29 @@
 class ClassifiedsController < ApplicationController
   before_action :set_classified, only: [:show, :edit, :update, :destroy,
-                                        :contact_seller]
+                                        :contact_seller, :booth_pickup]
 
   # GET /classifieds
   # GET /classifieds.json
   def index
+
+    # to check if ajax search is working
+    rand = [0,1].sample
+    order = rand==0? :desc : :asc
+    #
+
     @search = Sunspot.search(Classified) do
-      fulltext params[:search] do
+      fulltext params[:keywords] do
         fields(:title, :author, :isbn)
       end
 
       # with :active, true
       with :sold,   false
-      order_by :created_at, :desc
+      order_by :created_at, order
 
       paginate page: params[:page], per_page: 10
     end
+    # raise @search.results.inspect
+
     @classifieds = @search.results
   end
 
@@ -44,11 +52,10 @@ class ClassifiedsController < ApplicationController
 
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
-      email = user_attributes[:email].split('@')
-      user_attributes[:email] = [email.first + '_hasguest', '@', email.last].join
-      user = User.find_by(email: user_attributes[:email]) ||
-        User.create(user_attributes.merge({password: Time.now, guest: true}))
-    end
+      user = User.find_by(mobile_number: user_attributes[:phone]) ||
+        User.create(user_attributes.merge({password: Time.now.to_s,
+                                           guest: true}))
+        end
 
     @classified = Classified.new(classified_params)
     @classified.book = book
@@ -105,7 +112,33 @@ class ClassifiedsController < ApplicationController
 
   def contact_seller
     @classified.contact_sellers.create(contact_seller_params)
-    render @classified, notice: 'Message sent to seller'
+    # render @classified, notice: 'Message sent to seller'
+    render text: 'Message sent to seller'
+  end
+
+  def booth_pickup
+    @classified.picks.create(booth_pickup_params)
+    # render @classified, notice: 'Message sent to seller'
+    render text: 'Booth pick up done.'
+  end
+
+  def search
+    redirect_to action: 'index'
+    # search = Sunspot.search(Classified) do
+    #   p params[:keywords]
+    #   fulltext params[:keywords] do
+    #     fields(:title)
+    #   end
+    # end
+    # bucket = search.results
+    # # p bucket
+    # bucket.each do |c|
+    #   puts "--------------------------"
+    #   puts c.book.title
+    # end
+
+    # render 'layouts/results'
+    # render text: params
   end
 
   private
@@ -122,12 +155,18 @@ class ClassifiedsController < ApplicationController
                                        book_attributes: [:title, :publisher,
                                                          :author, :isbn, :edition,
                                                          ],
-                                       user_attributes: [:email, :phone, :fname,
-                                                         :lname, :college_id]
+                                       user_attributes: [:email, :phone, :first_name,
+                                                         :last_name, :college_id]
                                        )
   end
 
   def contact_seller_params
     params.require(:contact_seller).permit(:name, :phone, :message)
   end
+
+  def booth_pickup_params
+    params.require(:pick).permit(:message, :name, :phone, :college_id, :college,
+                                 :email)
+  end
+
 end

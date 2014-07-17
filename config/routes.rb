@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get 'books/search'
 
   resources :classifieds do
-    resources :picks, only: [:new, :create]
     member do
       post :contact_seller
+      post :booth_pickup
     end
   end
 
@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   # mondblogger
   mount MongodbLogger::Server.new, :at => "/logs"
 
-  # autocomplete
-  get '/queries/json_completion' => 'books#search'
+  # autocomplete on form
+  get '/search/books/' => 'books#search'
+
+
+  # autocomplete on navbar search
+  get '/search/classifieds/' => 'classifieds#search'
 end
