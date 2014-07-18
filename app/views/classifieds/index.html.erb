@@ -74,11 +74,6 @@
                   <td></td>
                   <td><%= classified.released_year.present? ? classified.released_year : '-' %></td>
                 </tr>
-                <tr>
-                    <td><strong>Condition</strong></td>
-                    <td></td>
-                    <td><%= classified.condition.capitalize %></td>
-                  </tr>                                                           
               </table>
             </div>
             <div class="col-sm-4 col-sm-offset-2">
@@ -91,7 +86,7 @@
                   <tr>
                     <td><strong>Contact:</strong></td>
                     <td></td>
-                    <td><%= classified.contact_preference == 'phone' ? classified.user.mobile_number : classified.user.email %></td>
+                    <td><%= classified.user.try(:mobile_number) || classified.user.try(:email) %></td>
                   </tr>
                   <tr>
                     <td><strong>College:</strong></td>

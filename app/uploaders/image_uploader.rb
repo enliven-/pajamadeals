@@ -36,10 +36,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [50, 50]
   end
 
-  version :profile do
-    process resize_to_fit: [130, 130]
-  end
-
   version :index do
     process resize_to_fit: [160, 160]
   end
@@ -51,14 +47,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :s135x180 do
     process resize_to_fit: [135, 180]
   end
- 
 
-
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def default_url
+    ActionController::Base.helpers.asset_path("fallback/" + "default_book1.png")
+  end
 
   def extension_white_list
     %w(jpg jpeg gif png)

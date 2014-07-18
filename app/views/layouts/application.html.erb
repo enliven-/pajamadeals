@@ -16,6 +16,9 @@
 
     </div>
   </div>
+  <% if Rails.env.production? %>
+    <%= render 'layouts/google_analytics' %>
+  <% end %>
 </body>
 
 </html>
