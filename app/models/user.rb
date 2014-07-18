@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   has_token
 
-  mount_uploader :avatar, ImageUploader
+  mount_uploader :avatar, AvatarUploader
 
   alias_attribute :phone, :mobile_number
   alias_attribute :phone_number, :mobile_number

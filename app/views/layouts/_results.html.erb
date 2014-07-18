@@ -47,7 +47,7 @@
             <tr>
               <td><strong>Contact:</strong></td>
               <td></td>
-              <td><%= classified.contact_preference == 'phone' ? classified.user.mobile_number : classified.user.email %></td>
+              <td><%= classified.user.try(:mobile_number) || classified.user.try(:email) %></td>
             </tr>
             <tr>
               <td><strong>College:</strong></td>

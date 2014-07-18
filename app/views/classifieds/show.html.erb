@@ -16,7 +16,7 @@
         <div>
           
           <div class="ibox-content ?no-padding ?border-left-right">
-            <%= image_tag @classified.image.show, class: 'img-responsive classified-image' %>
+            <%= image_tag @classified.image.show, class: 'img-responsive classified-image', size: '450*350' %>
           </div>
 
           <div class="ibox-content profile-content" >
@@ -26,7 +26,6 @@
             </div>
             <div class="prices" style="margin-left: 34%" >
               <h3 class="selling-price"><strong>Rs. <%= @classified.expected_price %>  </strong></h3>
-              <span class="precent-off">(<%= @classified.percent_off %>% off)</span>              
               <br />
               <span class="retail-price">Rs. <%= @classified.retail_price %></span>   
             </div>
@@ -67,7 +66,7 @@
                   <%= @classified.user.name %>
                 </h2>
               </div>
-              <%= image_tag @classified.user.avatar.index, class: "img-circle circle-border m-b-md", alt: "profile" %>
+              <%= image_tag @classified.user.avatar.profile, class: "img-circle circle-border m-b-md", alt: "profile" %>
               <div>
                 <span><%= pluralize @classified.user.classifieds.count, 'Item' %> listed</span> |
                 <span><%= pluralize @classified.user.classifieds.sold.count, 'Item' %> sold</span>

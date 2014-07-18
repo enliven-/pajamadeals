@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
-  # ActiveAdmin.routes(self)
+ # ActiveAdmin.routes(self)
 
   get 'pages/home'
   get 'pages/about'
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'pages#home'
+  root to: 'classifieds#index'
 
   # mondblogger
   mount MongodbLogger::Server.new, :at => "/logs"
