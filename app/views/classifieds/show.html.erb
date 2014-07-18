@@ -118,18 +118,10 @@
                               <td><span class="field">ISBN</span></td>
                               <td><%= @classified.isbn || '-' %></td>
                             </tr> 
-                              <tr>
-                                <td><span class="field">Pages</span></td>
-                                <td><%= @classified.pages || '-' %></td>
-                              </tr>  
-                              <tr>
-                                <td><span class="field">Year</span></td>
-                                <td><%= @classified.released_year || '-' %></td>
-                              </tr>  
-                              <tr>
-                                <td><span class="field">Condition</span></td>
-                                <td><%= @classified.condition.capitalize || '-' %></td>
-                              </tr>  
+                            <tr>
+                              <td><span class="field">Year</span></td>
+                              <td><%= @classified.released_year || '-' %></td>
+                            </tr>  
                           </tbody>
                         </table>
                       </div>                            

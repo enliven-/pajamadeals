@@ -1,6 +1,6 @@
 
 
-<div class="?modal ?fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="?true">
+<div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -57,8 +57,8 @@
       </div>
       <div class="modal-footer">
         <div class="form-group">
-          <%= button_tag 'Cancel', class: 'btn btn-default', data: {dismiss: 'modal'} %>
-          <%= f.button :submit, class: 'btn btn-primary' %>
+          <%= button_tag 'Cancel', class: 'btn btn-default cancel', data: {dismiss: 'modal'} %>
+          <%= f.button :submit, class: 'btn btn-primary submit' %>
         </div>
       </div>
       <% end %>

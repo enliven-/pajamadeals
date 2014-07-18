@@ -25,7 +25,7 @@
 
     <% if current_user %>
       <ul class="nav navbar-nav navbar-right session-options">
-        <li><a href="" data-toggle="modal" data-target="#sign-in">Hello <%= current_user.name %></a>
+        <li><a href="">Hello <%= current_user.name %></a>
         </li>
         <!-- <li class="divider-vertical"></li> -->
         <!-- <li><a href="" data-toggle="modal" data-target="#sign-up">Sign Up</a> -->
@@ -36,10 +36,10 @@
       </ul>
     <% else %>
     <ul class="nav navbar-nav navbar-right session-options">
-      <li><a href="" ?data-toggle="modal" ?data-target="#sign-in" id="sign-in-link">Sign In</a>
+      <li><a href="" data-toggle="modal" data-target="#sign-in" id="sign-in-link">Sign In</a>
       </li>
       <li class="divider-vertical"></li>
-      <li><a href="" ?data-toggle="modal" ?data-target="#sign-up">Sign Up</a>
+      <li><a href="" data-toggle="modal" data-target="#sign-up" id="sign-up-link">Sign Up</a>
       </li>
     </ul>
     <% end %>
@@ -64,6 +64,22 @@ $(document).ready(function () {
                 $(".results").html($(page).html());
               });              
             }
+  })
+  .keydown(function(e){
+    if (e.keyCode === 13) {
+      e.preventDefault();
+
+      var search_term = $("#search-box").val();
+      params = { book_title : search_term };
+
+      $.get("/classifieds/", params, function (data) {
+        var page = $(".results", data);
+        var results = $(page).html();
+        $(".results").html($(page).html());
+      });
+
+      return false;
+    }
   })
   .data("ui-autocomplete")._renderItem = function (ul, item) {
     $(".ui-corner-all").removeClass("ui-corner-all");
@@ -97,11 +113,29 @@ $(document).ready(function () {
 
 
   $("#sign-in-link").on('click', function(e) {
+    e.preventDefault();
+
     $.get("/users/sign_in", function (data) {
-      var sign_in_page_partial = $( "div#sign-in", data );
-      console.log( $(sign_in_page_partial).html() );
+      var $sign_in_page_partial = $( "div#sign-in", data );
+      console.log(data);
+      // console.log( $sign_in_page_partial.html() );
+      $("body").append($sign_in_page_partial);
+      $("#sign-in").modal();
     });  
   });
+
+
+  $("#sign-up-link").on('click', function(e) {
+    e.preventDefault();
+
+    $.get("/users/sign_up", function (data) {
+      var $sign_up_page_partial = $( "div#sign-up", data );
+      console.log( $sign_up_page_partial.html() );
+      $("body").append($sign_up_page_partial);
+      $("#sign-up").modal();
+    });  
+  });
+
 
 });
 
