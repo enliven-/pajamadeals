@@ -36,10 +36,10 @@
       </ul>
     <% else %>
     <ul class="nav navbar-nav navbar-right session-options">
-      <li><a href="/users/sign_in" ?data-toggle="modal" ?data-target="#sign-in" id="sign-in-link">Sign In</a>
+      <li><a href="" ?data-toggle="modal" ?data-target="#sign-in" id="sign-in-link">Sign In</a>
       </li>
       <li class="divider-vertical"></li>
-      <li><a href="/users/sign_up" ?data-toggle="modal" ?data-target="#sign-up">Sign Up</a>
+      <li><a href="" ?data-toggle="modal" ?data-target="#sign-up">Sign Up</a>
       </li>
     </ul>
     <% end %>
@@ -96,14 +96,12 @@ $(document).ready(function () {
   }
 
 
-  // $("#sign-in-link").on('click', function(e) {
-  //   $.get("/users/sign_in", function (data) {
-  //     console.log(data);
-  //     var sign_in_page_partial = $( "div#sign-in", data );
-  //     console.log( $(sign_in_page_partial).html() );
-  //     // $("")
-  //   });  
-  // });
+  $("#sign-in-link").on('click', function(e) {
+    $.get("/users/sign_in", function (data) {
+      var sign_in_page_partial = $( "div#sign-in", data );
+      console.log( $(sign_in_page_partial).html() );
+    });  
+  });
 
 });
 
