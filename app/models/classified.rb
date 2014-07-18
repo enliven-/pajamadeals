@@ -27,7 +27,7 @@ class Classified < ActiveRecord::Base
   scope :sold, -> { where(sold: true) }
 
   delegate :title, :description, :publisher, :author, :isbn, :edition,
-    :released_year, :university, :image, :pages, to: :book, allow_nil: true
+    :released_year, :university, :pages, to: :book, allow_nil: true
 
   def buy?
     listing_type == BUY
@@ -45,10 +45,10 @@ class Classified < ActiveRecord::Base
     end
   end
 
-  def suggested_price
-    # (retail_price * 0.55).round unless self.try(:retail_price).empty?
+  def image
+    book.image || self.images.first
   end
-
+  
   private
 
   def set_college

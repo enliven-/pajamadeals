@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'pages#home'
+  root to: 'classifieds#index'
 
   # mondblogger
   mount MongodbLogger::Server.new, :at => "/logs"
