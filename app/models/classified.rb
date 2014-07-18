@@ -3,6 +3,9 @@ class Classified < ActiveRecord::Base
   BUY = 0
   SELL = 1
 
+  validates :expected_price, presence: true, numericality: true
+  validates :retail_price,   presence: true, numericality: true
+
   has_many :images
   accepts_nested_attributes_for :images
   has_many :picks
