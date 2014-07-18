@@ -25,5 +25,5 @@ Rails.application.routes.draw do
 
 
   # autocomplete on navbar search
-  get '/search/classifieds/' => 'classifieds#search'
+  get '/search/classifieds/' => 'classifieds#index'
 end
