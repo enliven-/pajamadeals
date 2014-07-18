@@ -2,9 +2,17 @@ class Book < ActiveRecord::Base
   searchkick
 
   validates :title, 	presence: true
-  validates :publisher, presence: true
-  validates :author, 	presence: true
+  validate :publisher_or_author
 
   has_many :classifieds
   mount_uploader :image, ImageUploader
+
+  private
+
+  def publisher_or_author
+  	if publisher.blank? || !author.blank?
+  		errors.add(:base, "Either publisher or author should be present")
+  	end
+  end
+
 end
