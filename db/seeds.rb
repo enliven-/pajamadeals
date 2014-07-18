@@ -72,7 +72,7 @@ end
     suggested_price: Faker::Number.number(1+rand(2)),
     listing_type: [0, 1].sample,
     active: [true, false].sample,
-    condition: ['used', 'heavily used', 'like new'].sample,
+    # condition: ['used', 'heavily used', 'like new'].sample,
     contact_preference: ['email', 'phone'].sample,
     book: Book.all.sample
   )

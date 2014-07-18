@@ -25,7 +25,7 @@
 
     <% if current_user %>
       <ul class="nav navbar-nav navbar-right session-options">
-        <li><a href="">Hello <%= current_user.name %></a>
+        <li><a href="">Hello <%#= current_user.name %></a>
         </li>
         <!-- <li class="divider-vertical"></li> -->
         <!-- <li><a href="" data-toggle="modal" data-target="#sign-up">Sign Up</a> -->
@@ -136,6 +136,16 @@ $(document).ready(function () {
     });  
   });
 
+
+  $("body").on('click', "div#sign-in .submit", function(e) {
+    // var current_loc = window.location.href;
+    $("form.sign-in-form").submit();
+
+  });
+
+  $("body").on('click', "div#sign-up .submit", function(e) {
+    $("form.sign-up-form").submit();
+  });
 
 });
 
