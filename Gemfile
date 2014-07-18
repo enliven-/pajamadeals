@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
-gem 'pg'
+
 gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -40,17 +40,13 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'simple_form'
-
 # facebook
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'koala'
 
 # search engine
-gem 'sunspot_rails', '~>2.1.1'
-gem 'sunspot_solr', '~>2.1.1'
-gem 'progress_bar'
+gem 'searchkick'
 
 # logging and monitoring
 gem 'mongodb_logger'
@@ -60,7 +56,7 @@ gem "bson_ext"
 # view helper
 gem "therubyracer"
 gem "less-rails"
-gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
+gem 'font-awesome-rails'
 gem 'will_paginate'
 
 # test helper
@@ -76,10 +72,10 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 # active admin
-gem 'activeadmin', github: 'gregbell/active_admin'
+# gem 'activeadmin', :git => "git://github.com/gregbell/active_admin.git"
 
 # older jquery-ui-rails for viksit macbook air
 gem 'jquery-ui-rails', '~> 4.2.1'
 
-
+# background jobs
 gem 'sidekiq'

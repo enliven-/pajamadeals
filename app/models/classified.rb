@@ -26,20 +26,6 @@ class Classified < ActiveRecord::Base
   delegate :title, :description, :publisher, :author, :isbn, :edition,
     :released_year, :university, :image, :pages, to: :book, allow_nil: true
 
-
-  # search classified
-  searchable do
-    # Searches on following fields
-    text :title
-    text :author
-    text :isbn
-
-    # Constrainsts
-    time :created_at
-    boolean :active
-    boolean :sold
-  end
-
   def buy?
     listing_type == BUY
   end
@@ -57,7 +43,7 @@ class Classified < ActiveRecord::Base
   end
 
   def suggested_price
-    # (retail_price * 0.55).round unless self.try(:retail_price).empty?   
+    # (retail_price * 0.55).round unless self.try(:retail_price).empty?
   end
 
   private

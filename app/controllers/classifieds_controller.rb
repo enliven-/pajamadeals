@@ -5,26 +5,32 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
+    if params[:book_id]
+      @classifieds = Classified.where(book_id: params[:book_id]).paginate(
+      page: params[:page], per_page: 30)
+    else
+      @classifieds = Classified.paginate(page: params[:page], per_page: 30)
+    end
 
     # to check if ajax search is working
-    rand = [0,1].sample
-    order = rand==0? :desc : :asc
-    #
+    # rand = [0,1].sample
+    # order = rand==0? :desc : :asc
+    # #
 
-    @search = Sunspot.search(Classified) do
-      fulltext params[:keywords] do
-        fields(:title, :author, :isbn)
-      end
+    # @search = Sunspot.search(Classified) do
+    #   fulltext params[:keywords] do
+    #     fields(:title, :author, :isbn)
+    #   end
 
-      # with :active, true
-      with :sold,   false
-      order_by :created_at, order
+    #   # with :active, true
+    #   with :sold,   false
+    #   order_by :created_at, order
 
-      paginate page: params[:page], per_page: 10
-    end
-    # raise @search.results.inspect
+    #   paginate page: params[:page], per_page: 10
+    # end
+    # # raise @search.results.inspect
 
-    @classifieds = @search.results
+    # @classifieds = @search.results
   end
 
   # GET /classifieds/1

@@ -57,8 +57,7 @@ $(document).ready(function () {
     source: get_results_books,
     minLength: 2,
     select: function (event, ui) {
-
-              params = { keywords : ui.item.book.id };
+              params = { book_id : ui.item.book.id};
               $.get("/classifieds/", params, function (data) {
                 var page = $(".results", data);
                 var results = $(page).html();
