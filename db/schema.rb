@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717042445) do
+ActiveRecord::Schema.define(version: 20140718044213) do
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20140717042445) do
     t.string   "suggested_price"
     t.integer  "listing_type"
     t.string   "token"
-    t.string   "condition"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active",             default: false
