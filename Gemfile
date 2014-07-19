@@ -72,7 +72,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 # active admin
-gem 'activeadmin', :git => "git://github.com/gregbell/active_admin.git"
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 # older jquery-ui-rails for viksit macbook air
 gem 'jquery-ui-rails'

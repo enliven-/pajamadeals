@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-    omniauth_providers: [:facebook]
+    omniauth_providers: [:facebook], authentication_keys: [:mobile_number]
 
   has_many :classifieds
   has_many :picks
