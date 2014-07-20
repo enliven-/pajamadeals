@@ -12,7 +12,8 @@ VIKSIT:
  ✔ remove other choices @done (14-07-20 13:59)
  ✔ show flash msgs => success error etc @done (14-07-20 14:48)
  ✔ take out form submission from / @done (14-07-20 14:55)
-
+ ☐ improve general styling of pages
+ ☐ clean up css and js
 
 COMMON:
   ☐ twilio integration

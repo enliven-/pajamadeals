@@ -113,7 +113,7 @@
 
                   <div class="row">
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                       <div class="col-sm-12" style="padding-left: 0px;">
                         <span class="fe-sub-heading"><strong>Product Details</strong></span>
 
@@ -143,7 +143,7 @@
                         </table>
                       </div>                            
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-7">
 
                       <div class="col-sm-12" style="padding-left: 0px;">
                         <span class="fe-sub-heading"><strong>Seller Info</strong></span>
@@ -165,11 +165,11 @@
  -->
 
 
-                        <div class="col-sm-5">
+                        <div class="col-sm-6">
                           <%= image_tag @classified.user.avatar.profile, class: "feed-photo ?img-circle", alt: "profile" %>
                         </div>
 
-                        <div class="col-sm-7">
+                        <div class="col-sm-6">
                           <div class="text_center" style="_margin-top: 120px;">
                             <p class="font-bold">Consectetur adipisicing</p>
                             <span><%= pluralize @classified.user.classifieds.count, 'Item' %> listed</span> |
@@ -189,14 +189,14 @@
                   <div class="row">
                     
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                       <div class="row col-sm-12">
                         <span class="fe-sub-heading"><strong> Seller Comments </strong></span>
                         <p><%= @classified.comment %></p>
                       </div>                            
                     </div>
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-7">
                       <div class="col-sm-12" style="padding-left: 0px;">
                         <span class="fe-sub-heading"><strong> Photos by Seller</strong></span>                      
                         <div class="photos">
