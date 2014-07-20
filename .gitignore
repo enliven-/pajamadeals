@@ -16,4 +16,3 @@ resources/
 .ruby-gemset
 .elasticbeanstalk/
 .bundle/
-public/assets
