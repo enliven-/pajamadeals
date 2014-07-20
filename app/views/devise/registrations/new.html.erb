@@ -58,6 +58,9 @@
 
       </div>
       <div class="modal-footer">
+        <div class="col-sm-5 pull">
+          <%= render "devise/shared/links" %>          
+        </div>
         <div class="form-group">
           <%= button_tag 'Cancel', class: 'btn btn-default cancel', data: {dismiss: 'modal'} %>
           <%= f.button :submit, class: 'btn btn-primary submit' %>
@@ -74,11 +77,15 @@
 <script type="text/javascript">
   $(document).ready(function() {
 
-    $("#sign-up").modal();
+    // $("#sign-up").modal();
 
-    $("body").on('click', "div#sign-up .submit", function(e) {
-      $("form.sign-up-form").submit();
-    });
+    // $("body").on('click', "div#sign-up .submit", function(e) {
+    //   $("form.sign-up-form").submit();
+    // });
+
+    
+    $(".modal").removeClass("modal").removeClass("fade").attr("aria-hidden", false);
+
 
   });
 </script>
