@@ -241,10 +241,10 @@
 
         <h3 style="text-align: center; margin-top: 30px; padding-top: 0px;"> <%= @classified.user.name %></h3> 
 
-        <div class="row col-sm-4 col-sm-offset-4" style="text-align: center; margin-top: 20px; padding-top: 0px;">
+        <div class="row col-sm-6 col-sm-offset-3" style="text-align: center; margin-top: 20px; padding-top: 0px;">
           <h4 style="margin-top: 0px; padding-top: 0px;">
             <i class="fa fa-phone">
-              <span style="margin-left: 4px;"><%= @classified.user.phone || '-'%></span>
+              <span style="margin-left: 4px;">+91-<%= @classified.user.phone || '-'%></span>
             </i>
           </h4>
         </div>
