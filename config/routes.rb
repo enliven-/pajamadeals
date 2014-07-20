@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   root to: 'classifieds#index'
 
   # mondblogger
-  mount MongodbLogger::Server.new, at: "/public", :as => :mongodb
+  mount MongodbLogger::Server.new, at: "/logs"
 
 
   # autocomplete on form
