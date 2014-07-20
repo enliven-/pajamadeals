@@ -17,7 +17,7 @@ VIKSIT:
  ☐ improve general styling of pages
  ☐ clean up css and js
  ☐ sign in/up/fb links consitent behavior in modals
- ☐ devise links
+ ✔ devise links @done (14-07-20 17:48)
  ☐ footer (and our email in footer)
  ☐ remove college id field from user sign up, instead ask for email, compulsorily, otherwise there is no way we could send them reset password instructions
 

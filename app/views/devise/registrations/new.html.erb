@@ -13,48 +13,49 @@
         <%= form_for resource, as: resource_name, url: registration_path(resource_name), :html => { :class => 'form-horizontal sign-up-form'} do |f| %>
 
         <div class="form-group">
-          <%= f.label 'First Name', class: 'col-sm-3 control-label' %>
-          <div class="col-sm-8">
-            <%= f.text_field :fname, class: "form-control fname" %>
+          <!-- <%= f.label 'Name', class: 'col-sm-3 control-label' %> -->
+          <div class="col-sm-4 col-sm-offset-2">
+            <%= f.text_field :fname, class: "form-control fname", placeholder: 'First Name' %>
+          </div>
+          <div class="col-sm-4 ">
+            <%= f.text_field :lname, class: "form-control lname", placeholder: 'Last Name' %>
           </div>
         </div>
 
-        <div class="form-group">
+<!--         <div class="form-group">
           <%= f.label 'Last Name', class: 'col-sm-3 control-label' %>
           <div class="col-sm-8">
-            <%= f.text_field :lname, class: "form-control fname" %>
+            <%= f.text_field :lname, class: "form-control fname", placeholder: 'First Name' %>
+          </div>
+        </div> -->
+
+        <div class="form-group">
+          <!-- <%= f.label 'Mobile', class: 'col-sm-3 control-label' %> -->
+          <div class="col-sm-8 col-sm-offset-2">
+            <%= f.text_field :mobile_number, class: "form-control mobile_number", placeholder: 'Mobile' %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :mobile_number, class: 'col-sm-3 control-label' %>
-          <div class="col-sm-8">
-            <%= f.text_field :mobile_number, class: "form-control mobile_number" %>
+          <!-- <%= f.label :email, class: 'col-sm-3 control-label' %> -->
+          <div class="col-sm-8 col-sm-offset-2">
+            <%= f.text_field :email, class: "form-control email", placeholder: 'Email' %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :password, class: 'col-sm-3 control-label' %>
-          <div class="col-sm-8">
-            <%= f.password_field :password, class: "form-control password" %>
+          <!-- <%= f.label :password, class: 'col-sm-3 control-label' %> -->
+          <div class="col-sm-8 col-sm-offset-2">
+            <%= f.password_field :password, class: "form-control password", placeholder: 'Password' %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :college, class: 'col-sm-3 control-label' %>
-          <div class="col-sm-8">
-            <%= f.text_field :college, class: "form-control college" %>
+          <!-- <%= f.label :college, class: 'col-sm-3 control-label' %> -->
+          <div class="col-sm-8 col-sm-offset-2">
+            <%= f.text_field :college, class: "form-control college", placeholder: 'College' %>
           </div>
         </div>
-
-
-        <div class="form-group">
-          <%= f.label 'College ID No.', class: 'col-sm-3 control-label' %>
-          <div class="col-sm-8">
-            <%= f.text_field :college_id, class: "form-control college-id" %>
-          </div>
-        </div>
-
 
       </div>
       <div class="modal-footer">
@@ -89,3 +90,13 @@
 
   });
 </script>
+
+<!-- <style>
+#sign-up > div > div > div.modal-body {
+  padding-top: 55px !important;
+}
+
+form#new_user {
+  margin-top: 35px !important;
+}
+</style> -->

@@ -73,6 +73,9 @@ $(document).ready(function () {
       e.preventDefault();
 
       var search_term = $("#search-box").val();
+
+      if (search_term === "") { console.log("empty!"); return false; } // this makes it stop here and continue to select.
+
       params = { book_title : search_term };
 
       $.get("/classifieds/", params, function (data) {
@@ -80,8 +83,6 @@ $(document).ready(function () {
         var results = $(page).html();
         $(".results").html($(page).html());
       });
-
-      // return false;
     }
   })
   .data("ui-autocomplete")._renderItem = function (ul, item) {
