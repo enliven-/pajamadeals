@@ -4,3 +4,10 @@ development:
   host: localhost
   port: 27017
   replica_set: true
+
+development:
+  database: pajamdeals_production
+  capsize: <%= 10.megabytes %>
+  host: localhost
+  port: 27017
+  replica_set: true
