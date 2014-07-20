@@ -14,6 +14,7 @@ VIKSIT:
  ✔ take out form submission from / @done (14-07-20 14:55)
  ☐ improve general styling of pages
  ☐ clean up css and js
+ ☐ sign in/up/fb links consitent behavior in modals
 
 COMMON:
   ☐ twilio integration
