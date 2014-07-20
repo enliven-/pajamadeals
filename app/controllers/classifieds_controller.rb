@@ -7,14 +7,11 @@ class ClassifiedsController < ApplicationController
   def index
     if params[:book_id]
       @classifieds =  Classified.paginate( page: params[:page], per_page: 30).
-                                 order('created_at DESC').where(book_id: params[:book_id])
-      render 'classifieds/_results'
+        order('created_at DESC').where(book_id: params[:book_id])
     else
       @classifieds =  Classified.paginate( page: params[:page], per_page: 30).
-                                  order('created_at DESC')
-      render 'index'
+        order('created_at DESC')
     end
-
   end
 
   # GET /classifieds/1
