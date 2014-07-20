@@ -56,10 +56,4 @@ class User < ActiveRecord::Base
     end
   end
 
-  # helpers
-
-  def name
-    first_name + ' ' + last_name
-  end
-  alias_method :full_name, :name
 end

@@ -335,7 +335,8 @@
         <div class="form-group">
           <%= f.label 'College', class: 'col-sm-3 control-label' %>
           <div class="col-sm-8">
-            <%= f.text_field :college, class: 'form-control college', value: current_user.try(:college).try(:name) %>
+                <%= f.select :college_id, College.all.collect { |college| [college.name, college.id]}, class: 'form-control college', value: current_user.try(:college).try(:name) %>
+              </div>
           </div>
         </div>
 

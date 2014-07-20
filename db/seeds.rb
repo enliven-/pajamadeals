@@ -17,8 +17,7 @@ profile_images = [File.open("#{image_path}/profile1.jpg"), File.open("#{image_pa
 end
 
 # creates an admin
-foo = User.create(first_name: 'foo',
-                  last_name:  'bar',
+foo = User.create(name: 'foo bar',
                   email: 	  'bhushanlodha@gmail.com',
                   password:   'password',
                   avatar: 	   File.open("#{Rails.root}/test/fixtures/test1.jpg"),
@@ -28,8 +27,7 @@ foo = User.create(first_name: 'foo',
 
 # create users
 5.times do
-  User.create(first_name: Faker::Name.first_name,
-              last_name:  Faker::Name.last_name,
+  User.create(name: Faker::Name.name,
               email: 	 Faker::Internet.email,
               password: 	 Faker::Internet.password,
               college: 	 College.all.sample,

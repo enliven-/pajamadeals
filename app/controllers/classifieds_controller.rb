@@ -48,7 +48,6 @@ class ClassifiedsController < ApplicationController
     @classified.book = book
     @classified.user = current_user || user
 
-
     respond_to do |format|
       if @classified.save
 
@@ -123,8 +122,8 @@ class ClassifiedsController < ApplicationController
                                        book_attributes: [:title, :publisher,
                                                          :author, :edition,
                                                          ],
-                                       user_attributes: [:email, :phone, :first_name,
-                                                         :last_name, :college_id]
+                                       user_attributes: [:email, :phone, :name,
+                                                         :college_id]
                                        )
   end
 

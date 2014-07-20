@@ -17,8 +17,8 @@ VIKSIT:
  ☐ improve general styling of pages
  ☐ clean up css and js
  ☐ devise links
+   Appending +91 in front of mobile field in views
    Footer (and our email in footer)
-   Remove college id field from user sign up, instead ask for email, compulsorily, otherwise there is no way we could send them reset password instructions
 
 COMMON:
   ☐ twilio integration
