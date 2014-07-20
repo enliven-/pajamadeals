@@ -62,9 +62,4 @@ class User < ActiveRecord::Base
     first_name + ' ' + last_name
   end
   alias_method :full_name, :name
-
-  private
-  def email_required?
-    false
-  end
 end
