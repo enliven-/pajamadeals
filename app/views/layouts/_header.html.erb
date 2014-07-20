@@ -57,12 +57,15 @@ $(document).ready(function () {
     source: get_results_books,
     minLength: 2,
     select: function (event, ui) {
+              console.log("clicked");
+              event.preventDefault();
               params = { book_id : ui.item.book.id};
               $.get("/classifieds/", params, function (data) {
                 var page = $(".results", data);
                 var results = $(page).html();
                 $(".results").html($(page).html());
-              });              
+              });
+              // return false;             
             }
   })
   .keydown(function(e){
@@ -78,18 +81,19 @@ $(document).ready(function () {
         $(".results").html($(page).html());
       });
 
-      return false;
+      // return false;
     }
   })
   .data("ui-autocomplete")._renderItem = function (ul, item) {
     $(".ui-corner-all").removeClass("ui-corner-all");
     var url = item.book.title;
     return $("<li>")
-                    .append("<a class='cf-link' href=" + '/search/classifieds/' + url + "><img src=" + item.image_url + "></img>" + 
-                      "<div style='display: inline-block;'> <span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +
-                            // "<p class=edition>" + item.book.edition +"</p>" +
-                            "<span class=author>" + item.book.author + "</span>, " +
-                            "<span class=publisher>" + item.book.publisher + " Publications </span>" +
+                    .append("<a class='cf-link' href=''><img src=" + item.image_url + "></img>" + 
+                      "<div style='display: inline-block;'>" +
+                        "<span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +
+                        // "<p class=edition>" + item.book.edition +"</p>" +
+                        "<span class=author>" + item.book.author + "</span>, " +
+                        "<span class=publisher>" + item.book.publisher + " Publications </span>" +
                       "</div></a>").appendTo(ul);
   };
 

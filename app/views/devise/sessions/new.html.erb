@@ -1,6 +1,6 @@
 
 
-<div class="?modal ?fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="?true">
+<div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -45,8 +45,15 @@
 
 <!-- <%= render "devise/shared/links" %> -->
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function() {
+    
+    $(".modal").removeClass("modal").removeClass("fade").attr("aria-hidden", false);
+    // $("#sign-in").modal();
+
+    // $("body").on('click', "div#sign-in .submit", function(e) {
+    //   $("form.sign-in-form").submit();
+    // });
 
   });
-</script> -->
+</script>

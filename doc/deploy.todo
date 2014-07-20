@@ -7,11 +7,11 @@ BHUSHAN:
  ☐ email so that you can handle forgotten password
 
 VIKSIT:
- ☐ handle active admin css
- ☐ navbar search re-renders index. fix that
- ☐ remove other choices
- ☐ show flash msgs => success error etc
- ☐ take out form submission from / 
+ ✔ handle active admin css @done (14-07-20 14:55)
+ ✔ navbar search re-renders index. fix that @done (14-07-20 14:55)
+ ✔ remove other choices @done (14-07-20 13:59)
+ ✔ show flash msgs => success error etc @done (14-07-20 14:48)
+ ✔ take out form submission from / @done (14-07-20 14:55)
 
 
 COMMON:

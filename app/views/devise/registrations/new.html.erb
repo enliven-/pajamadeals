@@ -34,6 +34,13 @@
         </div>
 
         <div class="form-group">
+          <%= f.label :password, class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.password_field :password, class: "form-control password" %>
+          </div>
+        </div>
+
+        <div class="form-group">
           <%= f.label :college, class: 'col-sm-3 control-label' %>
           <div class="col-sm-8">
             <%= f.text_field :college, class: "form-control college" %>
@@ -48,12 +55,7 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :password, class: 'col-sm-3 control-label' %>
-          <div class="col-sm-8">
-            <%= f.password_field :password, class: "form-control password" %>
-          </div>
-        </div>
+
       </div>
       <div class="modal-footer">
         <div class="form-group">
@@ -68,3 +70,15 @@
 </div>
 
 <!-- <%= render "devise/shared/links" %> -->
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    $("#sign-up").modal();
+
+    $("body").on('click', "div#sign-up .submit", function(e) {
+      $("form.sign-up-form").submit();
+    });
+
+  });
+</script>
