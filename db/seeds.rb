@@ -34,11 +34,12 @@ require 'csv'
 #               avatar:    profile_images.sample,
 #               mobile_number: '9' + Faker::Number.number(9)
 #               )
-end
+# end
 
 # Import CSV data for books
 count = 1
 CSV.foreach("#{Rails.root}/resources/books/books.csv", headers: true) do |row|
+  p count
   if row[3] == 'Pune University'
     Book.create(
       title:     row[0].camelize,
@@ -55,7 +56,6 @@ CSV.foreach("#{Rails.root}/resources/books/books.csv", headers: true) do |row|
     )
     count += 1
   end
-  break if count > 25
 end
 
 # # create classifieds
