@@ -2,8 +2,9 @@ class User < ActiveRecord::Base
   include HasToken
 
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-    omniauth_providers: [:facebook], authentication_keys: [:mobile_number]
+    :recoverable, :rememberable, :trackable, :validatable,
+    authentication_keys: [:mobile_number]
+  #  :omniauthable, omniauth_providers: [:facebook],
 
   has_many :classifieds
   has_many :picks

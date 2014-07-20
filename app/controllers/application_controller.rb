@@ -23,8 +23,10 @@ class ApplicationController < ActionController::Base
         request.path != "/users/sign_out" &&
         !request.xhr?) # don't store ajax calls
       if request.format == "text/html" || request.content_type == "text/html"
-        session[:previous_url] = request.fullpath
-        session[:last_request_time] = Time.now.to_i
+        unless request.fullpath =~ /\/users/ || request.fullpath =~ /\/admin/
+          session[:previous_url] = request.fullpath
+          session[:last_request_time] = Time.now.to_i
+        end
       end
     end
   end
@@ -32,15 +34,6 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if session[:last_request_time] > (Time.now.to_i - 15*60)
       session[:previous_url] || root_path
-    end
-  end
-
-  def after_sign_in_path_for(resource)
-    sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')
-    if request.referer == sign_in_url
-      super
-    else
-      stored_location_for(resource) || request.referer || root_path
     end
   end
 

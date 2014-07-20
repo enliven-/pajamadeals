@@ -2,9 +2,11 @@ BHUSHAN:
  ✔ Validations @done (14-07-20 12:39)
  ☐ Tests
  ☐ check for avatar system / decide how to handle seller info display
- ☐ logging in file system production
- ☐ after sign up redirect to same page; check for sign out too;
- ☐ email so that you can handle forgotten password
+ ✔ logging in file system production @done (14-07-20 16:11)
+ ✔ after sign up redirect to same page; check for sign out too; @done (14-07-20 16:11)
+ ✔ email so that you can handle forgotten password @done (14-07-20 17:20)
+ ☐ Figure out user sign up if mobile already exists
+
 
 VIKSIT:
  ✔ handle active admin css @done (14-07-20 14:55)
@@ -14,6 +16,9 @@ VIKSIT:
  ✔ take out form submission from / @done (14-07-20 14:55)
  ☐ improve general styling of pages
  ☐ clean up css and js
+ ☐ devise links
+   Footer (and our email in footer)
+   Remove college id field from user sign up, instead ask for email, compulsorily, otherwise there is no way we could send them reset password instructions
 
 COMMON:
   ☐ twilio integration
