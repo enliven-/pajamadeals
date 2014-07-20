@@ -118,7 +118,7 @@
 }
 
 .btn.search {
-  padding:  6.5px 15px 6.5px 15px !important;
+  /*padding:  6px 15px 6px 15px !important;*/
 }
 
 
@@ -237,7 +237,8 @@ ul.ui-autocomplete span.publisher {
 
 .result {
   padding: 15px 15px 10px 5px !important;
-  margin-bottom: 0px !important;
+  /*margin-bottom: 0px !important;*/
+  margin-bottom: 5px !important;
 }
 
 .result > div.img-container {

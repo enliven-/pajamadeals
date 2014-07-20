@@ -45,7 +45,7 @@
                       </div>
                     </div>
 
-                    <div class="form-group publisher hidden">
+                    <div class="form-group publisher hidden soft">
                       <%= book.label :publisher, class: 'col-sm-2 control-label' %>
                       <div class="col-sm-10">
                         <%= book.text_field :publisher, class: 'form-control publisher' %>
@@ -53,7 +53,7 @@
                     </div>
 
 
-                    <div class="form-group author hidden">
+                    <div class="form-group author hidden soft">
                       <%= book.label :author, class: 'col-sm-2 control-label' %>
                       <div class="col-sm-10">
                         <%= book.text_field :author, class: 'form-control author' %>
@@ -61,7 +61,7 @@
                     </div>
                   <% end %> 
 
-                  <div class="form-group hidden">
+                  <div class="form-group hidden soft">
                     <%= f.label :pattern, class: 'col-sm-2 control-label' %>
                      <div class="col-sm-10"> 
                        <%= f.select :pattern, [['2012', '2012'], ['2008', '2008']], { include_blank: true }, { class: "form-control" } %>
@@ -70,14 +70,14 @@
 
                   <div class="hr-line-dashed"></div>
 
-                  <div class="form-group retail-price hidden">
+                  <div class="form-group retail-price hidden soft">
                     <%= f.label :retail_price, 'Retail price (Rs)', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-10">
                       <%= f.text_field :retail_price, class: 'form-control retail-price' %>
                     </div>
                   </div>
 
-                  <div class="form-group selling-price hidden">
+                  <div class="form-group selling-price hidden soft">
                     <%= f.label :expected_price, 'Selling price (Rs)', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-10"> 
                       <%= f.text_field :expected_price, class: 'form-control selling-price' %>
@@ -85,7 +85,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group images hidden">
+                  <div class="form-group images hidden soft">
                     <%= f.label 'Images', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-10"> 
                       <%= f.fields_for :images do |image| %>
@@ -96,14 +96,56 @@
                     </div>
                   </div>
 
-                  <div class="form-group comment hidden">
+                  <div class="form-group comment hidden soft">
                     <%= f.label 'Description', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-10">
                       <%= f.text_area :comment, class: 'form-control comment' %>
                     </div>
                   </div>
 
-                  <div class="form-group hidden">
+
+        <%= f.fields_for :user do |user| %>
+
+          <div class="form-group hidden hard">
+            <%= user.label :first_name, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :first_name, class: 'form-control fname' %>
+            </div>
+          </div>
+          
+          <div class="form-group hidden hard">
+            <%= user.label :last_name, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :last_name, class: 'form-control lname' %>
+            </div>
+          </div>
+
+          <div class="form-group hidden hard">
+            <%= user.label :mobile_number, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :mobile_number, class: "form-control mobile" %>
+            </div>
+          </div>
+          
+          <div class="form-group hidden hard">
+            <%= user.label :email, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :email, class: "form-control email" %>
+            </div>
+          </div>
+          
+          <div class="form-group hidden hard">
+            <%= user.label :college, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <!-- <%= user.select :college_id, College.all.collect { |college| [college.name, college.id]}, class: 'form-control college' %> -->
+              <%= user.text_field :college, class: "form-control college" %>
+
+            </div>
+          </div>
+
+        <% end %>
+
+                  <div class="form-group hidden soft">
                     <div class="col-sm-10 col-sm-offset-2">
                       <button class="btn btn-primary pull submit" id="submit" type="submit" data-toggle="modal">Submit</button>
                       <button class="btn btn-white push cancel" type="submit">Cancel</button>
@@ -207,24 +249,14 @@
               <input type="text" class="form-control mobile">
             </div>
           </div>
-          <div class="form-group email">
-            <label class="col-sm-3 control-label">Email</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control email">
-            </div>
-          </div>
+
           <div class="form-group college">
             <label class="col-sm-3 control-label">College</label>
             <div class="col-sm-8">
               <input type="text" class="form-control college">
             </div>
           </div>
-          <div class="form-group college-id">
-            <label class="col-sm-3 control-label">College ID No.</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control college-id">
-            </div>
-          </div>
+
         </form>
       </div>
       <div class="modal-footer">
@@ -320,7 +352,6 @@
 
           console.log(name + " " + mobile + " " + email + " " + college + " " + college_id);
 
-          var $user_form = $(".listing-user-form");
           $("input.fname").val(name.split(" ")[0]);
           $("input.lname").val(name.split(" ")[1]);
           $("input.mobile").val(mobile);
@@ -330,7 +361,7 @@
           stuff_done = true;
           $("#user-modal button.klose").trigger('click');
 
-          // $(".listing-user-form").removeClass("hidden");
+          // $(".form-group.hidden.hard").removeClass("hidden");
           $that.trigger('click');
 
         });
@@ -354,7 +385,7 @@
                 $form.find("input.publisher").val(book.publisher).attr("disabled", true);
                 $form.find("input.isbn").val(book.isbn).attr("disabled", true);
 
-                $(".form-group.hidden", $form).removeClass('hidden');
+                $(".form-group.hidden.soft", $form).removeClass('hidden');
                 $(".item-info")
                                .removeClass("col-sm-offset-2")
                                .removeClass("fadeInRight")
@@ -380,7 +411,7 @@
     .keydown(function(e){
       if (e.keyCode === 13) {
         e.preventDefault();
-        $("form.listing-form .form-group.hidden").removeClass('hidden');
+        $("form.listing-form .form-group.soft.hidden").removeClass('hidden');
         $("form.listing-form .form-group input").attr("disabled", false);
         return false;
       }

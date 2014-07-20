@@ -1,15 +1,84 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div><%= f.label :mobile %><br />
-  <%= f.text_field :mobile, autofocus: true %></div>
+<div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+        Create an account with us for a better experience.
+      </div>
+      <div class="modal-body">
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+        <%= form_for resource, as: resource_name, url: registration_path(resource_name), :html => { :class => 'form-horizontal sign-up-form'} do |f| %>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+        <div class="form-group">
+          <%= f.label 'First Name', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.text_field :fname, class: "form-control fname" %>
+          </div>
+        </div>
 
-<%= render "devise/shared/links" %>
+        <div class="form-group">
+          <%= f.label 'Last Name', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.text_field :lname, class: "form-control fname" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :mobile_number, class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.text_field :mobile_number, class: "form-control mobile_number" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.password_field :password, class: "form-control password" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :college, class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.text_field :college, class: "form-control college" %>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <%= f.label 'College ID No.', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.text_field :college_id, class: "form-control college-id" %>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <div class="form-group">
+          <%= button_tag 'Cancel', class: 'btn btn-default cancel', data: {dismiss: 'modal'} %>
+          <%= f.button :submit, class: 'btn btn-primary submit' %>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<!-- <%= render "devise/shared/links" %> -->
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    $("#sign-up").modal();
+
+    $("body").on('click', "div#sign-up .submit", function(e) {
+      $("form.sign-up-form").submit();
+    });
+
+  });
+</script>

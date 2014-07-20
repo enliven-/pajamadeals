@@ -25,7 +25,7 @@
 
     <% if current_user %>
       <ul class="nav navbar-nav navbar-right session-options">
-        <li><a href="" data-toggle="modal" data-target="#sign-in">Hello <%= current_user.name %></a>
+        <li><a href="">Hello <%#= current_user.name %></a>
         </li>
         <!-- <li class="divider-vertical"></li> -->
         <!-- <li><a href="" data-toggle="modal" data-target="#sign-up">Sign Up</a> -->
@@ -36,10 +36,10 @@
       </ul>
     <% else %>
     <ul class="nav navbar-nav navbar-right session-options">
-      <li><a href="" data-toggle="modal" data-target="#sign-in">Sign In</a>
+      <li><a href="" data-toggle="modal" data-target="#sign-in" id="sign-in-link">Sign In</a>
       </li>
       <li class="divider-vertical"></li>
-      <li><a href="" data-toggle="modal" data-target="#sign-up">Sign Up</a>
+      <li><a href="" data-toggle="modal" data-target="#sign-up" id="sign-up-link">Sign Up</a>
       </li>
     </ul>
     <% end %>
@@ -50,106 +50,6 @@
 
 
 
-<div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
-        Create an account with us for a better experience.
-      </div>
-      <div class="modal-body">
-
-        <form method="get" class="form-horizontal signup-form">
-
-          <div class="form-group name">
-            <label class="col-sm-3 control-label">Name</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group mobile">
-            <label class="col-sm-3 control-label">Mobile</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group password">
-            <label class="col-sm-3 control-label">Password</label>
-            <div class="col-sm-9">
-              <input type="password" class="form-control">
-            </div>
-          </div>
-          <div class="form-group email">
-            <label class="col-sm-3 control-label">Email</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group branch">
-            <label class="col-sm-3 control-label">Branch</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group year">
-            <label class="col-sm-3 control-label">Year</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group college-id">
-            <label class="col-sm-3 control-label">College ID No.</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
-        Sign in for a better experience.
-      </div>
-      <div class="modal-body">
-
-        <form method="get" class="form-horizontal signup-form">
-
-          <div class="form-group name">
-            <label class="col-sm-3 control-label">Mobile</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group email">
-            <label class="col-sm-3 control-label">Password</label>
-            <div class="col-sm-9">
-              <input type="password" class="form-control">
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <script type="text/javascript">
 $(document).ready(function () {
 
@@ -157,24 +57,43 @@ $(document).ready(function () {
     source: get_results_books,
     minLength: 2,
     select: function (event, ui) {
-
+              console.log("clicked");
+              event.preventDefault();
               params = { book_id : ui.item.book.id};
-              $.get("/classifieds", params, function (data) {
+              $.get("/classifieds/", params, function (data) {
                 var page = $(".results", data);
                 var results = $(page).html();
                 $(".results").html($(page).html());
-              });              
+              });
+              // return false;             
             }
+  })
+  .keydown(function(e){
+    if (e.keyCode === 13) {
+      e.preventDefault();
+
+      var search_term = $("#search-box").val();
+      params = { book_title : search_term };
+
+      $.get("/classifieds/", params, function (data) {
+        var page = $(".results", data);
+        var results = $(page).html();
+        $(".results").html($(page).html());
+      });
+
+      // return false;
+    }
   })
   .data("ui-autocomplete")._renderItem = function (ul, item) {
     $(".ui-corner-all").removeClass("ui-corner-all");
     var url = item.book.title;
     return $("<li>")
-                    .append("<a class='cf-link' href=" + '/search/classifieds/' + url + "><img src=" + item.image_url + "></img>" + 
-                      "<div style='display: inline-block;'> <span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +
-                            // "<p class=edition>" + item.book.edition +"</p>" +
-                            "<span class=author>" + item.book.author + "</span>, " +
-                            "<span class=publisher>" + item.book.publisher + " Publications </span>" +
+                    .append("<a class='cf-link' href=''><img src=" + item.image_url + "></img>" + 
+                      "<div style='display: inline-block;'>" +
+                        "<span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +
+                        // "<p class=edition>" + item.book.edition +"</p>" +
+                        "<span class=author>" + item.book.author + "</span>, " +
+                        "<span class=publisher>" + item.book.publisher + " Publications </span>" +
                       "</div></a>").appendTo(ul);
   };
 
@@ -196,6 +115,41 @@ $(document).ready(function () {
     console.log(params);
   }
 
+
+  $("#sign-in-link").on('click', function(e) {
+    e.preventDefault();
+
+    $.get("/users/sign_in", function (data) {
+      var $sign_in_page_partial = $( "div#sign-in", data );
+      console.log(data);
+      // console.log( $sign_in_page_partial.html() );
+      $("body").append($sign_in_page_partial);
+      $("#sign-in").modal();
+    });  
+  });
+
+
+  $("#sign-up-link").on('click', function(e) {
+    e.preventDefault();
+
+    $.get("/users/sign_up", function (data) {
+      var $sign_up_page_partial = $( "div#sign-up", data );
+      console.log( $sign_up_page_partial.html() );
+      $("body").append($sign_up_page_partial);
+      $("#sign-up").modal();
+    });  
+  });
+
+
+  $("body").on('click', "div#sign-in .submit", function(e) {
+    // var current_loc = window.location.href;
+    $("form.sign-in-form").submit();
+
+  });
+
+  $("body").on('click', "div#sign-up .submit", function(e) {
+    $("form.sign-up-form").submit();
+  });
 
 });
 
