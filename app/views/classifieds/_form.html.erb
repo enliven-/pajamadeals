@@ -130,9 +130,8 @@
           <div class="form-group hidden hard">
             <%= user.label :college, class: 'col-sm-3 control-label' %>
             <div class="col-sm-8">
-              <!-- <%= user.select :college_id, College.select(:name, :id).collect { |college| [college.name, college.id]}, class: 'form-control college' %> -->
-              <%= user.text_field :college, class: "form-control college" %>
-
+              <!-- <%= user.select :college_id, College.all.collect { |college| [college.name, college.id]}, class: 'form-control college' %> -->
+              <%= user.text_field :college_id, class: "form-control college" %>
             </div>
           </div>
 
@@ -221,7 +220,7 @@
       </div>
 
       <div class="modal-body">
-        <form method="get" class="form-horizontal listing-form">
+        <form method="get" class="form-horizontal">
 
           <div class="form-group name">
             <label class="col-sm-3 control-label">Name</label>
@@ -239,7 +238,8 @@
           <div class="form-group college">
             <label class="col-sm-3 control-label">College</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control college">
+              <%= select_tag "college", options_from_collection_for_select(College.all, "id", "name"), class: "form-control college" %>
+              <!-- <input type="text" class="form-control college"> -->
             </div>
           </div>
 
@@ -333,21 +333,19 @@
           var name = $("input.name", $user_modal_form).val();
           var mobile = $("input.mobile", $user_modal_form).val();
           var email = $("input.email", $user_modal_form).val();
-          var college = $("input.college", $user_modal_form).val();
-          var college_id = $("input.college-id", $user_modal_form).val();
+          var college = $("select.college", $user_modal_form).val();
 
-          console.log(name + " " + mobile + " " + email + " " + college + " " + college_id);
 
-          $("input.fname").val(name.split(" ")[0]);
-          $("input.lname").val(name.split(" ")[1]);
+          $("input.name").val(name);
           $("input.mobile").val(mobile);
           $("input.email").val(email);
-          $("input.college").val(college);
+          $("input.college").val(parseInt(college));
 
           stuff_done = true;
           $("#user-modal button.klose").trigger('click');
+          $("input").attr("disabled", false)
+          $(".form-group.hidden.hard").removeClass("hidden");
 
-          // $(".form-group.hidden.hard").removeClass("hidden");
           $that.trigger('click');
 
         });

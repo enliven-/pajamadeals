@@ -39,8 +39,9 @@ class ClassifiedsController < ApplicationController
 
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
-      user = User.find_by(mobile_number: user_attributes[:phone]) ||
-        User.create(user_attributes.merge({password: Time.now.to_s,
+      user = User.find_by(mobile_number: user_attributes[:mobile_number]) ||
+        User.create(user_attributes.merge({password: "passwordpassword#{rand(20)}",
+                                           email: "#{SecureRandom.hex(5)}@guest.com",
                                            guest: true}))
         end
 
