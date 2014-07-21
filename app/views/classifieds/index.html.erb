@@ -1,35 +1,114 @@
-<h1>Listing classifieds</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th>User</th>
-      <th>College</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row wrapper wrapper-content animated fadeInRight">
 
-  <tbody>
-    <% @classifieds.each do |classified| %>
-      <tr>
-        <td><%= classified.title %></td>
-        <td><%= classified.description %></td>
-        <td><%= classified.image %></td>
-        <td><%= classified.user_id %></td>
-        <td><%= classified.college_id %></td>
-        <td><%= classified.expected_price %></td>
-        <td><%= link_to 'Show', classified %></td>
-        <td><%= link_to 'Edit', edit_classified_path(classified) %></td>
-        <td><%= link_to 'Destroy', classified, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
+  
+<!--     <div class="col-sm-3 pull-left">
+      <div class="ibox-content">
+        <div>
+          <div>
+            <span>Memory</span>
+            <small class="pull-right">10/200 GB</small>
+          </div>
+          <div class="progress progress-small">
+            <div style="width: 60%;" class="progress-bar"></div>
+          </div>
 
-<br>
+          <div>
+            <span>Bandwidth</span>
+            <small class="pull-right">20 GB</small>
+          </div>
+          <div class="progress progress-small">
+            <div style="width: 50%;" class="progress-bar"></div>
+          </div>
 
-<%= link_to 'New Classified', new_classified_path %>
+          <div>
+            <span>Activity</span>
+            <small class="pull-right">73%</small>
+          </div>
+          <div class="progress progress-small">
+            <div style="width: 40%;" class="progress-bar"></div>
+          </div>
+
+          <div>
+            <span>FTP</span>
+            <small class="pull-right">400 GB</small>
+          </div>
+          <div class="progress progress-small">
+            <div style="width: 20%;" class="progress-bar progress-bar-danger"></div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+        
+
+    <div class="col-sm-8 results col-sm-offset-2">
+    <% for classified in @classifieds %>
+      <div class="row col-sm-12 contact-box result">
+
+        <div class="col-sm-2">
+          <%= link_to (image_tag classified.image.index, class: 'img-circle m-t-xs img-responsive classified-img'), classified_path(classified) %>
+        </div>
+
+        <div class="col-sm-10 row ?pull-right classified-info">
+          <h4 class="title"><%= link_to classified.title, classified_path(classified) %></h4>  <%= (', ' + classified.edition + ' edition') if classified.edition.present? %>  
+          <span class="pull-right"><%= render_date classified.created_at %></span>
+          <br/>
+          <span class="authors"><em><%= classified.author.present? ? classified.author : '-' %></em></span>
+
+          <div class="row prices">
+            <h3 class="expected-price"><strong>Rs <%= classified.expected_price %></strong></h3>
+            <h5 class="retail-price">(MRP: Rs <%= classified.retail_price %>)</h5><br/>
+          </div>
+
+          <div class="row info-tables">
+            <div class="col-sm-4">
+              <table class="table-left">
+                <tr>
+                  <td><strong>Publisher:</strong></td>
+                  <td></td>
+                  <td><%= classified.publisher.present? ? classified.publisher : '-' %></td>
+                </tr>
+                <tr>
+                  <td><strong>Pattern:</strong></td>
+                  <td></td>
+                  <td><%= classified.released_year.present? ? classified.released_year : '-' %></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-sm-4 col-sm-offset-2">
+              <table class="table-right">
+                  <tr>
+                    <td><strong>Seller:</strong></td>
+                    <td></td>
+                    <td><%= classified.user.name %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Contact:</strong></td>
+                    <td></td>
+                    <td><%= classified.user.try(:mobile_number) || classified.user.try(:email) %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>College:</strong></td>
+                    <td></td>
+                    <td><%= classified.college.abbr %></td>
+                  </tr>                                        
+                </table>                
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <% end %>
+
+      <%= will_paginate @classifieds %>
+
+    </div> <!--results-->
+
+
+  </div>
+
+</div>
+
+

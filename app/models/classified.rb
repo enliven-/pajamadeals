@@ -1,58 +1,58 @@
 class Classified < ActiveRecord::Base
 
-	BUY = 0
-	SELL = 1
+  BUY = 0
+  SELL = 1
 
-	include HasToken
+  validates :expected_price, presence: true, numericality: true
+  validates :retail_price,   presence: true, numericality: true
 
-	validates :title, presence: true, length: { maximum: 255 }
-	validates :expected_price, numericality: { greater_than_or_equal_to: 0.01,
-				   	  allow_blank: true }
-	validates :user_id, presence: true
-	validates :college_id, presence: true
-	validates :listing_type, presence: true
+  has_many :images
+  accepts_nested_attributes_for :images
+  has_many :picks
+  has_many :contact_sellers
+  belongs_to :user
+  accepts_nested_attributes_for :user
+  belongs_to :college
+  belongs_to :book
+  accepts_nested_attributes_for :book
 
-	#has_many :images, as: :imageable
-	belongs_to :user
-	belongs_to :college
+  alias_attribute :selling_price, :expected_price
+  alias_attribute :mrp, :retail_price
 
-	before_create :set_college
+  before_create :set_college
 
-	has_token
+  include HasToken
+  has_token
 
-	mount_uploader :image, ImageUploader
+  scope :sold, -> { where(sold: true) }
 
-	# search classified
+  delegate :title, :description, :publisher, :author, :isbn, :edition,
+    :released_year, :university, :pages, to: :book, allow_nil: true
 
-	searchable do
-		text :title, boost: 3.0
-		text :description
-		text :isbn
+  def buy?
+    listing_type == BUY
+  end
 
-		time    :created_at
-		string  :expected_price
-		integer :listing_type
-		integer :college_id
-		boolean :list
-	end
+  def sell?
+    !buy?
+  end
 
-	def buy?
-		listing_type == BUY
-	end
+  # calcs
 
-	def sell?
-		!buy?
-	end
+  def percent_off
+    if retail_price.present? && retail_price.to_f > expected_price.to_f
+      (((retail_price.to_f - expected_price.to_f) / retail_price.to_f) * 100).round
+    end
+  end
 
-	def unlist
-		self.list = false
-		save
-	end
+  def image
+    book.image || self.images.first
+  end
+  
+  private
 
-	private
-
-	def set_college
-		self.college_id || self.college = user.college
-	end
+  def set_college
+    self.college_id || self.college = user.college
+  end
 
 end

@@ -1,42 +1,429 @@
-<%= form_for(@classified) do |f| %>
-  <% if @classified.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@classified.errors.count, "error") %> prohibited this classified from being saved:</h2>
 
-      <ul>
-      <% @classified.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+
+<div class="row wrapper">
+
+  <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
+
+
+    <div class="col-sm-4 search-result animated fadeInRight hidden" >
+      <div class="ibox float-e-margins">
+        <div class="ibox-title title">
+          <h5>VLSI Design</h5>
+        </div>
+        <div class="auto result-item">
+          <div class="ibox-content ?no-padding border-left-right">
+            <%= image_tag("book1.jpg", class: "img-responsive classified-image") %>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+
+    <div class="col-sm-8 col-sm-offset-2 item-info animated ?fadeInRight ?hidden">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Item Information</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="item-form">
+            <div class="?ibox float-e-margins">
+              <div class="?ibox-content">
+                <!-- <form method="get" class="form-horizontal listing-form"> -->
+                <%= form_for @classified, html: {class: 'form-horizontal listing-form'} do |f| %>
+
+                  <%= f.fields_for :book do |book| %>
+
+                    <div class="form-group title">
+                      <%= book.label :title, class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                      <div class="input-group">
+                          <%= book.text_field :title, class: 'form-control title', id: 'search-title' %>
+                          <div class="input-group-btn">
+                            <button tabindex="-1" class="btn btn-default clear" type="button">Clear</button>
+                          </div>
+                        </div> 
+                      </div>
+                    </div>
+
+                    <div class="form-group publisher hidden soft">
+                      <%= book.label :publisher, class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                        <%= book.text_field :publisher, class: 'form-control publisher' %>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group author hidden soft">
+                      <%= book.label :author, class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                        <%= book.text_field :author, class: 'form-control author' %>
+                      </div>
+                    </div>
+                  <% end %> 
+
+                  <div class="form-group hidden soft">
+                    <%= f.label :pattern, class: 'col-sm-2 control-label' %>
+                     <div class="col-sm-10"> 
+                       <%= f.select :pattern, [['2012', '2012'], ['2008', '2008']], { include_blank: true }, { class: "form-control" } %>
+                     </div>
+                  </div>
+
+                  <div class="hr-line-dashed"></div>
+
+                  <div class="form-group retail-price hidden soft">
+                    <%= f.label :retail_price, 'Retail price (Rs)', class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-10">
+                      <%= f.text_field :retail_price, class: 'form-control retail-price' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group selling-price hidden soft">
+                    <%= f.label :expected_price, 'Selling price (Rs)', class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-10"> 
+                      <%= f.text_field :expected_price, class: 'form-control selling-price' %>
+                       <span class="sp-comment">*We reccomend 55% of retail price: <span class="sp-value">
+                    </div>
+                  </div>
+
+                  <div class="form-group images hidden soft">
+                    <%= f.label 'Images', class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-10"> 
+                      <%= f.fields_for :images do |image| %>
+                        <a class="file-input-wrapper btn btn-default"><span>Choose image</span>
+                          <%= image.file_field :file, multiple: true, name: 'images[file][]', class: "btn btn-default" %>
+                        </a>
+                      <% end %>
+                    </div>
+                  </div>
+
+                  <div class="form-group comment hidden soft">
+                    <%= f.label 'Description', class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-10">
+                      <%= f.text_area :comment, class: 'form-control comment' %>
+                    </div>
+                  </div>
+
+
+        <%= f.fields_for :user do |user| %>
+
+          <div class="form-group hidden hard">
+            <%= user.label :name, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :name, class: 'form-control name' %>
+            </div>
+          </div>
+
+          <div class="form-group hidden hard">
+            <%= user.label :mobile_number, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :mobile_number, class: "form-control mobile" %>
+            </div>
+          </div>
+          
+          <div class="form-group hidden hard">
+            <%= user.label :email, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :email, class: "form-control email" %>
+            </div>
+          </div>
+          
+          <div class="form-group hidden hard">
+            <%= user.label :college, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <!-- <%= user.select :college_id, College.all.collect { |college| [college.name, college.id]}, class: 'form-control college' %> -->
+              <%= user.text_field :college, class: "form-control college" %>
+
+            </div>
+          </div>
+
+        <% end %>
+
+                  <div class="form-group hidden soft">
+                    <div class="col-sm-10 col-sm-offset-2">
+                      <button class="btn btn-primary pull submit" id="submit" type="submit" data-toggle="modal">Submit</button>
+                      <button class="btn btn-white push cancel" type="submit">Cancel</button>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+</div>
+
+
+
+<!-- end user form -->
+
+
+<!-- </body> -->
+
+
+<!-- nested and hidden user form -->
+<div class="modal fade" id="user-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--   <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">User Details</h4>
+        You are not currently signed in. Please fill in the details about yourself.
+      </div>
+      <div class="modal-body">
+
+        <%= form_for :user, :html => {:class => 'form-horizontal listing-form' }, method: :post do |user| %>
+
+          <div class="form-group">
+            <%= user.label :name, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :name, class: 'form-control publisher', value: current_user.try(:name) %>
+            </div>
+          </div>
+	
+          <div class="form-group">
+            <%= user.label :mobile_number, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :mobile_number, class: "form-control publisher", value: current_user.try(:phone) %>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <%= user.label :email, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.text_field :email, class: "form-control publisher", value: current_user.try(:email) %>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <%= user.label :college, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-8">
+              <%= user.select :college_id, College.all.collect { |college| [college.name, college.id]}, class: 'form-control college' %>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+              <%= button_tag 'Cancel', class: 'btn btn-default', data: {dismiss: 'modal'} %>
+              <%= user.button 'Submit', class: 'btn btn-primary' %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div> -->
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">User Details</h4>
+        Please either log in or fill in the details below so that we can potential buyers can know how to contact you.
+      </div>
+
+      <div class="modal-body">
+        <form method="get" class="form-horizontal listing-form">
+
+          <div class="form-group name">
+            <label class="col-sm-3 control-label">Name</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control name">
+            </div>
+          </div>
+          <div class="form-group mobile">
+            <label class="col-sm-3 control-label">Mobile</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control mobile">
+            </div>
+          </div>
+
+          <div class="form-group college">
+            <label class="col-sm-3 control-label">College</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control college">
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default klose" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary submit">Submit</button>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :college_id %><br>
-    <%= f.number_field :college_id %>
-  </div>
-  <div class="field">
-    <%= f.label :expected_price %><br>
-    <%= f.text_field :expected_price %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+</div>
+<style type="text/css">
+  .bordered {
+    border: 1px solid red;
+  }
+
+  .form-group.selling-price .sp-comment {
+    font-size: 10px;
+  }
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+
+    $(".search-container").addClass("hidden");
+
+    $('.file-inputs').bootstrapFileInput();
+
+
+    $(".title button.clear").on("click", function(e) {
+      console.log("clear it son!");
+      
+      var $form = $("form.listing-form");
+
+      $(".form-group", $form).addClass('hidden');
+      $(".form-group.title").removeClass('hidden');
+
+      $("#search-title").val("")
+                        .removeAttr("disabled");
+
+      $(".search-result") .removeClass("fadeInRight")
+                          .addClass("fadeOutLeft")
+                          .addClass("hidden");
+
+      $(".item-info")                     
+                     .removeClass("fadeInLeft")
+                     .addClass("fadeInRight")
+                     .addClass("col-sm-offset-2")                     
+    });
+
+
+
+
+
+    $("#classified_retail_price").on("keyup", function(e) {
+      var retail_price  = Math.floor( $("#classified_retail_price").val() );
+      if (typeof(retail_price)==="number") { console.log("number it is"); }
+      console.log("no number guess")
+      var selling_price = Math.floor( retail_price * 0.55 );
+      $("#classified_expected_price").val(selling_price);
+      $(".sp-comment > .sp-value").html("Rs " + selling_price);
+
+    });
+
+
+    console.log("printing user");
+    var current_user = "<%= current_user && current_user.name %>";
+    console.log(current_user);
+
+    stuff_done = false;
+
+    $(".listing-form #submit").on('click', function(e) {
+      if (current_user) { 
+        $("input").removeAttr("disabled");
+      }
+      else {
+
+        if (stuff_done === true ) { stuff_done = false; return; }
+        
+        e.preventDefault();
+        var $that = $(this);
+
+        $("#user-modal").modal();
+
+        $("#user-modal button.submit").on("click", function(e) {
+          console.log("submitting modal");
+
+          var $user_modal_form = $("#user-modal form");
+          var name = $("input.name", $user_modal_form).val();
+          var mobile = $("input.mobile", $user_modal_form).val();
+          var email = $("input.email", $user_modal_form).val();
+          var college = $("input.college", $user_modal_form).val();
+          var college_id = $("input.college-id", $user_modal_form).val();
+
+          console.log(name + " " + mobile + " " + email + " " + college + " " + college_id);
+
+          $("input.fname").val(name.split(" ")[0]);
+          $("input.lname").val(name.split(" ")[1]);
+          $("input.mobile").val(mobile);
+          $("input.email").val(email);
+          $("input.college").val(college);
+
+          stuff_done = true;
+          $("#user-modal button.klose").trigger('click');
+
+          // $(".form-group.hidden.hard").removeClass("hidden");
+          $that.trigger('click');
+
+        });
+
+      }
+    });
+
+
+
+    $("#search-title").autocomplete({
+      source: get_results,
+      minLength: 3,
+      select: function (event, ui) {
+                event.preventDefault();
+                var book  = ui.item.book;
+                var $form = $("form.listing-form");
+
+                $form.find("input.title").val(book.title).attr("disabled", true);
+                // $form.find("input.edition").val(book.edition).attr("disabled", true);
+                $form.find("input.author").val(book.author).attr("disabled", true);
+                $form.find("input.publisher").val(book.publisher).attr("disabled", true);
+                $form.find("input.isbn").val(book.isbn).attr("disabled", true);
+
+                $(".form-group.hidden.soft", $form).removeClass('hidden');
+                $(".item-info")
+                               .removeClass("col-sm-offset-2")
+                               .removeClass("fadeInRight")
+                               .addClass("fadeInLeft")
+                               .removeClass("hidden");
+
+                $(".search-result")
+                                    .removeClass("fadeOutLeft")
+                                    .addClass("fadeInRight")
+                                    .removeClass("hidden");
+
+                var sel = "#page-wrapper > div > div > div.col-sm-4.search-result.animated.fadeInRight > div > div.ibox-title.title > h5";
+                $(sel).text(book.title);
+
+
+                var img = "#page-wrapper > div > div > div.col-sm-4.search-result.animated.fadeInRight > div > div.auto.result-item > div > img";
+                var img_src = ui.item.book.image.show.url;
+                // console.log(ui.item.book.image.profile.url);
+                console.log(img_src);
+                $(img).attr("src", img_src);
+              }
+    })
+    .keydown(function(e){
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        $("form.listing-form .form-group.soft.hidden").removeClass('hidden');
+        $("form.listing-form .form-group input").attr("disabled", false);
+        return false;
+      }
+    })
+    .data("ui-autocomplete")._renderItem = function (ul, item) {
+      $(".ui-corner-all").removeClass("ui-corner-all");
+      console.log(item.book.author);
+      return $("<li>")
+                      .append("<a><img src=" + item.image_url + "></img>" + 
+                        "<div style='display: inline-block;'> <span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +
+                              // "<p class=edition>" + item.book.edition +"</p>" +
+                              "<span class=author>" + item.book.author + "</span>, " +
+                              "<span class=publisher>" + item.book.publisher + " Publications </span>" +
+                        "</div></a>").appendTo(ul);
+    };
+
+    function get_results(request, response) {
+      console.log(request.term)
+      var params = {
+        keywords: request.term
+      };
+      $.get("/search/books", params, function (data) {
+        console.log(data)
+        response(data);
+      }, "json");
+    }
+
+  });
+</script>

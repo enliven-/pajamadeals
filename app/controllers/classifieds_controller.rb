@@ -1,21 +1,17 @@
 class ClassifiedsController < ApplicationController
-  before_action :set_classified, only: [:show, :edit, :update, :destroy]
+  before_action :set_classified, only: [:show, :edit, :update, :destroy,
+                                        :contact_seller, :booth_pickup]
 
   # GET /classifieds
   # GET /classifieds.json
   def index
-	  @search = Classified.search do
-		  fulltext params[:search]
-
-		  with :college_id, current_user.college_id ||
-				    session[:college_id]    ||
-				    params[:college_id]
-		  with :listing_type, params[:listing_type]
-		  order_by :created_at, :desc
-		  paginate per_page: 15
-	  end
-	  @classifieds = @search.results
-   # @classifieds = Classified.all
+    if params[:book_id]
+      @classifieds =  Classified.paginate( page: params[:page], per_page: 30).
+        order('created_at DESC').where(book_id: params[:book_id])
+    else
+      @classifieds =  Classified.paginate( page: params[:page], per_page: 30).
+        order('created_at DESC')
+    end
   end
 
   # GET /classifieds/1
@@ -26,6 +22,9 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds/new
   def new
     @classified = Classified.new
+    @classified.build_book
+    @classified.images.build
+    @classified.build_user if !user_signed_in?
   end
 
   # GET /classifieds/1/edit
@@ -35,15 +34,37 @@ class ClassifiedsController < ApplicationController
   # POST /classifieds
   # POST /classifieds.json
   def create
+    book_attributes = classified_params.delete(:book_attributes)
+    book = Book.find_or_create_by(book_attributes)
+
+    if !user_signed_in?
+      user_attributes = classified_params.delete(:user_attributes)
+      user = User.find_by(mobile_number: user_attributes[:phone]) ||
+        User.create(user_attributes.merge({password: Time.now.to_s,
+                                           guest: true}))
+        end
+
     @classified = Classified.new(classified_params)
+    @classified.book = book
+    @classified.user = current_user || user
 
     respond_to do |format|
       if @classified.save
-        format.html { redirect_to @classified, notice: 'Classified was successfully created.' }
+
+        # upload images
+        if params[:images].present?
+          params[:images]['file'].each do |image|
+            @classified.images.create(file: image)
+          end
+        end
+
+        format.html { redirect_to @classified,
+                      notice: 'Classified was successfully created.' }
         format.json { render :show, status: :created, location: @classified }
       else
         format.html { render :new }
-        format.json { render json: @classified.errors, status: :unprocessable_entity }
+        format.json { render json: @classified.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -53,11 +74,13 @@ class ClassifiedsController < ApplicationController
   def update
     respond_to do |format|
       if @classified.update(classified_params)
-        format.html { redirect_to @classified, notice: 'Classified was successfully updated.' }
+        format.html { redirect_to @classified,
+                      notice: 'Classified was successfully updated.' }
         format.json { render :show, status: :ok, location: @classified }
       else
         format.html { render :edit }
-        format.json { render json: @classified.errors, status: :unprocessable_entity }
+        format.json { render json: @classified.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -67,19 +90,50 @@ class ClassifiedsController < ApplicationController
   def destroy
     @classified.destroy
     respond_to do |format|
-      format.html { redirect_to classifieds_url, notice: 'Classified was successfully destroyed.' }
+      format.html { redirect_to classifieds_url,
+                    notice: 'Classified was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_classified
-      @classified = Classified.find(params[:id])
-    end
+  def contact_seller
+    @classified.contact_sellers.create(contact_seller_params)
+    # render @classified, notice: 'Message sent to seller'
+    render text: 'Message sent to seller'
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def classified_params
-      params.require(:classified).permit(:title, :description, :image, :user_id, :college_id, :expected_price, :listing_type, :status)
-    end
+  def booth_pickup
+    @classified.picks.create(booth_pickup_params)
+    # render @classified, notice: 'Message sent to seller'
+    render text: 'Booth pick up confirmed.'
+  end
+
+  private
+
+  def set_classified
+    @classified = Classified.find(params[:id])
+  end
+
+  def classified_params
+    params.require(:classified).permit(:title, :description, :image,
+                                       :expected_price, :listing_type, :status,
+                                       :pattern, :comment,
+                                       :retail_price,
+                                       book_attributes: [:title, :publisher,
+                                                         :author, :edition,
+                                                         ],
+                                       user_attributes: [:email, :phone, :name,
+                                                         :college_id]
+                                       )
+  end
+
+  def contact_seller_params
+    params.require(:contact_seller).permit(:name, :phone, :message)
+  end
+
+  def booth_pickup_params
+    params.require(:pick).permit(:message, :name, :phone, :college_id, :college,
+                                 :email)
+  end
+
 end

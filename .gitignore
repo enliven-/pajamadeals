@@ -5,10 +5,14 @@ log/development.log log/test.log
 tmp/cache tmp/pids tmp/sessions tmp/sockets
 tmp/
 log/
-test/fixtures/
 .powrc
 solr/
 public/uploads
 db/test.sqlite3
 log
-resources
+public/uploads
+resources/
+.ruby-version
+.ruby-gemset
+.elasticbeanstalk/
+.bundle/

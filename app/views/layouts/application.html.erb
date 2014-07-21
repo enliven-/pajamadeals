@@ -3,12 +3,32 @@
 <head>
   <title>Pajamadeals</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
+<body class="?boxed-layout">
+  <div id="wrapper page-container">
+    <div id="page-wrapper" class="gray-bg">
+      <%= render 'layouts/header' %>
 
+      <%= render partial: "shared/flash_messages", flash: flash %> 
+      
+      <%= yield %>
+
+    </div>
+  </div>
+  <% if Rails.env.production? %>
+    <%= render 'layouts/google_analytics' %>
+  <% end %>
 </body>
+
 </html>
+
+<style type="text/css">
+body.boxed-layout {
+  /*background: url('assets/shattered.png');*/
+  background-color: lightgray;
+}
+</style>

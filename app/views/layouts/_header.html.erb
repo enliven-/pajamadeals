@@ -1,0 +1,156 @@
+ <header>
+  <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+
+  <div class="container-fluid">
+
+    <div class="navbar-header col-sm-2">
+      <!-- <a class="navbar-brand" href="#">has stuff</a> -->
+      <div class="row logo" style="padding-bottom: 0px; margin-bottom: 0px;">
+        <a href="/"><img src="/assets/logo.png"></a>
+      </div>
+<!--       <div class="row" style="padding-top: 0px; margin-top: -15px; color: white;">
+        <span class="tagline" style="font-size: 10px; color: #F0F8FF">for students. by students.</span>
+      </div> -->
+    </div>
+
+
+    <div class="col-sm-7 search-container" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form" role="search">
+        <div class="form-group col-sm-10">
+          <input type="text" class="form-control" id="search-box" placeholder="Search by title or author" style="width: 100%">
+        </div>
+        <button type="submit" class="btn btn-primary search">Search</button>
+      </form>
+    </div>
+
+    <% if current_user %>
+      <ul class="nav navbar-nav navbar-right session-options">
+        <li><a href="">Hello <%#= current_user.name %></a>
+        </li>
+        <!-- <li class="divider-vertical"></li> -->
+        <!-- <li><a href="" data-toggle="modal" data-target="#sign-up">Sign Up</a> -->
+        <!-- </li> -->
+        <li>
+          <%= link_to("Sign Out", destroy_user_session_path, :method => :delete)  %>
+        </li>
+      </ul>
+    <% else %>
+    <ul class="nav navbar-nav navbar-right session-options">
+      <li><a href="" data-toggle="modal" data-target="#sign-in" id="sign-in-link">Sign In</a>
+      </li>
+      <li class="divider-vertical"></li>
+      <li><a href="" data-toggle="modal" data-target="#sign-up" id="sign-up-link">Sign Up</a>
+      </li>
+    </ul>
+    <% end %>
+
+    
+  </nav>
+</header>
+
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+  $("#search-box").autocomplete({
+    source: get_results_books,
+    minLength: 2,
+    select: function (event, ui) {
+              console.log("clicked");
+              event.preventDefault();
+              params = { book_id : ui.item.book.id};
+              $.get("/classifieds/", params, function (data) {
+                var page = $(".results", data);
+                var results = $(page).html();
+                $(".results").html($(page).html());
+              });
+              // return false;             
+            }
+  })
+  .keydown(function(e){
+    if (e.keyCode === 13) {
+      e.preventDefault();
+
+      var search_term = $("#search-box").val();
+      params = { book_title : search_term };
+
+      $.get("/classifieds/", params, function (data) {
+        var page = $(".results", data);
+        var results = $(page).html();
+        $(".results").html($(page).html());
+      });
+
+      // return false;
+    }
+  })
+  .data("ui-autocomplete")._renderItem = function (ul, item) {
+    $(".ui-corner-all").removeClass("ui-corner-all");
+    var url = item.book.title;
+    return $("<li>")
+                    .append("<a class='cf-link' href=''><img src=" + item.image_url + "></img>" + 
+                      "<div style='display: inline-block;'>" +
+                        "<span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +
+                        // "<p class=edition>" + item.book.edition +"</p>" +
+                        "<span class=author>" + item.book.author + "</span>, " +
+                        "<span class=publisher>" + item.book.publisher + " Publications </span>" +
+                      "</div></a>").appendTo(ul);
+  };
+
+  function get_results_books(request, response) {
+    console.log(request.term)
+    var params = {
+      keywords: request.term
+    };
+    $.get("/search/books/", params, function (data) {
+      console.log(data)
+      response(data);
+    }, "json");
+  }
+
+
+  function get_results_clsfds(keywords) {
+    console.log(keywords);
+    var params = { keywords: keywords };
+    console.log(params);
+  }
+
+
+  $("#sign-in-link").on('click', function(e) {
+    e.preventDefault();
+
+    $.get("/users/sign_in", function (data) {
+      var $sign_in_page_partial = $( "div#sign-in", data );
+      console.log(data);
+      // console.log( $sign_in_page_partial.html() );
+      $("body").append($sign_in_page_partial);
+      $("#sign-in").modal();
+    });  
+  });
+
+
+  $("#sign-up-link").on('click', function(e) {
+    e.preventDefault();
+
+    $.get("/users/sign_up", function (data) {
+      var $sign_up_page_partial = $( "div#sign-up", data );
+      console.log( $sign_up_page_partial.html() );
+      $("body").append($sign_up_page_partial);
+      $("#sign-up").modal();
+    });  
+  });
+
+
+  $("body").on('click', "div#sign-in .submit", function(e) {
+    // var current_loc = window.location.href;
+    $("form.sign-in-form").submit();
+
+  });
+
+  $("body").on('click', "div#sign-up .submit", function(e) {
+    $("form.sign-up-form").submit();
+  });
+
+});
+
+</script>

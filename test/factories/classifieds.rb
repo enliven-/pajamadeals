@@ -1,8 +1,5 @@
-ActionDispatch::TestProcess
-
 FactoryGirl.define do
   factory :classified do
-  	title Faker::Lorem.sentence
   	expected_price Faker::Number.number(3)
   	user
   	before(:create) { |classified| classified.send(:set_college) }

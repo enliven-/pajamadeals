@@ -1,0 +1,62 @@
+
+
+<div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+        Sign in for a better experience.
+      </div>
+      <div class="modal-body">
+
+        <%= form_for resource, as: resource_name, url: session_path(resource_name), :html => { :class => 'form-horizontal sign-in-form'} do |f| %>
+
+        <div class="form-group">
+          <%= f.label :mobile, class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.text_field :mobile_number, class: "form-control mobile" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.password_field :password, class: "form-control password" %>
+          </div>
+        </div>
+      </div>
+
+<!--       <% if devise_mapping.rememberable? -%>
+        <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+      <% end -%> -->
+
+      <div class="modal-footer">
+        <div class="col-sm-5 pull">
+          <%= render "devise/shared/links" %>          
+        </div>      
+        <div class="form-group">
+          <%= button_tag 'Cancel', class: 'btn btn-default', data: {dismiss: 'modal'} %>
+          <%= f.button "Sign in", class: 'btn btn-primary submit' %>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<!-- <%= render "devise/shared/links" %> -->
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    
+    $(".modal").removeClass("modal").removeClass("fade").attr("aria-hidden", false);
+    // $("#sign-in").modal();
+
+    // $("body").on('click', "div#sign-in .submit", function(e) {
+    //   $("form.sign-in-form").submit();
+    // });
+
+  });
+</script>

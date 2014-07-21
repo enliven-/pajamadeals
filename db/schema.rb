@@ -11,25 +11,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618120422) do
+ActiveRecord::Schema.define(version: 20140720124737) do
 
-  create_table "classifieds", force: true do |t|
+  create_table "active_admin_comments", force: true do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+
+  create_table "admin_users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+
+  create_table "books", force: true do |t|
     t.string   "title"
     t.text     "description"
+    t.string   "publisher"
+    t.string   "author"
+    t.string   "isbn"
+    t.string   "edition"
+    t.string   "released_year"
+    t.string   "university"
     t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "department"
+    t.string   "semester"
+    t.string   "pages"
+  end
+
+  create_table "classifieds", force: true do |t|
     t.integer  "user_id"
     t.integer  "college_id"
     t.string   "expected_price"
-    t.string   "retail_price"
-    t.string   "suggested_price"
     t.integer  "listing_type"
-    t.boolean  "list",            default: true
     t.string   "token"
-    t.string   "isbn"
-    t.string   "edition"
-    t.string   "condition"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",         default: false
+    t.boolean  "sold",           default: false
+    t.text     "comment"
+    t.integer  "book_id"
+    t.string   "ip"
+    t.string   "pattern"
+    t.string   "retail_price"
   end
 
   create_table "colleges", force: true do |t|
@@ -37,24 +85,50 @@ ActiveRecord::Schema.define(version: 20140618120422) do
     t.string   "abbr"
     t.string   "zipcode"
     t.string   "city"
-    t.string   "address"
-    t.string   "state"
-    t.string   "country"
     t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contact_sellers", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "mobile_number"
+    t.text     "message"
+    t.integer  "user_id"
+    t.integer  "classified_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "images", force: true do |t|
     t.string   "file"
-    t.string   "imageable_type"
-    t.integer  "imageable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "primary"
+    t.integer  "classified_id"
+  end
+
+  create_table "picks", force: true do |t|
+    t.integer  "classified_id"
+    t.integer  "user_id"
+    t.text     "message"
+    t.boolean  "picked"
+    t.boolean  "delivered"
+    t.boolean  "cancelled"
+    t.datetime "picked_at"
+    t.datetime "delivered_at"
+    t.datetime "cancelled_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "college_id"
+    t.string   "college"
+    t.string   "email"
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -67,8 +141,6 @@ ActiveRecord::Schema.define(version: 20140618120422) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "college_id"
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "avatar"
     t.string   "token"
     t.boolean  "active",                 default: true
@@ -82,9 +154,12 @@ ActiveRecord::Schema.define(version: 20140618120422) do
     t.string   "location"
     t.string   "mobile_number"
     t.boolean  "admin",                  default: false
+    t.string   "contact_preference"
+    t.boolean  "guest"
+    t.string   "email"
+    t.string   "name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

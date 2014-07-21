@@ -1,0 +1,56 @@
+BHUSHAN:
+  ✔ Classified#new replace hard coded html form with rails form helper method @done (14-07-11 10:57)
+  
+
+  ✔ Get pictures uploading working on classified#new page @done (14-07-11 10:56)
+
+
+  ✔ Creating classified with user signed in and user not signed in @done (14-07-12 21:24)
+
+
+VIKSIT:
+
+  ✔ Merge suggested price and selling price fields, instead selling price will come with pre-filled suggested price with a message bellow that this is suggested price - message disappers if user edits price, instead it shows suggested price in that message now @done (14-07-15 22:31)
+ 
+ ☐ Form Alignment Vertical or Horizontal
+       http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php
+       http://www.lukew.com/ff/entry.asp?1502
+
+ ☐ Autofill modals incase signed in
+
+  ☐ Change order of fields - According to relevance with each other or according what user will actually fill out i.e importance to user
+    - which fields matter for seller most
+    - which fields matter for buyer most
+    (Above preference is in respective of order)
+
+ ☐ Compile all js into one file @started(14-07-12 12:31)
+
+COLLECTIVE:
+  ☐ Pagination is showing extra blank pages
+
+  ☐ Get the book information for just creating classified on classified#new page
+
+  ☐ Setup sending smses thru website
+
+
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+ ✔ Compile all styles into one file @started(14-07-12 11:27) @done (14-07-12 12:27) @lasted(1:00) @project(VIKSIT)
+ ✔ Navbar search behaviour like google @started(14-07-12 10:11) @done (14-07-12 10:37) @lasted(0:26) @project(VIKSIT)
+ ✔ Change price and loc to show in center on show @started(14-07-11 23:25) @done (14-07-11 23:33) @lasted(0:08) @project(VIKSIT)
+ ✔ Percent price of mrp - put that on classifieds#show page => changed to show percent off; @started(14-07-11 23:15) @done (14-07-11 23:19) @lasted(0:04) @project(VIKSIT)
+ ✔ Textbox rendering differently on mac @started(14-07-11 22:59) @done (14-07-11 23:08) @lasted(0:09) @project(VIKSIT)
+ ✔ Signup/signin buttons and form @done (14-07-11 22:18) @project(VIKSIT)
+ ✔ Put publisher and author information on search autocomplete view @done (14-07-10 17:38) @project(VIKSIT)
+ ✔ calculated suggested price @done (14-07-10 17:08)  @project(BHUSHAN)
+ ✔ integrate pickup to booth pickup functionality @done (14-07-10 16:59) @project(BHUSHAN)
+ ✔ Change comments to description on classifieds#new @started(14-07-10 13:20) @done (14-07-10 13:21) @project(VIKSIT)
+  @lasted(0:01)
+ ✔ take off the Deliver me button from classifieds#show page @started(14-07-10 13:02) @done (14-07-10 13:02) @project(VIKSIT)
+  @lasted(0:00)
+ ✔ pretty animation on index page, consistent with show @started(14-07-10 11:16) @done (14-07-10 11:17) @lasted(0:01) @project(VIKSIT)
+ ✔ Put 'tell them you found listing on hasstuf.com when you call' on contact seller page @started(14-07-10 11:12) @done (14-07-10 11:13) @lasted(0:01) @project(VIKSIT)
+ ✔ Search in navbar is showing curved in chrome browser in Satan on classifieds#show @started(14-07-10 11:07) @done (14-07-10 11:10) @lasted(0:03) @project(VIKSIT)
+ 
+ ✔ Remove search bar from classified#new page @started(14-07-10 11:03) @done (14-07-10 11:06) @lasted(0:03) @project(VIKSIT)

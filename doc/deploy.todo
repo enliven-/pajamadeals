@@ -1,0 +1,25 @@
+BHUSHAN:
+ ✔ Validations @done (14-07-20 12:39)
+ ☐ Tests
+ ☐ check for avatar system / decide how to handle seller info display
+ ✔ logging in file system production @done (14-07-20 16:11)
+ ✔ after sign up redirect to same page; check for sign out too; @done (14-07-20 16:11)
+ ✔ email so that you can handle forgotten password @done (14-07-20 17:20)
+ ☐ Figure out user sign up if mobile already exists
+
+
+VIKSIT:
+ ✔ handle active admin css @done (14-07-20 14:55)
+ ✔ navbar search re-renders index. fix that @done (14-07-20 14:55)
+ ✔ remove other choices @done (14-07-20 13:59)
+ ✔ show flash msgs => success error etc @done (14-07-20 14:48)
+ ✔ take out form submission from / @done (14-07-20 14:55)
+ ☐ improve general styling of pages
+ ☐ clean up css and js
+ ☐ devise links
+   Appending +91 in front of mobile field in views
+   Footer (and our email in footer)
+
+COMMON:
+  ☐ twilio integration
+  ☐ how comfortable people are giving out no. to public

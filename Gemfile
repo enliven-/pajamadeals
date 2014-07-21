@@ -2,9 +2,11 @@ source 'https://rubygems.org'
 # ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: :development
+
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -38,16 +40,14 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'simple_form'
-
 # facebook
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'koala'
 
 # search engine
-gem 'sunspot_rails'
-gem 'sunspot_solr', :git => 'git@github.com:sunspot/sunspot.git'
+gem 'searchkick'
+gem 'will_paginate'
 
 # logging and monitoring
 gem 'mongodb_logger'
@@ -57,7 +57,7 @@ gem "bson_ext"
 # view helper
 gem "therubyracer"
 gem "less-rails"
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'font-awesome-rails'
 
 # test helper
 gem 'faker'
@@ -71,4 +71,17 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 
+# active admin
+gem 'activeadmin', github: 'gregbell/active_admin'
 
+# deployment
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+gem 'capistrano-rvm'
+
+gem 'jquery-ui-rails'
+# background jobs
+gem 'sidekiq'
+
+gem 'forgery'
