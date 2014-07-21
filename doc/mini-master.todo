@@ -25,6 +25,11 @@ VIKSIT:
 
  ☐ Compile all js into one file @started(14-07-12 12:31)
 
+   Loading indicator
+   Footer
+   Replace html image to rails helper
+   put Sale a book button
+
 COLLECTIVE:
   ☐ Pagination is showing extra blank pages
 
