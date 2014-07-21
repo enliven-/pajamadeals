@@ -36,7 +36,6 @@ class ClassifiedsController < ApplicationController
   def create
     book_attributes = classified_params.delete(:book_attributes)
     book = Book.find_or_create_by(book_attributes)
-    book = Book.first
 
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
