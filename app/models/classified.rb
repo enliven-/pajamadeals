@@ -4,7 +4,7 @@ class Classified < ActiveRecord::Base
   SELL = 1
 
   validates :expected_price, presence: true, numericality: true
-  validates :retail_price,   presence: true, numericality: true
+  validates :retail_price,   numericality: true
 
   has_many :images
   accepts_nested_attributes_for :images
@@ -48,7 +48,7 @@ class Classified < ActiveRecord::Base
   def image
     book.image || self.images.first
   end
-  
+
   private
 
   def set_college
