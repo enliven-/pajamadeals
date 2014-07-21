@@ -122,8 +122,8 @@ class ClassifiedsController < ApplicationController
                                        book_attributes: [:title, :publisher,
                                                          :author, :edition,
                                                          ],
-                                       user_attributes: [:email, :phone, :name,
-                                                         :college_id]
+                                       user_attributes: [:email, :mobile_number,
+                                                         :name, :college_id]
                                        )
   end
 
