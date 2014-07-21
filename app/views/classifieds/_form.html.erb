@@ -239,7 +239,8 @@
           <div class="form-group college">
             <label class="col-sm-3 control-label">College</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control college">
+              <%= select_tag "college", options_from_collection_for_select(College.all, "id", "name"), class: "form-control college" %>
+              <!-- <input type="text" class="form-control college"> -->
             </div>
           </div>
 
@@ -333,13 +334,10 @@
           var name = $("input.name", $user_modal_form).val();
           var mobile = $("input.mobile", $user_modal_form).val();
           var email = $("input.email", $user_modal_form).val();
-          var college = $("input.college", $user_modal_form).val();
-          var college_id = $("input.college-id", $user_modal_form).val();
+          var college = $("select.college", $user_modal_form).val();
 
-          console.log(name + " " + mobile + " " + email + " " + college + " " + college_id);
 
-          $("input.fname").val(name.split(" ")[0]);
-          $("input.lname").val(name.split(" ")[1]);
+          $("input.name").val(name);
           $("input.mobile").val(mobile);
           $("input.email").val(email);
           $("input.college").val(college);
