@@ -239,12 +239,12 @@
       </div>
       <div class="modal-body" style="min-height: 200px;">
 
-        <h3 style="text-align: center; margin-top: 30px; padding-top: 0px;"> <%= @classified.user.full_name %></h3> 
+        <h3 style="text-align: center; margin-top: 30px; padding-top: 0px;"> <%= @classified.user.name %></h3> 
 
-        <div class="row col-sm-4 col-sm-offset-4" style="text-align: center; margin-top: 20px; padding-top: 0px;">
+        <div class="row col-sm-6 col-sm-offset-3" style="text-align: center; margin-top: 20px; padding-top: 0px;">
           <h4 style="margin-top: 0px; padding-top: 0px;">
             <i class="fa fa-phone">
-              <span style="margin-left: 4px;"><%= @classified.user.phone || '-'%></span>
+              <span style="margin-left: 4px;">+91-<%= @classified.user.phone || '-'%></span>
             </i>
           </h4>
         </div>
@@ -335,8 +335,7 @@
         <div class="form-group">
           <%= f.label 'College', class: 'col-sm-3 control-label' %>
           <div class="col-sm-8">
-                <%= f.select :college_id, College.all.collect { |college| [college.name, college.id]}, class: 'form-control college', value: current_user.try(:college).try(:name) %>
-              </div>
+            <%= f.select :college_id, College.all.collect { |college| [college.name, college.id]}, { include_blank: true }, class: 'form-control college', value: current_user.try(:college).try(:name) %>
           </div>
         </div>
 
@@ -359,7 +358,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="pu-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="pu-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -417,7 +416,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- </body> -->
 

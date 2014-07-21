@@ -35,7 +35,7 @@
 
                     <div class="form-group title">
                       <%= book.label :title, class: 'col-sm-2 control-label' %>
-                      <div class="col-sm-10">
+                      <div class="col-sm-9">
                       <div class="input-group">
                           <%= book.text_field :title, class: 'form-control title', id: 'search-title' %>
                           <div class="input-group-btn">
@@ -47,7 +47,7 @@
 
                     <div class="form-group publisher hidden soft">
                       <%= book.label :publisher, class: 'col-sm-2 control-label' %>
-                      <div class="col-sm-10">
+                      <div class="col-sm-9">
                         <%= book.text_field :publisher, class: 'form-control publisher' %>
                       </div>
                     </div>
@@ -55,7 +55,7 @@
 
                     <div class="form-group author hidden soft">
                       <%= book.label :author, class: 'col-sm-2 control-label' %>
-                      <div class="col-sm-10">
+                      <div class="col-sm-9">
                         <%= book.text_field :author, class: 'form-control author' %>
                       </div>
                     </div>
@@ -63,8 +63,8 @@
 
                   <div class="form-group hidden soft">
                     <%= f.label :pattern, class: 'col-sm-2 control-label' %>
-                     <div class="col-sm-10"> 
-                       <%= f.select :pattern, [['2012', '2012'], ['2008', '2008']], { include_blank: true }, { class: "form-control" } %>
+                     <div class="col-sm-9"> 
+                       <%= f.select :pattern, [['2012', '2012'], ['2008', '2008']], { include_blank: true }, { class: "form-control pattern" } %>
                      </div>
                   </div>
 
@@ -72,14 +72,14 @@
 
                   <div class="form-group retail-price hidden soft">
                     <%= f.label :retail_price, 'Retail price (Rs)', class: 'col-sm-2 control-label' %>
-                    <div class="col-sm-10">
+                    <div class="col-sm-9">
                       <%= f.text_field :retail_price, class: 'form-control retail-price' %>
                     </div>
                   </div>
 
                   <div class="form-group selling-price hidden soft">
                     <%= f.label :expected_price, 'Selling price (Rs)', class: 'col-sm-2 control-label' %>
-                    <div class="col-sm-10"> 
+                    <div class="col-sm-9"> 
                       <%= f.text_field :expected_price, class: 'form-control selling-price' %>
                        <span class="sp-comment">*We reccomend 55% of retail price: <span class="sp-value">
                     </div>
@@ -87,7 +87,7 @@
 
                   <div class="form-group images hidden soft">
                     <%= f.label 'Images', class: 'col-sm-2 control-label' %>
-                    <div class="col-sm-10"> 
+                    <div class="col-sm-9"> 
                       <%= f.fields_for :images do |image| %>
                         <a class="file-input-wrapper btn btn-default"><span>Choose image</span>
                           <%= image.file_field :file, multiple: true, name: 'images[file][]', class: "btn btn-default" %>
@@ -98,7 +98,7 @@
 
                   <div class="form-group comment hidden soft">
                     <%= f.label 'Description', class: 'col-sm-2 control-label' %>
-                    <div class="col-sm-10">
+                    <div class="col-sm-9">
                       <%= f.text_area :comment, class: 'form-control comment' %>
                     </div>
                   </div>
@@ -362,6 +362,7 @@
       minLength: 3,
       select: function (event, ui) {
                 event.preventDefault();
+
                 var book  = ui.item.book;
                 var $form = $("form.listing-form");
 
@@ -392,14 +393,29 @@
                 // console.log(ui.item.book.image.profile.url);
                 console.log(img_src);
                 $(img).attr("src", img_src);
+
+                // $("form input.pattern").focus();
+                $("#classified_pattern").focus();
+                return false;
               }
     })
     .keydown(function(e){
       if (e.keyCode === 13) {
         e.preventDefault();
-        $("form.listing-form .form-group.soft.hidden").removeClass('hidden');
-        $("form.listing-form .form-group input").attr("disabled", false);
-        return false;
+        var title  = $("form input.title").val();
+        var publisher = $("form input.publisher").val();
+
+        if (publisher === "") {
+
+          $("form.listing-form .form-group.soft.hidden").removeClass('hidden');
+          $("form.listing-form .form-group input").attr("disabled", false);
+          $( "#search-title" ).autocomplete( "close" );
+          $("input").val("");
+          $("form input.title").val(title);
+          $("form input.publisher").focus();
+          return false;
+
+        }
       }
     })
     .data("ui-autocomplete")._renderItem = function (ul, item) {

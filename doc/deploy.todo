@@ -16,9 +16,12 @@ VIKSIT:
  ✔ take out form submission from / @done (14-07-20 14:55)
  ☐ improve general styling of pages
  ☐ clean up css and js
- ☐ devise links
-   Appending +91 in front of mobile field in views
-   Footer (and our email in footer)
+ ☐ Appending +91 in front of mobile field in views
+ ☐ Footer (and our email in footer)
+ ☐ sign in/up/fb links consitent behavior in modals
+ ✔ devise links @done (14-07-20 17:48)
+ ☐ footer (and our email in footer)
+ ✔ remove college id field from user sign up, instead ask for email, compulsorily, otherwise there is no way we could send them reset password instructions @done (14-07-20 23:16)
 
 COMMON:
   ☐ twilio integration

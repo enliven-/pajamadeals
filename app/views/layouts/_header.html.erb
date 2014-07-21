@@ -22,14 +22,11 @@
         <button type="submit" class="btn btn-primary search">Search</button>
       </form>
     </div>
-
+<!-- 
     <% if current_user %>
       <ul class="nav navbar-nav navbar-right session-options">
-        <li><a href="">Hello <%#= current_user.name %></a>
+        <li><a href="">Hello <%= current_user.name %></a>
         </li>
-        <!-- <li class="divider-vertical"></li> -->
-        <!-- <li><a href="" data-toggle="modal" data-target="#sign-up">Sign Up</a> -->
-        <!-- </li> -->
         <li>
           <%= link_to("Sign Out", destroy_user_session_path, :method => :delete)  %>
         </li>
@@ -44,7 +41,7 @@
     </ul>
     <% end %>
 
-    
+ -->    
   </nav>
 </header>
 
@@ -73,6 +70,9 @@ $(document).ready(function () {
       e.preventDefault();
 
       var search_term = $("#search-box").val();
+
+      if (search_term === "") { console.log("empty!"); return false; } // this makes it stop here and continue to select.
+
       params = { book_title : search_term };
 
       $.get("/classifieds/", params, function (data) {
@@ -80,8 +80,6 @@ $(document).ready(function () {
         var results = $(page).html();
         $(".results").html($(page).html());
       });
-
-      // return false;
     }
   })
   .data("ui-autocomplete")._renderItem = function (ul, item) {
