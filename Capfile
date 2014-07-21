@@ -7,6 +7,7 @@ set :rvm_type, :user
 set :rvm_ruby_version, '2.1.2'
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 
+
 # Includes tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
@@ -21,7 +22,7 @@ Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 # require 'capistrano/rbenv'
 # require 'capistrano/chruby'
 # require 'capistrano/bundler'
-# require 'capistrano/rails/assets'
-# require 'capistrano/rails/migrations'
+require 'capistrano/rails/assets'
+require 'capistrano/rails/migrations'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
