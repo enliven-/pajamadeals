@@ -83,3 +83,5 @@ gem 'capistrano-rvm'
 gem 'jquery-ui-rails'
 # background jobs
 gem 'sidekiq'
+
+gem 'forgery'
