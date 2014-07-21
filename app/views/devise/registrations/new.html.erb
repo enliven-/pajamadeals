@@ -36,7 +36,7 @@
         <div class="form-group">
           <%= f.label :college, class: 'col-sm-3 control-label' %>
           <div class="col-sm-8">
-            <%= f.select :college, College.all.collect { |college| [college.name, college.id]}, { include_blank: true }, { class: "form-control college" } %>
+            <%= f.select :college, College.select(:name, :id).collect { |college| [college.name, college.id]}, { include_blank: true }, { class: "form-control college" } %>
           </div>
         </div>
 

@@ -130,7 +130,7 @@
           <div class="form-group hidden hard">
             <%= user.label :college, class: 'col-sm-3 control-label' %>
             <div class="col-sm-8">
-              <!-- <%= user.select :college_id, College.all.collect { |college| [college.name, college.id]}, class: 'form-control college' %> -->
+              <!-- <%= user.select :college_id, College.select(:name, :id).collect { |college| [college.name, college.id]}, class: 'form-control college' %> -->
               <%= user.text_field :college, class: "form-control college" %>
 
             </div>
@@ -199,7 +199,7 @@
           <div class="form-group">
             <%= user.label :college, class: 'col-sm-3 control-label' %>
             <div class="col-sm-8">
-              <%= user.select :college_id, College.all.collect { |college| [college.name, college.id]}, class: 'form-control college' %>
+              <%= user.select :college_id, College.select(:name, :id).collect { |college| [college.name, college.id]}, class: 'form-control college' %>
             </div>
           </div>
 
