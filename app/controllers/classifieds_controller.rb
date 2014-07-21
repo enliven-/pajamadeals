@@ -36,11 +36,13 @@ class ClassifiedsController < ApplicationController
   def create
     book_attributes = classified_params.delete(:book_attributes)
     book = Book.find_or_create_by(book_attributes)
+    book = Book.first
 
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
-      user = User.find_by(mobile_number: user_attributes[:phone]) ||
-        User.create(user_attributes.merge({password: Time.now.to_s,
+      user = User.find_by(mobile_number: user_attributes[:mobile_number]) ||
+        User.create(user_attributes.merge({password: "passwordpassword#{rand(20)}",
+                                           email: "#{SecureRandom.hex(5)}@guest.com",
                                            guest: true}))
         end
 
@@ -122,8 +124,8 @@ class ClassifiedsController < ApplicationController
                                        book_attributes: [:title, :publisher,
                                                          :author, :edition,
                                                          ],
-                                       user_attributes: [:email, :phone, :name,
-                                                         :college_id]
+                                       user_attributes: [:email, :mobile_number,
+                                                         :name, :college_id]
                                        )
   end
 
