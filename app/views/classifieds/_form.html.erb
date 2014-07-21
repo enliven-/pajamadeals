@@ -221,7 +221,7 @@
       </div>
 
       <div class="modal-body">
-        <form method="get" class="form-horizontal listing-form">
+        <form method="get" class="form-horizontal">
 
           <div class="form-group name">
             <label class="col-sm-3 control-label">Name</label>
@@ -340,12 +340,13 @@
           $("input.name").val(name);
           $("input.mobile").val(mobile);
           $("input.email").val(email);
-          $("input.college").val(college);
+          $("input.college").val(parseInt(college));
 
           stuff_done = true;
           $("#user-modal button.klose").trigger('click');
+          $("input").attr("disabled", false)
+          $(".form-group.hidden.hard").removeClass("hidden");
 
-          // $(".form-group.hidden.hard").removeClass("hidden");
           $that.trigger('click');
 
         });
