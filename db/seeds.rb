@@ -38,7 +38,7 @@ require 'csv'
 
 # Import CSV data for books
 count = 1
-CSV.foreach("#{Rails.root}/resources/books/books.csv", headers: true) do |row|
+CSV.foreach("resources/books/books.csv", headers: true) do |row|
   if row[3] == 'Pune University'
     Book.create(
       title:     row[0].titleize,
@@ -48,7 +48,7 @@ CSV.foreach("#{Rails.root}/resources/books/books.csv", headers: true) do |row|
       department:  (row[4].camelize rescue ''),
       semester:    row[5],
       isbn:      row[6],
-      image:       (File.open("#{Rails.root}/resources/books/#{row[8]}") rescue ''),
+      image:       (File.open("resources/books/#{row[8]}") rescue ''),
       edition:   row[9],
       pages:     row[10],
       description: row[11]
