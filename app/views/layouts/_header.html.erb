@@ -1,5 +1,5 @@
  <header>
-  <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+  <nav class="navbar navbar-inverse navbar-embossed navbar-fixed-top" role="navigation">
 
   <div class="container-fluid">
 
@@ -83,9 +83,10 @@ $(document).ready(function () {
     }
   })
   .data("ui-autocomplete")._renderItem = function (ul, item) {
+    $(".ui-menu").zIndex(1050);
     $(".ui-corner-all").removeClass("ui-corner-all");
     var url = item.book.title;
-    return $("<li>")
+    return $("<li style='z-index: 1050;'>")
                     .append("<a class='cf-link' href=''><img src=" + item.image_url + "></img>" + 
                       "<div style='display: inline-block;'>" +
                         "<span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +

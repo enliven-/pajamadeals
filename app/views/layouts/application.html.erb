@@ -12,10 +12,12 @@
   <div id="wrapper page-container">
     <div id="page-wrapper" class="gray-bg">
       <%= render 'layouts/header' %>
-
+      <div class="gapper" style="min-height: 70px;"></div>
       <%= render partial: "shared/flash_messages", flash: flash %> 
       
       <%= yield %>
+
+      <%= render 'layouts/footer' %>
 
     </div>
   </div>

@@ -12,6 +12,9 @@ class ClassifiedsController < ApplicationController
       @classifieds =  Classified.paginate( page: params[:page], per_page: 30).
         order('created_at DESC')
     end
+    if @classifieds.length == 0
+      render 'shared/_no_results'
+    end
   end
 
   # GET /classifieds/1
