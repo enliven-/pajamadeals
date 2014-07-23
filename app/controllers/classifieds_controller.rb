@@ -108,14 +108,4 @@ class ClassifiedsController < ApplicationController
                                                          :name, :college_id]
                                        )
   end
-
-  def contact_seller_params
-    params.require(:contact_seller).permit(:name, :phone, :message)
-  end
-
-  def booth_pickup_params
-    params.require(:pick).permit(:message, :name, :phone, :college_id, :college,
-                                 :email)
-  end
-
 end
