@@ -5,16 +5,12 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
-    if params[:book_id]
-      @classifieds =  Classified.paginate( page: params[:page], per_page: 30).
-        order('created_at DESC').where(book_id: params[:book_id])
-    else
-      @classifieds =  Classified.paginate( page: params[:page], per_page: 30).
-        order('created_at DESC')
-    end
-    if @classifieds.length == 0
-      render 'shared/_no_results'
-    end
+    @classifieds = Classified.search(params[:query], list: true,
+                                     order:        'created_at DESC',
+                                     page:         params[:page], per_page: 15,
+                                     operator:     "or",
+                                     fields:       ["title^5", "description"],
+                                     misspellings: {distance: 2})
   end
 
   # GET /classifieds/1
@@ -25,8 +21,6 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds/new
   def new
     @classified = Classified.new
-    @classified.build_book
-    @classified.images.build
     @classified.build_user if !user_signed_in?
   end
 
@@ -37,9 +31,6 @@ class ClassifiedsController < ApplicationController
   # POST /classifieds
   # POST /classifieds.json
   def create
-    book_attributes = classified_params.delete(:book_attributes)
-    book = Book.find_or_create_by(book_attributes)
-
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
       user = User.find_by(mobile_number: user_attributes[:mobile_number]) ||
@@ -49,18 +40,10 @@ class ClassifiedsController < ApplicationController
         end
 
     @classified = Classified.new(classified_params)
-    @classified.book = book
     @classified.user = current_user || user
 
     respond_to do |format|
       if @classified.save
-
-        # upload images
-        if params[:images].present?
-          params[:images]['file'].each do |image|
-            @classified.images.create(file: image)
-          end
-        end
 
         format.html { redirect_to @classified,
                       notice: 'Classified was successfully created.' }
@@ -119,25 +102,10 @@ class ClassifiedsController < ApplicationController
   end
 
   def classified_params
-    params.require(:classified).permit(:title, :description, :image,
-                                       :expected_price, :listing_type, :status,
-                                       :pattern, :comment,
-                                       :retail_price,
-                                       book_attributes: [:title, :publisher,
-                                                         :author, :edition,
-                                                         ],
+    params.require(:classified).permit(:title, :description, :category_id,
+                                       :price,
                                        user_attributes: [:email, :mobile_number,
                                                          :name, :college_id]
                                        )
   end
-
-  def contact_seller_params
-    params.require(:contact_seller).permit(:name, :phone, :message)
-  end
-
-  def booth_pickup_params
-    params.require(:pick).permit(:message, :name, :phone, :college_id, :college,
-                                 :email)
-  end
-
 end
