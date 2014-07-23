@@ -9,7 +9,6 @@ class CreateClassifieds < ActiveRecord::Migration
       t.string :price
       t.boolean :list, default: true
       t.string :token
-      t.string :condition
 
       t.timestamps
     end

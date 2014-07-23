@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20140723102403) do
     t.string   "price"
     t.boolean  "list",        default: true
     t.string   "token"
-    t.string   "condition"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,17 +57,6 @@ ActiveRecord::Schema.define(version: 20140723102403) do
     t.datetime "updated_at"
   end
 
-  create_table "contact_sellers", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "mobile_number"
-    t.text     "message"
-    t.integer  "user_id"
-    t.integer  "classified_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "images", force: true do |t|
     t.string   "file"
     t.datetime "created_at"
@@ -77,38 +65,26 @@ ActiveRecord::Schema.define(version: 20140723102403) do
     t.integer  "classified_id"
   end
 
-  create_table "picks", force: true do |t|
-    t.integer  "classified_id"
-    t.integer  "user_id"
-    t.text     "message"
-    t.boolean  "picked"
-    t.boolean  "delivered"
-    t.boolean  "cancelled"
-    t.datetime "picked_at"
-    t.datetime "delivered_at"
-    t.datetime "cancelled_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.string   "phone"
-    t.string   "college_id"
-    t.string   "college"
-    t.string   "email"
-  end
-
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "college_id"
+    t.string   "name"
+    t.string   "token"
+    t.boolean  "active",                 default: true
+    t.boolean  "admin",                  default: false
+    t.string   "mobile_number"
+    t.boolean  "guest",                  default: false
     t.string   "provider"
     t.string   "uid"
     t.string   "oauth_token"

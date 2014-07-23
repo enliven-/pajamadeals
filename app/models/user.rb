@@ -7,21 +7,14 @@ class User < ActiveRecord::Base
   #  :omniauthable, omniauth_providers: [:facebook],
 
   has_many :classifieds
-  has_many :picks
   belongs_to :college
 
   has_token
 
   mount_uploader :avatar, AvatarUploader
 
-  alias_attribute :phone, :mobile_number
-  alias_attribute :phone_number, :mobile_number
-  alias_attribute :fname, :first_name
-  alias_attribute :lname, :last_name
-
   validates :mobile_number, presence: true, uniqueness: true,
     format: { with: /\A[789]\d{9}\z/, message: 'Invalid number'}
-
 
   # facebook
 
