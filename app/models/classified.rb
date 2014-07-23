@@ -6,16 +6,11 @@ class Classified < ActiveRecord::Base
   validates :expected_price, presence: true, numericality: true
   validates :retail_price,   numericality: true
 
-  has_many :images
-  accepts_nested_attributes_for :images
-  has_many :picks
-  has_many :contact_sellers
   belongs_to :user
   accepts_nested_attributes_for :user
   belongs_to :college
-  belongs_to :book
-  accepts_nested_attributes_for :book
-
+  belongs_to :category
+  
   alias_attribute :selling_price, :expected_price
   alias_attribute :mrp, :retail_price
 
