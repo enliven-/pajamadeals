@@ -393,6 +393,9 @@
                 $(img).attr("src", img_src);
 
                 // $("form input.pattern").focus();
+                $("input.retail-price").setAttribute("autocomplete", "off");
+                $("input.listing-price").setAttribute("autocomplete", "off");
+
                 $("#classified_pattern").focus();
                 return false;
               }
