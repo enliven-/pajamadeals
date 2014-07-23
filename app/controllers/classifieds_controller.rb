@@ -37,9 +37,6 @@ class ClassifiedsController < ApplicationController
   # POST /classifieds
   # POST /classifieds.json
   def create
-    book_attributes = classified_params.delete(:book_attributes)
-    book = Book.find_or_create_by(book_attributes)
-
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
       user = User.find_by(mobile_number: user_attributes[:mobile_number]) ||
@@ -49,18 +46,10 @@ class ClassifiedsController < ApplicationController
         end
 
     @classified = Classified.new(classified_params)
-    @classified.book = book
     @classified.user = current_user || user
 
     respond_to do |format|
       if @classified.save
-
-        # upload images
-        if params[:images].present?
-          params[:images]['file'].each do |image|
-            @classified.images.create(file: image)
-          end
-        end
 
         format.html { redirect_to @classified,
                       notice: 'Classified was successfully created.' }
@@ -119,13 +108,8 @@ class ClassifiedsController < ApplicationController
   end
 
   def classified_params
-    params.require(:classified).permit(:title, :description, :image,
-                                       :expected_price, :listing_type, :status,
-                                       :pattern, :comment,
-                                       :retail_price,
-                                       book_attributes: [:title, :publisher,
-                                                         :author, :edition,
-                                                         ],
+    params.require(:classified).permit(:title, :description, :category_id,
+                                       :price,
                                        user_attributes: [:email, :mobile_number,
                                                          :name, :college_id]
                                        )
