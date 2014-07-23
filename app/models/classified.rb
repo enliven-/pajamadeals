@@ -1,4 +1,5 @@
 class Classified < ActiveRecord::Base
+  searchkick
 
   BUY = 0
   SELL = 1
@@ -10,7 +11,7 @@ class Classified < ActiveRecord::Base
   accepts_nested_attributes_for :user
   belongs_to :college
   belongs_to :category
-  
+
   alias_attribute :selling_price, :expected_price
   alias_attribute :mrp, :retail_price
 
