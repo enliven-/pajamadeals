@@ -8,14 +8,14 @@
 
       <div class="row col-sm-12 contact-box result">
 
-        <div class="col-sm-7 row classified-info">
+        <div class="col-sm-6 row classified-info">
           <h4 class="title"><%= classified.title %></h4>
           <div class="col-sm-12 desc">
-            <em><%= classified.comment.truncate(70) %></em>
+            <em><%= classified.description.truncate(70) %></em>
           </div>
         </div>
 
-        <div class="col-sm-3 col-sm-offet-8 s-info">
+        <div class="col-sm-4 col-sm-offet-8 s-info">
           <span class="s-name"><%= classified.user.name %></span> <br/>
           <span class="s-phone"> <i class="fa fa-phone"></i> <%= classified.user.try(:mobile_number) || classified.user.try(:email) %> </span><br/>
           <span clas="s-loc"> <i class="fa fa-map-marker"></i><span>&nbsp;&nbsp;VIT</span></span><br />
@@ -24,7 +24,7 @@
 
         <div class="col-sm-2 ?pull-right date-price">
           <span class="date-posted"><em><%= render_date classified.created_at %></em></span><br/>
-          <h3 class="expected-price"><strong>Rs <%= classified.expected_price %></strong></h3>
+          <h3 class="expected-price"><strong>Rs <%= classified.price.to_i.floor %></strong></h3>
         </div>
 
       </div>
@@ -40,7 +40,7 @@
 <style type="text/css">
 h3.expected-price {
   color: #e34e4d;
-  font-size: 20px;
+  font-size: 18px;
   margin-top: 15px;
   display: inline-block;
   /*margin-left: 30px !important;*/
@@ -66,13 +66,15 @@ span.date-posted {
   /*margin-top: 5px;*/
 }
 span.s-name {
+  display: inline-block;
+  margin-bottom: 3px;
 }
 
 div.s-info {
   /*margin-top: 20px;*/
   /*margin-left: 40px !important;*/
   padding-right: 0px;
-  padding-left: 25px;
+  padding-left: 35px;
   /*padding-left: 0px;*/
 }
 
@@ -83,14 +85,14 @@ div.s-info {
 
 div.date-posted {
   margin-left: -10px;
-  margin-top: -5px;
+  margin-top: -2px;
 }
 
 .date-price {
-  margin-top: -10px;
+  margin-top: -7px;
   padding-right: 0px;
   margin-right: 0px;
-  padding-left: 30px;
+  padding-left: 20px;
   /*margin-left: 10px;*/
 }
 

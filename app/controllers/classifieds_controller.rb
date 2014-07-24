@@ -5,12 +5,13 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
-    @classifieds = Classified.search(params[:query], list: true,
-                                     order:        'created_at DESC',
-                                     page:         params[:page], per_page: 15,
-                                     operator:     "or",
-                                     fields:       ["title^5", "description"],
-                                     misspellings: {distance: 2})
+    # @classifieds = Classified.search(params[:query], list: true,
+    #                                  order:        'created_at DESC',
+    #                                  page:         params[:page], per_page: 15,
+    #                                  operator:     "or",
+    #                                  fields:       ["title^5", "description"],
+    #                                  misspellings: {distance: 2})
+    @classifieds = Classified.all
   end
 
   # GET /classifieds/1
