@@ -228,7 +228,7 @@ ul.ui-autocomplete span.publisher {
 
 .contact-box a:hover {
   background-color: white !important;
-  text-decoration: underline !important;
+  /*text-decoration: underline !important;*/
 }
 
 .results {
@@ -236,7 +236,7 @@ ul.ui-autocomplete span.publisher {
 }
 
 .result {
-  padding: 12px 5px 5px 5px !important;
+  padding: 12px 5px 0px 5px !important;
   /*margin-bottom: 0px !important;*/
   margin-bottom: 5px !important;
 }
