@@ -13,9 +13,9 @@
     <div class="col-sm-7 search-container" id="bs-example-navbar-collapse-1">
       <form class="navbar-form" role="search">
         <div class="form-group col-sm-10">
-          <input type="text" class="form-control" id="search-navbar" placeholder="Search by title or author" style="width: 100%">
+          <input type="text" class="form-control" id="search-navbar" autocomplete="off" placeholder="Search by title or author" style="width: 100%">
         </div>
-        <button type="submit" class="btn btn-primary search">Search</button>
+        <button type="submit" class="btn btn-primary search submit">Search</button>
       </form>
     </div>
 
@@ -50,13 +50,25 @@ $(document).ready(function () {
   $("#search-navbar").on("keypress", function(e) {
     if (e.which == 13) { 
       e.preventDefault();
-      var search_term = $("#search-navbar").val();
+      get_results();
+    }
+  });
+
+  $("form.navbar-form button.submit").on("click", function(e) {
+    e.preventDefault();
+    get_results();
+  });
+
+  var get_results = function() {
+    var search_term = $("#search-navbar").val();
+    if (search_term.length > 2) {
       var params      = { query : search_term }; 
       $.get("/classifieds/", params, function(data) {
         console.log(data);
       });
     }
-  });
+  };
+
 
   $("#sign-in-link").on('click', function(e) {
     e.preventDefault();
