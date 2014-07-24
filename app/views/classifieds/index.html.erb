@@ -1,10 +1,9 @@
 
 <div class="row wrapper wrapper-content animated fadeInRight">
   <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
+        <div class="col-sm-8 results col-sm-offset-2">
+
     <% for classified in @classifieds %>
-    <div class="col-sm-8 results col-sm-offset-2">
-
-
 
       <div class="row col-sm-12 contact-box result">
 
@@ -18,21 +17,20 @@
         <div class="col-sm-4 col-sm-offet-8 s-info">
           <span class="s-name"><%= classified.user.name %></span> <br/>
           <span class="s-phone"> <i class="fa fa-phone"></i> <%= classified.user.try(:mobile_number) || classified.user.try(:email) %> </span><br/>
-          <span clas="s-loc"> <i class="fa fa-map-marker"></i><span>&nbsp;&nbsp;VIT</span></span><br />
+          <span clas="s-loc"> <i class="fa fa-map-marker"></i><span>&nbsp;&nbsp;<%= classified.college.abbr %>, <%= classified.college.city %></span></span><br />
 
         </div>
 
         <div class="col-sm-2 ?pull-right date-price">
           <span class="date-posted"><em><%= render_date classified.created_at %></em></span><br/>
-          <h3 class="expected-price"><strong>Rs <%= classified.price.to_i.floor %></strong></h3>
+          <h3 class="expected-price"><strong>Rs <%= classified.price %></strong></h3>
         </div>
 
       </div>
-
-
-
-    </div> 
     <% end %>
+    <%= will_paginate @classifieds %>
+        </div> 
+
   </div>
 </div>
 
