@@ -1,39 +1,11 @@
 
 <div class="row wrapper wrapper-content animated fadeInRight">
   <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
-        <div class="col-sm-8 results col-sm-offset-2">
 
     <% for classified in @classifieds %>
-
-      <div class="row col-sm-12 contact-box result">
-
-        <div class="col-sm-6 row classified-info">
-          <h4 class="title"><a href><%= classified.title %></a></h4>
-          <div class="col-sm-12 desc">
-            <div class="truncated"><em><%= classified.description.truncate(70) %></em></div>
-            <div class="full hidden animated"><em><%= classified.description %></em></div>
-          </div>
-        </div>
-
-        <div class="col-sm-4 col-sm-offet-8 s-info">
-          <span class="s-name"><%= classified.user.name %></span> <br/>
-          <span class="s-phone"> <i class="fa fa-phone"></i>&nbsp; <%= classified.user.try(:mobile_number) || classified.user.try(:email) %> </span><br/>
-          <span class="s-loc"> <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;<%#= classified.college.abbr %>, <%#= classified.college.city %></span><br />
-          <div class="s-email hidden"> <i class="fa fa-envelope"></i>&nbsp; <%= classified.user.email || '-' %></div><br />
-
-
-
-        </div>
-
-        <div class="col-sm-2 ?pull-right date-price">
-          <span class="date-posted"><em><%= render_date classified.created_at %></em></span><br/>
-          <h3 class="expected-price"><strong>Rs <%= classified.price %></strong></h3>
-        </div>
-
-      </div>
+        <%= render classified %>
     <% end %>
     <%= will_paginate @classifieds %>
-        </div> 
 
   </div>
 </div>
