@@ -46,4 +46,10 @@ class ApplicationController < ActionController::Base
     return nil if user_signed_in? && !current_user.admin?
     current_user
   end
+
+  before_action :configure_devise_permitted_params, if: :devise_controller?
+  def configure_devise_permitted_params
+    devise_parameter_sanitizer.for(:sign_up).push(:email, :mobile_number, :name,
+                                                  :college_id, :college)
+  end
 end
