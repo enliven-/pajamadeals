@@ -4,20 +4,16 @@
   <div class="container-fluid">
 
     <div class="navbar-header col-sm-2">
-      <!-- <a class="navbar-brand" href="#">has stuff</a> -->
       <div class="row logo" style="padding-bottom: 0px; margin-bottom: 0px;">
         <%= link_to image_tag('logo.png'), root_path %>
       </div>
-<!--       <div class="row" style="padding-top: 0px; margin-top: -15px; color: white;">
-        <span class="tagline" style="font-size: 10px; color: #F0F8FF">for students. by students.</span>
-      </div> -->
     </div>
 
 
     <div class="col-sm-7 search-container" id="bs-example-navbar-collapse-1">
       <form class="navbar-form" role="search">
         <div class="form-group col-sm-10">
-          <input type="text" class="form-control" id="search-box" placeholder="Search by title or author" style="width: 100%">
+          <input type="text" class="form-control" id="search-navbar" placeholder="Search by title or author" style="width: 100%">
         </div>
         <button type="submit" class="btn btn-primary search">Search</button>
       </form>
@@ -50,78 +46,23 @@
 <script type="text/javascript">
 $(document).ready(function () {
 
-  $("#search-box").autocomplete({
-    source: get_results_books,
-    minLength: 2,
-    select: function (event, ui) {
-              console.log("clicked");
-              event.preventDefault();
-              params = { book_id : ui.item.book.id};
-              $.get("/classifieds/", params, function (data) {
-                var page = $(".results", data);
-                var results = $(page).html();
-                $(".results").html($(page).html());
-              });
-              // return false;             
-            }
-  })
-  .keydown(function(e){
-    if (e.keyCode === 13) {
+
+  $("#search-navbar").on("keypress", function(e) {
+    if (e.which == 13) { 
       e.preventDefault();
-
-      var search_term = $("#search-box").val();
-
-      if (search_term === "") { console.log("empty!"); return false; } // this makes it stop here and continue to select.
-
-      params = { book_title : search_term };
-
-      $.get("/classifieds/", params, function (data) {
-        var page = $(".results", data);
-        var results = $(page).html();
-        $(".results").html($(page).html());
+      var search_term = $("#search-navbar").val();
+      var params      = { query : search_term }; 
+      $.get("/classifieds/", params, function(data) {
+        console.log(data);
       });
     }
-  })
-  .data("ui-autocomplete")._renderItem = function (ul, item) {
-    $(".ui-menu").zIndex(1050);
-    $(".ui-corner-all").removeClass("ui-corner-all");
-    var url = item.book.title;
-    return $("<li style='z-index: 1050;'>")
-                    .append("<a class='cf-link' href=''><img src=" + item.image_url + "></img>" + 
-                      "<div style='display: inline-block;'>" +
-                        "<span class=title><span class=search-term></span>" + item.book.title + "</span> <br />" +
-                        // "<p class=edition>" + item.book.edition +"</p>" +
-                        "<span class=author>" + item.book.author + "</span>, " +
-                        "<span class=publisher>" + item.book.publisher + " Publications </span>" +
-                      "</div></a>").appendTo(ul);
-  };
-
-  function get_results_books(request, response) {
-    console.log(request.term)
-    var params = {
-      keywords: request.term
-    };
-    $.get("/search/books/", params, function (data) {
-      console.log(data)
-      response(data);
-    }, "json");
-  }
-
-
-  function get_results_clsfds(keywords) {
-    console.log(keywords);
-    var params = { keywords: keywords };
-    console.log(params);
-  }
-
+  });
 
   $("#sign-in-link").on('click', function(e) {
     e.preventDefault();
-
     $.get("/users/sign_in", function (data) {
       var $sign_in_page_partial = $( "div#sign-in", data );
       console.log(data);
-      // console.log( $sign_in_page_partial.html() );
       $("body").append($sign_in_page_partial);
       $("#sign-in").modal();
     });  
@@ -130,7 +71,6 @@ $(document).ready(function () {
 
   $("#sign-up-link").on('click', function(e) {
     e.preventDefault();
-
     $.get("/users/sign_up", function (data) {
       var $sign_up_page_partial = $( "div#sign-up", data );
       console.log( $sign_up_page_partial.html() );
@@ -141,7 +81,6 @@ $(document).ready(function () {
 
 
   $("body").on('click', "div#sign-in .submit", function(e) {
-    // var current_loc = window.location.href;
     $("form.sign-in-form").submit();
 
   });
