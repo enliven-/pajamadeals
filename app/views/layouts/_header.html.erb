@@ -46,8 +46,9 @@
 <script type="text/javascript">
 $(document).ready(function () {
 
+  var $search  = $("input#search-navbar");
 
-  $("#search-navbar").on("keypress", function(e) {
+  $search.on("keypress", function(e) {
     if (e.which == 13) { 
       e.preventDefault();
       get_results();
@@ -60,12 +61,14 @@ $(document).ready(function () {
   });
 
   var get_results = function() {
-    var search_term = $("#search-navbar").val();
+    var search_term = $search.val();
     if (search_term.length > 2) {
       var params      = { query : search_term }; 
       $.get("/classifieds/", params, function(data) {
-        console.log(data);
+        var results = $("div.results", data).html();
+        $("div.results").html(results);
       });
+      $search.val("");
     }
   };
 
