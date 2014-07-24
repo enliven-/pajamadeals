@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include HasToken
 
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
@@ -9,9 +8,8 @@ class User < ActiveRecord::Base
   has_many :classifieds
   belongs_to :college
 
+  include HasToken
   has_token
-
-  mount_uploader :avatar, AvatarUploader
 
   validates :mobile_number, presence: true, uniqueness: true,
     format: { with: /\A[789]\d{9}\z/, message: 'Invalid number'}
