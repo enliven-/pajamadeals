@@ -15,9 +15,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
-  var $last;
-  var last_index;
-  var current_index;
+  var li, ci;
   var $siblings = $("div.result");
 
   $("body").on("click", "h4.title", function(e) {
@@ -28,12 +26,18 @@ $(document).ready(function() {
       $("div.full", e).addClass("hidden");
       $("div.s-email", e).addClass("hidden");
       $("div.truncated", e).removeClass("hidden");
-
+      $("div.s-info", e).css("min-height", "60px");      
     });
 
-    $("div.truncated", $result).toggleClass("hidden");
-    $("div.full", $result).toggleClass("hidden");
-    $("div.s-email", $result).toggleClass("hidden");
+    $result.find("div.s-info").css("min-height", "75px");
+    $("div.truncated", $result).addClass("hidden");
+    $("div.full", $result).removeClass("hidden");
+    $("div.s-email", $result).removeClass("hidden");
+
+    ci = $siblings.index($result);
+    console.log(ci);
+    console.log(li);
+    li = ci;
     return false;
   });
 

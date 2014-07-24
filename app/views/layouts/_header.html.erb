@@ -3,19 +3,29 @@
 
   <div class="container-fluid">
 
-    <div class="navbar-header col-sm-2">
+    <div class="navbar-header col-sm-1">
       <div class="row logo" style="padding-bottom: 0px; margin-bottom: 0px;">
         <%= link_to image_tag('logo.png'), root_path %>
       </div>
     </div>
 
 
-    <div class="col-sm-7 search-container" id="bs-example-navbar-collapse-1">
+    <div class="col-sm-6 search-container" id="bs-example-navbar-collapse-1">
       <form class="navbar-form" role="search">
-        <div class="form-group col-sm-10">
+        <div class="form-group col-sm-9">
           <input type="text" class="form-control" id="search-navbar" autocomplete="off" placeholder="Search by title or author" style="width: 100%">
         </div>
-        <button type="submit" class="btn btn-primary search submit">Search</button>
+        <button type="submit" class="btn btn-info search submit">Search</button>
+      </form>
+    </div>
+
+    <div class="col-sm-2 search-container" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form" role="search" action="/classifieds/new">
+        <div class="form-group">
+          <a href="/classifieds/new" class="btn btn-success search post" style="padding-left: 50px; padding-right: 50px;">
+            Post Ad
+          </a>
+        </div>
       </form>
     </div>
 
