@@ -84,18 +84,15 @@
                       <%= user.password_field :password, class: "form-control password" %>
                     </div>
                   </div>
-
-                  <div class="hr-line-dashed"></div>
-
+                  
                   <% end %>
 
-
-
-                  <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-2">
+                  <div class="form-group buttons">
+                    <div class="col-sm-6 col-sm-offset-2">
                       <%= f.submit :submit, class: "btn btn-primary submit" %>
-                      <%= f.submit :cancel, class: "btn btn-default cancel" %>
+                      <%= f.submit :cancel, class: "btn btn-default cancel" %>                      
                     </div>
+                    <%= button_to "Delete", { action: :destroy, id: @classified.id }, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger delete pull-right" %>
                   </div>
 
                 <% end %>
@@ -107,3 +104,9 @@
     </div>
   </div>
 </div>
+
+<style type="text/css">
+  div.form-group.buttons .delete {
+    margin-right: 75px;
+  }
+</style>
