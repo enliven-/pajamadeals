@@ -85,7 +85,7 @@
 /* logo */
 
 .logo a:hover {
-  background-color: #2a3947 !important;
+  background-color: #323637 !important;
   text-decoration:  none !important;
 }
 
@@ -110,11 +110,11 @@
 }
 
 #bs-example-navbar-collapse-1.search-container {
-  margin-left:  2% !important;
+  margin-left:  6% !important;
 }
 
 .navbar-header {
-  margin-left:  15px !important;
+  /*margin-left:  15px !important;*/
 }
 
 .btn.search {
@@ -122,7 +122,9 @@
 }
 
 
-
+.ad {
+  margin-left: 2%;
+}
 
 
 /* autocomplete menu */

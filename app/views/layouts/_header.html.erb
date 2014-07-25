@@ -10,16 +10,17 @@
     </div>
 
 
-    <div class="col-sm-6 search-container" id="bs-example-navbar-collapse-1">
+    <div class="col-sm-8">
+    <div class="col-sm-9 search-container" id="bs-example-navbar-collapse-1">
       <form class="navbar-form" role="search">
-        <div class="form-group col-sm-9">
+        <div class="form-group col-sm-10">
           <input type="text" class="form-control" id="search-navbar" autocomplete="off" placeholder="Search by title or author" style="width: 100%">
         </div>
         <button type="submit" class="btn btn-info search submit">Search</button>
       </form>
     </div>
 
-    <div class="col-sm-2 search-container" id="bs-example-navbar-collapse-1">
+    <div class="col-sm-2 ad ?search-container" id="bs-example-navbar-collapse-1">
       <form class="navbar-form" role="search" action="/classifieds/new">
         <div class="form-group">
           <a href="/classifieds/new" class="btn btn-success search post" style="padding-left: 50px; padding-right: 50px;">
@@ -29,24 +30,27 @@
       </form>
     </div>
 
-    <% if current_user %>
+    </div>
+
+    <div class="col-sm-2 pull-right">
+      <% if current_user %>
+        <ul class="nav navbar-nav navbar-right session-options">
+          <li><a href="">Hello <%= current_user.name %></a>
+          </li>
+          <li>
+            <%= link_to("Sign Out", destroy_user_session_path, :method => :delete)  %>
+          </li>
+        </ul>
+      <% else %>
       <ul class="nav navbar-nav navbar-right session-options">
-        <li><a href="">Hello <%= current_user.name %></a>
+        <li><a href="" data-toggle="modal" data-target="#sign-in" id="sign-in-link">Sign In</a>
         </li>
-        <li>
-          <%= link_to("Sign Out", destroy_user_session_path, :method => :delete)  %>
+        <li class="divider-vertical"></li>
+        <li><a href="" data-toggle="modal" data-target="#sign-up" id="sign-up-link">Sign Up</a>
         </li>
       </ul>
-    <% else %>
-    <ul class="nav navbar-nav navbar-right session-options">
-      <li><a href="" data-toggle="modal" data-target="#sign-in" id="sign-in-link">Sign In</a>
-      </li>
-      <li class="divider-vertical"></li>
-      <li><a href="" data-toggle="modal" data-target="#sign-up" id="sign-up-link">Sign Up</a>
-      </li>
-    </ul>
-    <% end %>
-
+      <% end %>
+    </div>
     
   </nav>
 </header>
