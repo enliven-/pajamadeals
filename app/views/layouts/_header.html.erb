@@ -23,19 +23,17 @@
     <div class="col-sm-2 ad ?search-container" id="bs-example-navbar-collapse-1">
       <form class="navbar-form" role="search" action="/classifieds/new">
         <div class="form-group">
-          <a href="/classifieds/new" class="btn btn-success search post" style="padding-left: 50px; padding-right: 50px;">
-            Post Ad
-          </a>
+          <%= link_to( "Post Ad", new_classified_path, { class: "btn btn-success postad" } )%>
         </div>
       </form>
     </div>
 
     </div>
 
-    <div class="col-sm-2 pull-right">
+    <div class="col-sm-3 pull-right">
       <% if current_user %>
         <ul class="nav navbar-nav navbar-right session-options">
-          <li><a href="">Hello <%= current_user.name %></a>
+          <li><a>Hello, <%= current_user.name %></a>
           </li>
           <li>
             <%= link_to("Sign Out", destroy_user_session_path, :method => :delete)  %>
@@ -79,8 +77,9 @@ $(document).ready(function () {
     if (search_term.length > 2) {
       var params      = { query : search_term }; 
       $.get("/classifieds/", params, function(data) {
-        var results = $("div.results", data).html();
-        $("div.results").html(results);
+        var new_page = $("div.wrapper-content", data).html();
+        window.history.pushState({}, {}, "/classifieds");
+        $("div.wrapper-content").html(new_page);
       });
       $search.val("");
     }

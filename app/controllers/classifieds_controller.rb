@@ -22,6 +22,9 @@ class ClassifiedsController < ApplicationController
     @classifieds = Classified.search((params[:query].present? ? params[:query] : '*'),
                                      search_params
                                      )
+
+    render 'shared/_no_results' if @classifieds.empty?
+
   end
 
   # GET /classifieds/1
