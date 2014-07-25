@@ -1,6 +1,7 @@
 class ClassifiedsController < ApplicationController
   before_action :set_classified, only: [:show, :edit, :update, :destroy,
                                         :contact_seller, :booth_pickup]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   # GET /classifieds
   # GET /classifieds.json
@@ -83,24 +84,12 @@ class ClassifiedsController < ApplicationController
   # DELETE /classifieds/1
   # DELETE /classifieds/1.json
   def destroy
-    @classified.destroy
+    @classified.update_attribute(:list, false)
     respond_to do |format|
       format.html { redirect_to classifieds_url,
-                    notice: 'Classified was successfully destroyed.' }
+                    notice: 'Classified was successfully deleted.' }
       format.json { head :no_content }
     end
-  end
-
-  def contact_seller
-    @classified.contact_sellers.create(contact_seller_params)
-    # render @classified, notice: 'Message sent to seller'
-    render text: 'Message sent to seller'
-  end
-
-  def booth_pickup
-    @classified.picks.create(booth_pickup_params)
-    # render @classified, notice: 'Message sent to seller'
-    render text: 'Booth pick up confirmed.'
   end
 
   private
