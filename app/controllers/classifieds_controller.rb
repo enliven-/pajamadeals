@@ -6,14 +6,20 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
+    search_params = {}
+    search_params[:operator] = 'or'
+    search_params[:fields] = ["title^5", "description"]
+    search_params[:page] = params[:page]
+    search_params[:per_page] = 15
+    search_params[:order] = { created_at: :desc }
+    search_params[:where] = { list: true }
+    # if current_college.present?
+    #   search_params[:where][:location] = {}
+    #   search_params[:where][:location][:near] = current_college.latitude, current_college.longitude]
+    #   search_params[:where][:location][:near] = "5mi"
+    # end
     @classifieds = Classified.search((params[:query].present? ? params[:query] : '*'),
-                                     operator: "or",
-                                     fields:   ["title^5", "description"],
-                                     page: params[:page], per_page: 15,
-                                     where: {
-                                       list: true
-                                     },
-                                     order: { created_at: :desc }
+                                     search_params
                                      )
   end
 
