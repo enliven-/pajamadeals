@@ -6,20 +6,15 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
-    if params[:query].present?
-      @classifieds = Classified
-      .paginate(page: params[:page], per_page: 15)
-      .order('created_at DESC')
-      .where(list: true)
-      .search(params[:query],
-              operator: "or",
-              fields:   ["title^5", "description"])
-    else
-      @classifieds = Classified
-      .paginate(page: params[:page], per_page: 15)
-      .order('created_at DESC')
-      .where(list: true)
-    end
+    @classifieds = Classified.search((params[:query].present? ? params[:query] : '*'),
+                                     operator: "or",
+                                     fields:   ["title^5", "description"],
+                                     page: params[:page], per_page: 15,
+                                     where: {
+                                       list: true
+                                     },
+                                     order: { created_at: :desc }
+                                     )
   end
 
   # GET /classifieds/1
