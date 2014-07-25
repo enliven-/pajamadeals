@@ -1,5 +1,5 @@
 # create colleges
-2.times do
+3.times do
   College.create(name:  Faker::Company.name,
                  abbr:  Faker::Lorem.characters(3),
                  zipcode: Faker::Address.zip,
@@ -26,7 +26,7 @@ end
   Classified.create(
     title: Faker::Commerce.product_name,
     description: Faker::Lorem.paragraph,
-    user: User.all.sample,
+    user: User.where(admin: false).sample,
     price: Faker::Commerce.price,
     category: Category.all.sample
   )
