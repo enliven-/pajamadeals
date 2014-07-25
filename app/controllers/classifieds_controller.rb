@@ -13,6 +13,7 @@ class ClassifiedsController < ApplicationController
     search_params[:per_page] = 15
     search_params[:order] = { created_at: :desc }
     search_params[:where] = { list: true }
+    search_params[:where][:college_id] = current_college.id if current_college
     # if current_college.present?
     #   search_params[:where][:location] = {}
     #   search_params[:where][:location][:near] = current_college.latitude, current_college.longitude]

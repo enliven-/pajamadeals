@@ -3,8 +3,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  include MongodbLogger::Base
+  def current_college
+    @current_college = @current_college || current_user.try(:college) ||
+      (College.find(session[:college_id]) if session[:college_id].present?)
+  end
 
+  include MongodbLogger::Base
   before_filter :add_params_to_mongodb_logger
   def add_params_to_mongodb_logger
     if Rails.logger.respond_to?(:add_metadata)
