@@ -19,6 +19,9 @@ class ClassifiedsController < ApplicationController
       .order('created_at DESC')
       .where(list: true)
     end
+    if @classifieds.empty?
+      render 'shared/_no_results'
+    end
   end
 
   # GET /classifieds/1
