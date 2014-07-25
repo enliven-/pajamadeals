@@ -77,8 +77,9 @@ $(document).ready(function () {
     if (search_term.length > 2) {
       var params      = { query : search_term }; 
       $.get("/classifieds/", params, function(data) {
-        var results = $("div.results", data).html();
-        $("div.results").html(results);
+        var new_page = $("div.wrapper-content", data).html();
+        window.history.pushState({}, {}, "/classifieds");
+        $("div.wrapper-content").html(new_page);
       });
       $search.val("");
     }
