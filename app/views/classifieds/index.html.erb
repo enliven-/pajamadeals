@@ -24,17 +24,21 @@ $(document).ready(function() {
     e.preventDefault();
     var $result = $(this).parent().parent();
 
-    $.each($siblings, function(e) {
-      $("div.full", e).addClass("hidden");
-      $("div.s-email", e).addClass("hidden");
-      $("div.truncated", e).removeClass("hidden");
-      $("div.s-info", e).css("min-height", "60px");      
+    $.each($siblings, function(i, el) {
+      $("div.full", el).addClass("hidden");
+      $("div.s-email", el).addClass("hidden");
+      $("div.truncated", el).removeClass("hidden");
+      $("div.s-info", el).css("min-height", "60px");
+      $("div.options a", $(el).parent()).addClass("hidden");
+
     });
 
     $result.find("div.s-info").css("min-height", "75px");
     $("div.truncated", $result).addClass("hidden");
     $("div.full", $result).removeClass("hidden");
     $("div.s-email", $result).removeClass("hidden");
+    $("div.options a", $result.parent()).removeClass("hidden");
+
 
     ci = $siblings.index($result);
     console.log(ci);
@@ -43,20 +47,16 @@ $(document).ready(function() {
     return false;
   });
 
-  $("body").on("mouseenter", "div.result-parent", function(e) {
-    console.log("ssss")
-    var $parent = $(this);
-    console.log ( $parent.find("div.options") );
-    $parent.find("div.options a").removeClass("hidden")
-  });
+  // $("body").on("mouseenter", "div.result-parent", function(e) {
+  //   var $parent = $(this);
+  //   $parent.find("div.options a").removeClass("hidden")
+  // });
 
 
-  $("body").on("mouseleave", "div.result-parent", function(e) {
-    console.log("yyyy")
-    var $parent = $(this);
-    console.log ( $parent.find("div.options") );
-    $parent.find("div.options a").addClass("hidden")
-  });
+  // $("body").on("mouseleave", "div.result-parent", function(e) {
+  //   var $parent = $(this);
+  //   $parent.find("div.options a").addClass("hidden")
+  // });
 
 });
 
