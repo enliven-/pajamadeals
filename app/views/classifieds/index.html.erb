@@ -1,14 +1,15 @@
 
 <div class="row wrapper wrapper-content animated fadeInRight">
   <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
-    <div class="col-sm-8 results col-sm-offset-2">
-
+    <div class="col-sm-9 results col-sm-offset-2">
       <% for classified in @classifieds %>
-        <%= render classified %>
+        <div class="result-parent">
+          <%= render classified %>
+        </div>
       <% end %>
-    
-    <%= will_paginate @classifieds %>
     </div>
+    <%= will_paginate @classifieds %>
+
   </div>
 </div>
 
@@ -39,6 +40,21 @@ $(document).ready(function() {
     console.log(li);
     li = ci;
     return false;
+  });
+
+  $("div.result-parent").on("mouseenter", function(e) {
+    console.log("ssss")
+    var $parent = $(this);
+    console.log ( $parent.find("div.options") );
+    $parent.find("div.options a").removeClass("hidden")
+  });
+
+
+  $("div.result-parent").on("mouseleave", function(e) {
+    console.log("yyyy")
+    var $parent = $(this);
+    console.log ( $parent.find("div.options") );
+    $parent.find("div.options a").addClass("hidden")
   });
 
 });
