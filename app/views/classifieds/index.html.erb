@@ -8,8 +8,9 @@
         </div>
       <% end %>
     </div>
-    <%= will_paginate @classifieds %>
-
+    <div class="col-sm-9 results col-sm-offset-2">
+      <%= will_paginate @classifieds %>
+    </div>
   </div>
 </div>
 
@@ -42,7 +43,7 @@ $(document).ready(function() {
     return false;
   });
 
-  $("div.result-parent").on("mouseenter", function(e) {
+  $("body").on("mouseenter", "div.result-parent", function(e) {
     console.log("ssss")
     var $parent = $(this);
     console.log ( $parent.find("div.options") );
@@ -50,7 +51,7 @@ $(document).ready(function() {
   });
 
 
-  $("div.result-parent").on("mouseleave", function(e) {
+  $("body").on("mouseleave", "div.result-parent", function(e) {
     console.log("yyyy")
     var $parent = $(this);
     console.log ( $parent.find("div.options") );

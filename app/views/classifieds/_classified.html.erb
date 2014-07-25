@@ -22,8 +22,10 @@
 </div>
 
 <div class="col-sm-2 options" style="padding-left: 20px;" >
-  <div><a href="/classifieds/1/share" class="btn btn-success share hidden">Share</a></div>
-  <div><a href="/classifieds/1/edit" class="btn btn-default edit hidden">Edit</a></div>
+  <div><a href="/classifieds/<%= classified.id %>/share" class="btn btn-success share hidden">Share</a></div>
+  <% if current_user && current_user.id == classified.user.id %>
+  <div><%= link_to("Edit", edit_classified_path(classified), { class: "btn btn-default edit hidden"} ) %></div>
+  <% end %>
 </div>
 
 
