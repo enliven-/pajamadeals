@@ -37,6 +37,7 @@ class ClassifiedsController < ApplicationController
 
   # GET /classifieds/1/edit
   def edit
+    redirect_to root_path if @classified.user != current_user
   end
 
   # POST /classifieds
