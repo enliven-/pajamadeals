@@ -1,16 +1,42 @@
 
 <div class="row wrapper wrapper-content animated fadeInRight">
   <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
-    <div class="col-sm-9 results col-sm-offset-2">
+
+    <div class="col-sm-3 ?pull-left" style="display:inline-block;">
+      <div class="ibox-content">
+      <span class="filters-heading">Filters</span>  
+        <div class="filter-choice colleges">
+          <h3>College</h3>
+          <%= select_tag :college, options_from_collection_for_select(College.all, "id", "name"), class: "form-control college required", prompt: "--" %>
+        </div>
+
+        <div class="filter-choice categories">
+          <h3>Category</h3>
+
+          <div class="category">
+            <%= link_to "Furniture", classifieds_path, { class: "" } %>
+          </div>
+          <div class="category">
+            <%= link_to "Movies", classifieds_path, { class: "" } %>
+          </div>
+          <div class="category">
+            <%= link_to "Projects", classifieds_path, { class: "" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-9 results ?col-sm-offset-3">
       <% for classified in @classifieds %>
         <div class="result-parent">
           <%= render classified %>
         </div>
       <% end %>
     </div>
-    <div class="col-sm-9 results col-sm-offset-2">
+    <div class="col-sm-9 results col-sm-offset-3">
       <%= will_paginate @classifieds %>
     </div>
+
   </div>
 </div>
 
@@ -63,6 +89,19 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
+
+.colleges select {
+  padding-left: 3px;
+}
+.categories > .category > a {
+  font-weight: 800;
+  padding-bottom: 10px;
+}
+
+.filter-choice {
+  margin-top: 20px;
+}
+
 h3.expected-price {
   color: #e34e4d;
   font-size: 18px;

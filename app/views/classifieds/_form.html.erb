@@ -64,7 +64,7 @@
                   </div>
 
                   <div class="form-group college">
-                    <label class="col-sm-2 control-label">College</label>
+                    <%= user.label :college, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
                       <%= user.select :college, options_from_collection_for_select(College.all, "id", "name"), { include_blank: true }, class: "form-control college required" %>
                     </div>
@@ -92,7 +92,6 @@
                       <%= f.submit :submit, class: "btn btn-primary submit" %>
                       <%= f.submit :cancel, class: "btn btn-default cancel" %>                      
                     </div>
-                    <%= button_to "Delete", { action: :destroy, id: @classified.id }, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger delete pull-right" %>
                   </div>
 
                 <% end %>
