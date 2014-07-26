@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
       (College.find(session[:college_id]) if session[:college_id].present?)
   end
 
+  def current_category
+    return nil if session[:category_id] == 0 || session[:category_id] == '0'
+    @current_category = @current_category ||
+      (Category.find(session[:category_id]) if session[:category_id].present?)
+  end
+
   include MongodbLogger::Base
   before_filter :add_params_to_mongodb_logger
   def add_params_to_mongodb_logger
