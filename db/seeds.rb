@@ -12,7 +12,7 @@ end
               email:   Faker::Internet.email,
               password:    Faker::Internet.password,
               college:   College.all.sample,
-              mobile_number: '9' + Faker::Number.number(9)
+              mobile: '9' + Faker::Number.number(9)
               )
 end
 

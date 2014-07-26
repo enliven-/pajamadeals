@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
-    if user = User.find_by(mobile_number: params[:user][:mobile_number],
+    if user = User.find_by(mobile: params[:user][:mobile],
                            guest: true)
       user.update_attributes(sign_up_params.merge(guest: false))
       sign_in user, bypass: true

@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_devise_permitted_params, if: :devise_controller?
   def configure_devise_permitted_params
-    devise_parameter_sanitizer.for(:sign_up).push(:email, :mobile_number, :name,
+    devise_parameter_sanitizer.for(:sign_up).push(:email, :mobile, :name,
                                                   :college_id, :college)
   end
 end

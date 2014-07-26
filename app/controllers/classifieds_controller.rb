@@ -48,7 +48,7 @@ class ClassifiedsController < ApplicationController
   def create
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
-      user = User.find_by(mobile_number: user_attributes[:mobile_number]) ||
+      user = User.find_by(mobile: user_attributes[:mobile]) ||
         User.create(user_attributes.merge({password: "passwordpassword#{rand(20)}",
                                            email: "#{SecureRandom.hex(5)}@guest.com",
                                            guest: true}))
@@ -107,7 +107,7 @@ class ClassifiedsController < ApplicationController
   def classified_params
     params.require(:classified).permit(:title, :description, :category_id,
                                        :price,
-                                       user_attributes: [:email, :mobile_number,
+                                       user_attributes: [:email, :mobile,
                                                          :name, :college_id]
                                        )
   end
