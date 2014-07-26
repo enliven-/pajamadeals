@@ -16,7 +16,7 @@ class Classified < ActiveRecord::Base
 
   before_create :set_college
   def set_college
-    self.college  ||= user.college
+    self.college ||= user.college
   end
 
 end

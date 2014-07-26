@@ -3,8 +3,8 @@
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :mobile_number %><br />
-  <%= f.text_field :mobile_number, autofocus: true %></div>
+  <div><%= f.label :mobile %><br />
+  <%= f.text_field :mobile, autofocus: true %></div>
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>

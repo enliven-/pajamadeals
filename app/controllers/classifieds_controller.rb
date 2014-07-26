@@ -6,6 +6,17 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
+
+    # filters
+    if params[:filters][:college_id].present?
+      session[:college_id] = params[:filters][:college_id]
+    end
+    if params[:filters][:category_id].present?
+      session[:category_id] = params[:filters][:category_id]
+    end
+
+    # search query
+    query = params[:query].present? ? params[:query] : '*'
     search_params = {}
     search_params[:operator] = 'or'
     search_params[:fields] = ["title^5", "description"]
@@ -13,17 +24,12 @@ class ClassifiedsController < ApplicationController
     search_params[:per_page] = 15
     search_params[:order] = { created_at: :desc }
     search_params[:where] = { list: true }
-    search_params[:where][:college_id] = current_college.id if current_college
-    # if current_college.present?
-    #   search_params[:where][:location] = {}
-    #   search_params[:where][:location][:near] = current_college.latitude, current_college.longitude]
-    #   search_params[:where][:location][:near] = "5mi"
-    # end
-    @classifieds = Classified.search((params[:query].present? ? params[:query] : '*'),
-                                     search_params
-                                     )
+    search_params[:where][:college_id]  = current_college.id  if current_college
+    search_params[:where][:category_id] = current_category.id if current_category
 
-    render 'shared/_no_results' if @classifieds.empty?
+    @classifieds = Classified.search(query, search_params)
+
+    render 'shared/_no_results' and return if @classifieds.empty?
 
   end
 
@@ -48,7 +54,7 @@ class ClassifiedsController < ApplicationController
   def create
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
-      user = User.find_by(mobile_number: user_attributes[:mobile_number]) ||
+      user = User.find_by(mobile: user_attributes[:mobile]) ||
         User.create(user_attributes.merge({password: "passwordpassword#{rand(20)}",
                                            email: "#{SecureRandom.hex(5)}@guest.com",
                                            guest: true}))
@@ -107,7 +113,7 @@ class ClassifiedsController < ApplicationController
   def classified_params
     params.require(:classified).permit(:title, :description, :category_id,
                                        :price,
-                                       user_attributes: [:email, :mobile_number,
+                                       user_attributes: [:email, :mobile,
                                                          :name, :college_id]
                                        )
   end

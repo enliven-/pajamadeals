@@ -59,14 +59,14 @@
                   <div class="form-group">
                     <%= user.label :mobile, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.text_field :mobile_number, class: "form-control mobile" %>
+                      <%= user.text_field :mobile, class: "form-control mobile" %>
                     </div>
                   </div>
 
                   <div class="form-group college">
                     <%= user.label :college, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.select :college, options_from_collection_for_select(College.all, "id", "name"), { include_blank: true }, class: "form-control college required" %>
+                      <%= user.select :college_id, College.select(:id, :name) { |college| [college.name, college.id] }, { include_blank: true }, class: "form-control college required" %>
                     </div>
                   </div>
 

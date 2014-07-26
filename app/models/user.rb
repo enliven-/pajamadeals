@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
-    authentication_keys: [:mobile_number]
+    authentication_keys: [:mobile]
   #  :omniauthable, omniauth_providers: [:facebook],
 
   has_many :classifieds
@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   include HasToken
   has_token
 
-  validates :mobile_number, presence: true, uniqueness: true,
+  validates :mobile, presence: true, uniqueness: true,
     format: { with: /\A[789]\d{9}\z/, message: 'Invalid number'}
 
   # facebook

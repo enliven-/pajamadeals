@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20140723102403) do
     t.string   "token"
     t.boolean  "active",                 default: true
     t.boolean  "admin",                  default: false
-    t.string   "mobile_number"
+    t.string   "mobile"
     t.boolean  "guest",                  default: false
     t.string   "provider"
     t.string   "uid"
