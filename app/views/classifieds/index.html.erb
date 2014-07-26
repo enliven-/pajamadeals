@@ -14,12 +14,12 @@
         </div>
         <div class="ibox-content">
           <div class="filter-choice colleges">
-            <h3>College</h3>
+            <h4>College</h4>
             <%= select_tag :college, options_from_collection_for_select(College.all, "id", "name"), class: "form-control college required", prompt: "--" %>
           </div>
 
           <div class="filter-choice categories">
-            <h3>Category</h3>
+            <h4>Category</h4>
 
             <div class="category">
               <%= link_to "Furniture", classifieds_path, { class: "" } %>
@@ -93,6 +93,27 @@ $(document).ready(function() {
   //   var $parent = $(this);
   //   $parent.find("div.options a").addClass("hidden")
   // });
+
+  $(document).ready(function() {
+    $("body").on("change", ".filter-choice.colleges select", function(e) {
+      var filter_college_choice = $(this).val();
+      params = { filters : { college_id : filter_college_choice } };
+      filter_results(params);
+    });
+
+    $()
+  });
+
+
+  var filter_results = function(params) {
+    $.get("/classifieds/", params, function(data) {
+      var new_page = $("div.wrapper-content", data).html();
+      window.history.pushState({}, {}, "/classifieds");
+      console.log( new_page )      
+      $("div.wrapper-content").html(new_page);
+    });
+  };
+
 
 });
 

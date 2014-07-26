@@ -1,0 +1,69 @@
+
+
+<div class="row wrapper wrapper-content">
+
+  <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
+
+
+    <div class="col-sm-8 col-sm-offset-2 item-info animated ?fadeInRight ?hidden">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Item Information</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="item-form">
+            <div class="?ibox float-e-margins">
+              <div class="?ibox-content">
+                <%= form_for @classified, html: {class: 'form-horizontal listing-form'} do |f| %>
+
+                  <div class="form-group title">
+                    <%= f.label :title, class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-9">
+                      <%= f.text_field :title, class: 'form-control title', id: 'search-title' %>
+                    </div>
+                  </div> 
+
+                  <div class="form-group">
+                    <%= f.label :category, class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-9"> 
+                     <%= f.select :category_id, Category.select(:name, :id).collect { |category| [category.name, category.id] }, { include_blank: true }, { class: "form-control category" } %>
+                    </div>
+                  </div>
+
+                  <div class="form-group comment">
+                    <%= f.label 'Description', class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-9">
+                      <%= f.text_area :description, class: 'form-control comment required' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group selling-price">
+                    <%= f.label :price, 'Price (Rs)', class: 'col-sm-2 control-label' %>
+                    <div class="col-sm-9"> 
+                      <%= f.text_field :price, class: 'form-control selling-price' %>
+                    </div>
+                  </div>
+
+                  <div class="form-group buttons">
+                    <div class="col-sm-9 col-sm-offset-2">
+                      <%= f.submit :submit, class: "btn btn-primary submit" %>
+                      <%= f.submit :cancel, class: "btn btn-default cancel" %>
+                      <%= link_to "Delete", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger delete pull-right" %>           
+                    </div>
+                  </div>
+
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+<style type="text/css">
+  div.form-group.buttons .delete {
+    margin-right: 75px;
+  }
+</style> -->
