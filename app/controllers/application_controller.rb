@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_college
+    return nil if session[:college_id] == 0 || session[:college_id] == '0'
     @current_college = @current_college || current_user.try(:college) ||
       (College.find(session[:college_id]) if session[:college_id].present?)
   end

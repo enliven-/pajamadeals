@@ -22,12 +22,15 @@
  -->          
           <div class="filter-choice colleges">
             <h4>College</h4>
-            <%= select_tag :college, options_from_collection_for_select(College.all, "id", "name"), class: "form-control college required", prompt: "--" %>
+            <%= select_tag :college, options_from_collection_for_select(College.all, "id", "name"), class: "form-control college required", prompt: "-- All --" %>
           </div>
 
           <div class="filter-choice categories">
             <h4>Category</h4>
-
+            <div class="category">
+              <%= link_to "All", classifieds_path, { class: "", id: 0 } %>
+              <span class="pull-right"></span>
+            </div>
             <% for category in Category.all %>
             <div class="category">
               <%= link_to category.name, classifieds_path, { class: "", id: category.id } %>
@@ -53,7 +56,7 @@
 
       <% end %>
     </div>
-    <div class="col-sm-9 results col-sm-offset-3">
+    <div class="col-sm-9 col-sm-offset-3">
       <%= will_paginate @classifieds %>
     </div>
 
@@ -107,7 +110,11 @@ $(document).ready(function() {
   $(document).ready(function() {
     $("body").on("change", ".filter-choice.colleges select", function(e) {
       var filter_college_choice = $(this).val();
-      params = { filters : { college_id : filter_college_choice } };
+      if (filter_college_choice.length > 0) {
+        params = { filters : { college_id : filter_college_choice } };
+      } else {
+        params = { filters : { college_id : "0" } };
+      }
       filter_results(params);
       // var filter = $(this).find(":selected").text();
       // $("div.applied-filters .college").html("<span class='label'>" + filter + "</span>")
@@ -131,7 +138,6 @@ $(document).ready(function() {
     $.get("/classifieds/", params, function(data) {
       var results = $("div.results", data).html();
       window.history.pushState({}, {}, "/classifieds");
-      console.log( results )      
       $("div.results").html(results);
     });
   };
