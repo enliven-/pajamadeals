@@ -8,10 +8,10 @@ class ClassifiedsController < ApplicationController
   def index
 
     # filters
-    if params[:filters][:college_id].present?
+    if params[:filters].present? and params[:filters][:college_id].present?
       session[:college_id] = params[:filters][:college_id]
     end
-    if params[:filters][:category_id].present?
+    if params[:filters].present? and params[:filters][:category_id].present?
       session[:category_id] = params[:filters][:category_id]
     end
 
