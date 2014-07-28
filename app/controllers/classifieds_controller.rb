@@ -6,6 +6,7 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
+    @title = 'classifieds'
 
     # filters
     if params[:filters].present? and params[:filters][:college_id].present?
@@ -34,16 +35,19 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds/1
   # GET /classifieds/1.json
   def show
+    @title = @classified.title
   end
 
   # GET /classifieds/new
   def new
+    @title = 'new classified'
     @classified = Classified.new
     @classified.build_user if !user_signed_in?
   end
 
   # GET /classifieds/1/edit
   def edit
+    @title = @classified.title
     redirect_to root_path if @classified.user != current_user
   end
 
