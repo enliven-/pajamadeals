@@ -29,7 +29,7 @@ class ClassifiedsController < ApplicationController
 
     @classifieds = Classified.search(query, search_params)
 
-    render 'shared/_no_results' and return if @classifieds.empty?
+    # render 'shared/_no_results' and return if @classifieds.empty?
 
   end
 

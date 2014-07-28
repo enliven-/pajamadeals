@@ -3,7 +3,7 @@
 
   <div class="container-fluid">
 
-    <div class="navbar-header col-sm-1">
+    <div class="navbar-header col-sm-2">
       <div class="row logo" style="padding-bottom: 0px; margin-bottom: 0px;">
         <%= link_to image_tag('logo.png'), root_path %>
       </div>
@@ -20,20 +20,17 @@
       </form>
     </div>
 
-    <div class="col-sm-2 ad ?search-container" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form" role="search" action="/classifieds/new">
-        <div class="form-group">
-          <%= link_to( "Post Ad", new_classified_path, { class: "btn btn-success postad" } )%>
-        </div>
-      </form>
+    <div class="col-sm-2" id="bs-example-navbar-collapse-1">
+      <%= link_to( "Post Ad", new_classified_path, { class: "btn btn-success" } )%>
     </div>
 
     </div>
 
-    <div class="col-sm-3 pull-right">
+    <div class="col-sm-2 pull-right">
       <% if current_user %>
         <ul class="nav navbar-nav navbar-right session-options">
-          <li><a>Hello, <%= current_user.name %></a>
+          <li>
+            <a>Hello, <%= current_user.name && current_user.name.split.first %></a>
           </li>
           <li>
             <%= link_to("Sign Out", destroy_user_session_path, :method => :delete)  %>
@@ -53,6 +50,15 @@
   </nav>
 </header>
 
+<style type="text/css">
+/*wierd behavior on post ad*/
+.navbar div.col-sm-2 > a.btn {
+  padding-left: 48px;
+  padding-right: 48px;
+  border-radius: 0px;
+  margin-top: 8px;
+}
+</style>
 
 
 <script type="text/javascript">

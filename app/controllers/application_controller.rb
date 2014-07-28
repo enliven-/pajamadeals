@@ -4,13 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_college
-    @current_college = @current_college || current_user.try(:college) ||
+    return nil if session[:college_id] == 0 || session[:college_id] == '0'
+    @current_college = current_user.try(:college) ||
       (College.find(session[:college_id]) if session[:college_id].present?)
   end
 
   def current_category
     return nil if session[:category_id] == 0 || session[:category_id] == '0'
-    @current_category = @current_category ||
+    @current_category =
       (Category.find(session[:category_id]) if session[:category_id].present?)
   end
 
