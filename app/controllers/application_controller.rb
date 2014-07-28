@@ -48,4 +48,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up).push(:email, :mobile, :name,
                                                   :college_id, :college)
   end
+
+  def state
+    render json: {current_college: [1,2,3].sample, current_category: [1,2,3,4].sample}
+  end
 end
