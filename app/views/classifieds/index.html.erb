@@ -94,44 +94,26 @@ $(document).ready(function() {
     return false;
   });
 
-  // $("body").on("mouseenter", "div.result-parent", function(e) {
-  //   var $parent = $(this);
-  //   $parent.find("div.options a").removeClass("hidden")
-  // });
 
-
-  // $("body").on("mouseleave", "div.result-parent", function(e) {
-  //   var $parent = $(this);
-  //   $parent.find("div.options a").addClass("hidden")
-  // });
-
-  $(document).ready(function() {
-    sync_page();
-
-    $("body").on("change", ".filter-choice.colleges select", function(e) {
-      var filter_college_choice = $(this).val();
-      if (filter_college_choice.length > 0) {
-        params = { filters : { college_id : filter_college_choice } };
-      } else {
-        params = { filters : { college_id : "0" } };
-      }
-      filter_results(params);
-      // var filter = $(this).find(":selected").text();
-      // $("div.applied-filters .college").html("<span class='label'>" + filter + "</span>")      
-    });
-
-    // var $check = "<i class='fa fa-check'></i>";
-    // var $cross = "<i class='fa fa-times'></i>";
-
-    $("body").on("click", "div.filter-choice .category a", function(e) {
-      e.preventDefault();
-      var choice_id = $(this).attr("id");
-      params = { filters : { category_id : choice_id } };
-      filter_results(params);
-      $(this).parent().siblings().css("background-color", "white");
-      $(this).parent().css("background-color", "#D1DADE");
-    });
+  $("body").on("change", ".filter-choice.colleges select", function(e) {
+    var filter_college_choice = $(this).val();
+    if (filter_college_choice.length > 0) {
+      params = { filters : { college_id : filter_college_choice } };
+    } else {
+      params = { filters : { college_id : "0" } };
+    }
+    filter_results(params);     
   });
+
+  $("body").on("click", "div.filter-choice .category a", function(e) {
+    e.preventDefault();
+    var choice_id = $(this).attr("id");
+    params = { filters : { category_id : choice_id } };
+    filter_results(params);
+    $(this).parent().siblings().css("background-color", "white");
+    $(this).parent().css("background-color", "#D1DADE");
+  });
+
 
 
   var filter_results = function(params) {
@@ -140,27 +122,16 @@ $(document).ready(function() {
       window.history.pushState({}, {}, "/classifieds");
       $("div.results").html(results);
     });
-
-    sync_page();
   };
 
   var sync_page = function() {
+
     $.get("/state/", function(data) {
-      var current_college_id, current_category_id;
-      current_college_id  = data.current_college
-      current_category_id = data.current_category 
-
-      $("div.filter-choice.colleges select").val(current_college_id);
-      var current_category = current_category_id + 2;
-      var sel = "div.categories .category:nth-child(" + current_category + ")";
-      var $sel = $(sel);
-      $sel.css("background-color", "#D1DADE");
-
+      console.log(data.current_college_id)
+      console.log(data.current_category_id)
     })
   };
 
-
- 
 });
 
 </script>

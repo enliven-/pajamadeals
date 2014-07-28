@@ -50,6 +50,9 @@ class ApplicationController < ActionController::Base
   end
 
   def state
-    render json: {current_college: [1,2,3].sample, current_category: [1,2,3,4].sample}
+    current_college_id = (current_college and current_college.id) || 0
+    current_category_id = (current_category and current_category.id) || 0
+
+    render json: { current_college_id: current_college_id, current_category_id: current_category_id }
   end
 end
