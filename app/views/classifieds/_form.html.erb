@@ -1,46 +1,39 @@
-
-
-<div class="row wrapper wrapper-content">
-
-  <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
-
-
-    <div class="col-sm-6 col-sm-offset-3 item-info main-info animated fadeInRight">
-      <div class="ibox float-e-margins">
-        <div class="ibox-title">
-          <h5>Item Information</h5>
-        </div>
-        <div class="ibox-content">
-          <div class="item-form">
-            <div class="?ibox float-e-margins">
-              <div class="?ibox-content">
+<div class="modal main fade animated fadeInRight" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
+        <h4 class="modal-title" id="myModalLabel">Create new Ad</h4>
+        1. Fill in information about the item you'd like to sell.
+      </div>
+      <div class="modal-body">
                 <%= form_for @classified, html: {class: 'form-horizontal listing-form'} do |f| %>
 
                   <div class="form-group title">
                     <%= f.label :title, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= f.text_field :title, class: 'form-control title', id: 'search-title' %>
+                      <%= f.text_field :title, class: 'form-control required title', id: 'search-title' %>
                     </div>
                   </div> 
 
                   <div class="form-group">
                     <%= f.label :category, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9"> 
-                     <%= f.select :category_id, Category.select(:name, :id).collect { |category| [category.name, category.id] }, { include_blank: true }, { class: "form-control category" } %>
+                     <%= f.select :category_id, Category.select(:name, :id).collect { |category| [category.name, category.id] }, { include_blank: true }, { class: "form-control required category" } %>
                     </div>
                   </div>
 
                   <div class="form-group comment">
                     <%= f.label 'Description', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= f.text_area :description, class: 'form-control comment required' %>
+                      <%= f.text_area :description, class: 'form-control required comment required' %>
                     </div>
                   </div>
 
                   <div class="form-group selling-price">
                     <%= f.label :price, 'Price (Rs)', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9"> 
-                      <%= f.text_field :price, class: 'form-control selling-price' %>
+                      <%= f.text_field :price, class: 'form-control required selling-price' %>
                     </div>
                   </div>
 
@@ -53,28 +46,28 @@
                   <div class="form-group">
                     <%= user.label :name, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.text_field :name, class: 'form-control name' %>
+                      <%= user.text_field :name, class: 'form-control required name' %>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <%= user.label :mobile, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.text_field :mobile, class: "form-control mobile" %>
+                      <%= user.text_field :mobile, class: "form-control required mobile" %>
                     </div>
                   </div>
 
                   <div class="form-group college">
                     <%= user.label :college, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.select :college_id, College.select(:id, :name).collect { |college| [college.name, college.id] }, { include_blank: true }, class: "form-control college required" %>
+                      <%= user.select :college_id, College.select(:id, :name).collect { |college| [college.name, college.id] }, { include_blank: true }, class: "form-control required college required" %>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <%= user.label :email, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.text_field :email, class: "form-control email" %>
+                      <%= user.text_field :email, class: "form-control required email" %>
                     </div>
                   </div>
                 
@@ -82,7 +75,7 @@
                   <div class="form-group">
                     <%= user.label :password, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.password_field :password, class: "form-control password" %>
+                      <%= user.password_field :password, class: "form-control required password" %>
                     </div>
                   </div>
                   
@@ -93,60 +86,59 @@
                     <div class="col-sm-6 col-sm-offset-2">
                       <!-- <%= f.submit :submit, class: "btn btn-primary submit" %> -->
                       <!-- <%= f.submit :cancel, class: "btn btn-default cancel" %> -->
-                      <a class="btn btn-default cancel">Cancel</a>
+                      <a href="/classifieds" class="btn btn-default cancel">Cancel</a>
                       <a class="btn btn-primary next">Next ></a>
 
                     </div>
                   </div>
 
                 <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="dummy seller-info col-sm-6 col-sm-offset-3 item-info animated fadeInRight hidden">
-      <div class="ibox float-e-margins">
-        <div class="ibox-title">
-          <h5>Your Info</h5>
-        </div>
-        <div class="ibox-content">
-          <div class="item-form">
-            <div class="?ibox float-e-margins">
-              <div class="?ibox-content">
+
+<div class="modal dummy fade animated fadeInRight" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create new Ad</h4>
+        2. Fill in information about yourself.
+      </div>
+      <div class="modal-body">
                 <form class="form-dummy form-horizontal">
                 
                   <div class="form-group name">
                     <%= label_tag "Name", nil, class: "col-sm-2 control-label" %>
                     <div class="col-sm-9">
-                      <%= text_field_tag "Name", nil, class: "form-control name" %>
+                      <%= text_field_tag "Name", nil, class: "form-control required name" %>
                     </div>
                   </div> 
                   <div class="form-group mobile">
                     <%= label_tag "Mobile", nil, class: "col-sm-2 control-label" %>
                     <div class="col-sm-9">
-                      <%= text_field_tag "Mobile", nil, class: "form-control mobile" %>
+                      <%= text_field_tag "Mobile", nil, class: "form-control required mobile" %>
                     </div>
                   </div> 
                   <div class="form-group college">
                     <%= label_tag "College", nil, class: "col-sm-2 control-label" %>
                     <div class="col-sm-9">
-                      <%= text_field_tag "College", nil, class: "form-control college" %>
+                      <%= text_field_tag "College", nil, class: "form-control required college" %>
                     </div>
                   </div> 
                   <div class="form-group email">
                     <%= label_tag "Email", nil, class: "col-sm-2 control-label" %>
                     <div class="col-sm-9">
-                      <%= text_field_tag "Email", nil, class: "form-control email" %>
+                      <%= text_field_tag "Email", nil, class: "form-control required email" %>
                     </div>
                   </div> 
 
                   <div class="form-group password">
                     <%= label_tag "Password", nil, class: "col-sm-2 control-label" %>
                     <div class="col-sm-9">
-                      <%= password_field_tag "Password", nil, class: "form-control password" %>
+                      <%= password_field_tag "Password", nil, class: "form-control required password" %>
                     </div>
                   </div> 
 
@@ -167,29 +159,58 @@
 
 
                 </form>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-
   </div>
 </div>
 
-<style type="text/css">
-  div.form-group.buttons .delete {
-    margin-right: 75px;
-  }
-</style>
 
-<script>
+<script type="text/javascript">
 $(document).ready(function() {
+
+  $("body").on('click', "div#sign-up .submit", function(e) {
+    $("form.sign-up-form").submit();
+  });
+
+  $(".modal.main").removeClass("modal").removeClass("fade").attr("aria-hidden", false);
+
   $("body").on("click", "form.listing-form a.next", function(e) {
     e.preventDefault();
-    $("div.item-info").addClass("hidden");
-    $("div.dummy").removeClass("hidden");
+    $(".main").addClass("hidden");
+    $(".modal.dummy").removeClass("modal").removeClass("fade").attr("aria-hidden", false).removeClass("hidden");
     return false;
   });
-});  
+
+  $("body").on("click", "form a.back", function(e) {
+    e.preventDefault();
+    $(".dummy").addClass("modal").addClass("fade").attr("aria-hidden", true).addClass("hidden");
+    $(".main").removeClass("hidden");
+    return false;
+  });
+
+  // $("body").on("click", "listing-form a.cancel", function(e) {
+  //   e.preventDefault();
+  //   $("")
+  // });
+
+  $("")
+
+});
 </script>
+
+
+<style>
+div#sign-up:focus {
+  outline: none !important;
+}
+
+div#sign-up {
+  margin-top: -50px;
+  margin-left: -50px;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+}
+</style>
