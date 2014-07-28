@@ -8,12 +8,14 @@ class ApplicationController < ActionController::Base
     @current_college = current_user.try(:college) ||
       (College.find(session[:college_id]) if session[:college_id].present?)
   end
+  helper_method :current_college
 
   def current_category
     return nil if session[:category_id] == 0 || session[:category_id] == '0'
     @current_category =
       (Category.find(session[:category_id]) if session[:category_id].present?)
   end
+  helper_method :current_category
 
   include MongodbLogger::Base
   before_filter :add_params_to_mongodb_logger
