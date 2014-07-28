@@ -4,22 +4,18 @@
 
     <div class="col-sm-3">
       <div class="ibox float-e-margins">
+        
         <div class="ibox-title">
           <h5>Filters</h5>
-          <!-- <span><button class="btn btn-sm btn-default">Clear</button></span> -->
           <div class="ibox-tools">
             <a class="collapse-link">
               <i class="fa fa-chevron-up"></i>
             </a>
           </div>
         </div>
+
         <div class="ibox-content">
-<!-- 
-          <div class="applied-filters">
-            <div class="college"></div>
-            <div class="category"></div>
-          </div>
- -->          
+        
           <div class="filter-choice colleges">
             <h4>College</h4>
             <%= select_tag :college, options_from_collection_for_select(College.find_each, :id, :name, current_college.try(:id)), class: "form-control college required", prompt: "-- All --" %>
@@ -27,6 +23,7 @@
 
           <div class="filter-choice categories">
             <h4>Category</h4>
+            <span class="hidden current_category"><%= current_category.try(:id) %></span>
             <div class="category">
               <%= link_to "All", classifieds_path, { class: "", id: 0 } %>
               <span class="pull-right"></span>
@@ -38,6 +35,7 @@
               <% end %>
             <% end %>
           </div>
+
         </div>
       </div>
     </div>
@@ -65,6 +63,20 @@
 $(document).ready(function() {
 
   var li, ci;
+
+  var sync_page = function() {
+    var current_category_id = $(".current_category").html();
+    if (current_category_id == "") {
+      current_category_id = 0
+    } else {
+      current_category_id = parseInt(current_category_id);
+    }
+    var selector = current_category_id;
+    $selected = $("div.category:eq("+ selector +")");
+    $selected.css("background-color", "#D1DADE");
+  }
+
+  sync_page();
 
   $("body").on("click", "h4.title", function(e) {
     e.preventDefault();
@@ -94,41 +106,24 @@ $(document).ready(function() {
     return false;
   });
 
-  // $("body").on("mouseenter", "div.result-parent", function(e) {
-  //   var $parent = $(this);
-  //   $parent.find("div.options a").removeClass("hidden")
-  // });
 
+  $("body").on("change", ".filter-choice.colleges select", function(e) {
+    var filter_college_choice = $(this).val();
+    if (filter_college_choice.length > 0) {
+      params = { filters : { college_id : filter_college_choice } };
+    } else {
+      params = { filters : { college_id : "0" } };
+    }
+    filter_results(params);     
+  });
 
-  // $("body").on("mouseleave", "div.result-parent", function(e) {
-  //   var $parent = $(this);
-  //   $parent.find("div.options a").addClass("hidden")
-  // });
-
-  $(document).ready(function() {
-    $("body").on("change", ".filter-choice.colleges select", function(e) {
-      var filter_college_choice = $(this).val();
-      if (filter_college_choice.length > 0) {
-        params = { filters : { college_id : filter_college_choice } };
-      } else {
-        params = { filters : { college_id : "0" } };
-      }
-      filter_results(params);
-      // var filter = $(this).find(":selected").text();
-      // $("div.applied-filters .college").html("<span class='label'>" + filter + "</span>")
-    });
-
-    // var $check = "<i class='fa fa-check'></i>";
-    // var $cross = "<i class='fa fa-times'></i>";
-
-    $("body").on("click", "div.filter-choice .category a", function(e) {
-      e.preventDefault();
-      var choice_id = $(this).attr("id");
-      params = { filters : { category_id : choice_id } };
-      filter_results(params);
-      $(this).parent().siblings().css("background-color", "white");
-      $(this).parent().css("background-color", "#D1DADE");
-    });
+  $("body").on("click", "div.filter-choice .category a", function(e) {
+    e.preventDefault();
+    var choice_id = $(this).attr("id");
+    params = { filters : { category_id : choice_id } };
+    filter_results(params);
+    $(this).parent().siblings().css("background-color", "white");
+    $(this).parent().css("background-color", "#D1DADE");
   });
 
 
@@ -139,7 +134,6 @@ $(document).ready(function() {
       $("div.results").html(results);
     });
   };
-
 
 });
 

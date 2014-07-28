@@ -24,4 +24,8 @@ Rails.application.routes.draw do
 
   # autocomplete on form
   get '/search/books/' => 'books#search'
+  
+  # current state
+  get '/state/' => 'application#state'
+
 end
