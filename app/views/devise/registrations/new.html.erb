@@ -1,6 +1,6 @@
 
 
-<div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade animated fadeInRight" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -54,7 +54,8 @@
           <%= render "devise/shared/links" %>          
         </div>
         <div class="form-group">
-          <%= button_tag 'Cancel', class: 'btn btn-default cancel', data: {dismiss: 'modal'} %>
+          <!-- <%= f.button 'Cancel', class: 'btn btn-default cancel', data: {dismiss: 'modal'} %> -->
+          <%= link_to "Cancel", classifieds_path, class: 'btn btn-default cancel' %>
           <%= f.button :submit, class: 'btn btn-primary submit' %>
         </div>
       </div>
@@ -71,9 +72,9 @@
 
     // $("#sign-up").modal();
 
-    // $("body").on('click', "div#sign-up .submit", function(e) {
-    //   $("form.sign-up-form").submit();
-    // });
+    $("body").on('click', "div#sign-up .submit", function(e) {
+      $("form.sign-up-form").submit();
+    });
 
     
     $(".modal").removeClass("modal").removeClass("fade").attr("aria-hidden", false);
@@ -91,3 +92,17 @@ form#new_user {
   margin-top: 35px !important;
 }
 </style> -->
+<style>
+div#sign-up:focus {
+  outline: none !important;
+}
+
+div#sign-up {
+  margin-top: -50px;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+}
+</style

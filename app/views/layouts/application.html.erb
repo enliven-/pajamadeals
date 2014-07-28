@@ -17,8 +17,6 @@
       
       <%= yield %>
 
-      <%= render 'layouts/footer' %>
-
     </div>
   </div>
   <% if Rails.env.production? %>
@@ -32,5 +30,9 @@
 body.boxed-layout {
   /*background: url('assets/shattered.png');*/
   background-color: lightgray;
+}
+html {
+overflow: -moz-scrollbars-vertical; 
+overflow-y: scroll;
 }
 </style>

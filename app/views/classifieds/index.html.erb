@@ -1,8 +1,8 @@
 
 <div class="row wrapper wrapper-content animated fadeInRight">
-  <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
+  <div class="row col-sm-12 ?animated ?fadeInRight" style="?margin-left: 10px; margin-right: 10px;">
 
-    <div class="col-sm-3">
+    <div class="col-sm-3 filters">
       <div class="ibox float-e-margins">
         
         <div class="ibox-title">
@@ -63,20 +63,6 @@
 $(document).ready(function() {
 
   var li, ci;
-
-  var sync_page = function() {
-    var current_category_id = $(".current_category").html();
-    if (current_category_id == "") {
-      current_category_id = 0
-    } else {
-      current_category_id = parseInt(current_category_id);
-    }
-    var selector = current_category_id;
-    $selected = $("div.category:eq("+ selector +")");
-    $selected.css("background-color", "#D1DADE");
-  }
-
-  sync_page();
 
   $("body").on("click", "h4.title", function(e) {
     e.preventDefault();
@@ -140,6 +126,10 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
+
+.filters {
+  padding-left: 0px !important;
+}
 
 .colleges select {
   padding-left: 3px;

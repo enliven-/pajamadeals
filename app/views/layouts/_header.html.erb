@@ -38,10 +38,14 @@
         </ul>
       <% else %>
       <ul class="nav navbar-nav navbar-right session-options">
-        <li><a href="" data-toggle="modal" data-target="#sign-in" id="sign-in-link">Sign In</a>
+        <!-- <li><a href="" data-toggle="modal" data-target="#sign-in" id="sign-in-link">Sign In</a> -->
+        <li>
+          <%= link_to "Sign In", new_user_session_path %>
         </li>
         <li class="divider-vertical"></li>
-        <li><a href="" data-toggle="modal" data-target="#sign-up" id="sign-up-link">Sign Up</a>
+        <!-- <li><a href="" data-toggle="modal" data-target="#sign-up" id="sign-up-link">Sign Up</a> -->
+        <li>
+          <%= link_to "Sign Up", new_user_registration_path %>
         </li>
       </ul>
       <% end %>
@@ -58,6 +62,20 @@
   border-radius: 0px;
   margin-top: 8px;
 }
+
+.navbar .container-fluid {
+  padding-left: 3px;
+  padding-right: 0px;
+}
+
+.navbar .navbar-header {
+  padding-left: 50px;
+}
+
+.navbar .search.submit {
+  padding-bottom: 7px;
+}
+
 </style>
 
 
@@ -86,6 +104,8 @@ $(document).ready(function () {
         var new_page = $("div.wrapper-content", data).html();
         window.history.pushState({}, {}, "/classifieds");
         $("div.wrapper-content").html(new_page);
+        sync_page();
+
       });
       $search.val("");
     }
@@ -113,15 +133,31 @@ $(document).ready(function () {
     });  
   });
 
+  var sync_page = function() {
+    console.log("syncingpage")
+    var current_category_id = $(".current_category").html();
+    if (current_category_id == "") {
+      current_category_id = 0
+    } else {
+      current_category_id = parseInt(current_category_id);
+    }
+    var selector = current_category_id;
+    $selected = $("div.category:eq("+ selector +")");
+    $selected.css("background-color", "#D1DADE");
+    console.log($selected)
 
-  $("body").on('click', "div#sign-in .submit", function(e) {
-    $("form.sign-in-form").submit();
+  }
 
-  });
+  sync_page();
 
-  $("body").on('click', "div#sign-up .submit", function(e) {
-    $("form.sign-up-form").submit();
-  });
+  // $("body").on('click', "div#sign-in .submit", function(e) {
+  //   $("form.sign-in-form").submit();
+
+  // });
+
+  // $("body").on('click', "div#sign-up .submit", function(e) {
+  //   $("form.sign-up-form").submit();
+  // });
 
 });
 

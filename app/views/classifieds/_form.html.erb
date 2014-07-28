@@ -5,7 +5,7 @@
   <div class="row col-sm-12 ?animated ?fadeInRight" style="margin-left: 10px; margin-right: 10px;">
 
 
-    <div class="col-sm-8 col-sm-offset-2 item-info animated ?fadeInRight ?hidden">
+    <div class="col-sm-6 col-sm-offset-3 item-info main-info animated fadeInRight">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
           <h5>Item Information</h5>
@@ -44,8 +44,9 @@
                     </div>
                   </div>
 
-                  <div class="hr-line-dashed"></div>
 
+
+                  <div class="hidden">
                   <%= f.fields_for :user do |user| %>
 
 
@@ -86,11 +87,15 @@
                   </div>
                   
                   <% end %>
+                  </div>
 
                   <div class="form-group buttons">
                     <div class="col-sm-6 col-sm-offset-2">
-                      <%= f.submit :submit, class: "btn btn-primary submit" %>
-                      <%= f.submit :cancel, class: "btn btn-default cancel" %>                      
+                      <!-- <%= f.submit :submit, class: "btn btn-primary submit" %> -->
+                      <!-- <%= f.submit :cancel, class: "btn btn-default cancel" %> -->
+                      <a class="btn btn-default cancel">Cancel</a>
+                      <a class="btn btn-primary next">Next ></a>
+
                     </div>
                   </div>
 
@@ -101,6 +106,74 @@
         </div>
       </div>
     </div>
+
+    <div class="dummy seller-info col-sm-6 col-sm-offset-3 item-info animated fadeInRight hidden">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Your Info</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="item-form">
+            <div class="?ibox float-e-margins">
+              <div class="?ibox-content">
+                <form class="form-dummy form-horizontal">
+                
+                  <div class="form-group name">
+                    <%= label_tag "Name", nil, class: "col-sm-2 control-label" %>
+                    <div class="col-sm-9">
+                      <%= text_field_tag "Name", nil, class: "form-control name" %>
+                    </div>
+                  </div> 
+                  <div class="form-group mobile">
+                    <%= label_tag "Mobile", nil, class: "col-sm-2 control-label" %>
+                    <div class="col-sm-9">
+                      <%= text_field_tag "Mobile", nil, class: "form-control mobile" %>
+                    </div>
+                  </div> 
+                  <div class="form-group college">
+                    <%= label_tag "College", nil, class: "col-sm-2 control-label" %>
+                    <div class="col-sm-9">
+                      <%= text_field_tag "College", nil, class: "form-control college" %>
+                    </div>
+                  </div> 
+                  <div class="form-group email">
+                    <%= label_tag "Email", nil, class: "col-sm-2 control-label" %>
+                    <div class="col-sm-9">
+                      <%= text_field_tag "Email", nil, class: "form-control email" %>
+                    </div>
+                  </div> 
+
+                  <div class="form-group password">
+                    <%= label_tag "Password", nil, class: "col-sm-2 control-label" %>
+                    <div class="col-sm-9">
+                      <%= password_field_tag "Password", nil, class: "form-control password" %>
+                    </div>
+                  </div> 
+
+                  <div class="form-group buttons">
+                    <div class="col-sm-5 col-sm-offset-2">
+                      <a class="btn btn-default back">Back</a>
+                      <a class="btn btn-primary submit">Submit</a>
+
+                    </div>
+
+                    <div class="col-sm-5">
+                      <div>
+                        Already have an account? <br/>
+                        <%= link_to "Sign In", new_user_session_path %>
+                      </div>                    
+                    </div>
+                  </div>
+
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -109,3 +182,14 @@
     margin-right: 75px;
   }
 </style>
+
+<script>
+$(document).ready(function() {
+  $("body").on("click", "form.listing-form a.next", function(e) {
+    e.preventDefault();
+    $("div.item-info").addClass("hidden");
+    $("div.dummy").removeClass("hidden");
+    return false;
+  });
+});  
+</script>
