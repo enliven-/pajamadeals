@@ -1,86 +1,63 @@
- <header>
-  <nav class="navbar navbar-inverse navbar-embossed navbar-fixed-top" role="navigation">
-
+<nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
-
-    <div class="navbar-header col-sm-2">
-      <div class="row logo" style="padding-bottom: 0px; margin-bottom: 0px;">
-        <%= link_to image_tag('logo.png'), root_path %>
-      </div>
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header col-sm-3">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "has stuff", root_path, class: "navbar-brand" %>
     </div>
 
-
-    <div class="col-sm-8">
-    <div class="col-sm-9 search-container" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form" role="search">
-        <div class="form-group col-sm-10">
-          <input type="text" class="form-control" id="search-navbar" autocomplete="off" placeholder="Search by title or author" style="width: 100%">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form navbar-left ?col-sm-6" role="search" style="width: 50%; padding-left: 0px">
+        <div class="form-group" style="width: 80%">
+          <input type="text" class="form-control" id="search-navbar" placeholder="Search for books, projects, etc." autocomplete="off" style="width: 102%">
         </div>
         <button type="submit" class="btn btn-info search submit">Search</button>
       </form>
-    </div>
 
-    <div class="col-sm-2" id="bs-example-navbar-collapse-1">
-      <%= link_to( "Post Ad", new_classified_path, { class: "btn btn-success" } )%>
-    </div>
-
-    </div>
-
-    <div class="col-sm-2 pull-right">
-      <% if current_user %>
-        <ul class="nav navbar-nav navbar-right session-options">
-          <li>
-            <a>Hello, <%= current_user.name && current_user.name.split.first %></a>
-          </li>
-          <li>
-            <%= link_to("Sign Out", destroy_user_session_path, :method => :delete)  %>
-          </li>
-        </ul>
-      <% else %>
-      <ul class="nav navbar-nav navbar-right session-options">
-        <!-- <li><a href="" data-toggle="modal" data-target="#sign-in" id="sign-in-link">Sign In</a> -->
-        <li>
-          <%= link_to "Sign In", new_user_session_path %>
-        </li>
-        <li class="divider-vertical"></li>
-        <!-- <li><a href="" data-toggle="modal" data-target="#sign-up" id="sign-up-link">Sign Up</a> -->
-        <li>
-          <%= link_to "Sign Up", new_user_registration_path %>
-        </li>
+      <ul class="nav navbar-nav">
+        <%= link_to( "Post Ad", new_classified_path, { class: "btn btn-success" } )%>
       </ul>
-      <% end %>
-    </div>
-    
-  </nav>
-</header>
 
-<style type="text/css">
-/*wierd behavior on post ad*/
-.navbar div.col-sm-2 > a.btn {
-  padding-left: 48px;
-  padding-right: 48px;
-  border-radius: 0px;
-  margin-top: 8px;
-}
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello, <%= current_user.name && current_user.name.split.first %> <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to("Sign Out", destroy_user_session_path, :method => :delete)  %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sign-in fa-6"></i></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to "Sign In", new_user_session_path %></li>
+              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
-.navbar .container-fluid {
-  padding-left: 3px;
-  padding-right: 0px;
-}
+<script>
+$(document).ready(function() {
+  // $(window).on("resize", function(e) {
+  //   var win = $(this);
+  //   console.log ( win.width() );
+  //   console.log ( win.height() );
+  //   var width = win.width();
+  //   var padding = 0.03 * width;
 
-.navbar .navbar-header {
-  padding-left: 50px;
-}
-
-.navbar .search.submit {
-  padding-bottom: 6px;
-}
-
-</style>
-
-
-<script type="text/javascript">
-$(document).ready(function () {
+  //   $("#bs-example-navbar-collapse-1 > ul:nth-child(2) > a").css("padding-left",  padding)
+  //                                                           .css("padding-right", padding);
+  // });
 
   var $search  = $("input#search-navbar");
 
@@ -149,16 +126,25 @@ $(document).ready(function () {
   }
 
   sync_page();
-
-  // $("body").on('click', "div#sign-in .submit", function(e) {
-  //   $("form.sign-in-form").submit();
-
-  // });
-
-  // $("body").on('click', "div#sign-up .submit", function(e) {
-  //   $("form.sign-up-form").submit();
-  // });
-
 });
-
 </script>
+
+<style>
+#bs-example-navbar-collapse-1 > ul:nth-child(2) {
+  margin-top: 8px;
+}
+
+#bs-example-navbar-collapse-1 > ul:nth-child(2) > a {
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 0px;
+}
+
+#bs-example-navbar-collapse-1 > form > button {
+  border-radius: 0px;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+  background-color: #323637 !important;
+  color: white !important;
+}
+</style>
