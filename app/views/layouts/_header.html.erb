@@ -46,6 +46,20 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<script>
+$(document).ready(function() {
+  $(window).on("resize", function(e) {
+    var win = $(this);
+    console.log ( win.width() );
+    console.log ( win.height() );
+    var width = win.width();
+    var padding = 0.03 * width;
+
+    // $("#bs-example-navbar-collapse-1 > ul:nth-child(2) > a").css("padding-left",  padding)
+                                                            // .css("padding-right", padding);
+  });
+});
+</script>
 
 <style>
 #bs-example-navbar-collapse-1 > ul:nth-child(2) {
@@ -53,12 +67,16 @@
 }
 
 #bs-example-navbar-collapse-1 > ul:nth-child(2) > a {
-  padding-left: 48px;
-  padding-right: 48px;
+  padding-left: 30px;
+  padding-right: 30px;
   border-radius: 0px;
 }
 
 #bs-example-navbar-collapse-1 > form > button {
   border-radius: 0px;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+  background-color: #323637 !important;
+  color: white !important;
 }
 </style>
