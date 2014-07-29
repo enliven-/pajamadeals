@@ -3,8 +3,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
-        <h4 class="modal-title" id="myModalLabel">Create new Ad</h4>
-        1. Fill in information about the item you'd like to sell.
+        <h3 class="modal-title" id="myModalLabel">Create New Ad</h3>
+        Fill in information about the item you'd like to sell.
       </div>
       <div class="modal-body">
                 <%= form_for @classified, html: {class: 'form-horizontal listing-form'} do |f| %>
@@ -39,7 +39,7 @@
 
 
 
-                  <div class="hidden">
+                  <div class="user-form hidden">
                   <%= f.fields_for :user do |user| %>
 
 
@@ -63,7 +63,7 @@
                       <%= user.select :college_id, College.select(:id, :name).collect { |college| [college.name, college.id] }, { include_blank: true }, class: "form-control required college required" %>
                     </div>
                   </div>
-
+<!-- 
                   <div class="form-group">
                     <%= user.label :email, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
@@ -78,18 +78,24 @@
                       <%= user.password_field :password, class: "form-control required password" %>
                     </div>
                   </div>
-                  
+  -->                 
                   <% end %>
                   </div>
 
                   <div class="form-group buttons">
+                    <% if current_user %>
+                    <div class="col-sm-6 col-sm-offset-2">
+                      <%= f.submit :submit, class: "btn btn-primary submit" %>
+                      <%= f.submit :cancel, class: "btn btn-default cancel" %>
+                    </div>
+                    <% else %>
                     <div class="col-sm-6 col-sm-offset-2">
                       <!-- <%= f.submit :submit, class: "btn btn-primary submit" %> -->
                       <!-- <%= f.submit :cancel, class: "btn btn-default cancel" %> -->
                       <a href="/classifieds" class="btn btn-default cancel">Cancel</a>
                       <a class="btn btn-primary next">Next ></a>
-
                     </div>
+                    <% end %>
                   </div>
 
                 <% end %>
@@ -103,9 +109,9 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create new Ad</h4>
-        2. Fill in information about yourself.
+        <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
+        <h3 class="modal-title" id="myModalLabel">Create New Ad</h3>
+        Fill in information about yourself.
       </div>
       <div class="modal-body">
                 <form class="form-dummy form-horizontal">
@@ -125,9 +131,12 @@
                   <div class="form-group college">
                     <%= label_tag "College", nil, class: "col-sm-2 control-label" %>
                     <div class="col-sm-9">
-                      <%= text_field_tag "College", nil, class: "form-control required college" %>
+                      <%= select_tag :college_id, options_from_collection_for_select(College.find_each, :id, :name), { class: "form-control college required", include_blank: true } %>
                     </div>
-                  </div> 
+                  </div>
+
+                  <hr class="hr-dashed"></hr>
+                  <h6>Optional fields. We use these to create an account for you.</h6>
                   <div class="form-group email">
                     <%= label_tag "Email", nil, class: "col-sm-2 control-label" %>
                     <div class="col-sm-9">
@@ -141,12 +150,13 @@
                       <%= password_field_tag "Password", nil, class: "form-control required password" %>
                     </div>
                   </div> 
+                  <hr class="hr-dashed"></hr>
 
                   <div class="form-group buttons">
+
                     <div class="col-sm-5 col-sm-offset-2">
                       <a class="btn btn-default back">Back</a>
                       <a class="btn btn-primary submit">Submit</a>
-
                     </div>
 
                     <div class="col-sm-5">
@@ -168,9 +178,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
-  $("body").on('click', "div#sign-up .submit", function(e) {
-    $("form.sign-up-form").submit();
-  });
+  $(".form-control").attr("autocomplete", "off");
 
   $(".modal.main").removeClass("modal").removeClass("fade").attr("aria-hidden", false);
 
@@ -188,12 +196,46 @@ $(document).ready(function() {
     return false;
   });
 
-  // $("body").on("click", "listing-form a.cancel", function(e) {
+  // $("body").on("click", "form.listing-form a.next", function(e) {
   //   e.preventDefault();
-  //   $("")
+  //   $(".main .modal-body").addClass("hidden");
+  //   $(".modal.dummy").removeClass("modal").removeClass("fade").attr("aria-hidden", false).removeClass("hidden");
+  //   $(".dummy .modal-header").addClass("hidden");
+  //   $(".dummy").css("margin-top", "-50px");
+
+  //   return false;
   // });
 
-  $("")
+  // $("body").on("click", "form a.back", function(e) {
+  //   e.preventDefault();
+  //   $(".dummy").addClass("modal").addClass("fade").attr("aria-hidden", true).addClass("hidden");
+  //   $(".main").removeClass("hidden");
+  //   return false;
+  // });
+
+
+  $("body").on("click", ".form-dummy a.submit", function(e) {
+    console.log("clicked");
+    var name, mobile, college, user, paswd;
+    var $dummy = $("form.form-dummy");
+    name      = $("input.name",    $dummy).val();
+    mobile    = $("input.mobile",  $dummy).val();
+    college   = $("select.college", $dummy).val();
+    // email     = $("input.email",   $dummy).val();
+    // password  = $("input.password", $dummy).val();
+
+    var $form = $("div.user-form");
+    $form.find("input.name").val(name);
+    $form.find("input.mobile").val(mobile);
+    $form.find("select.college").val(college);
+    // $form.find("input.email").val(email);
+    // $form.find("input.password").val(password);
+
+
+    $(".main").removeClass("hidden");
+    $form.removeClass("hidden");
+    $("form.listing-form").submit();
+  });
 
 });
 </script>
