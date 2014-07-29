@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'pages/about'
   get 'pages/contact_us'
   get 'books/search'
+  get 'pages/navbar'
 
   resources :classifieds do
     member do
