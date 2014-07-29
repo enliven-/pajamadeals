@@ -50,6 +50,8 @@
 $(document).ready(function() {
 
   var $search  = $("input#search-navbar");
+  
+  $(".form-control").attr("autocomplete", "off");
 
   $search.on("keypress", function(e) {
     if (e.which == 13) { 
