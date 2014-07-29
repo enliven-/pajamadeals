@@ -63,11 +63,11 @@
                       <%= user.select :college_id, College.select(:id, :name).collect { |college| [college.name, college.id] }, { include_blank: true }, class: "form-control required college required" %>
                     </div>
                   </div>
-<!-- 
+
                   <div class="form-group">
                     <%= user.label :email, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.text_field :email, class: "form-control required email" %>
+                      <%= user.text_field :email, class: "form-control email" %>
                     </div>
                   </div>
                 
@@ -75,10 +75,10 @@
                   <div class="form-group">
                     <%= user.label :password, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.password_field :password, class: "form-control required password" %>
+                      <%= user.password_field :password, class: "form-control password" %>
                     </div>
                   </div>
-  -->                 
+                  
                   <% end %>
                   </div>
 

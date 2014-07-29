@@ -54,20 +54,34 @@ class ClassifiedsController < ApplicationController
   # POST /classifieds
   # POST /classifieds.json
   def create
+
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
-      user = User.find_by(mobile: user_attributes[:mobile]) ||
-        User.create(user_attributes.merge({password: "passwordpassword#{rand(20)}",
-                                           email: "#{SecureRandom.hex(5)}@guest.com",
-                                           guest: true}))
+      user = User.find_by(mobile: user_attributes[:mobile])
+      if user.present? and user.guest? and user_attributes[:email].present? and user_attributes[:password].present?
+        user_attributes.delete(:mobile)
+        user.update_attributes(user_attributes.merge(guest: false))
+        sign_in user
+      end
+      if !user.present?
+        if user_attributes[:email].present? and user_attributes[:password].present?
+          user = User.create(user_attributes)
+          sign_in user
+        else
+          user_attributes.merge!(password: "passwordpassword#{rand(20)}",
+                                 email: "#{SecureRandom.hex(5)}@guest.com",
+                                 guest: true
+                                 )
+          user = User.create(user_attributes)
         end
+      end
+    end
 
     @classified = Classified.new(classified_params)
     @classified.user = current_user || user
 
     respond_to do |format|
       if @classified.save
-
         format.html { redirect_to @classified,
                       notice: 'Classified was successfully created.' }
         format.json { render :show, status: :created, location: @classified }
@@ -116,7 +130,8 @@ class ClassifiedsController < ApplicationController
     params.require(:classified).permit(:title, :description, :category_id,
                                        :price,
                                        user_attributes: [:email, :mobile,
-                                                         :name, :college_id]
+                                                         :name, :college_id,
+                                                         :password]
                                        )
   end
 end
