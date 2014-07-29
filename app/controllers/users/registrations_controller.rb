@@ -1,5 +1,10 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
+  def new
+    @title = 'sign up'
+    super
+  end
+
   def create
     if user = User.find_by(mobile: params[:user][:mobile],
                            guest: true)
