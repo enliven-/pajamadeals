@@ -22,7 +22,7 @@ end
 
 
 # create classifieds
-30.times do
+90.times do
   Classified.create(
     title: Faker::Commerce.product_name,
     description: Faker::Lorem.paragraph,
