@@ -262,19 +262,19 @@ $(document).ready(function() {
       name      = $("input.name",    $dummy).val();
       mobile    = $("input.mobile",  $dummy).val();
       college   = $("select.college", $dummy).val();
-      // email     = $("input.email",   $dummy).val();
-      // password  = $("input.password", $dummy).val();
+      email     = $("input.email",   $dummy).val();
+      password  = $("input.password", $dummy).val();
 
       var $form = $("div.user-form");
       $form.find("input.name").val(name);
       $form.find("input.mobile").val(mobile);
       $form.find("select.college").val(college);
-      // $form.find("input.email").val(email);
-      // $form.find("input.password").val(password);
+      $form.find("input.email").val(email);
+      $form.find("input.password").val(password);
 
 
       $(".main").removeClass("hidden");
-      $form.removeClass("hidden");
+      // $form.removeClass("hidden");
 
       $("form.listing-form").submit();
     }
