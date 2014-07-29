@@ -6,7 +6,7 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
-    @title = "it's free"
+    @title = "college classifieds"
 
     # filters
     if params[:filters].present? and params[:filters][:college_id].present?

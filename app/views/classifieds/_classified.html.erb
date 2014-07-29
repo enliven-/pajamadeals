@@ -11,7 +11,7 @@
   <div class="col-sm-4 col-sm-offet-8 s-info">
       <span class="s-name"><%= classified.user.name %></span> <br/>
       <span class="s-phone"> <i class="fa fa-phone"></i>&nbsp; <%= classified.user.mobile %> </span><br/>
-      <span class="s-loc"> <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;<%= classified.college.name %> <%#= classified.college.city %></span><br />
+      <span class="s-loc"> <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;<%= classified.college.abbr %>, <%= classified.college.city %></span><br />
       <div class="s-email hidden"> <i class="fa fa-envelope"></i>&nbsp; <%= classified.user.email || '-' %></div><br />
   </div>
 
