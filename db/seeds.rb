@@ -27,7 +27,7 @@ end
     title: Faker::Commerce.product_name,
     description: Faker::Lorem.paragraph,
     user: User.where(admin: false).sample,
-    price: Faker::Commerce.price,
+    price: Faker::Commerce.price.ceil,
     category: Category.all.sample
   )
 end
