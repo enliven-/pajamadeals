@@ -15,10 +15,10 @@ class ActiveSupport::TestCase
   include CarrierWave::Test::Matchers
 
   def setup
-  	::Sunspot.session = ::Sunspot::Rails::StubSessionProxy.new(::Sunspot.session)
+    ::Sunspot.session = ::Sunspot::Rails::StubSessionProxy.new(::Sunspot.session)
   end
 
   def teardown
-  	::Sunspot.session = ::Sunspot.session.original_session
+    ::Sunspot.session = ::Sunspot.session.original_session
   end
 end
