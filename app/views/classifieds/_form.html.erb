@@ -26,14 +26,14 @@
                   <div class="form-group comment">
                     <%= f.label 'Description', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= f.text_area :description, class: 'form-control required comment required' %>
+                      <%= f.text_area :description, class: 'form-control required comment' %>
                     </div>
                   </div>
 
                   <div class="form-group selling-price">
                     <%= f.label :price, 'Price (Rs)', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9"> 
-                      <%= f.text_field :price, class: 'form-control required selling-price' %>
+                      <%= f.text_field :price, class: 'form-control required selling-price numeric' %>
                     </div>
                   </div>
 
@@ -46,21 +46,21 @@
                   <div class="form-group">
                     <%= user.label :name, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.text_field :name, class: 'form-control required name' %>
+                      <%= user.text_field :name, class: 'form-control name' %>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <%= user.label :mobile, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.text_field :mobile, class: "form-control required mobile" %>
+                      <%= user.text_field :mobile, class: "form-control mobile numeric" %>
                     </div>
                   </div>
 
                   <div class="form-group college">
                     <%= user.label :college, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.select :college_id, College.select(:id, :name).collect { |college| [college.name, college.id] }, { include_blank: true }, class: "form-control required college required" %>
+                      <%= user.select :college_id, College.select(:id, :name).collect { |college| [college.name, college.id] }, { include_blank: true }, class: "form-control college" %>
                     </div>
                   </div>
 
@@ -180,12 +180,43 @@ $(document).ready(function() {
 
   $(".form-control").attr("autocomplete", "off");
 
+  $("body").on("focus", ".form-control", function(e) {
+    $(this).parent().parent().removeClass("has-error");
+  });
+
+  $(".form-control.numeric").keydown(function (e) {
+      // Allow: backspace, delete, tab, escape, enter and .
+      if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+           // Allow: Ctrl+A
+          (e.keyCode == 65 && e.ctrlKey === true) || 
+           // Allow: home, end, left, right
+          (e.keyCode >= 35 && e.keyCode <= 39)) {
+               // let it happen, don't do anything
+               return;
+      }
+      // Ensure that it is a number and stop the keypress
+      if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+          e.preventDefault();
+      }
+  });
+
+
   $(".modal.main").removeClass("modal").removeClass("fade").attr("aria-hidden", false);
 
   $("body").on("click", "form.listing-form a.next", function(e) {
     e.preventDefault();
-    $(".main").addClass("hidden");
-    $(".modal.dummy").removeClass("modal").removeClass("fade").attr("aria-hidden", false).removeClass("hidden");
+    var flag = true;
+    $.each($(".listing-form .form-control.required"), function(i,el) {
+      if ($(el).val().trim() == "" ) { 
+        flag = false;
+        $(el).parent().parent().addClass("has-error");
+      }
+    });
+    if (flag) {
+      $(".main").addClass("hidden");
+      $(".modal.dummy").removeClass("modal").removeClass("fade").attr("aria-hidden", false).removeClass("hidden");      
+    }
+
     return false;
   });
 
@@ -215,26 +246,38 @@ $(document).ready(function() {
 
 
   $("body").on("click", ".form-dummy a.submit", function(e) {
-    console.log("clicked");
-    var name, mobile, college, user, paswd;
-    var $dummy = $("form.form-dummy");
-    name      = $("input.name",    $dummy).val();
-    mobile    = $("input.mobile",  $dummy).val();
-    college   = $("select.college", $dummy).val();
-    // email     = $("input.email",   $dummy).val();
-    // password  = $("input.password", $dummy).val();
 
-    var $form = $("div.user-form");
-    $form.find("input.name").val(name);
-    $form.find("input.mobile").val(mobile);
-    $form.find("select.college").val(college);
-    // $form.find("input.email").val(email);
-    // $form.find("input.password").val(password);
+    var flag = true;
+    $.each($(".form-dummy .form-control.required"), function(i,el) {
+      if ($(el).val().trim() == "" ) { 
+        flag = false;
+        $(el).parent().parent().addClass("has-error");
+      }
+    });
+
+    if (flag) { 
+      console.log("clicked");
+      var name, mobile, college, user, paswd;
+      var $dummy = $("form.form-dummy");
+      name      = $("input.name",    $dummy).val();
+      mobile    = $("input.mobile",  $dummy).val();
+      college   = $("select.college", $dummy).val();
+      // email     = $("input.email",   $dummy).val();
+      // password  = $("input.password", $dummy).val();
+
+      var $form = $("div.user-form");
+      $form.find("input.name").val(name);
+      $form.find("input.mobile").val(mobile);
+      $form.find("select.college").val(college);
+      // $form.find("input.email").val(email);
+      // $form.find("input.password").val(password);
 
 
-    $(".main").removeClass("hidden");
-    $form.removeClass("hidden");
-    $("form.listing-form").submit();
+      $(".main").removeClass("hidden");
+      $form.removeClass("hidden");
+
+      $("form.listing-form").submit();
+    }
   });
 
 });
