@@ -19,7 +19,7 @@
                   <div class="form-group">
                     <%= f.label :category, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9"> 
-                     <%= f.select :category_id, Category.select(:name, :id).collect { |category| [category.name, category.id] }, { include_blank: true }, { class: "form-control required category" } %>
+                     <%= f.select :category_id, Category.order(name: :asc).select(:name, :id).collect { |category| [category.name, category.id] }, { include_blank: true }, { class: "form-control required category" } %>
                     </div>
                   </div>
 
@@ -60,7 +60,7 @@
                   <div class="form-group college">
                     <%= user.label :college, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= user.select :college_id, College.select(:id, :name).collect { |college| [college.name, college.id] }, { include_blank: true }, class: "form-control college" %>
+                      <%= user.select :college_id, College.order(name: :asc).select(:id, :name).collect { |college| [college.name, college.id] }, { include_blank: true }, class: "form-control college" %>
                     </div>
                   </div>
 
@@ -131,7 +131,7 @@
                   <div class="form-group college">
                     <%= label_tag "College", nil, class: "col-sm-2 control-label" %>
                     <div class="col-sm-9">
-                      <%= select_tag :college_id, options_from_collection_for_select(College.find_each, :id, :name), { class: "form-control college required", include_blank: true } %>
+                      <%= select_tag :college_id, options_from_collection_for_select(College.order(name: :asc).all, :id, :name), { class: "form-control college required", include_blank: true } %>
                     </div>
                   </div>
 
