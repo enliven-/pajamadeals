@@ -48,16 +48,84 @@
 
 <script>
 $(document).ready(function() {
-  $(window).on("resize", function(e) {
-    var win = $(this);
-    console.log ( win.width() );
-    console.log ( win.height() );
-    var width = win.width();
-    var padding = 0.03 * width;
+  // $(window).on("resize", function(e) {
+  //   var win = $(this);
+  //   console.log ( win.width() );
+  //   console.log ( win.height() );
+  //   var width = win.width();
+  //   var padding = 0.03 * width;
 
-    // $("#bs-example-navbar-collapse-1 > ul:nth-child(2) > a").css("padding-left",  padding)
-                                                            // .css("padding-right", padding);
+  //   $("#bs-example-navbar-collapse-1 > ul:nth-child(2) > a").css("padding-left",  padding)
+  //                                                           .css("padding-right", padding);
+  // });
+
+  var $search  = $("input#search-navbar");
+
+  $search.on("keypress", function(e) {
+    if (e.which == 13) { 
+      e.preventDefault();
+      get_results();
+    }
   });
+
+  $("form.navbar-form button.submit").on("click", function(e) {
+    e.preventDefault();
+    get_results();
+  });
+
+  var get_results = function() {
+    var search_term = $search.val();
+    if (search_term.length > 2) {
+      var params      = { query : search_term }; 
+      $.get("/classifieds/", params, function(data) {
+        var new_page = $("div.wrapper-content", data).html();
+        window.history.pushState({}, {}, "/classifieds");
+        $("div.wrapper-content").html(new_page);
+        sync_page();
+
+      });
+      $search.val("");
+    }
+  };
+
+
+  $("#sign-in-link").on('click', function(e) {
+    e.preventDefault();
+    $.get("/users/sign_in", function (data) {
+      var $sign_in_page_partial = $( "div#sign-in", data );
+      console.log(data);
+      $("body").append($sign_in_page_partial);
+      $("#sign-in").modal();
+    });  
+  });
+
+
+  $("#sign-up-link").on('click', function(e) {
+    e.preventDefault();
+    $.get("/users/sign_up", function (data) {
+      var $sign_up_page_partial = $( "div#sign-up", data );
+      console.log( $sign_up_page_partial.html() );
+      $("body").append($sign_up_page_partial);
+      $("#sign-up").modal();
+    });  
+  });
+
+  var sync_page = function() {
+    console.log("syncingpage")
+    var current_category_id = $(".current_category").html();
+    if (current_category_id == "") {
+      current_category_id = 0
+    } else {
+      current_category_id = parseInt(current_category_id);
+    }
+    var selector = current_category_id;
+    $selected = $("div.category:eq("+ selector +")");
+    $selected.css("background-color", "#D1DADE");
+    console.log($selected)
+
+  }
+
+  sync_page();
 });
 </script>
 
