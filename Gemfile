@@ -75,7 +75,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 # active admin
-gem 'activeadmin', github: 'gregbell/active_admin'
+#gem 'activeadmin', github: 'gregbell/active_admin'
 
 # deployment
 gem 'capistrano'
