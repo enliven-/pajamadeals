@@ -18,7 +18,7 @@
         
           <div class="filter-choice colleges">
             <h4>College</h4>
-            <%= select_tag :college, options_from_collection_for_select(College.order(name: :asc).all, :id, :name, current_college.try(:id)), class: "form-control college required", prompt: "-- All --" %>
+            <%= select_tag :college, options_from_collection_for_select(College.order(name: :asc).all, :id, :name_with_abbr_and_city, current_college.try(:id)), class: "form-control college required", prompt: "-- All --" %>
           </div>
 
           <div class="filter-choice categories">
