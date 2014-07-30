@@ -5,8 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
+gem 'mysql2'
 
-#gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -75,7 +75,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 # active admin
-#gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 # deployment
 gem 'capistrano'
