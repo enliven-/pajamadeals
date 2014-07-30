@@ -2503,7 +2503,8 @@ table.table-mail tr td {
   position: fixed;
   z-index: 2000;
   top: 0px;
-  left: 220px;
+  /*left: 220px;*/
+  left: 0px;
   height: 2px;
 
   -webkit-transition: width 1s;
@@ -2516,6 +2517,10 @@ table.table-mail tr td {
 }
 
 .pace-inactive {
+  display: none;
+}
+
+.pace {
   display: none;
 }
 

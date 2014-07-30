@@ -13,7 +13,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left ?col-sm-6" role="search" style="width: 50%; padding-left: 0px">
+      <form class="navbar-form navbar-left ?col-sm-6" role="search" style="width: 50%; padding-left: 4px">
         <div class="form-group" style="width: 80%">
           <input type="text" class="form-control" id="search-navbar" placeholder="Search for books, projects, etc." autocomplete="off" style="width: 102%">
         </div>
@@ -34,7 +34,7 @@
           </li>
         <% else %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sign-in fa-6"></i></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding: 15px 15px 0px 15px !important"><i class="fa fa-sign-in fa-2x"></i></a>
             <ul class="dropdown-menu" role="menu">
               <li><%= link_to "Sign In", new_user_session_path %></li>
               <li><%= link_to "Sign Up", new_user_registration_path %></li>
@@ -143,4 +143,9 @@ $(document).ready(function() {
   background-color: #323637 !important;
   color: white !important;
 }
+
+.fa.fa-2x {
+  font-size: 1.8em;
+}
+
 </style>
