@@ -3,7 +3,6 @@ require 'rubygems'
 require File.expand_path("../../config/environment", __FILE__)
 require 'factory_girl'
 
-
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
