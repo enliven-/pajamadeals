@@ -3,6 +3,7 @@ class Classified < ActiveRecord::Base
 
   validates :title, presence: true
   validates :price, presence: true, numericality: true
+  # validates :category, existence: true
 
   belongs_to :user
   accepts_nested_attributes_for :user
