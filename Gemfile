@@ -47,7 +47,8 @@ gem 'koala'
 
 # search engine
 gem 'searchkick'
-gem 'will_paginate'
+#gem 'will_paginate'
+gem 'kaminari'
 
 # logging and monitoring
 gem 'mongodb_logger'
