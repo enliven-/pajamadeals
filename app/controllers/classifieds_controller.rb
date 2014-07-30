@@ -82,7 +82,7 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       if @classified.save
-        format.html { redirect_to @classified,
+        format.html { redirect_to classifieds_url,
                       notice: 'Classified was successfully created.' }
         format.json { render :show, status: :created, location: @classified }
       else
@@ -98,7 +98,7 @@ class ClassifiedsController < ApplicationController
   def update
     respond_to do |format|
       if @classified.update(classified_params)
-        format.html { redirect_to @classified,
+        format.html { redirect_to classifieds_url,
                       notice: 'Classified was successfully updated.' }
         format.json { render :show, status: :ok, location: @classified }
       else

@@ -1,7 +1,15 @@
 
 <% flash.each do |type, message| %>
-  <div class="alert <%= bootstrap_class_for(type) %> alert-dismissable">
+  <div class="alert <%= bootstrap_class_for(type) %> alert-dismissable" style="margin-top: -15px; padding-top: 8px; margin-bottom: 5px; padding-bottom: 8px; text-align: center;">
     <button class="close" data-dismiss="alert">×</button>
     <%= message %>
   </div>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+    $("body").on("click", function(e) {
+      $("div.alert").fadeOut(500).slideUp(1000);
+    });
+  });  
+</script>
