@@ -137,7 +137,7 @@
                   <div class="form-group college">
                     <%= label_tag "College", nil, class: "col-sm-2 control-label" %>
                     <div class="col-sm-9">
-                      <%= select_tag :college_id, options_from_collection_for_select(College.order(name: :asc).all, :id, :name), { class: "form-control college required", include_blank: true } %>
+                      <%= select_tag :college_id, options_from_collection_for_select(College.order(name: :asc).all, :id, :name_with_abbr_and_city), { class: "form-control college required", include_blank: true } %>
                     </div>
                   </div>
 
