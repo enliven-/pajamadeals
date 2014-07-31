@@ -47,7 +47,8 @@ gem 'koala'
 
 # search engine
 gem 'searchkick'
-gem 'will_paginate'
+#gem 'will_paginate'
+gem 'kaminari'
 
 # logging and monitoring
 gem 'mongodb_logger'
@@ -63,6 +64,7 @@ gem 'font-awesome-rails'
 gem 'faker'
 gem 'factory_girl_rails'
 gem 'mocha'
+gem 'rspec'
 gem 'rspec-rails'
 gem 'database_cleaner'
 

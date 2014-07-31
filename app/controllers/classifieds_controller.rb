@@ -120,6 +120,11 @@ class ClassifiedsController < ApplicationController
     end
   end
 
+
+  def autocomplete
+    render json: Classified.search(params[:query], fields: [:title], limit: 10).map(&:title)
+  end
+
   private
 
   def set_classified

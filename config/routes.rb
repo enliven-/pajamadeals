@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users , controllers: {registrations: 'users/registrations',
                                     passwords:     'users/passwords'
-                                   }
+                                    }
+  # mondblogger
+  mount MongodbLogger::Server.new, at: "/logs"
 
   get 'pages/home'
   get 'pages/about'
@@ -19,13 +21,12 @@ Rails.application.routes.draw do
 
   root to: 'classifieds#index'
 
-  # mondblogger
-  mount MongodbLogger::Server.new, at: "/logs"
+
 
 
   # autocomplete on form
-  get '/search/books/' => 'books#search'
-  
+  get '/classifieds/autocomplete/' => 'classifieds#autocomplete'
+
   # current state
   get '/state/' => 'application#state'
 
