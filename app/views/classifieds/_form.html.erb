@@ -254,7 +254,7 @@ $(document).ready(function() {
   $("body").on("click", ".form-dummy a.submit", function(e) {
 
     var flag = true;
-    $.each($(".form-dummy .form-control.required"), function(i,el) {
+    $.each($(".form-dummy.form-horizontal .form-control.required"), function(i,el) {
       if ($(el).val().trim() == "" ) { 
         flag = false;
         $(el).parent().parent().addClass("has-error");
