@@ -79,19 +79,21 @@
     
     $(".modal").removeClass("modal").removeClass("fade").attr("aria-hidden", false);
 
+    $("body").on("click", "form#new_user button.submit", function(e) {
+
+      var flag = true;
+      $.each($("form#new_user .form-control.required"), function(i,el) {
+        if ($(el).val().trim() == "" ) { 
+          flag = false;
+          $(el).parent().parent().parent().addClass("has-error");
+        }
+      });
+
+    });
 
   });
 </script>
 
-<!-- <style>
-#sign-up > div > div > div.modal-body {
-  padding-top: 55px !important;
-}
-
-form#new_user {
-  margin-top: 35px !important;
-}
-</style> -->
 <style>
 div#sign-up:focus {
   outline: none !important;

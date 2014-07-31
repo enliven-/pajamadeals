@@ -1,3 +1,7 @@
+
+<div class="row wrapper wrapper-content ?animated ?fadeInRight">
+  <div class="row col-sm-12 ?animated ?fadeInRight" style="?margin-left: 10px; margin-right: 10px;">
+
 <div class="modal main fade animated fadeInRight" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -104,7 +108,8 @@
     </div>
   </div>
 </div>
-
+</div>
+</div>
 
 <div class="modal dummy fade animated fadeInRight" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -181,8 +186,8 @@ $(document).ready(function() {
 
   $(".form-control").attr("autocomplete", "off");
 
-  $("body").on("focus", ".form-control", function(e) {
-    $(this).parent().parent().removeClass("has-error");
+  $("body").on("click", function(e) {
+    $(".form-control").parent().parent().removeClass("has-error");
   });
 
   $(".form-control.numeric").keydown(function (e) {
@@ -249,7 +254,7 @@ $(document).ready(function() {
   $("body").on("click", ".form-dummy a.submit", function(e) {
 
     var flag = true;
-    $.each($(".form-dummy .form-control.required"), function(i,el) {
+    $.each($(".form-dummy.form-horizontal .form-control.required"), function(i,el) {
       if ($(el).val().trim() == "" ) { 
         flag = false;
         $(el).parent().parent().addClass("has-error");
@@ -298,5 +303,90 @@ div#sign-up {
 body {
   height: 100%;
   overflow: hidden;
+}
+
+.filters {
+  padding-left: 0px !important;
+}
+
+.colleges select {
+  padding-left: 3px;
+}
+.categories > .category {
+  /*font-weight: 800;*/
+  padding: 1px 5px 1px 5px;
+  border-radius: 3px;
+}
+
+.filter-choice {
+  margin-bottom: 20px;
+}
+
+h3.expected-price {
+  color: #e34e4d;
+  font-size: 18px;
+  margin-top: 15px;
+  display: inline-block;
+  /*margin-left: 30px !important;*/
+}
+
+.desc {
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-top: 5px;
+  padding-right: 0px;
+}
+span.date-posted {
+  font-size: 10px;
+}
+
+.details {
+  margin-top: 2px;
+}
+
+.details, .details div {
+  margin-left: 0px;
+  padding-left: 0px;
+  /*margin-top: 5px;*/
+}
+span.s-name {
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+div.s-info {
+  /*margin-top: 20px;*/
+  /*margin-left: 40px !important;*/
+  padding-right: 0px;
+  padding-left: 35px;
+  height: 60px;
+  /*padding-left: 0px;*/
+}
+
+.classified-info {
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+div.date-posted {
+  margin-left: -10px;
+  margin-top: -2px;
+}
+
+h4.title > a:hover.
+h4.title > a:active {
+  text-decoration: none !important;
+}
+
+.date-price {
+  margin-top: -7px;
+  padding-right: 0px;
+  margin-right: 0px;
+  padding-left: 20px;
+  /*margin-left: 10px;*/
+}
+
+.classified-info {
+  padding-right: 0px;
 }
 </style>

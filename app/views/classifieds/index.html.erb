@@ -2,13 +2,13 @@
 <div class="row wrapper wrapper-content animated fadeInRight">
   <div class="row col-sm-12 ?animated ?fadeInRight" style="?margin-left: 10px; margin-right: 10px;">
 
-    <div class="col-sm-3 filters">
+    <div class="col-sm-3 filters expanded">
       <div class="ibox float-e-margins">
         
         <div class="ibox-title">
           <h5>Filters</h5>
           <div class="ibox-tools">
-            <a class="collapse-link">
+            <a class="collapse-link-viksit">
               <i class="fa fa-chevron-up"></i>
             </a>
           </div>
@@ -59,157 +59,9 @@
   </div>
 </div>
 
-<script type="text/javascript">
-$(document).ready(function() {
-
-  var li, ci;
-
-  $("body").on("click", "h4.title", function(e) {
-    e.preventDefault();
-    var $result = $(this).parent().parent();
-    var $siblings = $("div.result");
-
-    $.each($siblings, function(i, el) {
-      $("div.full", el).addClass("hidden");
-      $("div.s-email", el).addClass("hidden");
-      $("div.truncated", el).removeClass("hidden");
-      $("div.s-info", el).css("min-height", "60px");
-      $("div.options a", $(el).parent()).addClass("hidden");
-
-    });
-
-    $result.find("div.s-info").css("min-height", "75px");
-    $("div.truncated", $result).addClass("hidden");
-    $("div.full", $result).removeClass("hidden");
-    $("div.s-email", $result).removeClass("hidden");
-    $("div.options a", $result.parent()).removeClass("hidden");
-
-
-    ci = $siblings.index($result);
-    console.log(ci);
-    console.log(li);
-    li = ci;
-    // return false;
-  });
-
-
-  $("body").on("change", ".filter-choice.colleges select", function(e) {
-    var filter_college_choice = $(this).val();
-    if (filter_college_choice.length > 0) {
-      params = { filters : { college_id : filter_college_choice } };
-    } else {
-      params = { filters : { college_id : "0" } };
-    }
-    filter_results(params);     
-  });
-
-  $("body").on("click", "div.filter-choice .category a", function(e) {
-    e.preventDefault();
-    var choice_id = $(this).attr("id");
-    params = { filters : { category_id : choice_id } };
-    filter_results(params);
-    $(this).parent().siblings().css("background-color", "white");
-    $(this).parent().css("background-color", "#D1DADE");
-  });
-
-
-  var filter_results = function(params) {
-    $.get("/classifieds/", params, function(data) {
-      var results = $("div.results", data).html();
-      window.history.pushState({}, {}, "/classifieds");
-      $("div.results").html(results);
-    });
-  };
-
-});
-
-</script>
 
 <style type="text/css">
 
-.filters {
-  padding-left: 0px !important;
-}
 
-.colleges select {
-  padding-left: 3px;
-}
-.categories > .category {
-  font-weight: 800;
-  padding: 3px 5px 3px 5px;
-  border-radius: 3px;
-}
-
-.filter-choice {
-  margin-bottom: 20px;
-}
-
-h3.expected-price {
-  color: #e34e4d;
-  font-size: 18px;
-  margin-top: 15px;
-  display: inline-block;
-  /*margin-left: 30px !important;*/
-}
-
-.desc {
-  padding-left: 0px;
-  margin-left: 0px;
-  margin-top: 5px;
-  padding-right: 0px;
-}
-span.date-posted {
-  font-size: 10px;
-}
-
-.details {
-  margin-top: 2px;
-}
-
-.details, .details div {
-  margin-left: 0px;
-  padding-left: 0px;
-  /*margin-top: 5px;*/
-}
-span.s-name {
-  display: inline-block;
-  margin-bottom: 3px;
-}
-
-div.s-info {
-  /*margin-top: 20px;*/
-  /*margin-left: 40px !important;*/
-  padding-right: 0px;
-  padding-left: 35px;
-  height: 60px;
-  /*padding-left: 0px;*/
-}
-
-.classified-info {
-  padding-left: 0px;
-  margin-left: 0px;
-}
-
-div.date-posted {
-  margin-left: -10px;
-  margin-top: -2px;
-}
-
-h4.title > a:hover.
-h4.title > a:active {
-  text-decoration: none !important;
-}
-
-.date-price {
-  margin-top: -7px;
-  padding-right: 0px;
-  margin-right: 0px;
-  padding-left: 20px;
-  /*margin-left: 10px;*/
-}
-
-.classified-info {
-  padding-right: 0px;
-}
 
 </style>
