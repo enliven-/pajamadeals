@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   include MongodbLogger::Base
   before_filter :add_params_to_mongodb_logger
   def add_params_to_mongodb_logger
-    if Rails.logger.respond_to?(:add_metadata)
+    if Rails.logger.respond_to?(:add_metadata) and !Rails.env.test?
       Rails.logger.add_metadata(user_id: current_user.try(:id))
     end
   end
