@@ -84,6 +84,10 @@
 
 /* logo */
 
+a.navbar-brand {
+  color: #999c9e !important;
+}
+
 .logo a:hover {
   background-color: #323637 !important;
   text-decoration:  none !important;

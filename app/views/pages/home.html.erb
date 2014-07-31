@@ -11,6 +11,34 @@
     </div>   
   </div>
 
+  <div class="select-school container row col-sm-12">
+    <div class="col-sm-8 col-sm-offset-2 select-school">
+      <div class="ibox-content">
+        <div class="col-sm-offset-3">
+          <h3>
+            <div class="pin icon" style="display: inline-block; background-image: url('/banner/sprite-board.png'); width: 38px; height: 38px; background-position-y: -220px;"></div>
+            <span class="content">Find Your School</span>
+          </h3>
+        </div>
+        <form>
+
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-1">
+              <div class="input-group"><input type="text" class="form-control" placeholder="e.g. VIT, or NDMVP etc."> <span style="color: white;" class="input-group-btn"> <button type="button" style="background-color: #29aae1;" class="btn ?btn-success">Go!
+              </button> </span></div>
+            </div>
+          </div>
+
+
+<!--           <div class="form-group row" ?style="width: 80%">
+            <input type="text" class="form-control" style="width: 80%;" id="search-school" placeholder="Find your school" autocomplete="off">
+            <button type="submit" class="btn btn-info search submit">Search</button>
+          </div> -->
+        </form>
+      </div>      
+    </div>
+  </div>
+
   <div class="col-sm-10 col-sm-offset-1 why-love">
     <div class="col-sm-4 feature feature-1">
       <div style="background-image: url('/banner/feature-1.png'); min-height: 160px; background-repeat: no-repeat;"></div> 
@@ -58,6 +86,34 @@ $(document).ready(function() {
 
 <style>
 
+.select-school.container {
+  margin-top: -80px;
+}
+
+.select-school .form-control:focus {
+  border-color: #29aae1 !important;
+}
+
+.select-school.container h3 .content {
+  /*margin-top: -15px;*/
+  position: relative;
+  top: -10px;
+}
+
+.select-school.container h3 {
+  font-weight: 600;
+  margin-left: 20px;
+  font-size: 22px;
+}
+
+.select-school .ibox-content{
+  min-height: 150px;
+  border-radius: 4px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  /*background-color: rgb(243, 243, 244);*/
+  background-color: #f9f9f9;
+}
+
 .why-love div.words, .why-love .title {
   padding-left: 25px;
   padding-right: 25px;
@@ -79,7 +135,7 @@ $(document).ready(function() {
 }
 
 .why-love {
-  margin-top: 30px;
+  margin-top: 50px;
   margin-left: 140px;
 }
 .why-love h3 {
@@ -138,7 +194,7 @@ $(document).ready(function() {
   letter-spacing: -1px;
   line-height: 30px;
   margin-bottom: 0px;
-  margin-left: 100px;
+  margin-left: 120px;
   margin-right: 0px;
   margin-top: 150px;
   padding-bottom: 10px;
