@@ -13,7 +13,7 @@
       <span class="s-loc"> <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;<%= classified.college.abbr %>, <%= classified.college.city %></span><br />
       <span class="s-phone"> <i class="fa fa-phone"></i>&nbsp; <%= classified.user.mobile %> </span><br/>
       
-      <div class="s-email hidden"> <i class="fa fa-envelope"></i>&nbsp; <%= classified.user.email || '-' %></div><br />
+      <div class="s-email hidden"> <i class="fa fa-envelope"></i>&nbsp; <%= classified.user.guest? ? '-' : classified.user.email %></div><br />
   </div>
 
   <div class="col-sm-2 ?pull-right date-price">

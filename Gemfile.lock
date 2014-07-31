@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: a8ae008ec9632110bf33443ce7090dfef9cca480
+  revision: 5953cffdc14b7ccb497ba179eb59d33518dcbbe7
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -175,6 +175,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mustache (0.99.5)
+    mysql2 (0.3.16)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
@@ -342,6 +343,7 @@ DEPENDENCIES
   mocha
   mongo
   mongodb_logger
+  mysql2
   omniauth
   omniauth-facebook
   rails (= 4.1.4)
