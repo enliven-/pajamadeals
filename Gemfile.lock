@@ -233,6 +233,10 @@ GEM
     ref (1.0.5)
     responders (1.0.0)
       railties (>= 3.2, < 5)
+    rspec (3.0.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
     rspec-core (3.0.3)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.3)
@@ -341,6 +345,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   rails (= 4.1.4)
+  rspec
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

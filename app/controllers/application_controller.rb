@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def current_college
     return nil if session[:college_id] == 0 || session[:college_id] == '0'
-    @current_college = 
+    @current_college =
       (College.find(session[:college_id]) if session[:college_id].present?) ||
       current_user.try(:college)
   end
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   include MongodbLogger::Base
   before_filter :add_params_to_mongodb_logger
   def add_params_to_mongodb_logger
-    if Rails.logger.respond_to?(:add_metadata)
+    if Rails.logger.respond_to?(:add_metadata) and !Rails.env.test?
       Rails.logger.add_metadata(user_id: current_user.try(:id))
     end
   end

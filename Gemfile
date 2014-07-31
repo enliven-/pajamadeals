@@ -64,6 +64,7 @@ gem 'font-awesome-rails'
 gem 'faker'
 gem 'factory_girl_rails'
 gem 'mocha'
+gem 'rspec'
 gem 'rspec-rails'
 gem 'database_cleaner'
 

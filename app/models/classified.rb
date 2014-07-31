@@ -1,5 +1,5 @@
 class Classified < ActiveRecord::Base
-  searchkick
+  searchkick settings: {number_of_shards: 1}
 
   validates :title, presence: true
   validates :price, presence: true, numericality: true
