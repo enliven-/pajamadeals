@@ -30,7 +30,7 @@
             </div>
             <% for category in Category.order(name: :asc).all %>
               <%= div_for category do %>
-                <%= link_to "#{category.name} (#{category.classifieds.count})", classifieds_path, { class: "", id: category.id } %>
+                <%= link_to "#{category.name} (#{current_college ? category.classifieds.where(college: current_college).count : category.classifieds.count})", classifieds_path, { class: "", id: category.id } %>
                 <span class="pull-right"></span>
               <% end %>
             <% end %>
