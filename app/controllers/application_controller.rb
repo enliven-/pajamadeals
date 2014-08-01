@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def home
+    render "pages/home"
+  end
+
   def current_college
     return nil if session[:college_id] == 0 || session[:college_id] == '0'
     @current_college =

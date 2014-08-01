@@ -69,7 +69,7 @@ $(document).ready(function() {
 
 
   $("body").on("click", ".select-school button#go", function(e) {
-    var params = { college_id: 1 }
+    var params = { filters : { college_id: 1 } }
     $.get("/classifieds/", params, function(data) {
       console.log(data);
       window.location = "/classifieds";

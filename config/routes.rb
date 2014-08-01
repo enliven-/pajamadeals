@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'classifieds#index'
+  # root to: 'classifieds#index'
+  root to: 'application#home'
 
 
 
