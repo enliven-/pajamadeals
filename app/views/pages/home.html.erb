@@ -4,8 +4,8 @@
 
 
   <div class="banner-top row col-sm-12">
-    <div class="banner col-sm-8 col-sm-offset-2" style="background-image: url('/banner/banner.jpg');">
-      <div class="title col-sm-10 col-sm-offset-2">
+    <div class="banner col-sm-10 col-sm-offset-1" style="background-image: url('/banner/banner.jpg'); background-position-x:center; text-align: center;">
+      <div class="title col-sm-10 col-sm-offset-1">
         Buy &amp; sell on your college campus
       </div>
     </div>   
@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  <div class="col-sm-10 col-sm-offset-1 why-love">
+  <div class="col-sm-10 ?col-sm-offset-1 why-love" style="display: inline-block;">
     <div class="col-sm-4 feature feature-1">
       <div style="background-image: url('/banner/feature-1.png'); min-height: 160px; background-repeat: no-repeat;"></div> 
       <div class="title"><h3>1. Post an Item</h3></div>
@@ -134,7 +134,7 @@ $(document).ready(function() {
 
 .why-love .feature-2{
   padding-left: 0px;
-  /*padding-right: 0px;  */
+  padding-right: 0px;  
   /*margin-left: -25px;*/
   margin-top: 2px;
   padding-right: 0px;
@@ -151,12 +151,15 @@ $(document).ready(function() {
 .why-love .feature {
   /*border: 1px solid gray;*/
   max-width: 300px;
+  min-width: 300px;
   /*min-width: 250px;*/
 }
 
 .why-love {
   margin-top: 50px;
-  margin-left: 140px;
+  margin-left: 15%;
+  /*min-width: 950px;*/
+  /*margin-left: 140px;*/
 }
 .why-love h3 {
   font-weight: 900;
@@ -170,7 +173,7 @@ $(document).ready(function() {
 .banner {
   position: relative;
   min-height: 400px;
-  margin-left: 120px;
+  /*margin-left: 120px;*/
   -webkit-transition: background-position-y 1000ms ease 0ms;
   -moz-transition:    background-position-y 1000ms ease 0ms;
   -ms-transition:     background-position-y 1000ms ease 0ms;
@@ -223,7 +226,7 @@ $(document).ready(function() {
   /*padding-right: 20px;*/
   padding-top: 20px;
   /*position: relative;*/
-  text-align: center;
+  /*text-align: center;*/
   /*width: 700px;*/
 }
 
