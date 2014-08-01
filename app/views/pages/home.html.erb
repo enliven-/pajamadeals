@@ -5,7 +5,7 @@
 
   <div class="banner-top row col-sm-12">
     <div class="banner col-sm-8 col-sm-offset-2" style="background-image: url('/banner/banner.jpg');">
-      <div class="title">
+      <div class="title col-sm-10 col-sm-offset-2">
         Buy &amp; sell on your college campus
       </div>
     </div>   
@@ -25,8 +25,8 @@
           <div class="form-group">
             <div class="col-sm-10 col-sm-offset-1">
               <div class="input-group">
-              <%= select_tag :college, options_from_collection_for_select(College.order(name: :asc).all, :id, :name_with_abbr_and_city), class: "form-control", include_blank: true %>
-               <span style="color: white;" class="input-group-btn"> <button type="button" style="background-color: #29aae1;" class="btn ?btn-success">Go!
+              <%= select_tag :college, options_from_collection_for_select(College.order(name: :asc).all, :id, :name_with_abbr_and_city), class: "form-control", prompt: "Select your college." %>
+               <span style="color: white;" class="input-group-btn"> <button type="button" id="go" style="background-color: #29aae1;" class="btn ?btn-success">Go!
               </button> </span></div>
             </div>
           </div>
@@ -66,6 +66,18 @@ $(document).ready(function() {
 
   $(".navbar .navbar-form").addClass("hidden");
   $(".navbar .navbar-nav.post").addClass("hidden");
+
+
+  $("body").on("click", ".select-school button#go", function(e) {
+    var college_id = $(".select-school select").val();
+    if (college_id === "") { return false; }
+    var params = { filters : { college_id: parseInt(college_id) } }
+    $.get("/classifieds/", params, function(data) {
+      console.log(data);
+      window.location = "/classifieds";
+    });
+
+  });
 
   var transition_bg = function() {
     var bp = $(".banner").css("background-position-y").replace(/[^-\d\.]/g, '');
@@ -123,12 +135,23 @@ $(document).ready(function() {
 .why-love .feature-2{
   padding-left: 0px;
   /*padding-right: 0px;  */
-  margin-left: -25px;
+  /*margin-left: -25px;*/
+  margin-top: 2px;
+  padding-right: 0px;
 }
 
 .why-love .feature-3 {
-  margin-left: -55px;
+  /*margin-left: -55px;*/
   /*margin-top: -10px;*/
+  padding-left: 0px;
+  margin-top: 2px;
+
+}
+
+.why-love .feature {
+  /*border: 1px solid gray;*/
+  max-width: 300px;
+  /*min-width: 250px;*/
 }
 
 .why-love {
@@ -172,7 +195,39 @@ $(document).ready(function() {
   /*min-height: 300px;*/
 }
 
+
 .banner .title {
+  -webkit-background-clip: border-box;
+  -webkit-background-origin: padding-box;
+  -webkit-background-size: auto;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgb(44, 194, 255);
+  background-image: none;
+  background-origin: padding-box;
+  background-size: auto;
+  color: rgb(255, 255, 255);
+  display: inline-block;
+  font-family: Arial;
+  font-size: 35px;
+  font-weight: bold;
+  height: 70px;
+  letter-spacing: -1px;
+  line-height: 30px;
+  /*margin-bottom: 0px;*/
+  /*margin-left: 120px;*/
+  /*margin-right: 0px;*/
+  margin-top: 120px;
+  /*padding-bottom: 10px;*/
+  /*padding-left: 20px;*/
+  /*padding-right: 20px;*/
+  padding-top: 20px;
+  /*position: relative;*/
+  text-align: center;
+  /*width: 700px;*/
+}
+
+/*.banner .title {
   -webkit-background-clip: border-box;
   -webkit-background-origin: padding-box;
   -webkit-background-size: auto;
@@ -201,5 +256,5 @@ $(document).ready(function() {
   position: relative;
   text-align: center;
   width: 700px;
-}
+}*/
 </style>

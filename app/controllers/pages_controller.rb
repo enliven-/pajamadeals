@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @title = 'home'
+    @title = 'classifieds for students'
     redirect_to classifieds_path if current_college
   end
 
