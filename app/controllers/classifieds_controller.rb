@@ -30,6 +30,10 @@ class ClassifiedsController < ApplicationController
 
     @classifieds = Classified.search(query, search_params)
 
+    @categories_counts = Category.order(name: :asc).all.map do |c|
+      current_college ? c.classifieds.where(college: current_college).count : c.classifieds.count
+    end
+
   end
 
   # GET /classifieds/1

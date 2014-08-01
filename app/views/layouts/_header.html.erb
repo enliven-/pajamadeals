@@ -58,16 +58,17 @@ $(document).ready(function() {
     if (e.which == 13) { 
       e.preventDefault();
       get_results();
+      update_counts();
     }
   });
 
   $("form.navbar-form button.submit").on("click", function(e) {
     e.preventDefault();
     get_results();
+    update_counts();
   });
 
   var get_results = function() {
-    console.log( "getting here" )
     var search_term = $search.val();
     if (search_term.length > 2) {
       var params      = { query : search_term }; 
@@ -76,7 +77,6 @@ $(document).ready(function() {
         window.history.pushState({}, {}, "/classifieds");
         $("div.wrapper-content").html(new_page);
         sync_page();
-
       });
       $search.val("");
     }
@@ -104,8 +104,8 @@ $(document).ready(function() {
     });  
   });
 
+  // highlighting the correct category
   var sync_page = function() {
-    console.log("syncingpage")
     var current_category_id = $(".current_category").html();
     if (current_category_id == "") {
       current_category_id = 0
@@ -115,9 +115,21 @@ $(document).ready(function() {
     var selector = current_category_id;
     $selected = $("div.category:eq("+ selector +")");
     $selected.css("background-color", "#D1DADE");
-    console.log($selected)
-
   }
+
+
+  // update counts in categories
+  var update_counts = function() {
+    var counts = $("div.categories-counts").html();
+    counts = counts.trim().slice(1, counts.length-1).split(",");
+    $.each(counts, function(i, e) {
+      var index = i + 1;
+      $selected = $("div.category:eq("+ index + ")");
+      $("span.count", $selected).html("(" + e.trim() + ")");
+    });
+  }
+
+
 
   sync_page();
 
@@ -159,7 +171,7 @@ $(document).ready(function() {
     } else {
       params = { filters : { college_id : "0" } };
     }
-    filter_results(params);     
+    filter_results(params);    
   });
 
   $("body").on("click", "div.filter-choice .category a", function(e) {
@@ -177,6 +189,7 @@ $(document).ready(function() {
       var results = $("div.results", data).html();
       window.history.pushState({}, {}, "/classifieds");
       $("div.results").html(results);
+      update_counts();
     });
   };
   
