@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   # root to: 'classifieds#index'
-  root to: 'application#home'
+  root to: 'pages#home'
 
 
 
