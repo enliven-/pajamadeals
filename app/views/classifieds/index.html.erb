@@ -31,7 +31,7 @@
             <% for category in Category.order(name: :asc).all %>
               <%= div_for category do %>
                 <%= link_to "#{category.name}", classifieds_path, { class: "", id: category.id } %>
-                <span class="count">(<%= current_college ? category.classifieds.where(college: current_college).count : category.classifieds.count %>)</span>
+                <span class="count">(<%= current_college ? category.classifieds.where(college: current_college, list: true).count : category.classifieds.where(list: true).count %>)</span>
               <% end %>
             <% end %>
           </div>
