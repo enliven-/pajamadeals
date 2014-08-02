@@ -9,12 +9,13 @@
 <script>
   $(document).ready(function() {
     $("body").on("click", function(e) {
-      $("div.alert").fadeOut(500).slideUp(1000);
+      $("div.alert").fadeOut(2000).slideUp(2000);
     });
 
     var remove_flash_msg = function() {
-      $("div.alert").fadeOut(1500).slideUp(2000);
+      $("div.alert").fadeOut(2000).slideUp(4000);
     }
     window.setTimeout(remove_flash_msg, 2000);
   });  
 </script>
+

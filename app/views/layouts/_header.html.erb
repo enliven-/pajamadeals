@@ -113,9 +113,19 @@ $(document).ready(function() {
       current_category_id = parseInt(current_category_id);
     }
     var selector = current_category_id;
-    $selected = $("div.category:eq("+ selector +")");
-    $selected.css("background-color", "#D1DADE");
+    $selected = $("div.category a#" + current_category_id);
+    $selected.parent().css("background-color", "#D1DADE");
   }
+
+  // var sync_page = function() {
+  //   console.log("sync_page")
+  //   var category = $(".current_category").html()
+  //   console.log(category);
+  //   $.each($("div.category"), function(i, el) {
+  //     console.log($(el).html())
+  //     // if ($(el).html().trim() == )
+  //   });
+  // }
 
 
   // update counts in categories
