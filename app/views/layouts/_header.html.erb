@@ -122,16 +122,12 @@ $(document).ready(function() {
   var update_counts = function() {
     var counts = $("div.categories-counts").html();
     counts = counts.trim().slice(1, counts.length-1).split(",");
+    console.log( counts )
     $.each(counts, function(i, e) {
       var index = i + 1;
       $selected = $("div.category:eq("+ index + ")");
       $("span.count", $selected).html("(" + e.trim() + ")");
     });
-  }
-
-  var validate_email = function(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
   }
 
   sync_page();
