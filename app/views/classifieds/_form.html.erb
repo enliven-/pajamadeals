@@ -20,7 +20,7 @@
                     </div>
                   </div> 
 
-                  <div class="form-group">
+                  <div class="form-group category">
                     <%= f.label :category, class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9"> 
                      <%= f.select :category_id, Category.order(name: :asc).select(:name, :id).collect { |category| [category.name, category.id] }, { include_blank: true }, { class: "form-control required category" } %>
@@ -30,7 +30,7 @@
                   <div class="form-group comment">
                     <%= f.label 'Description', class: 'col-sm-2 control-label' %>
                     <div class="col-sm-9">
-                      <%= f.text_area :description, class: 'form-control required comment' %>
+                      <%= f.text_area :description, class: 'form-control ?required comment' %>
                     </div>
                   </div>
 
@@ -89,7 +89,7 @@
                   <div class="form-group buttons">
                     <% if current_user %>
                     <div class="col-sm-6 col-sm-offset-2">
-                      <%= f.submit :cancel, class: "btn btn-default cancel" %>
+                      <!-- <%= f.submit :cancel, class: "btn btn-default cancel" %> -->
                       <%= f.submit :submit, class: "btn btn-primary submit" %>
                       
                     </div>
@@ -97,7 +97,7 @@
                     <div class="col-sm-6 col-sm-offset-2">
                       <!-- <%= f.submit :submit, class: "btn btn-primary submit" %> -->
                       <!-- <%= f.submit :cancel, class: "btn btn-default cancel" %> -->
-                      <a href="/classifieds" class="btn btn-default cancel">Cancel</a>
+                      <!-- <a href="/classifieds" class="btn btn-default cancel">Cancel</a> -->
                       <a class="btn btn-primary next">Next ></a>
                     </div>
                     <% end %>
@@ -250,6 +250,23 @@ $(document).ready(function() {
   //   return false;
   // });
 
+
+  $("body").on("click", ".listing-form input.submit", function(e) {
+    e.preventDefault();
+    console.log("clicked")
+    var flag = true;
+    $.each($(".listing-form .form-control.required"), function(i,el) {
+      if ($(el).val().trim() == "" ) { 
+        flag = false;
+        $(el).closest(".form-group").addClass("has-error");
+        console.log( $(el).closest(".form-group") )
+      }
+    });
+
+    if (flag) {
+      $("form.listing-form").submit();
+    }
+  })
 
   $("body").on("click", ".form-dummy a.submit", function(e) {
 
