@@ -1,0 +1,19 @@
+x - I strongly feel that cancel button from classifieds#new should go
+  REMOVED
+
+x - Validation on mobile field that it should be a 10 digit number
+  DONE but still need to add red border
+
+x - Validation on email field that it is an email
+  DONE but still need to add red border
+
+x - Validation on sign up form
+  DONE but still need to add red boder
+
+x - Doesn't show correct highlighted category on page referesh
+  DONE
+
+
+x When u create new post; should redirect to the category u posted in; or in all; not the one in session;
+x @categories_counts variable in clasifieds#index is showing count for deleted items as well perhaps; shows more than there are;
+- Flash message positioning

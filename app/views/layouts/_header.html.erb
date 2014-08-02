@@ -113,8 +113,8 @@ $(document).ready(function() {
       current_category_id = parseInt(current_category_id);
     }
     var selector = current_category_id;
-    $selected = $("div.category:eq("+ selector +")");
-    $selected.css("background-color", "#D1DADE");
+    $selected = $("div.category a#" + current_category_id);
+    $selected.parent().css("background-color", "#D1DADE");
   }
 
 
@@ -122,14 +122,13 @@ $(document).ready(function() {
   var update_counts = function() {
     var counts = $("div.categories-counts").html();
     counts = counts.trim().slice(1, counts.length-1).split(",");
+    console.log( counts )
     $.each(counts, function(i, e) {
       var index = i + 1;
       $selected = $("div.category:eq("+ index + ")");
       $("span.count", $selected).html("(" + e.trim() + ")");
     });
   }
-
-
 
   sync_page();
 
