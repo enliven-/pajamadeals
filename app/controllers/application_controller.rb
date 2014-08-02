@@ -38,6 +38,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_out_path_for(resource)
+    sign_out_url = url_for(action: 'destroy', controller: 'sessions', only_path: false,
+                           protocol: 'http')
+    if request.referer == sign_out_url
+      super
+    else
+      stored_location_for(resource) || request.referer || root_path
+    end
+  end
+
   def authenticate_admin_user! #use predefined method name
     redirect_to '/' and return if user_signed_in? && !current_user.admin?
     authenticate_user!
