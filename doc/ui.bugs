@@ -14,6 +14,6 @@ x - Doesn't show correct highlighted category on page referesh
   DONE
 
 
-- When u create new post; should redirect to the category u posted in; or in all; not the one in session;
-- @categories_counts variable in clasifieds#index is showing count for deleted items as well perhaps; shows more than there are;
+x When u create new post; should redirect to the category u posted in; or in all; not the one in session;
+x @categories_counts variable in clasifieds#index is showing count for deleted items as well perhaps; shows more than there are;
 - Flash message positioning
