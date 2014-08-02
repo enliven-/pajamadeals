@@ -11,5 +11,10 @@
     $("body").on("click", function(e) {
       $("div.alert").fadeOut(500).slideUp(1000);
     });
+
+    var remove_flash_msg = function() {
+      $("div.alert").fadeOut(1500).slideUp(2000);
+    }
+    window.setTimeout(remove_flash_msg, 2000);
   });  
 </script>
