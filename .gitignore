@@ -16,3 +16,4 @@ resources/
 .ruby-gemset
 .elasticbeanstalk/
 .bundle/
+deploy
