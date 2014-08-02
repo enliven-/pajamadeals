@@ -131,7 +131,7 @@
                   <div class="form-group mobile">
                     <%= label_tag "Mobile", nil, class: "col-sm-2 control-label" %>
                     <div class="col-sm-9">
-                      <%= text_field_tag "Mobile", nil, class: "form-control required mobile" %>
+                      <%= text_field_tag "Mobile", nil, class: "form-control numeric required mobile" %>
                     </div>
                   </div> 
                   <div class="form-group college">
@@ -190,6 +190,7 @@ $(document).ready(function() {
     $(".form-control").parent().parent().removeClass("has-error");
   });
 
+
   $(".form-control.numeric").keydown(function (e) {
       // Allow: backspace, delete, tab, escape, enter and .
       if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
@@ -213,9 +214,11 @@ $(document).ready(function() {
     e.preventDefault();
     var flag = true;
     $.each($(".listing-form .form-control.required"), function(i,el) {
-      if ($(el).val().trim() == "" ) { 
+      var $el = $(el);
+      if ($el.val().trim() == "" ) { 
         flag = false;
-        $(el).parent().parent().addClass("has-error");
+        $el.parent().parent().addClass("has-error");
+        console.log($el.parent().parent())
       }
     });
     if (flag) {
@@ -253,14 +256,24 @@ $(document).ready(function() {
 
   $("body").on("click", ".listing-form input.submit", function(e) {
     e.preventDefault();
-    console.log("clicked")
     var flag = true;
     $.each($(".listing-form .form-control.required"), function(i,el) {
-      if ($(el).val().trim() == "" ) { 
+      var $el = $(el);
+
+      if ($el.val().trim() == "" ) { 
         flag = false;
-        $(el).closest(".form-group").addClass("has-error");
-        console.log( $(el).closest(".form-group") )
+        $el.parent().parent().addClass("has-error");
+        console.log($el.parent().parent())
       }
+
+      if ($el.hasClass("mobile")) { 
+        var len = $el.val().length;
+        if (len < 10 || len > 10) { 
+          flag = false;
+          $el.closest(".form-group").addClass("has-error");
+        }
+      }
+
     });
 
     if (flag) {
@@ -272,11 +285,45 @@ $(document).ready(function() {
 
     var flag = true;
     $.each($(".form-dummy.form-horizontal .form-control.required"), function(i,el) {
-      if ($(el).val().trim() == "" ) { 
+      var $el = $(el);
+      if ($el.val().trim() == "" ) { 
         flag = false;
-        $(el).parent().parent().addClass("has-error");
+        $el.parent().parent().addClass("has-error");
+        console.log($el.parent().parent())
+      }
+
+      if ($el.hasClass("mobile")) { 
+        var len = $el.val().length;
+        if (len < 10 || len > 10) { 
+          flag = false;
+          $el.closest(".form-group").addClass("has-error");
+        }
       }
     });
+
+
+    // validating email and password
+    var $email = $(".form-dummy .form-control.email");
+    var $paswd = $(".form-dummy .form-control.password");
+
+    var email = $email.val().trim();
+    var paswd = $paswd.val().trim();
+
+    if (email.length > 0 || paswd.length > 0) {
+      var email_flag = validate_email(email);
+      var paswd_flag = paswd.length > 4;
+      
+      flag = flag && email_flag && paswd_flag;
+
+      if (!email_flag) {
+        $email.parent().parent().addClass("has-error");
+      }
+      if (!paswd_flag) {
+        $paswd.parent().parent().addClass("has-error");
+      }
+    }
+    // end
+
 
     if (flag) { 
       console.log("clicked");
