@@ -256,6 +256,7 @@ ul.ui-autocomplete span.publisher {
   display: inline-block !important;
   margin-top: 0px !important;
   color: #004b91 !important;
+  font-weight: 450;
 }
 
 .result table {
@@ -296,7 +297,7 @@ ul.ui-autocomplete span.publisher {
   margin-top: 15px !important;
   padding-right: 10px !important;
   display: inline-block !important;
-  color: #e34e4d !important;
+  color: #888 !important;
 }
 
 .classified-info > .row > h5.retail-price {
