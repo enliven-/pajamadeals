@@ -2,10 +2,9 @@
 
   <div class="col-sm-8 row classified-info">
     <h4 class="title"><%= link_to classified.title %></h4><br><br>
-    <span class="s-loc"> <i class="fa fa-map-marker"></i>&nbsp;<%= classified.college.abbr %>, <%= classified.college.city %></span>&nbsp;<strong>&middot;</strong>
-      <span class="s-name"><%= classified.user.name %></span>&nbsp;<strong>&middot;</strong>
-      <span class="s-phone"> <i class="fa fa-phone"></i>&nbsp; <%= classified.user.mobile %> </span>
-      
+    <span class="s-loc"><%= classified.college.abbr %>, <%= classified.college.city %></span>&nbsp;&nbsp;<strong>&middot;</strong>&nbsp;
+      <span class="s-name"><%= classified.user.name %></span>&nbsp;&nbsp;<strong>&middot;</strong>&nbsp;
+      <span class="s-phone"> <i class="fa fa-phone"></i>&nbsp;<%= classified.user.mobile %></span>
     <div class="col-sm-12 desc">
       <!-- <div class="truncated"><em><%= classified.description.truncate(70) %></em></div> -->
       <div class="full hidden animated"><%= classified.description %></div>
@@ -15,8 +14,9 @@
  
 
   <div class="col-sm-2 pull-right date-price">
+          <span class="date-posted"><em><%= render_date classified.created_at %></em></span>
+
     <h3 class="expected-price"><strong>Rs <%= classified.price %></strong></h3><br>
-        <span class="date-posted"><em><%= render_date classified.created_at %></em></span>
 
   </div>
 </div>
