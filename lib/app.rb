@@ -5,15 +5,19 @@ class App
   class << self
 
     def host
-      'hasstuff.com'
+      'pajamadeals.in'
     end
 
     def name
-      'Has Stuff'
+      'Pajama Deals'
     end
 
     def url
       "http://#{host}"
+    end
+    
+    def logo
+      'Pajama Deals'
     end
 
     def sender_email
