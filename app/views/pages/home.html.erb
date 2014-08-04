@@ -76,7 +76,16 @@ $(document).ready(function() {
       console.log(data);
       window.location = "/classifieds";
     });
+  });
 
+  $("body").on("change", ".select-school select", function(e) {
+    var college_id = $(this).val();
+    if (college_id === "") { return false; }
+    var params = { filters : { college_id: parseInt(college_id) } }
+    $.get("/classifieds/", params, function(data) {
+      console.log(data);
+      window.location = "/classifieds";
+    });   
   });
 
   var transition_bg = function() {
