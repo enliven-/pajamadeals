@@ -1,24 +1,25 @@
 <div class="row col-sm-10 contact-box result">
 
-  <div class="col-sm-6 row classified-info">
-    <h4 class="title"><a href><%= classified.title %></a></h4>
+  <div class="col-sm-8 row classified-info">
+    <h4 class="title"><%= link_to classified.title %></h4><br>
+    <div class="seller-info">
+      <span class="s-loc"><%= classified.college.abbr %>, <%= classified.college.city %></span>&nbsp;&nbsp;<strong>&middot;</strong>&nbsp;
+      <span class="s-name"><%= classified.user.name %></span>&nbsp;&nbsp;<strong>&middot;</strong>&nbsp;
+      <span class="s-phone"> <i class="fa fa-phone"></i>&nbsp;<%= classified.user.mobile %></span>
+    </div>
+
     <div class="col-sm-12 desc">
-      <div class="truncated"><em><%= classified.description.truncate(70) %></em></div>
-      <div class="full hidden animated"><em><%= classified.description %></em></div>
+      <!-- <div class="truncated"><em><%= classified.description.truncate(70) %></em></div> -->
+      <div class="full hidden animated description"><%= classified.description %></div>
     </div>
   </div>
 
-  <div class="col-sm-4 col-sm-offet-8 s-info">
-      <span class="s-name"><%= classified.user.name %></span> <br/>
-      <span class="s-loc"> <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;<%= classified.college.abbr %>, <%= classified.college.city %></span><br />
-      <span class="s-phone"> <i class="fa fa-phone"></i>&nbsp; <%= classified.user.mobile %> </span><br/>
-      
-      <div class="s-email hidden"> <i class="fa fa-envelope"></i>&nbsp; <%= classified.user.guest? ? '-' : classified.user.email %></div><br />
-  </div>
+ 
 
-  <div class="col-sm-2 ?pull-right date-price">
-    <span class="date-posted"><em><%= render_date classified.created_at %></em></span><br/>
-    <h3 class="expected-price"><strong>Rs <%= classified.price %></strong></h3>
+  <div class="col-sm-2 pull-right date-price">
+    <span class="date-posted"><em><%= render_date classified.created_at %></em></span><br>
+    <h3 class="expected-price"><strong>Rs <%= classified.price %></strong></h3><br>
+
   </div>
 </div>
 
@@ -39,7 +40,26 @@
     width: 80px;
   }
 
+  div.seller-info {
+    margin-top: 10px;
+  }
+
   div.options {
     padding-top: 3px;
+  }
+
+  .title a {
+    font-size: 16px;
+  }
+
+  h3.expected-price {
+    /*font-size: 25px;*/
+    /*color: black !important!;*/
+    /*position: absolute !important;*/
+    /*bottom: 0 !important;*/
+  }
+
+  div.description {
+    padding-bottom: 10px;
   }
 </style>
