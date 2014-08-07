@@ -14,9 +14,9 @@
  
 
   <div class="col-sm-2 pull-right date-price">
-          <span class="date-posted"><em><%= render_date classified.created_at %></em></span>
+          <span class="date-posted"><em><%= render_date classified.created_at %></em></span><br>
 
-    <h3 class="expected-price"><strong>Rs <%= classified.price %></strong></h3><br>
+    <h3 class="expected-price"><strong><%= classified.price == '0' ? "Free" : "Rs #{classified.price}" %></strong></h3><br>
 
   </div>
 </div>
