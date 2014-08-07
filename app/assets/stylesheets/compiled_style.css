@@ -305,7 +305,10 @@ ul.ui-autocomplete span.publisher {
   color: #808080 !important;
 }
 
-
+.categories .category {
+  font-size: 13px;
+  font-weight: 600;
+}
 
 
 
