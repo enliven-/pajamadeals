@@ -7,7 +7,11 @@
       <span class="s-phone"> <i class="fa fa-phone"></i>&nbsp;<%= classified.user.mobile %></span>
     <div class="col-sm-12 desc">
       <!-- <div class="truncated"><em><%= classified.description.truncate(70) %></em></div> -->
-      <div class="full hidden animated"><%= classified.description %></div>
+	  <% if classified.description.present? %>
+        <div class="full hidden animated"><%= classified.description %></div>
+	  <% else %>
+	  	<div class="full hidden animated"><em>No description.</em></div>
+	  <% end %>
     </div>
   </div>
 
