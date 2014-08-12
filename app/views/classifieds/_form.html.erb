@@ -186,7 +186,7 @@ $(document).ready(function() {
 
   $(".form-control").attr("autocomplete", "off");
 
-  $("body").on("click", function(e) {
+  $("body").on("focus", ".form-control", function(e) {
     $(".form-control").parent().parent().removeClass("has-error");
   });
 
@@ -218,7 +218,6 @@ $(document).ready(function() {
       if ($el.val().trim() == "" ) { 
         flag = false;
         $el.parent().parent().addClass("has-error");
-        console.log($el.parent().parent())
       }
     });
     if (flag) {
@@ -260,10 +259,9 @@ $(document).ready(function() {
     $.each($(".listing-form .form-control.required"), function(i,el) {
       var $el = $(el);
 
-      if ($el.val().trim() == "" ) { 
+      if ($el.val().trim() === "" ) { 
         flag = false;
         $el.parent().parent().addClass("has-error");
-        console.log($el.parent().parent())
       }
 
       if ($el.hasClass("mobile")) { 
@@ -294,7 +292,6 @@ $(document).ready(function() {
       if ($el.val().trim() == "" ) { 
         flag = false;
         $el.parent().parent().addClass("has-error");
-        console.log($el.parent().parent())
       }
 
       if ($el.hasClass("mobile")) { 
@@ -331,7 +328,6 @@ $(document).ready(function() {
 
 
     if (flag) { 
-      console.log("clicked");
       var name, mobile, college, user, paswd;
       var $dummy = $("form.form-dummy");
       name      = $("input.name",    $dummy).val();
