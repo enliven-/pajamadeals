@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   before_filter :authenticate_admin_user!, only: [:stats]
   
   def home
-    @title = 'classifieds for students'
+    @title = 'Classifieds for students'
     redirect_to classifieds_path if current_college
   end
 

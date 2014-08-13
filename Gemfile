@@ -89,3 +89,7 @@ gem 'jquery-ui-rails'
 gem 'sidekiq'
 
 gem 'gem-open', group: :development
+
+# analytics and statistics
+gem 'chartkick'
+gem 'groupdate'
