@@ -21,7 +21,8 @@
       </form>
 
       <ul class="nav navbar-nav post">
-        <%= link_to "Sell your stuff", new_classified_path, { class: "btn btn-success" } %>
+		<!-- Don't remove sell-stuff class, it helps us track how many people clicked on it -->
+        <%= link_to "Sell your stuff", new_classified_path, { class: "btn btn-success sell-stuff" } %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
