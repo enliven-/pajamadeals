@@ -4,7 +4,11 @@
     <h4 class="title"><%= link_to classified.title %></h4><br><br>
     <span class="s-loc"><%= classified.college.abbr %>, <%= classified.college.city %></span>&nbsp;&nbsp;<strong>&middot;</strong>&nbsp;
       <span class="s-name"><%= classified.user.name %></span>&nbsp;&nbsp;<strong>&middot;</strong>&nbsp;
-      <span class="s-phone"> <i class="fa fa-phone"></i>&nbsp;<%= classified.user.mobile %></span>
+      <span class="s-phone"> <i class="fa fa-phone"></i>&nbsp;
+        <span class="mask"><%= classified.user.mobile.truncate(8).chomp('...') %>*****</span>
+        <span class="real hidden"><%= classified.user.mobile %></span>
+      </span>
+
     <div class="col-sm-12 desc">
       <!-- <div class="truncated"><em><%= classified.description.truncate(70) %></em></div> -->
 	  <% if classified.description.present? %>
