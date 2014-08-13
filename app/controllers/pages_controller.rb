@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+  
+  before_filter :authenticate_admin_user!, only: [:stats]
+  
   def home
     @title = 'classifieds for students'
     redirect_to classifieds_path if current_college
@@ -8,5 +11,9 @@ class PagesController < ApplicationController
   end
 
   def contact_us
+  end
+  
+  def stats
+    @title = 'stats'
   end
 end
