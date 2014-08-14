@@ -17,4 +17,5 @@ resources/
 .elasticbeanstalk/
 .bundle/
 deploy
-*.sql.gz
+db/*.sql.gz
+db/*.sql
