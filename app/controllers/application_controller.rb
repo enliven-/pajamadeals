@@ -70,4 +70,8 @@ class ApplicationController < ActionController::Base
 
     render json: { current_college_id: current_college_id, current_category_id: current_category_id }
   end
+  
+  def admin_layout
+    render layout: 'admin_layout'
+  end
 end

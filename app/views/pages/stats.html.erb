@@ -1,10 +1,27 @@
 <head>
 	<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 </head>
-<%= line_chart Classified.group_by_day(:created_at).count %>
 
+<h3>Total Classifieds - <%= Classified.count %> | 
+	Active Classifieds - <%= Classified.where(list: true).count %>
+</h3>
+<% last_week_count = Classified.group_by_week(:created_at, week_start: :mon, time_zone: 'Mumbai', last: 2).count.first.last %>
+<% this_week_count = Classified.group_by_week(:created_at, week_start: :mon, time_zone: 'Mumbai', last: 1).count.first.last %>
+<h3>Last week - <%= last_week_count %> | This week until now - <%= this_week_count %> | This week's goal - <%= (last_week_count * 1.1).round %>
+	
+<h2>Classifieds</h2>
+<%= line_chart Classified.group_by_day(:created_at).count %>
+</h2>
+</div>
+
+<h2>Classifieds/category</h2>
+<%= pie_chart Classified.group(:category_id).count.inject({ }) { |x, (k,v)| x[Category.find(k).name] = v; x }%>
+<!-- <%= pie_chart Classified.pluck(:category_id).uniq.map { |c| {name: Category.find(c).name, data: Classified.where(category_id: c).count }} %> -->
+
+<h2>Classifieds/college line chart</h2>
 <%= line_chart College.all.map{|college|
     {name: college.name, data: college.classifieds.group_by_day(:created_at).count}
 } %>
 
-<%#= pie_chart College.all.map{|college| {name: college.name, data: college.classifieds.count }} %>
+<h2>Classifieds/college pie chart</h2>
+<%= pie_chart Classified.group(:college_id).count.inject({ }) { |x, (k,v)| x[College.find(k).name] = v; x }%>

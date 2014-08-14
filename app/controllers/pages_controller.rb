@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   
   before_filter :authenticate_admin_user!, only: [:stats]
+  before_filter :admin_layout, only: [:stats]
   
   def home
     @title = 'Classifieds for students'
