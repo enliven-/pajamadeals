@@ -83,6 +83,7 @@ gem 'capistrano'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
+gem "capistrano-db-tasks", require: false
 
 gem 'jquery-ui-rails'
 # background jobs

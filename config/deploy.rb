@@ -1,3 +1,4 @@
+require 'capistrano-db-tasks'
 SSHKit.config.command_map[:rake] = "bundle exec rake"
 
 # config valid only for Capistrano 3.1
@@ -8,7 +9,7 @@ set :rails_env, 'production'
 set :application, 'hasstuff'
 set :repo_url, 'git@github.com:enliven-/pajamadeals.git'
 set :deploy_via, :copy
-set :ssh_options, { forward_agent: true }
+set :ssh_options, { forward_agent: true, port: 384 }
 
 
 # Default branch is :master
