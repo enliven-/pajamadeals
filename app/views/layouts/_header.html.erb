@@ -145,6 +145,10 @@ $(document).ready(function() {
       $("div.truncated", el).removeClass("hidden");
       $("div.s-info", el).css("min-height", "60px");
       $("div.options a", $(el).parent()).addClass("hidden");
+      // $("span.real", el).addClass("hidden");
+      // $("span.mask", el).removeClass("hidden");
+      $(el).find("span.real").addClass("hidden");
+      $(el).find("span.mask").removeClass("hidden");
 
     });
 
@@ -153,13 +157,14 @@ $(document).ready(function() {
     $("div.full", $result).removeClass("hidden");
     $("div.s-email", $result).removeClass("hidden");
     $("div.options a", $result.parent()).removeClass("hidden");
+    // $("span.s-phone > span.mask", $result).removeClass("hidden");
+    // $("span.s-phone > span.real", $result).addClass("hidden");
+    $result.find("span.real").removeClass("hidden");
+    $result.find("span.mask").addClass("hidden");
 
 
     ci = $siblings.index($result);
-    console.log(ci);
-    console.log(li);
     li = ci;
-    // return false;
   });
 
 
