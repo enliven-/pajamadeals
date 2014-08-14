@@ -1,4 +1,4 @@
-# create colleges
+#create colleges
 3.times do
   College.create(name:  Faker::Company.name,
                  abbr:  Faker::Lorem.characters(3),
@@ -22,7 +22,7 @@ end
 
 
 # create classifieds
-15.times do
+35.times do
   Classified.create(
     title: Faker::Commerce.product_name,
     description: Faker::Lorem.paragraph,

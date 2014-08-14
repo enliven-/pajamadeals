@@ -6,7 +6,7 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
-    @title = "college classifieds"
+    @title = "College Classifieds"
 
     # filters
     if params[:filters].present? and params[:filters][:college_id].present?
@@ -22,7 +22,7 @@ class ClassifiedsController < ApplicationController
     search_params[:operator] = 'or'
     search_params[:fields] = ["title^5", "description"]
     search_params[:page] = params[:page]
-    search_params[:per_page] = 15
+    search_params[:per_page] = 30
     search_params[:order] = { created_at: :desc }
     search_params[:where] = { list: true }
     search_params[:where][:college_id]  = current_college.id  if current_college

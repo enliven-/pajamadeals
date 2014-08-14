@@ -6,6 +6,9 @@
   
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <% if Rails.env.production? %>
+  	<%= render 'layouts/heap_analytics' %>
+  <% end %>
 </head>
 
 <body class="?boxed-layout">
@@ -20,6 +23,7 @@
     </div>
   </div>
   <% if Rails.env.production? %>
+  	<%= render 'layouts/kiss_metrics' %>
     <%= render 'layouts/google_analytics' %>
   <% end %>
 </body>

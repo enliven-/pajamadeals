@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'pages/contact_us'
   get 'books/search'
   get 'pages/navbar'
+  get 'pages/stats'
+  
+  #match 'stats', to: 'pages/stats', via: :get
 
   resources :classifieds do
     member do

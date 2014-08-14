@@ -1,13 +1,23 @@
 development:
-  database: my_app
-  capsize: <%= 10.megabytes %>
-  host: localhost
-  port: 27017
-  replica_set: true
+   database: pajamdeals_dev               # required (the only required setting)
+   capsize: <%= 10.megabytes %>   # default: 250MB
+   host: localhost                # default: localhost
+   port: 27017                    # default: 27017
+   replica_set: true              # default: false - Adds retries for ConnectionFailure during voting for replica set master
+   write_options:                 # default: {w: 0, wtimeout: 200} - write options for inserts (w - wait for insert to propagate to "w" numbers of nodes)
+     w: 0
+     wtimeout: 200
+   application_name: pajamadeals       # default: Rails.application
+   disable_file_logging: false    # default: false - disable logging into filesystem (only in MongoDB)
 
-development:
-  database: pajamdeals_production
-  capsize: <%= 10.megabytes %>
-  host: localhost
-  port: 27017
-  replica_set: true
+production:
+    database: pajamdeals_production   # required (the only required setting)
+    capsize: <%= 100.megabytes %>   # default: 250MB
+    host: localhost                # default: localhost
+    port: 27017                    # default: 27017
+    replica_set: true              # default: false - Adds retries for ConnectionFailure during voting for replica set master
+    write_options:                 # default: {w: 0, wtimeout: 200} - write options for inserts (w - wait for insert to propagate to "w" numbers of nodes)
+      w: 0
+      wtimeout: 200
+    application_name: hasstuff       # default: Rails.application
+    disable_file_logging: true    # default: false - disable logging into filesystem (only in MongoDB)

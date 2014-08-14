@@ -1,0 +1,10 @@
+<head>
+	<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+</head>
+<%= line_chart Classified.group_by_day(:created_at).count %>
+
+<%= line_chart College.all.map{|college|
+    {name: college.name, data: college.classifieds.group_by_day(:created_at).count}
+} %>
+
+<%#= pie_chart College.all.map{|college| {name: college.name, data: college.classifieds.count }} %>

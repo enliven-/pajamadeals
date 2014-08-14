@@ -83,9 +83,14 @@ gem 'capistrano'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
+gem "capistrano-db-tasks", require: false
 
 gem 'jquery-ui-rails'
 # background jobs
 gem 'sidekiq'
 
 gem 'gem-open', group: :development
+
+# analytics and statistics
+gem 'chartkick'
+gem 'groupdate'
