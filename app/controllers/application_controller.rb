@@ -48,13 +48,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authenticate_roles!(*args)
+  def authenticate_role!(*args)
     access_denied if user_signed_in? && !args.include?(current_user.role.to_sym)
     authenticate_user!
   end
   
   def authenticate_admin_user! #use predefined method name
-    access_denied if !authenticate_roles!(:admin)
+    access_denied if !authenticate_role!(:admin)
   end
   
   def current_admin_user #use predefined method name

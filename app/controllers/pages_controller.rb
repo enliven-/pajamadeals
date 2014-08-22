@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   
-  before_action ->{ authenticate_roles!(:admin, :ambassador) }, only: [:stats]
+  before_action ->{ authenticate_role!(:admin, :ambassador) }, only: [:stats]
   before_filter :admin_layout, only: [:stats]
   
   def home
