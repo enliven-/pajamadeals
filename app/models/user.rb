@@ -13,6 +13,12 @@ class User < ActiveRecord::Base
 
   validates :mobile, presence: true, uniqueness: true,
     format: { with: /\A[789]\d{9}\z/, message: 'Invalid number'}
+    
+  enum role: {
+    admin: 1,
+    ambassador: 2,
+    user: 3
+  }
 
   # facebook
 
@@ -45,6 +51,13 @@ class User < ActiveRecord::Base
     if oauth_token_expires_at > Time.now
       @facebook ||= Koala::Facebook::API.new(oauth_token)
     end
+  end
+  
+  private
+  
+  before_create :save_role
+  def save_role
+    role.user!
   end
 
 end
