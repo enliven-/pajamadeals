@@ -67,6 +67,7 @@ gem 'mocha'
 gem 'rspec'
 gem 'rspec-rails'
 gem 'database_cleaner'
+gem 'capybara'
 
 # user session
 gem 'devise'
