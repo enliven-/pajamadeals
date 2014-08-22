@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   
   before_create :save_role
   def save_role
-    self.role = :user
+    self.role ||= :user
   end
 
 end
