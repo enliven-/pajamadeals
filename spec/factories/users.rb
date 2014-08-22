@@ -5,6 +5,7 @@ FactoryGirl.define do
     mobile '9999999999'
     email 'foo@bar.com'
     password 'password'
+    role :user
     college
   end
 
@@ -13,8 +14,19 @@ FactoryGirl.define do
     mobile '9975454384'
     email 'blo@alum.hackerschool.com'
     password 'password'
-
-    admin true
+    role :admin
+    
+    college
+  end
+  
+  factory :ambassador, class: User do
+    name 'Bar'
+    mobile '9999999992'
+    email 'foo2@bar.com'
+    password 'password'
+    role :ambassador
+    
+    college
   end
 
   factory :ankush, class: User do
@@ -22,6 +34,8 @@ FactoryGirl.define do
     mobile '9976543210'
     email 'ankush@gmail.com'
     password 'password'
+    role :user
+    
     vit
   end
 
@@ -30,6 +44,8 @@ FactoryGirl.define do
     mobile '9967253719'
     email 'apurva@gmail.com'
     password 'password'
+    role :user
+    
     viit
   end
 end
