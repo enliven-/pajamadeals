@@ -49,6 +49,22 @@ RSpec.configure do |config|
   def user_signed_in?
     !!current_user
   end
+  
+  def current_college
+    return nil if session[:college_id] == 0 || session[:college_id] == '0'
+    @current_college =
+      (College.find(session[:college_id]) if session[:college_id].present?) ||
+      current_user.try(:college) rescue nil
+  end
+
+  def current_category
+    return nil if session[:category_id] == 0 || session[:category_id] == '0'
+    @current_category =
+      Category.find(session[:category_id]) if session[:category_id].present?
+  rescue Exception => e
+    nil
+  end
+    
 
 
   # The settings below are suggested to provide a good initial experience

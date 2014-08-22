@@ -7,12 +7,6 @@ class PagesController < ApplicationController
     @title = 'Classifieds for students'
     redirect_to classifieds_path if current_college
   end
-
-  def about
-  end
-
-  def contact_us
-  end
   
   def stats
     @title = 'stats'

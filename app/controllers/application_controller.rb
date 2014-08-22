@@ -29,8 +29,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    sign_in_url = url_for(action: 'new', controller: 'sessions', only_path: false,
-                          protocol: 'http')
+    sign_in_url = url_for(action:     'new',
+                          controller: 'sessions',
+                          only_path:  false,
+                          protocol:   'http')
     if request.referer == sign_in_url
       super
     else
@@ -39,8 +41,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    sign_out_url = url_for(action: 'destroy', controller: 'sessions', only_path: false,
-                           protocol: 'http')
+    sign_out_url = url_for(action:     'destroy',
+                           controller: 'sessions',
+                           only_path:  false,
+                           protocol:   'http')
     if request.referer == sign_out_url
       super
     else
@@ -51,6 +55,11 @@ class ApplicationController < ActionController::Base
   def authenticate_role!(*args)
     access_denied if user_signed_in? && !args.include?(current_user.role.to_sym)
     authenticate_user!
+  end
+  
+  def authenitcate_owner!(record)
+    access_denied if user_signed_in? && 
+                    (record.user != current_user || !authenticate_role!(:admin))
   end
   
   def authenticate_admin_user! #use predefined method name
@@ -77,7 +86,8 @@ class ApplicationController < ActionController::Base
     current_college_id = (current_college and current_college.id) || 0
     current_category_id = (current_category and current_category.id) || 0
 
-    render json: { current_college_id: current_college_id, current_category_id: current_category_id }
+    render json: { current_college_id:  current_college_id,
+                   current_category_id: current_category_id }
   end
   
   def admin_layout
