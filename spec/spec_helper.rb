@@ -35,12 +35,7 @@ RSpec.configure do |config|
       example.run
     end
   end
-
-  # config.before :each do
-  #   Classified.searchkick_index.delete if Classified.searchkick_index.exists?
-  #   Classified.reindex
-  # end
-
+  
   def current_user
     user_session_info = response.request.env['rack.session']['warden.user.user.key']
     if user_session_info
