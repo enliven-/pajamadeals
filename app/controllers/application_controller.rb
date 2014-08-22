@@ -48,14 +48,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authenticate_admin_user! #use predefined method name
-    redirect_to '/' and return if user_signed_in? && !current_user.admin?
+  def authenticate_roles!(*args)
+    access_denied if user_signed_in? && !args.include?(current_user.role.to_sym)
     authenticate_user!
   end
-
+  
+  def authenticate_admin_user! #use predefined method name
+    access_denied if !authenticate_roles!(:admin)
+  end
+  
   def current_admin_user #use predefined method name
-    return nil if user_signed_in? && !current_user.admin?
+    return nil if !authenticate_admin_user!
     current_user
+  end
+
+  def access_denied
+    flash[:error] = "Access denied"
+    redirect_to '/'
   end
 
   before_action :configure_devise_permitted_params, if: :devise_controller?

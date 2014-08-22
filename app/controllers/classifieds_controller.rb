@@ -2,7 +2,7 @@ class ClassifiedsController < ApplicationController
   before_action :set_classified, only: [:show, :edit, :update, :destroy,
                                         :contact_seller, :booth_pickup]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
-
+    
   # GET /classifieds
   # GET /classifieds.json
   def index
@@ -52,7 +52,6 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds/1/edit
   def edit
     @title = @classified.title
-    redirect_to root_path if @classified.user != current_user
   end
 
   # POST /classifieds
