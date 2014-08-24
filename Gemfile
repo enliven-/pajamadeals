@@ -70,7 +70,7 @@ gem 'database_cleaner'
 gem 'capybara'
 
 # user session
-gem 'devise'
+# gem 'devise'
 
 # file upload
 gem 'carrierwave'

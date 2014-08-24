@@ -2,6 +2,16 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id].present?
+  end
+  helper_method :current_user
+  
+  def user_signed_in?
+    !!current_user
+  end
+  helper_method :user_signed_in?
 
   def current_college
     return nil if session[:college_id] == 0 || session[:college_id] == '0'
@@ -76,11 +86,11 @@ class ApplicationController < ActionController::Base
     redirect_to '/'
   end
 
-  before_action :configure_devise_permitted_params, if: :devise_controller?
-  def configure_devise_permitted_params
-    devise_parameter_sanitizer.for(:sign_up).push(:email, :mobile, :name,
-                                                  :college_id, :college)
-  end
+  # before_action :configure_devise_permitted_params, if: :devise_controller?
+#   def configure_devise_permitted_params
+#     devise_parameter_sanitizer.for(:sign_up).push(:email, :mobile, :name,
+#                                                   :college_id, :college)
+#   end
 
   def state
     current_college_id = (current_college and current_college.id) || 0

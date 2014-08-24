@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   before_filter :admin_layout, only: [:stats]
   
   def home
+    session[:user_id] = nil
     @title = 'Classifieds for students'
     redirect_to classifieds_path if current_college
   end

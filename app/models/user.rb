@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 
-  devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable,
-    authentication_keys: [:mobile]
+  # devise :database_authenticatable, :registerable,
+#     :recoverable, :rememberable, :trackable, :validatable,
+#     authentication_keys: [:mobile]
   #  :omniauthable, omniauth_providers: [:facebook],
 
   has_many :classifieds
@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
   include HasToken
   has_token
 
-  validates :mobile, presence: true, uniqueness: true,
-    format: { with: /\A[789]\d{9}\z/, message: 'Invalid number'}
+  #validates :mobile, presence: true, uniqueness: true,
+   # format: { with: /\A[789]\d{9}\z/, message: 'Invalid number'}
     
   enum role: {
     admin: 1,
@@ -22,19 +22,15 @@ class User < ActiveRecord::Base
 
   # facebook
 
-  def self.find_for_facebook_auth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_initialize do |user|
       user.provider    = auth.provider
       user.uid         = auth.uid
       user.email       = auth.info.email
-      user.password    = Devise.friendly_token[0, 20]
-      user.first_name  = auth.info.first_name
-      user.last_name   = auth.info.last_name
-      user.remote_avatar_url = auth.info.image
+      user.name        = auth.info.first_name
       user.oauth_token = auth.credentials.token
-      user.oauth_token_expires_at =
-        Time.at(auth.credentials.expires_at)
-      user.location    = auth.info.location
+      user.oauth_token_expires_at = Time.at(auth.credentials.expires_at)
+      user.save!
     end
   end
 
