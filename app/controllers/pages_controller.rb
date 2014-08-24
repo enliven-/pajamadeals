@@ -11,4 +11,8 @@ class PagesController < ApplicationController
   def stats
     @title = 'stats'
   end
+  
+  def privacypolicy
+    @title = 'Privacy Policy'
+  end
 end
