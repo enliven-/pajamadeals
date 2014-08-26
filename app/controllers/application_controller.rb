@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
   helper_method :user_signed_in?
+  
+  def sign_in(user)
+    session[:user_id] = user.id
+  end
+  
+  def sign_out
+    session[:user_id] = nil
+  end
 
   def current_college
     return nil if session[:college_id] == 0 || session[:college_id] == '0'
