@@ -12,6 +12,8 @@ class Classified < ActiveRecord::Base
 
   include HasToken
   has_token
+  
+  mount_uploader :image, ImageUploader
 
   private
 
