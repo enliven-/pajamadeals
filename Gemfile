@@ -59,6 +59,7 @@ gem "bson_ext"
 gem "therubyracer"
 gem "less-rails"
 gem 'font-awesome-rails'
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 
 # test helper
 gem 'faker'
