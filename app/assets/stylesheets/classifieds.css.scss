@@ -3,22 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
 .item {
 	$itemTextPadding: 6px 14px 7px;
-	
 	border-radius: 6px;
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 	background: #fff;
 	margin:6px;
 	width: 18.8%;
-	font-size: 11px;
+	font-size: 12px;
 	
 	.description {
 		padding: $itemTextPadding;
 		
 		.title {
-			font-size: 13px;
+			font-size: 14px;
 			line-height: 17px;
 			word-wrap: break-word;
 			margin-bottom: 5px;
@@ -27,6 +25,16 @@
 	
 	.footer {
 		padding: $itemTextPadding;
+		//background-color: darken(#e5e9ea,23%);
+	}
+	
+	.image {
+		max-width: 100%;
+		border-radius: 6px 6px 0 0;
+		display: block;
+		margin: 0 auto;
+		position: relative;
+		z-index: 5;
 	}
 	
 	hr {

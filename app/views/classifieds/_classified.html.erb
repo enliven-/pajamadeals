@@ -1,5 +1,5 @@
 <%= div_for classified, class: "item" do %>
-	<%#= image_tag classified.image.show %>
+	<%= link_to (image_tag classified.image, class: 'image'), classified_path(classified) %>
 	<div class="description">
 		<div class="title"><%= link_to classified.title, classified_path(classified) %></div>
 		<div class="price">Rs <%= classified.price %></div>
