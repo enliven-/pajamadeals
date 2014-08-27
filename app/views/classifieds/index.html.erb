@@ -1,21 +1,17 @@
-
-<div class="row wrapper wrapper-content animated fadeInRight">
-  <div class="row col-sm-12 ?animated ?fadeInRight" style="?margin-left: 10px; margin-right: 10px;">
-
-    <div class="col-sm-3 filters expanded">
-      <div class="ibox float-e-margins">
+    <!-- <div class="col-sm-3 filters expanded">
+      <div class="ibox float-e-margins"> -->
         
-        <div class="ibox-title">
+        <!-- <div class="ibox-title">
           <h5>Filters</h5>
           <div class="ibox-tools">
             <a class="collapse-link-viksit">
               <i class="fa fa-chevron-up"></i>
             </a>
           </div>
-        </div>
+        </div> -->
 
-        <div class="ibox-content">
-        
+        <!-- <div class="ibox-content">
+
           <div class="filter-choice colleges">
             <h4>College</h4>
             <%= select_tag :college, options_from_collection_for_select(College.order(name: :asc).all, :id, :name_with_abbr_and_city, current_college.try(:id)), class: "form-control college required", prompt: "-- All --" %>
@@ -36,18 +32,10 @@
             <% end %>
           </div>
 
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-sm-9 results" id="classifieds">
-      <div class="categories-counts hidden"><%= @categories_counts %></div>
-         <%= render @classifieds %>
-    </div>
-    <div class="col-sm-9 col-sm-offset-3">
-      	<%= paginate @classifieds %>
-    </div>
-
-  </div>
+        </div> -->
+      <!-- </div>
+    </div> -->
+<div id="classifieds">
+	<%= render @classifieds %>
 </div>
+<%#= paginate @classifieds %>

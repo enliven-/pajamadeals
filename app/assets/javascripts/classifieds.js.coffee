@@ -10,4 +10,8 @@ jQuery ->
 				$('nav.pagination').text("Fetching more classifieds...")
 				$.getScript(url)
 		$(window).scroll()
+		
+	$("#classifieds").isotope
+		itemSelector: ".item"
+		
 			
