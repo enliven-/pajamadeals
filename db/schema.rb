@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822105352) do
+ActiveRecord::Schema.define(version: 20140826160220) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 20140822105352) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "add_image_to_classifieds", force: true do |t|
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -45,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140822105352) do
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
   end
 
   create_table "colleges", force: true do |t|
@@ -55,14 +62,6 @@ ActiveRecord::Schema.define(version: 20140822105352) do
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "images", force: true do |t|
-    t.string   "file"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "primary"
-    t.integer  "classified_id"
   end
 
   create_table "roles", force: true do |t|

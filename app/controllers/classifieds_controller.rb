@@ -131,7 +131,7 @@ class ClassifiedsController < ApplicationController
 
   def classified_params
     params.require(:classified).permit(:title, :description, :category_id,
-                                       :price,
+                                       :price, :image,
                                        user_attributes: [:email, :mobile,
                                                          :name, :college_id,
                                                          :password]
