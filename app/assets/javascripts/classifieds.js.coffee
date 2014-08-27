@@ -7,11 +7,13 @@ jQuery ->
 		$(window).scroll ->
 			url = $('nav.pagination a[rel=next]').attr('href')
 			if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
-				$('nav.pagination').text("Fetching more classifieds...")
+				$('nav.pagination').text()
 				$.getScript(url)
 		$(window).scroll()
 		
-	$("#classifieds").isotope
-		itemSelector: ".item"
+	$container = $("#classifieds").imagesLoaded(->
+	  $container.isotope itemSelector: ".item"
+	  return
+	)
 		
 			

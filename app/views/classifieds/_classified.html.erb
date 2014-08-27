@@ -1,8 +1,11 @@
 <%= div_for classified, class: "item" do %>
-	<%#= image_tag classified.image_url(:thumb) %>
+	<%#= image_tag classified.image.show %>
 	<div class="description">
-		<div class="title"><%= classified.title %></div>
+		<div class="title"><%= link_to classified.title, classified_path(classified) %></div>
 		<div class="price">Rs <%= classified.price %></div>
-		<div><%= classified.college.abbr %>, <%= classified.college.city %></div>
+	</div>
+	<hr class="hr-dashed"></hr>
+	<div class="footer">
+		<span class="college"><%= classified.college.abbr %>, <%= classified.college.city %></span>
 	</div>
 <% end %>

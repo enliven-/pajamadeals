@@ -1,7 +1,7 @@
 module ApplicationHelper
 
 	def render_date(date, options = {})
-		date.strftime("%d %b, %Y")
+		date.strftime("%d %b")
 	end
 
 	def render_field(object, field, or_else = '-')
