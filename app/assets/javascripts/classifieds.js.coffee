@@ -3,17 +3,17 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-	if $('nav.pagination').length
-		$(window).scroll ->
-			url = $('nav.pagination a[rel=next]').attr('href')
-			if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
-				$('nav.pagination').text()
-				$.getScript(url)
-		$(window).scroll()
-		
-	$container = $("#classifieds").imagesLoaded(->
-	  $container.isotope itemSelector: ".item"
-	  return
-	)
-		
-			
+	$container = $("#classifieds")
+	$container.imagesLoaded ->
+  		$container.isotope itemSelector: ".item"
+
+	$container.infinitescroll
+		navSelector: "nav.pagination"
+		nextSelector: "nav.pagination a[rel=next]"
+		itemSelector: ".item"
+		pixelsFromNavToBottom: -Math.round($(window).height() * 0.9)
+		bufferPx: Math.round($(window).height() * 0.9)
+		(newElements) ->
+			$newElems = $(newElements)
+			$newElems.imagesLoaded ->
+				$container.isotope "appended", $newElems
