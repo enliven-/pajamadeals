@@ -1,4 +1,4 @@
 ActiveAdmin.register College do
-  permit_params :name, :abbr, :zipcode, :city
+  permit_params :name, :abbr, :zipcode, :city, :latitude, :longitude
 
 end

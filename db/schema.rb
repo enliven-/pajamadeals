@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822105352) do
+ActiveRecord::Schema.define(version: 20140827022713) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(version: 20140822105352) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
+  create_table "add_image_to_classifieds", force: true do |t|
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -41,10 +47,12 @@ ActiveRecord::Schema.define(version: 20140822105352) do
     t.integer  "college_id"
     t.integer  "category_id"
     t.string   "price"
-    t.boolean  "list",        default: true
+    t.boolean  "list",         default: true
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
+    t.integer  "listing_type"
   end
 
   create_table "colleges", force: true do |t|
@@ -55,14 +63,8 @@ ActiveRecord::Schema.define(version: 20140822105352) do
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "images", force: true do |t|
-    t.string   "file"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "primary"
-    t.integer  "classified_id"
+    t.string   "latitude"
+    t.string   "longitude"
   end
 
   create_table "roles", force: true do |t|

@@ -24,6 +24,29 @@ describe ClassifiedsController, type: :controller do
       expect(assigns(:classifieds)).to include(drafter)
       expect(assigns(:classifieds)).not_to include(computer)
     end
+    
+    it 'geospatially searches for classifieds' do
+      vit  = create :vit
+      viit = create :viit
+      mit  = create :mit
+      user1 = create :user, email: 'foo1@foo.com', mobile: '9999999991',
+                     college: vit
+      user2 = create :user, email: 'foo2@foo.com', mobile: '9999999992',
+                     college: viit 
+      user3 = create :user, email: 'foo3@foo.com', mobile: '9999999993',
+                     college: mit
+      drafter1 = create :classified, title: 'Drafter for sale', user: user1
+      drafter2 = create :classified, title: 'drafter for sale', user: user2
+      drafter3 = create :classified, title: 'drafter for sale', user: user3
+      Classified.reindex
+      College.reindex
+      
+      get :index, query: 'Drafter', filters: { college_id: vit.id }
+      
+      expect(assigns(:classifieds)).to include(drafter1)
+      expect(assigns(:classifieds)).to include(drafter2)
+      expect(assigns(:classifieds)).not_to include(drafter3)
+    end
   end
   
   describe 'GET #new' do

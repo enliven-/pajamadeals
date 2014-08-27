@@ -16,7 +16,7 @@ class ClassifiedsController < ApplicationController
     if params[:filters].present? and params[:filters][:category_id].present?
       session[:category_id] = params[:filters][:category_id]
     end
-
+   
     # search query
     query = params[:query].present? ? params[:query] : '*'
     search_params = {}
@@ -26,15 +26,22 @@ class ClassifiedsController < ApplicationController
     search_params[:per_page] = 30
     search_params[:order] = { created_at: :desc }
     search_params[:where] = { list: true }
-    search_params[:where][:college_id]  = current_college.id  if current_college
+    
+    if current_college
+      college_ids = College.search('*', where: {location: {near: 
+        [current_college.latitude, current_college.longitude], within: "5km"}})
+        .map(&:id)
+      search_params[:where][:college_id] = college_ids
+    end
+    
     search_params[:where][:category_id] = current_category.id if current_category
 
     @classifieds = Classified.search(query, search_params)
 
-    @categories_counts = Category.order(name: :asc).all.map do |c|
-      current_college ? c.classifieds.where(college: current_college).count \
-                                                           : c.classifieds.count
-    end
+    # @categories_counts = Category.order(name: :asc).all.map do |c|
+ #      current_college ? c.classifieds.where(college: current_college).count \
+ #                                                           : c.classifieds.count
+ #    end
 
   end
 
