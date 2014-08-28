@@ -2,11 +2,15 @@ require 'spec_helper'
 
 describe Classified do
 
-  it 'should have title, description, price, category, college, user attributes' do
+  it 'responds to title, description, price, category, college, user, buy?, 
+      sell?, image' do
     classified = Classified.new
     expect(classified).to respond_to(:title)
     expect(classified).to respond_to(:description)
     expect(classified).to respond_to(:price)
+    expect(classified).to respond_to(:image)
+    expect(classified).to respond_to(:buy?)
+    expect(classified).to respond_to(:sell?)
     expect(classified).to respond_to(:category)
     expect(classified).to respond_to(:college)
     expect(classified).to respond_to(:user)
@@ -41,5 +45,21 @@ describe Classified do
     classified = create :classified
     expect(classified.college).to be_present
     expect(classified.college).to be(classified.user.college)
+  end
+  
+  it 'creates sell classifieds' do
+    classified = create :sell_classified
+    expect(classified.sell?).to be_truthy
+    expect(classified.buy?).to be_falsy
+    expect(Classified.sell).to include(classified)
+    expect(Classified.buy).not_to include(classified)
+  end
+  
+  it 'creates buy classifieds' do
+    classified = create :buy_classified
+    expect(classified.buy?).to be_truthy
+    expect(classified.sell?).to be_falsy
+    expect(Classified.buy).to include(classified)
+    expect(Classified.sell).not_to include(classified)
   end
 end

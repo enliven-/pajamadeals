@@ -1,5 +1,7 @@
 class Classified < ActiveRecord::Base
   searchkick settings: {number_of_shards: 1}
+  
+  enum listing_type: { buy: 0, sell: 1 }
 
   validates :title, presence: true
   validates :price, presence: true, numericality: true
