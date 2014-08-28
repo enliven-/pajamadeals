@@ -61,6 +61,7 @@ gem "less-rails"
 gem 'font-awesome-rails'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 gem 'designmodo-flatuipro-rails', github: 'reflection/designmodo-flatuipro-rails', branch: 'flatuipro-1.2'
+gem 'jquery-ui-rails'
 
 # test helper
 gem 'faker'
@@ -88,7 +89,6 @@ gem 'capistrano-rails'
 gem 'capistrano-rvm'
 gem "capistrano-db-tasks", require: false
 
-gem 'jquery-ui-rails'
 # background jobs
 gem 'sidekiq'
 

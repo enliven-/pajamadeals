@@ -1,30 +1,36 @@
-<div class="row wrapper">
-  <div class="row col-sm-12 animated fadeInRight" style="margin-left: 10px; margin-right: 10px;">
-    <div class="col-sm-8 col-sm-offset-2">
-      <div class="row ibox-content">
-
-        <div cl
-        ass="row col-sm-12 _contact-box result">
-          <div class="col-sm-6 row classified-info">
-            <h4 class="title"><a href><%= @classified.title %></a></h4>
-            <div class="col-sm-12 desc">
-              <div class="truncated"><em><%= @classified.description.truncate(200) %></em></div>
-              <div class="full hidden animated"><em><%= @classified.description %></em></div>
-            </div>
-          </div>
-          <div class="col-sm-4 col-sm-offet-8 s-info">
-            <span class="s-name"><%= @classified.user.name %></span> <br/>
-            <span class="s-phone"> <i class="fa fa-phone"></i>&nbsp; <%= @classified.user.try(:mobile_number) || @classified.user.try(:email) %> </span><br/>
-            <span class="s-loc"> <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;<%= @classified.college.abbr %>, <%= @classified.college.city %></span><br />
-            <div class="s-email hidden"> <i class="fa fa-envelope"></i>&nbsp; <%= @classified.user.email || '-' %></div><br />
-          </div>
-          <div class="col-sm-2 ?pull-right date-price">
-            <span class="date-posted"><em><%= render_date @classified.created_at %></em></span><br/>
-            <h3 class="expected-price"><strong>Rs <%= @classified.price %></strong></h3>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
+<%= div_for @classified, class: 'show' do %>
+	<div class="col-sm-8 product">
+		<%= image_tag @classified.image, class: 'image center-block' %>
+		<hr class="hr-dashed"></hr>
+		<div class="product-details">
+			<h6 class="title"><%= @classified.title %></h6>
+			<p>Details</p>
+			<table class="table">
+				<tbody>
+					<tr class="price">
+						<td>Price</td>
+						<td><%= render_price @classified.price %></td>
+					</tr>
+					<tr class="description">
+						<td>Description</td>
+						<td><%= render_field @classified, :description %></td>
+					</tr>
+					<tr class="category">
+						<td>Category</td>
+						<td><%= @classified.category.name %></td>
+					</tr>
+					<tr class="date">
+						<td>Posted on</td>
+						<td><%= render_date @classified.created_at %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="user col-sm-3">
+		<p><%= @classified.buy? ? "Buyer" : "Seller" %></p>
+		<div class="name"><%= @classified.user.name %></div>
+		<div class="mobile">+91 <%= @classified.user.mobile %></div>
+		<div class="college"><%= @classified.college.abbr %>, <%= @classified.college.city %></div>
+	</div>
+<% end %>

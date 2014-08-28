@@ -5,13 +5,13 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Pajamadeals</a>
+	<%= link_to App.logo, root_path, class: 'navbar-brand' %>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
-      <ul class="nav navbar-nav">
-        <li><%= link_to "Link1", "/path1"  %></li>
-        <li><%= link_to "Link2", "/path2"  %></li>
-        <li><%= link_to "Link3", "/path3"  %></li>
-      </ul>
+		 <%= button_tag 'Sign in with facebook', class: 'btn btn-default btn-embossed navbar-btn btn-sm pull-right', id: 'fb-sign-in' %>
+		<div class="text-center">
+	       <%#= button_tag 'Sell things', class: 'btn btn-hg btn-default btn-embossed navbar-btn' %>&nbsp;&nbsp;
+			<%#= button_tag 'Buy things', class: 'btn btn-hg btn-default btn-embossed navbar-btn' %>
+		</div>		 
     </div>
   </div>
 </div>

@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require flatuipro
+//= require jquery-ui
 //= require jquery_ujs
+//= require flatuipro
 //= require twitter/bootstrap
 //= require turbolinks
 //= require chartkick
