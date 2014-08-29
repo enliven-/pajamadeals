@@ -17,3 +17,9 @@ $ ->
 			$newElems = $(newElements)
 			$newElems.imagesLoaded ->
 				$container.isotope "appended", $newElems
+				
+				
+$ ->
+	$("select").selectpicker
+		style: 'btn btn-default'
+		menuStyle: 'dropdown-inverse'
