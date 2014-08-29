@@ -1,10 +1,9 @@
 class SessionsController < ApplicationController
+  
   def create
-     raise 1.inspect
-     @user = User.from_omniauth(env["omniauth.auth"])
+     @user = User.from_omniauth(request.env["omniauth.auth"])
      sign_in(@user)
      respond_to do |format|
-       flash.notice = 'Signed in successfully.'
        format.js
        format.html { redirect_to root_path, notice: 'Signed in successfully.'}
      end

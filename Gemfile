@@ -41,8 +41,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 # facebook
-gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 2.0.0'
 gem 'koala'
 
 # search engine
