@@ -4,14 +4,16 @@
 
 $boxTextPadding: 6px 14px 7px;
 
-.item {
-	
+.box {
 	border-radius: 6px;
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 	background: #fff;
 	margin:6px;
+	font-size: 12px;	
+}
+
+.item {
 	width: 18.948%;
-	font-size: 12px;
 	
 	.description {
 		padding: $boxTextPadding;
@@ -52,10 +54,6 @@ hr {
 
 .show {
 	.product {
-		border-radius: 6px;
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
-		background: #fff;
-		margin:6px;
 		font-size: 15px;
 		padding: 0;
 	
@@ -70,11 +68,6 @@ hr {
 	}
 
 	.user {
-		border-radius: 6px;
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
-		background: #fff;
-		margin:6px;
 		font-size: 15px;
-		padding: $boxTextPadding;
 	}
 }

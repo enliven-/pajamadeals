@@ -1,5 +1,5 @@
 <%= div_for @classified, class: 'show' do %>
-	<div class="col-sm-8 product">
+	<div class="col-sm-8 product box">
 		<%= image_tag @classified.image, class: 'image center-block' %>
 		<hr class="hr-dashed"></hr>
 		<div class="product-details">
@@ -27,7 +27,7 @@
 			</table>
 		</div>
 	</div>
-	<div class="user col-sm-3">
+	<div class="user col-sm-3 box">
 		<p><%= @classified.buy? ? "Buyer" : "Seller" %></p>
 		<div class="name"><%= @classified.user.name %></div>
 		<div class="mobile">+91 <%= @classified.user.mobile %></div>
