@@ -1,41 +1,54 @@
 <%= form_for @classified, html: { class: 'form-horizontal' } do |f| %>
+	<div class="form-step">
+		<div class="form-group">
+		  	<%= f.label :title, class: 'col-sm-2 control-label' %>
+	   	 	<div class="col-sm-10">
+				<%= f.text_field :title, class: 'form-control', placeholder: 'Example: Male roommate needed in 3bhk apt or Sale B S Grewal book for 55%' %>
+	   	  	</div>
+	  	</div>
+	
+		<div class="form-group">
+		  	<%= f.label :category, class: 'col-sm-2 control-label' %>
+	   	 	<div class="col-sm-10">
+				<%= f.select :category_id, Category.order(name: :asc).select(:name, :id).collect { |category| [category.name, category.id] } %>
+	   	  	</div>
+	  	</div>
+	
+		<div class="form-group">
+		  	<%= f.label :description, class: 'col-sm-2 control-label' %>
+	   	 	<div class="col-sm-10">
+				<%= f.text_area :description, class: 'form-control', rows: 4, placeholder: 'Example: A beautiful apartment 2 kms from college with hot water, furniture, balcony and lot of restaurants around. Need a clean, pet loving and responsible flat mate.' %>
+	   	  	</div>
+	  	</div>
+	
+		<div class="form-group">
+		  	<%= f.label :image, class: 'col-sm-2 control-label' %>
+	   	 	<div class="col-sm-10">
+				<%= f.file_field :image, class: 'form-control' %>
+				<p class="help-block">Having an image drastically improves the chances of selling your item. Please consider uploading an image.</p>
+	   	  	</div>
+	  	</div>
+	
+		<div class="form-group">
+		  	<%= f.label :price, "Price (Rs)", class: 'col-sm-2 control-label' %>
+	   	 	<div class="col-sm-10">
+				<%= f.text_field :price, class: 'form-control spinner', placeholder: 250 %>	 
+	   	  	</div>
+	  	</div>
+	</div>
 
-	<div class="form-group">
-	  	<%= f.label :title, class: 'col-sm-2 control-label' %>
-   	 	<div class="col-sm-10">
-			<%= f.text_field :title, class: 'form-control', placeholder: 'Example: Male roommate needed in 3bhk apt or Sale B S Grewal book for 55%' %>
-   	  	</div>
-  	</div>
-	
-	<div class="form-group">
-	  	<%= f.label :category, class: 'col-sm-2 control-label' %>
-   	 	<div class="col-sm-10">
-			<%= f.select :category_id, Category.order(name: :asc).select(:name, :id).collect { |category| [category.name, category.id] } %>
-   	  	</div>
-  	</div>
-	
-	<div class="form-group">
-	  	<%= f.label :description, class: 'col-sm-2 control-label' %>
-   	 	<div class="col-sm-10">
-			<%= f.text_area :description, class: 'form-control', rows: 4, placeholder: 'Example: A beautiful apartment 2 kms from college with hot water, furniture, balcony and lot of restaurants around. Need a clean, pet loving and responsible flat mate.' %>
-   	  	</div>
-  	</div>
-	
-	<div class="form-group">
-	  	<%= f.label :image, class: 'col-sm-2 control-label' %>
-   	 	<div class="col-sm-10">
-			<%= f.file_field :image, class: 'form-control' %>
-			<p class="help-block">Having an image drastically improves the chances of selling your item. Please consider uploading an image.</p>
-   	  	</div>
-  	</div>
-	
-	<div class="form-group">
-	  	<%= f.label :price, "Price (Rs)", class: 'col-sm-2 control-label' %>
-   	 	<div class="col-sm-10">
-			<%= f.text_field :price, class: 'form-control spinner', placeholder: 250 %>
-			 
-   	  	</div>
-  	</div>
+	<div class="form-step">
+		<%= f.fields_for :user, User.new do |u| %>
+		
+			<div class="form-group">
+				<%= u.label :name, class: 'col-sm-2 control-label' %>
+				<div class="col-sm-10">
+					<%= u.text_field :name, class: 'form-control' %>
+				</div>
+			</div>
+			
+		<% end %>
+	</div>
 		
     <div class="form-group">
        <div class="col-sm-offset-2 col-sm-10">

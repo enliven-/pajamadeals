@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       post :booth_pickup
     end
   end
+  resources :classified_steps
 
   # root to: 'classifieds#index'
   root to: 'pages#home'

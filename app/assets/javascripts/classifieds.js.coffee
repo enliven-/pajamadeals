@@ -23,3 +23,5 @@ $ ->
 	$("select").selectpicker
 		style: 'btn btn-default'
 		menuStyle: 'dropdown-inverse'
+		
+	$("#new_classified").formToWizard()
