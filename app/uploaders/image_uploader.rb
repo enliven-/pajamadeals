@@ -48,9 +48,9 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [135, 180]
   end
 
-  def default_url
-    ActionController::Base.helpers.asset_path("fallback/" + "default_book1.png")
-  end
+  # def default_url
+#     ActionController::Base.helpers.asset_path("fallback/" + "default_book1.png")
+#   end
 
   def extension_white_list
     %w(jpg jpeg gif png)

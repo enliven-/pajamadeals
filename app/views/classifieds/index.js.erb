@@ -1,8 +1,0 @@
-$('#classifieds').append('<%= j render(@classifieds) %>');
-<% if (@classifieds.next_page) %>
-	$('nav.pagination').replaceWith('<%= j paginate(@classifieds) %>');
-<% else %>
-	console.log("page end");
-	$('nav.pagination').remove();
-<% end %>
-<% sleep 1 %>

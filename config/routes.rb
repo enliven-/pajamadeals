@@ -7,13 +7,10 @@ Rails.application.routes.draw do
   mount MongodbLogger::Server.new, at: "/logs"
 
   get 'pages/home'
-  get 'pages/about'
-  get 'pages/contact_us'
-  get 'books/search'
   get 'pages/navbar'
- # get 'pages/stats'
   
   match 'stats', to: 'pages#stats', via: :get
+  match 'privacypolicy', to: 'pages#privacypolicy', via: :get
 
   resources :classifieds do
     member do
@@ -21,6 +18,7 @@ Rails.application.routes.draw do
       post :booth_pickup
     end
   end
+  resources :classified_steps
 
   # root to: 'classifieds#index'
   root to: 'pages#home'

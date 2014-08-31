@@ -15,3 +15,7 @@
  *= require_self
  *= stub active_admin
  */
+
+body {
+	background-color: #e5e9ea;
+}
