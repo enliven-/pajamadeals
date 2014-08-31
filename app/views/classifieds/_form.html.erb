@@ -1,5 +1,8 @@
 <%= form_for @classified, html: { class: 'form-horizontal' } do |f| %>
-	<div class="form-step">
+	<div class="classified-fields">
+		<div class="col-sm-12 header">
+			<h6>Tell us about the item</h6>
+		</div>
 		<div class="form-group">
 		  	<%= f.label :title, class: 'col-sm-2 control-label' %>
 	   	 	<div class="col-sm-10">
@@ -36,8 +39,12 @@
 	   	  	</div>
 	  	</div>
 	</div>
-
-	<div class="form-step">
+		
+	<div class="user-fields" style="display: none">
+		<div class="col-sm-12 header">
+			<h6>Tell us about you</h6>
+		</div>
+		
 		<%= f.fields_for :user, User.new do |u| %>
 		
 			<div class="form-group">
@@ -47,12 +54,26 @@
 				</div>
 			</div>
 			
+			<div class="form-group">
+				<%= u.label :mobile, class: 'col-sm-2 control-label' %>
+				<div class="col-sm-10">
+					<%= u.text_field :mobile, class: 'form-control' %>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<%= u.label :college, class: 'col-sm-2 control-label' %>
+				<div class="col-sm-10">
+                    <%= u.select :college_id, College.order(name: :asc).select(:id, :name).collect { |college| [college.name, college.id] } %>
+                </div>
+			</div>			
 		<% end %>
 	</div>
 		
     <div class="form-group">
        <div class="col-sm-offset-2 col-sm-10">
-		   <%= f.submit "Create", class: 'btn btn-wide btn-lg btn-primary btn-embossed' %>
+		      <%= f.submit "Create", class: 'btn btn-wide btn-lg btn-primary btn-embossed', id: 'classified-submit', style: "#{'display:none' if !user_signed_in?}" %>
+		   	  <%= button_tag "Next >", class: 'btn btn-wide btn-lg btn-primary btn-embossed', id: 'classified-next-step', style: "#{'display:none' if user_signed_in?}" %>
        </div>
      </div>
 <% end %>

@@ -24,4 +24,10 @@ $ ->
 		style: 'btn btn-default'
 		menuStyle: 'dropdown-inverse'
 		
-	$("#new_classified").formToWizard()
+$ ->
+	$('#classified-next-step').click (event) ->
+		event.preventDefault()
+		$('.classified-fields').toggle()
+		$(event.target).toggle()
+		$('.user-fields').toggle()
+		$('#classified-submit').toggle()
