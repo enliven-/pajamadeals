@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-embossed navbar-static-top">
+<div class="navbar navbar-inverse navbar-static-top">
   <div class="container">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       <span class="icon-bar"></span>
@@ -7,11 +7,38 @@
     </button>
 	<%= link_to App.logo, root_path, class: 'navbar-brand' %>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
-		 <%= button_tag 'Sign in with facebook', class: 'btn btn-default btn-embossed navbar-btn btn-sm pull-right', id: 'fb-sign-in' %>
-		<div class="text-center">
-	       <%#= button_tag 'Sell things', class: 'btn btn-hg btn-default btn-embossed navbar-btn' %>&nbsp;&nbsp;
-			<%#= button_tag 'Buy things', class: 'btn btn-hg btn-default btn-embossed navbar-btn' %>
-		</div>		 
-    </div>
+		<%= link_to 'Sign in with facebook', '#' ,class: 'btn btn-default btn-embossed navbar-btn btn-md navbar-right', id: 'fb-sign-in' %>
+	</div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse nav2">
+		<ul class="nav navbar-nav navbar-left">
+		    <li>
+				<%= select_tag :college, options_from_collection_for_select(College.order(name: :asc).all, :id, :name), prompt: 'Select College', class: 'nav-dropdown' %>
+			</li>
+		    <li>
+				<%= select_tag :category, options_from_collection_for_select(Category.order(name: :asc).all, :id, :name), prompt: 'Select Category', class: 'nav-dropdown' %>
+			</li>
+		</ul>
+		<%= form_tag classifieds_path, class: 'navbar-form navbar-left' do %>
+			<div class="form-group">
+				<div class="input-group">
+					<%= search_field_tag :q, '', placeholder: 'Search', class: 'form-control' %>
+					<span class="input-group-btn">
+						<%= button_tag raw('<span class="fui-search"></span>'), class: 'btn' %>							
+					</span>
+				</div>
+			</div>
+		<% end %>
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<%= button_tag 'Sell things', class: 'btn btn-default btn-embossed navbar-btn' %>
+			</li>
+			<li>
+				<%= button_tag 'Buy things', class: 'btn btn-default btn-embossed navbar-btn' %>
+			</li>
+		</ul>
+	</div>
   </div>
 </div>
+
+
+	       

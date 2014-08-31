@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-	$container = $("#classifieds")
+	$container = $('#classifieds')
 	$container.imagesLoaded ->
   		$container.isotope itemSelector: ".item"
 
@@ -11,6 +11,7 @@ $ ->
 		navSelector: "nav.pagination"
 		nextSelector: "nav.pagination a[rel=next]"
 		itemSelector: ".item"
+		finishedMsg: ''
 		pixelsFromNavToBottom: -Math.round($(window).height() * 0.9)
 		bufferPx: Math.round($(window).height() * 0.9)
 		(newElements) ->
@@ -20,7 +21,7 @@ $ ->
 				
 				
 $ ->
-	$("select").selectpicker
+	$('.inverse-dropdown-select').selectpicker
 		style: 'btn btn-default'
 		menuStyle: 'dropdown-inverse'
 		
