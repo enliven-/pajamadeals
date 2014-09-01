@@ -9,34 +9,6 @@
     <div class="navbar-collapse collapse navbar-responsive-collapse">
 		<%= link_to 'Sign in with facebook', '#' ,class: 'btn btn-default btn-embossed navbar-btn btn-md navbar-right', id: 'fb-sign-in' %>
 	</div>
-    <div class="navbar-collapse collapse navbar-responsive-collapse nav2">
-		<ul class="nav navbar-nav navbar-left">
-		    <li>
-				<%= select_tag :college, options_from_collection_for_select(College.order(name: :asc).all, :id, :name), prompt: 'Select College', class: 'nav-dropdown' %>
-			</li>
-		    <li>
-				<%= select_tag :category, options_from_collection_for_select(Category.order(name: :asc).all, :id, :name), prompt: 'Select Category', class: 'nav-dropdown' %>
-			</li>
-		</ul>
-		<%= form_tag classifieds_path, class: 'navbar-form navbar-left' do %>
-			<div class="form-group">
-				<div class="input-group">
-					<%= search_field_tag :q, '', placeholder: 'Search', class: 'form-control' %>
-					<span class="input-group-btn">
-						<%= button_tag raw('<span class="fui-search"></span>'), class: 'btn' %>							
-					</span>
-				</div>
-			</div>
-		<% end %>
-		<ul class="nav navbar-nav navbar-right">
-			<li>
-				<%= button_tag 'Sell things', class: 'btn btn-default btn-embossed navbar-btn' %>
-			</li>
-			<li>
-				<%= button_tag 'Buy things', class: 'btn btn-default btn-embossed navbar-btn' %>
-			</li>
-		</ul>
-	</div>
   </div>
 </div>
 
