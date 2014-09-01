@@ -15,14 +15,13 @@ window.fbAsyncInit = ->
 
 	$('.fb-sign-in').click (e) ->
 		e.preventDefault()
-		FB.login (response) ->
+		FB.login ((response) ->
 			if response.authResponse
 				$.ajax
 					url: 'auth/facebook/callback'
 					type: 'POST'
-					# error: (jqXHR, textStatus, errorThrown) ->
-# 						alert("Wrror")
-
+				  ),
+				  scope: 'email'
 
 	$('#sign_out').click (e) ->
 		FB.getLoginStatus (response) ->
