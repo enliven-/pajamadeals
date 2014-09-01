@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
   end
   resources :classified_steps
+  
+  resources :users
 
   # root to: 'classifieds#index'
   root to: 'pages#home'

@@ -1,3 +1,4 @@
-// update the headers
-<% if !@user.mobile.present? || !@user.college.present? %>
+<% if @user.mobile.present? || !@user.college.present? %>
+	$('#user-form').html('<%= j render("users/form") %>')
+	$('#user-form').modal('show')
 <% end %>
