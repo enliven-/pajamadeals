@@ -11,6 +11,8 @@ FactoryGirl.define do
     abbr 'VIT'
     city 'Pune'
     zipcode '411037'
+    latitude '18.464789'
+    longitude '73.867767'
   end
 
   factory :viit, class: College do
@@ -18,5 +20,16 @@ FactoryGirl.define do
     abbr 'VIIT'
     city 'Pune'
     zipcode '411048'
+    latitude '18.460227'
+    longitude '73.883645'
+  end
+  
+  factory :mit, class: College do
+    name 'Maharashtra Institude of Technology'
+    abbr 'MIT'
+    city 'Pune'
+    zipcode '411038'
+    latitude '18.512031'
+    longitude '73.819770'
   end
 end

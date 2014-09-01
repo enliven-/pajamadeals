@@ -5,6 +5,7 @@ FactoryGirl.define do
     mobile '9999999999'
     email 'foo@bar.com'
     password 'password'
+    role :user
     
     college
   end
