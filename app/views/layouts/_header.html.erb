@@ -1,20 +1,16 @@
-<div class="navbar navbar-inverse navbar-static-top">
-  <div class="container">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-	<%= link_to App.logo, root_path, class: 'navbar-brand' %>
-    <div class="navbar-collapse collapse navbar-responsive-collapse">
-		 <%= link_to 'Sign in with Facebook', "/auth/facebook", class: 'btn btn-default btn-embossed navbar-btn btn-sm pull-right fb-sign-in' %>
-		<div class="text-center">
-	       <%#= button_tag 'Sell things', class: 'btn btn-hg btn-default btn-embossed navbar-btn' %>&nbsp;&nbsp;
-			<%#= button_tag 'Buy things', class: 'btn btn-hg btn-default btn-embossed navbar-btn' %>
-		</div>		 
-    </div>
-  </div>
-</div>
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+	<div class="container">
+	  <div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+	      <span class="sr-only">Toggle navigation</span>
+	    </button>
+	    <%= link_to App.logo, root_path, class: 'navbar-brand' %>
+	  </div>
+	  <div class="collapse navbar-collapse" id="navbar-collapse-01">
+	    <%= link_to 'Sign in with Facebook', "/auth/facebook", class: 'btn btn-default btn-embossed navbar-btn btn-sm navbar-right fb-sign-in' %>
+	  </div><!-- /.navbar-collapse -->
+	</div>
+</nav><!-- /navbar -->
 
 
 	       
