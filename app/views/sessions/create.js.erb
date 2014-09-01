@@ -1,14 +1,14 @@
-<% if @user.mobile.present? || !@user.college.present? %>
+<% if !@user.mobile.present? || !@user.college.present? %>
 	$('#user-form').html('<%= j render("users/form") %>')
 	$('#user-form').modal({
 		backdrop: false,
 		keyboard: false,	
 	})
+	
+	$(function() {
+	  return $('.inverse-dropdown-select').selectpicker({
+	    style: 'btn btn-default',
+	    menuStyle: 'dropdown-inverse'
+	  });
+	});
 <% end %>
-
-$(function() {
-  return $('.inverse-dropdown-select').selectpicker({
-    style: 'btn btn-default',
-    menuStyle: 'dropdown-inverse'
-  });
-});
