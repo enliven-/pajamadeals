@@ -1,58 +1,79 @@
 <%= form_for @classified, html: { class: 'form-horizontal' } do |f| %>
-	<div class="form-step">
+	<div class="classified-fields">
+		<div class="col-md-12 header">
+			<h6>Tell us about the item</h6>
+		</div>
 		<div class="form-group">
-		  	<%= f.label :title, class: 'col-sm-2 control-label' %>
-	   	 	<div class="col-sm-10">
+		  	<%= f.label :title, class: 'col-md-2 control-label' %>
+	   	 	<div class="col-md-10">
 				<%= f.text_field :title, class: 'form-control', placeholder: 'Example: Male roommate needed in 3bhk apt or Sale B S Grewal book for 55%' %>
 	   	  	</div>
 	  	</div>
 	
 		<div class="form-group">
-		  	<%= f.label :category, class: 'col-sm-2 control-label' %>
-	   	 	<div class="col-sm-10">
-				<%= f.select :category_id, Category.order(name: :asc).select(:name, :id).collect { |category| [category.name, category.id] } %>
+		  	<%= f.label :category, class: 'col-md-2 control-label' %>
+	   	 	<div class="col-md-10">
+				<%= f.select :category_id, Category.order(name: :asc).select(:name, :id).collect { |category| [category.name, category.id] }, {}, { class: 'inverse-dropdown-select' } %>
 	   	  	</div>
 	  	</div>
 	
 		<div class="form-group">
-		  	<%= f.label :description, class: 'col-sm-2 control-label' %>
-	   	 	<div class="col-sm-10">
+		  	<%= f.label :description, class: 'col-md-2 control-label' %>
+	   	 	<div class="col-md-10">
 				<%= f.text_area :description, class: 'form-control', rows: 4, placeholder: 'Example: A beautiful apartment 2 kms from college with hot water, furniture, balcony and lot of restaurants around. Need a clean, pet loving and responsible flat mate.' %>
 	   	  	</div>
 	  	</div>
 	
 		<div class="form-group">
-		  	<%= f.label :image, class: 'col-sm-2 control-label' %>
-	   	 	<div class="col-sm-10">
+		  	<%= f.label :image, class: 'col-md-2 control-label' %>
+	   	 	<div class="col-md-10">
 				<%= f.file_field :image, class: 'form-control' %>
 				<p class="help-block">Having an image drastically improves the chances of selling your item. Please consider uploading an image.</p>
 	   	  	</div>
 	  	</div>
 	
 		<div class="form-group">
-		  	<%= f.label :price, "Price (Rs)", class: 'col-sm-2 control-label' %>
-	   	 	<div class="col-sm-10">
+		  	<%= f.label :price, "Price (Rs)", class: 'col-md-2 control-label' %>
+	   	 	<div class="col-md-10">
 				<%= f.text_field :price, class: 'form-control spinner', placeholder: 250 %>	 
 	   	  	</div>
 	  	</div>
 	</div>
-
-	<div class="form-step">
+		
+	<div class="user-fields" style="display: none">
+		<div class="col-md-12 header">
+			<h6>Tell us about you</h6>
+		</div>
+		
 		<%= f.fields_for :user, User.new do |u| %>
 		
 			<div class="form-group">
-				<%= u.label :name, class: 'col-sm-2 control-label' %>
-				<div class="col-sm-10">
+				<%= u.label :name, class: 'col-md-2 control-label' %>
+				<div class="col-md-10">
 					<%= u.text_field :name, class: 'form-control' %>
 				</div>
 			</div>
 			
+			<div class="form-group">
+				<%= u.label :mobile, class: 'col-md-2 control-label' %>
+				<div class="col-md-10">
+					<%= u.text_field :mobile, class: 'form-control' %>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<%= u.label :college, class: 'col-md-2 control-label' %>
+				<div class="col-md-10">
+                    <%= u.select :college_id, College.order(name: :asc).select(:id, :name).collect { |college| [college.name, college.id] }, {}, { class: 'inverse-dropdown-select' } %>
+                </div>
+			</div>			
 		<% end %>
 	</div>
 		
     <div class="form-group">
-       <div class="col-sm-offset-2 col-sm-10">
-		   <%= f.submit "Create", class: 'btn btn-wide btn-lg btn-primary btn-embossed' %>
+       <div class="col-md-offset-2 col-md-10">
+		      <%= f.submit "Create", class: 'btn btn-wide btn-lg btn-primary btn-embossed', id: 'classified-submit', style: "#{'display:none' if !user_signed_in?}" %>
+		   	  <%= button_tag "Next >", class: 'btn btn-wide btn-lg btn-primary btn-embossed', id: 'classified-next-step', style: "#{'display:none' if user_signed_in?}" %>
        </div>
      </div>
 <% end %>

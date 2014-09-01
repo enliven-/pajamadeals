@@ -19,24 +19,9 @@
 //= require chartkick
 //= require_tree .
 
-// var steps = $('.form-step');
-// var count = steps.size();
-//
-// steps.each(function(i) {
-//     $(this).wrap("<div id='step" + i + "'></div>");
-//     $(this).append("<p id='step" + i + "commands'></p>");
-//
-//     if (i == 0) {
-//         createNextButton(i);
-//         selectStep(i);
-//     }
-//     else if (i == count - 1) {
-//         $("#step" + i).hide();
-//         createPrevButton(i);
-//     }
-//     else {
-//         $("#step" + i).hide();
-//         createPrevButton(i);
-//         createNextButton(i);
-// 	}
-// }
+// $(function() {
+//   $('.nav-dropdown').selectpicker({
+//     style: 'btn btn-inverse btn-header-dropdown',
+//     menuStyle: 'dropdown-menu'
+//   });
+// });

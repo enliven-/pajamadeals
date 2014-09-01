@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
+        <!-- <button type="button" class="close" data-dimdiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
         <h3 class="modal-title" id="myModalLabel">Edit Your Ad</h3>
         Update any information you'd like to about the ad.
       </div>
@@ -10,35 +10,35 @@
                 <%= form_for @classified, html: {class: 'form-horizontal listing-form'} do |f| %>
 
                   <div class="form-group title">
-                    <%= f.label :title, class: 'col-sm-2 control-label' %>
-                    <div class="col-sm-9">
+                    <%= f.label :title, class: 'col-md-2 control-label' %>
+                    <div class="col-md-9">
                       <%= f.text_field :title, class: 'form-control required title', id: 'search-title' %>
                     </div>
                   </div> 
 
                   <div class="form-group">
-                    <%= f.label :category, class: 'col-sm-2 control-label' %>
-                    <div class="col-sm-9"> 
+                    <%= f.label :category, class: 'col-md-2 control-label' %>
+                    <div class="col-md-9"> 
                      <%= f.select :category_id, Category.order(name: :asc).select(:name, :id).collect { |category| [category.name, category.id] }, { include_blank: true }, { class: "form-control required category" } %>
                     </div>
                   </div>
 
                   <div class="form-group comment">
-                    <%= f.label 'Description', class: 'col-sm-2 control-label' %>
-                    <div class="col-sm-9">
+                    <%= f.label 'Description', class: 'col-md-2 control-label' %>
+                    <div class="col-md-9">
                       <%= f.text_area :description, class: 'form-control comment' %>
                     </div>
                   </div>
 
                   <div class="form-group selling-price">
-                    <%= f.label :price, 'Price (Rs)', class: 'col-sm-2 control-label' %>
-                    <div class="col-sm-9"> 
+                    <%= f.label :price, 'Price (Rs)', class: 'col-md-2 control-label' %>
+                    <div class="col-md-9"> 
                       <%= f.text_field :price, class: 'form-control required selling-price numeric' %>
                     </div>
                   </div>
 
                   <div class="form-group buttons">
-                    <div class="col-sm-9 col-sm-offset-2">
+                    <div class="col-md-9 col-md-offset-2">
                       <%= link_to  "Cancel", classifieds_path, class: "btn btn-default cancel" %>
                       <%= f.submit "Update", class: "btn btn-primary submit" %>
                       <%= link_to  "Delete", @classified, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger delete pull-right" %>          
