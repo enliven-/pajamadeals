@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827022713) do
+ActiveRecord::Schema.define(version: 20140902185612) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140827022713) do
     t.datetime "updated_at"
     t.string   "image"
     t.integer  "listing_type"
+    t.boolean  "sold",         default: false
   end
 
   create_table "colleges", force: true do |t|
@@ -102,6 +103,8 @@ ActiveRecord::Schema.define(version: 20140827022713) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["mobile"], name: "index_users_on_mobile", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uid"], name: "index_users_on_uid", unique: true, using: :btree
 
 end

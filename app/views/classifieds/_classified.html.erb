@@ -9,6 +9,9 @@
 		<div class="college"><%= classified.college.abbr %>, <%= classified.college.city %></div>
 		<div class="listing_type">
 			<%= render_listing_type_label(classified) %>
+			<% if classified.sold? %>
+				<span class="label label-warning">Sold</span>
+			<% end %>
 		</div>
 	</div>
 <% end %>

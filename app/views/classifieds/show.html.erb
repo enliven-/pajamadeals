@@ -36,5 +36,14 @@
 		<div class="name"><%= @classified.user.name %></div>
 		<div class="mobile">+91 <%= @classified.user.mobile %></div>
 		<div class="college"><%= @classified.college.abbr %>, <%= @classified.college.city %></div>
+		<% if user_signed_in? && current_user.owner?(@classified) %>
+			<div>
+				<%= link_to 'Mark as Sold', classified_path(classified: { sold: true }), method: :put, class: 'btn btn-primary mark-sold' if @classified.sell? && !@classified.sold? %>
+			</div>
+			<div>
+				<%= link_to 'Delete', classified_path, method: :delete, class: 'btn btn-danger mark-delete' %>
+			</div>
+		<% end %>
+		
 	</div>
 <% end %>

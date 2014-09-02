@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     end
   end
   
+  def owner?(record)
+    record.user == self
+  end
+  
   private
   
   before_create :save_role
