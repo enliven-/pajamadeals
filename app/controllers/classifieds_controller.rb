@@ -7,8 +7,6 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
-    session[:user_id] = nil
-    
     @title = "College Classifieds"
     # filters
     if params[:filters].present? and params[:filters][:college_id].present?

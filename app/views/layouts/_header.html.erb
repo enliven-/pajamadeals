@@ -7,7 +7,9 @@
 	    <%= link_to App.logo, root_path, class: 'navbar-brand' %>
 	  </div>
 	  <div class="collapse navbar-collapse" id="navbar-collapse-01">
-	    <%= link_to 'Sign in with Facebook', "/auth/facebook", class: 'btn btn-default btn-embossed navbar-btn btn-sm navbar-right fb-sign-in' %>
+		  <div id="user-session-links" class="navbar-right">
+			  <%= render 'layouts/user_session_links' %>
+		  </div>
 	  </div><!-- /.navbar-collapse -->
 	</div>
 </nav><!-- /navbar -->

@@ -44,6 +44,9 @@
 		<div class="col-md-12 header">
 			<h6>Tell us about you</h6>
 		</div>
+		<div class="col-md-12">
+			<%= link_to 'Sign in with Facebook', "/auth/facebook", class: 'btn btn-primary btn-embossed fb-sign-in' %>
+		</div>
 		
 		<%= f.fields_for :user, User.new do |u| %>
 		
@@ -66,7 +69,7 @@
 				<div class="col-md-10">
                     <%= u.select :college_id, College.order(name: :asc).select(:id, :name).collect { |college| [college.name, college.id] }, {}, { class: 'inverse-dropdown-select' } %>
                 </div>
-			</div>			
+			</div>		
 		<% end %>
 	</div>
 		
