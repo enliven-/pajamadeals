@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:update]
+  before_action :set_user, only: [:edit, :update]
+  
+  def edit
+  end
   
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_url,
+        format.html { render :edit,
                       notice: 'Successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
         format.js
