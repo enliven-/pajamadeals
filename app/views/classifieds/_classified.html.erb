@@ -6,6 +6,9 @@
 	</div>
 	<hr class="hr-dashed"></hr>
 	<div class="footer">
-		<span class="college"><%= classified.college.abbr %>, <%= classified.college.city %></span>
+		<div class="college"><%= classified.college.abbr %>, <%= classified.college.city %></div>
+		<div class="listing_type">
+			<%= render_listing_type_label(classified) %>
+		</div>
 	</div>
 <% end %>

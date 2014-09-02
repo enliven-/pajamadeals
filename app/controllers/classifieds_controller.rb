@@ -87,8 +87,6 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       if @classified.save
-        session[:category_id] = @classified.category.try(:id)
-
         format.html { redirect_to classifieds_url,
                       notice: 'Classified was successfully created.' }
         format.json { render :show, status: :created, location: @classified }
