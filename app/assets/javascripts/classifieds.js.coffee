@@ -18,12 +18,6 @@ $ ->
 			$newElems = $(newElements)
 			$newElems.imagesLoaded ->
 				$container.isotope "appended", $newElems
-				
-				
-$ ->
-	$('.inverse-dropdown-select').selectpicker
-		style: 'btn btn-default'
-		menuStyle: 'dropdown-inverse'
 		
 $ ->
 	$('#classified-next-step').click (event) ->

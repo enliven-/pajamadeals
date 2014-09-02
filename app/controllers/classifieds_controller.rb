@@ -17,7 +17,7 @@ class ClassifiedsController < ApplicationController
     end
    
     # search query
-    query = params[:query].present? ? params[:query] : '*'
+    query = params[:q].present? ? params[:q] : '*'
     search_params = {}
     search_params[:operator] = 'or'
     search_params[:fields] = ["title^5", "description"]

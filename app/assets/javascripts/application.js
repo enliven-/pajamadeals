@@ -19,9 +19,9 @@
 //= require chartkick
 //= require_tree .
 
-// $(function() {
-//   $('.nav-dropdown').selectpicker({
-//     style: 'btn btn-inverse btn-header-dropdown',
-//     menuStyle: 'dropdown-menu'
-//   });
-// });
+$(document).ready(function() {
+	$(".inverse-dropdown-select").selectpicker({
+	  style: "btn btn-default",
+	  menuStyle: "dropdown-inverse"
+	});
+});
