@@ -12,6 +12,7 @@ $ ->
 		nextSelector: "nav.pagination a[rel=next]"
 		itemSelector: ".item"
 		finishedMsg: ''
+		speed: 'fast'
 		pixelsFromNavToBottom: -Math.round($(window).height() * 0.9)
 		bufferPx: Math.round($(window).height() * 0.9)
 		(newElements) ->

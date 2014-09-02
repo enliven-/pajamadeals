@@ -18,10 +18,3 @@
 //= require turbolinks
 //= require chartkick
 //= require_tree .
-
-$(document).ready(function() {
-	$(".inverse-dropdown-select").selectpicker({
-	  style: "btn btn-default",
-	  menuStyle: "dropdown-inverse"
-	});
-});

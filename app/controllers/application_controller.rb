@@ -29,15 +29,6 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_college
 
-  def current_category
-    return nil if session[:category_id] == 0 || session[:category_id] == '0'
-    @current_category =
-      Category.find(session[:category_id]) if session[:category_id].present?
-  rescue Exception => e
-    nil
-  end
-  helper_method :current_category
-
   include MongodbLogger::Base
   before_filter :add_params_to_mongodb_logger
   def add_params_to_mongodb_logger
