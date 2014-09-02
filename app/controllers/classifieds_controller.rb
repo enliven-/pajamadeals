@@ -8,7 +8,6 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds.json
   def index
     @title = "College Classifieds"
-
     # filters
     if params[:filters].present?
       session[:college_id] = params[:filters][:college_id]
@@ -31,10 +30,20 @@ class ClassifiedsController < ApplicationController
       search_params[:where][:college_id] = college_ids
     end
     
-    if params[:filters] && params[:filters][:category_id].present?
-      search_params[:where][:category_id] = params[:filters][:category_id]
+    if params[:filters].present?
+      if params[:filters][:category_id].present?
+        search_params[:where][:category_id] = params[:filters][:category_id]
+      end
+      
+      if params[:filters][:user]
+        search_params[:where][:user_id] = current_user.id
+      end
+      
+      if params[:filters][:listing_type].present?
+        search_params[:where][:listing_type] = params[:filters][:listing_type]
+      end
     end
-
+    
     @classifieds = Classified.search(query, search_params)
     
     respond_to do |format|
