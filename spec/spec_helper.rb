@@ -25,7 +25,6 @@ RSpec.configure do |config|
 
 
   config.include FactoryGirl::Syntax::Methods
-  config.include Devise::TestHelpers, type: :controller
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
@@ -39,17 +38,19 @@ RSpec.configure do |config|
   end
   
   def current_user
-    user_session_info = response.request.env['rack.session']['warden.user.user.key']
-    if user_session_info
-      user_id = user_session_info[0][0]
-      User.find(user_id)
-    else
-      nil
-    end
+    @current_user ||= User.find(session[:user_id]) if session[:user_id].present?
   end
-
+  
   def user_signed_in?
     !!current_user
+  end
+  
+  def sign_in(user)
+    session[:user_id] = user.id
+  end
+  
+  def sign_out
+    session[:user_id] = nil
   end
   
   def current_college
@@ -58,17 +59,7 @@ RSpec.configure do |config|
       (College.find(session[:college_id]) if session[:college_id].present?) ||
       current_user.try(:college) rescue nil
   end
-
-  def current_category
-    return nil if session[:category_id] == 0 || session[:category_id] == '0'
-    @current_category =
-      Category.find(session[:category_id]) if session[:category_id].present?
-  rescue Exception => e
-    nil
-  end
-    
-
-
+  
   # The settings below are suggested to provide a good initial experience
   # with RSpec, but feel free to customize to your heart's content.
 =begin
