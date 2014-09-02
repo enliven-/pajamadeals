@@ -63,10 +63,10 @@
 				<% end %>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<%= button_tag 'Sell things', class: 'btn btn-default btn-embossed navbar-btn' %>
+						<%= link_to 'Sell things', new_classified_path(listing_type: :sell), class: 'btn btn-default btn-embossed navbar-btn' %>
 					</li>
 					<li>
-						<%= button_tag 'Buy things', class: 'btn btn-default btn-embossed navbar-btn' %>
+						<%= link_to 'Buy things', new_classified_path(listing_type: :buy), class: 'btn btn-default btn-embossed navbar-btn' %>
 					</li>
 				</ul>
 			</div>

@@ -1,4 +1,5 @@
 <%= form_for @classified, html: { class: 'form-horizontal' } do |f| %>
+	<%= f.hidden_field :listing_type, value: @classified.listing_type %>
 	<div class="classified-fields">
 		<div class="col-md-12 header">
 			<h6>Tell us about the item</h6>

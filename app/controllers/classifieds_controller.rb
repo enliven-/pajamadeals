@@ -50,7 +50,7 @@ class ClassifiedsController < ApplicationController
 
   def new
     @title = 'new classified'
-    @classified = Classified.new
+    @classified = Classified.new(listing_type: params[:listing_type])
     @classified.build_user if !user_signed_in?
   end
 
@@ -59,7 +59,7 @@ class ClassifiedsController < ApplicationController
   end
 
   def create
-
+    
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
       user = User.find_by(mobile: user_attributes[:mobile])
