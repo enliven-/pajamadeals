@@ -10,7 +10,7 @@ class ClassifiedsController < ApplicationController
     @title = "College Classifieds"
 
     # filters
-    if params[:filters].present? && params[:filters][:college_id].present?
+    if params[:filters].present?
       session[:college_id] = params[:filters][:college_id]
     end
    

@@ -9,7 +9,7 @@ $ ->
 			url: '/classifieds'
 			type: 'GET'
 			data:
-				'[filters][college_id]': ($(event.target).val() || 0)
+				'[filters][college_id]': $(event.target).val()
 			error: ->
 				alert("Something went wrong. Sorry.")
 				
