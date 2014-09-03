@@ -1,8 +1,12 @@
 ready = ->
-	console.log("App ready")
+	
+	# Creates dropdown for select tags
+	
 	$(".inverse-dropdown-select").selectpicker
 		style: "btn btn-default"
 		menuStyle: "dropdown-inverse"
+		
+	# Filters in secondary nav
 
 	$('#select-college').change (event) ->
 		$.ajax
