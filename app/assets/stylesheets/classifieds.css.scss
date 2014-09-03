@@ -8,35 +8,78 @@ $boxTextPadding: 6px 14px 7px;
 	border-radius: 6px;
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 	background: #fff;
-	margin:6px;
-	font-size: 12px;	
+	font-size: 12px;
+	margin: 6px;
 }
 
 .item {
-	width: 18.948%;
+	width: 20%;
+	/* Smartphones (portrait) ----------- */
+	@media only screen
+	and (max-width : 320px) {
+		width: 50%;
+	}
+	
+	/* Smartphones (landscape) ----------- */
+	@media only screen 
+	and (min-width : 321px) {
+		width: 33.33%;
+	}
+	
+	/* iPads (portrait) ----------- */
+	@media only screen 
+	and (min-device-width : 768px) 
+	and (max-device-width : 1024px) 
+	and (orientation : portrait) {
+		width: 25%;
+	}
+	
+	/* iPads (landscape) ----------- */
+	@media only screen 
+	and (min-device-width : 768px) 
+	and (max-device-width : 1024px) 
+	and (orientation : landscape) {
+		width: 20%;
+	}
+	
+	/* Desktops and laptops ----------- */
+	@media only screen 
+	and (min-width : 1224px) {
+		width: 20%;
+	}
 
-	.description {
-		padding: $boxTextPadding;
+	/* Large screens ----------- */
+	@media only screen 
+	and (min-width : 1824px) {
+		width: 10%;
+	}
+	
+
+	.classified {
 		
-		.title {
-			font-size: 14px;
-			line-height: 17px;
-			word-wrap: break-word;
-		}	
-	}
+		.description {
+			padding: $boxTextPadding;
+		
+			.title {
+				font-size: 14px;
+				line-height: 17px;
+				word-wrap: break-word;
+			}	
+		}
 	
-	.footer {
-		padding: $boxTextPadding;
-		//background-color: darken(#e5e9ea,23%);
-	}
+		.footer {
+			padding: $boxTextPadding;
+		}
 	
-	.image {
-		max-width: 100%;
-		border-radius: 6px 6px 0 0;
-		display: block;
-		position: relative;
-		z-index: 5;
-		margin-bottom: 8px;
+		.image {
+			max-width: 100%;
+			border-radius: 6px 6px 0 0;
+			display: block;
+			position: relative;
+			z-index: 5;
+			margin-bottom: 8px;
+		}
+		
 	}
 }
 

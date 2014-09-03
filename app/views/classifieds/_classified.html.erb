@@ -1,17 +1,19 @@
-<%= div_for classified, class: "item box" do %>
-	<%= link_to (image_tag classified.image, class: 'image'), classified_path(classified) %>
-	<div class="description">
-		<div class="title"><%= link_to classified.title, classified_path(classified) %></div>
-		<div class="price">Rs <%= classified.price %></div>
-	</div>
-	<hr class="hr-dashed"></hr>
-	<div class="footer">
-		<div class="college"><%= classified.college.abbr %>, <%= classified.college.city %></div>
-		<div class="listing_type">
-			<%= render_listing_type_label(classified) %>
-			<% if classified.sold? %>
-				<span class="label label-warning">Sold</span>
-			<% end %>
+<div class="item">
+	<%= div_for classified, class: "box" do %>
+		<%= link_to (image_tag classified.image, class: 'image'), classified_path(classified) %>
+		<div class="description">
+			<div class="title"><%= link_to classified.title, classified_path(classified) %></div>
+			<div class="price">Rs <%= classified.price %></div>
 		</div>
-	</div>
-<% end %>
+		<hr class="hr-dashed"></hr>
+		<div class="footer">
+			<div class="college"><%= classified.college.abbr %>, <%= classified.college.city %></div>
+			<div class="listing_type">
+				<%= render_listing_type_label(classified) %>
+				<% if classified.sold? %>
+					<span class="label label-warning">Sold</span>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
