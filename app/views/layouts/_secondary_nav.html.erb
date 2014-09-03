@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default navbar-embossed" role="navigation">
+	<div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+	      <span class="sr-only">Toggle navigation</span>
+	    </button>
+	</div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse secondary-nav" id="navbar-collapse-01">
+		<div class="navbar-left">
+				<%= select_tag :college, options_from_collection_for_select(College.order(name: :asc).all, :id, :name, current_college.try(:id)), prompt: 'Select College', class: "inverse-dropdown-select navbar-btn", id: 'select-college' %>
+
+				<%= select_tag :category, options_from_collection_for_select(Category.order(name: :asc).all, :id, :name), prompt: 'Select Category', class: 'inverse-dropdown-select navbar-btn', id: 'select-category', id: 'select-category'  %>
+  
+				<%= form_tag classifieds_path, class: 'navbar-form navbar-right', method: :get do %>
+					<div class="form-group">
+						<div class="input-group">
+							<%= search_field_tag :q, '', placeholder: 'Search', class: 'form-control' %>
+						    <span class="input-group-btn">
+								<%= button_tag raw('<span class="fui-search"></span>'), class: 'btn' %>							
+							</span>
+						</div>
+					</div>
+				<% end %>
+		</div>
+		<div class="navbar-right">
+				<%= link_to raw('<strong>Sell things</strong>'), new_classified_path(listing_type: :sell), class: 'btn btn-danger btn-wide btn-embossed navbar-btn' %>
+		
+				<%= link_to raw('<strong>Buy things</strong>'), new_classified_path(listing_type: :buy), class: 'btn btn-danger btn-wide btn-embossed navbar-btn' %>
+		</div>
+		
+	</div>
+</nav>
