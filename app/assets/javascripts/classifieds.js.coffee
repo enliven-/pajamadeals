@@ -2,10 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on 'ready page:load', ->
+ready = ->
+	
+	# Grid layout for classified - index page
+	
 	$container = $('#classifieds')
 	$container.imagesLoaded ->
   		$container.isotope itemSelector: ".item"
+		
+	# Endless scrolling code	
 
 	$container.infinitescroll
 		navSelector: "nav.pagination"
@@ -20,10 +25,14 @@ $(document).on 'ready page:load', ->
 			$newElems.imagesLoaded ->
 				$container.isotope "appended", $newElems
 		
-$ ->
+	# Next step for creating classified if user not signed in
+			
 	$('#classified-next-step').click (event) ->
 		event.preventDefault()
 		$('.classified-fields').toggle()
 		$(event.target).toggle()
 		$('.user-fields').toggle()
 		$('#classified-submit').toggle()
+			
+$(document).ready(ready)
+$(document).on('page:load', ready)
