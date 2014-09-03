@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
   end
   
   def authenticate_admin_user! #use predefined method name
-    access_denied if !authenticate_role!(:admin)
+    access_denied if user_signed_in? && !current_user.admin?
   end
   
   def current_admin_user #use predefined method name
