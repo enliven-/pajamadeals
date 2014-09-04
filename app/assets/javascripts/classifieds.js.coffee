@@ -19,7 +19,7 @@ ready = ->
 		finishedMsg: ''
 		speed: 'fast'
 		pixelsFromNavToBottom: -Math.round($(window).height() * 0.9)
-		bufferPx: Math.round($(window).height() * 0.9)
+		bufferPx: 1000
 		(newElements) ->
 			console.log( newElements )
 			$newElems = $(newElements)
