@@ -21,6 +21,7 @@ ready = ->
 		pixelsFromNavToBottom: -Math.round($(window).height() * 0.9)
 		bufferPx: Math.round($(window).height() * 0.9)
 		(newElements) ->
+			console.log( newElements )
 			$newElems = $(newElements)
 			$newElems.imagesLoaded ->
 				$container.isotope "appended", $newElems

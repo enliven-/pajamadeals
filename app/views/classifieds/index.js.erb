@@ -1,1 +1,16 @@
-$('#classifieds').html('<%= j render(@classifieds) %>');
+var $container = $('#classifieds')
+var toRemove = $container.find('.item');
+elms = '<%= j render(@classifieds) %>'
+
+$container.isotope('remove', toRemove);
+$container.isotope('insert', $(elms));
+
+$container.imagesLoaded(function() {
+  $container.isotope('layout');
+});
+	
+<% if (@classifieds.next_page) %>
+	$('nav.pagination').replaceWith('<%= j paginate(@classifieds) %>');
+<% else %>
+	$('nav.pagination').remove();
+<% end %>
