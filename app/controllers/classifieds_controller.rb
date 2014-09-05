@@ -24,12 +24,12 @@ class ClassifiedsController < ApplicationController
     search_params[:where][:sold] = false
     
     
-    # if current_college
-#       college_ids = College.search('*', where: {location: {near:
-#         [current_college.latitude, current_college.longitude], within: "5km"}})
-#         .map(&:id)
-#       search_params[:where][:college_id] = college_ids
-#     end
+    if current_college
+      college_ids = College.search('*', where: {location: {near:
+        [current_college.latitude, current_college.longitude], within: "5km"}})
+        .map(&:id)
+      search_params[:where][:college_id] = college_ids
+    end
     
     if params[:filters].present?
       if params[:filters][:category_id].present?

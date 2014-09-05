@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
   
   def sign_out
-    session[:user_id] = nil
+    session.delete(:user_id)
   end
 
   def current_college
