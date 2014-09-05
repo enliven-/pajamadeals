@@ -105,3 +105,4 @@ $(document)
   .ajaxStop(function () {
       $('.main').spin(false);
 	  $('.main').css('opacity', '1')
+  })
