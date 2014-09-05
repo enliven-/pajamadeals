@@ -19,12 +19,9 @@
 //= require chartkick
 //= require_tree .
 
-/**
- * Copyright (c) 2011-2014 Felix Gnass
- * Licensed under the MIT license
- */
-
 /*
+
+Loading spinner code
 
 Basic Usage:
 ============
@@ -108,4 +105,3 @@ $(document)
   .ajaxStop(function () {
       $('.main').spin(false);
 	  $('.main').css('opacity', '1')
-});
