@@ -72,26 +72,9 @@ class ClassifiedsController < ApplicationController
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
       user = User.find_by(mobile: user_attributes[:mobile])
-      if (user.present? && user.guest? && user_attributes[:email].present? \
-        && user_attributes[:password].present?)
-        user_attributes.delete(:mobile)
-        user.update_attributes(user_attributes.merge(guest: false))
-        sign_in user
-      end
-      if !user.present?
-        if user_attributes[:email].present? && user_attributes[:password].present?
-          user = User.create(user_attributes)
-          sign_in user
-        else
-          user_attributes.merge!(password: "passwordpassword#{rand(20)}",
-                                 email:    "#{SecureRandom.hex(5)}@guest.com",
-                                 guest:    true
-                                 )
-          user = User.create(user_attributes)
-        end
-      end
+      user = User.create(user_attributes.merge!(guest: true)) if !user.present?
     end
-
+    
     @classified = Classified.new(classified_params)
     @classified.user = current_user || user
 
