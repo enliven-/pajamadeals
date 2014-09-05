@@ -10,23 +10,23 @@ ready = ->
 	$container.imagesLoaded ->
   		$container.isotope itemSelector: ".item"
 		
-	# Endless scrolling code	
-
-	$container.infinitescroll
-		navSelector: "nav.pagination"
-		nextSelector: "nav.pagination a[rel=next]"
-		itemSelector: ".item"
-		finishedMsg: ''
-		speed: 'fast'
-		pixelsFromNavToBottom: -Math.round($(window).height() * 0.9)
-		bufferPx: 1000
-		(newElements) ->
-			console.log( newElements )
-			$newElems = $(newElements)
-			$newElems.imagesLoaded ->
-				$container.isotope "appended", $newElems
+	# Endless scrolling
 		
-	# Next step for creating classified if user not signed in
+	if $('nav.pagination').length
+		$container.infinitescroll
+			navSelector: "nav.pagination"
+			nextSelector: "nav.pagination a[rel=next]"
+			itemSelector: ".item"
+			finishedMsg: ''
+			speed: 'fast'
+			pixelsFromNavToBottom: -Math.round($(window).height() * 0.9)
+			bufferPx: 1000
+			(newElements) ->
+				$newElems = $(newElements)
+				$newElems.imagesLoaded ->
+					$container.isotope "appended", $newElems
+		
+	# Classified multi-step form
 			
 	$('#classified-next-step').click (event) ->
 		event.preventDefault()
