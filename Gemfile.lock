@@ -232,6 +232,7 @@ GEM
       activerecord (>= 3.0)
     polyglot (0.3.5)
     rack (1.5.2)
+    rack-cors (0.2.9)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.2)
@@ -382,6 +383,7 @@ DEPENDENCIES
   mongodb_logger
   mysql2
   omniauth-facebook (~> 2.0.0)
+  rack-cors
   rails (= 4.1.4)
   rspec
   rspec-rails

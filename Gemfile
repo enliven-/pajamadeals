@@ -100,3 +100,5 @@ gem 'groupdate'
 
 # form helpers
 # gem 'wicked '
+
+gem 'rack-cors', :require => 'rack/cors'
