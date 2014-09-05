@@ -4,7 +4,6 @@ FactoryGirl.define do
     name 'Foo Bar'
     mobile '9999999999'
     email 'foo@bar.com'
-    password 'password'
     role :user
     
     college
@@ -14,7 +13,6 @@ FactoryGirl.define do
     name 'Bhushan Lodha'
     mobile '9975454384'
     email 'blo@alum.hackerschool.com'
-    password 'password'
     role :admin
     
     college
@@ -24,7 +22,6 @@ FactoryGirl.define do
     name 'Bar'
     mobile '9999999992'
     email 'foo2@bar.com'
-    password 'password'
     role :ambassador
     
     college
@@ -34,7 +31,6 @@ FactoryGirl.define do
     name 'Ankush Zanwar'
     mobile '9976543210'
     email 'ankush@gmail.com'
-    password 'password'
     role :user
     
     vit
@@ -44,7 +40,6 @@ FactoryGirl.define do
     name 'Apurva Gayakwad'
     mobile '9967253719'
     email 'apurva@gmail.com'
-    password 'password'
     role :user
     
     viit
