@@ -18,7 +18,6 @@ Rails.application.routes.draw do
       post :booth_pickup
     end
   end
-  resources :classified_steps
   
   resources :users
 
