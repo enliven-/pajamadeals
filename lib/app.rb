@@ -5,7 +5,11 @@ class App
   class << self
 
     def host
-      'pajamadeals.in'
+      if Rails.env.production?
+        'pajamadeals.in'
+      else
+        'pajamadeals.dev'
+      end
     end
 
     def name
