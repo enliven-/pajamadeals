@@ -16,6 +16,10 @@ class Classified < ActiveRecord::Base
   has_token
   
   mount_uploader :image, ImageUploader
+  
+  def owner?(user)
+    self.user == user
+  end
 
   private
 

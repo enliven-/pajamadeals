@@ -12,4 +12,14 @@ module ClassifiedsHelper
     end
   end
   
+  def render_mark_text(classified)
+    text = 'Mark as '
+    case @classified.listing_type
+    when "sell"
+      text += 'sold'
+    when "buy"
+      text += 'bought'
+    end
+  end
+  
 end
