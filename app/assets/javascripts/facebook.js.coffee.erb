@@ -18,7 +18,7 @@ window.fbAsyncInit = ->
 		FB.login ((response) ->
 			if response.authResponse
 				$.ajax
-					url: 'auth/facebook/callback'
+					url: Routes.omniauth_callback_path(provider: 'facebook')
 					type: 'POST'
 				  ),
 				  scope: 'email'
