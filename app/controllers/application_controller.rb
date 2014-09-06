@@ -27,50 +27,30 @@ class ApplicationController < ActionController::Base
       current_user.try(:college)
   end
   helper_method :current_college
-
-  include MongodbLogger::Base
-  before_filter :add_params_to_mongodb_logger
-  def add_params_to_mongodb_logger
-    if Rails.logger.respond_to?(:add_metadata) && Rails.env.production?
-      Rails.logger.add_metadata(user_id: current_user.try(:id))
-    end
-  end
-
-  def after_sign_in_path_for(resource)
-    sign_in_url = url_for(action:     'new',
-                          controller: 'sessions',
-                          only_path:  false,
-                          protocol:   'http')
-    if request.referer == sign_in_url
-      super
-    else
-      stored_location_for(resource) || request.referer || root_path
-    end
-  end
-
-  def after_sign_out_path_for(resource)
-    sign_out_url = url_for(action:     'destroy',
-                           controller: 'sessions',
-                           only_path:  false,
-                           protocol:   'http')
-    if request.referer == sign_out_url
-      super
-    else
-      stored_location_for(resource) || request.referer || root_path
-    end
+  
+  def authenticate_user!
+    access_denied if !user_signed_in?
   end
 
   def authenticate_role!(*args)
-    access_denied if user_signed_in? && !args.include?(current_user.role.to_sym)
+    if user_signed_in?
+      return true if args.include?(current_user.role.to_sym)
+    end
+    access_denied
   end
   
   def authenticate_owner!(record)
-    access_denied if user_signed_in? && 
-                    !(current_user.owner?(record) || current_user.admin?)
+    if user_signed_in?
+      return true if current_user.owner?(record) || current_user.admin?
+    end
+    access_denied                
   end
   
   def authenticate_admin_user! #use predefined method name
-    access_denied if user_signed_in? && !current_user.admin?
+    if user_signed_in?
+      return true if current_user.admin?
+    end
+    access_denied
   end
   
   def current_admin_user #use predefined method name
@@ -88,14 +68,6 @@ class ApplicationController < ActionController::Base
 #     devise_parameter_sanitizer.for(:sign_up).push(:email, :mobile, :name,
 #                                                   :college_id, :college)
 #   end
-
-  def state
-    current_college_id = (current_college and current_college.id) || 0
-    current_category_id = (current_category and current_category.id) || 0
-
-    render json: { current_college_id:  current_college_id,
-                   current_category_id: current_category_id }
-  end
   
   def admin_layout
     render layout: 'admin_layout'
@@ -105,4 +77,13 @@ class ApplicationController < ActionController::Base
     request.user_agent =~ /Mobile|webOS/
   end
   helper_method :mobile_device?
+  
+  include MongodbLogger::Base
+  before_filter :add_params_to_mongodb_logger
+  def add_params_to_mongodb_logger
+    if Rails.logger.respond_to?(:add_metadata) && Rails.env.production?
+      Rails.logger.add_metadata(user_id: current_user.try(:id))
+    end
+  end
+  
 end
