@@ -10,21 +10,21 @@
 				<%= f.text_field :title, class: 'form-control', placeholder: 'Example: Male roommate needed in 3bhk apt or Sale B S Grewal book for 55%' %>
 	   	  	</div>
 	  	</div>
-	
+
 		<div class="form-group">
 		  	<%= f.label :category, class: 'col-md-2 control-label' %>
 	   	 	<div class="col-md-10">
 				<%= f.select :category_id, Category.order(name: :asc).select(:name, :id).collect { |category| [category.name, category.id] }, {}, { class: 'inverse-dropdown-select' } %>
 	   	  	</div>
 	  	</div>
-	
+
 		<div class="form-group">
 		  	<%= f.label :description, class: 'col-md-2 control-label' %>
 	   	 	<div class="col-md-10">
 				<%= f.text_area :description, class: 'form-control', rows: 4, placeholder: 'Example: A beautiful apartment 2 kms from college with hot water, furniture, balcony and lot of restaurants around. Need a clean, pet loving and responsible flat mate.' %>
 	   	  	</div>
 	  	</div>
-	
+
 		<div class="form-group">
 		  	<%= f.label :image, class: 'col-md-2 control-label' %>
 	   	 	<div class="col-md-10">
@@ -32,21 +32,29 @@
 				<p class="help-block">Having an image drastically improves the chances of selling your item. Please consider uploading an image.</p>
 	   	  	</div>
 	  	</div>
-	
+
 		<div class="form-group">
 		  	<%= f.label :price, "Price (Rs)", class: 'col-md-2 control-label' %>
 	   	 	<div class="col-md-10">
-				<%= f.text_field :price, class: 'form-control spinner', placeholder: 250 %>	 
+				<%= f.text_field :price, class: 'form-control spinner', placeholder: 250 %>
 	   	  	</div>
 	  	</div>
 	</div>
 		
-	<div class="user-fields" style="display: none">
+	<div class="user-fields" style="display:none">
 		<div class="col-md-12 header">
 			<h6>Tell us about you</h6>
 		</div>
-			<%= link_to 'Sign in with Facebook', "/auth/facebook", class: 'btn btn-primary btn-embossed fb-sign-in' %>
 		
+	    <div class="form-group">
+	       <div class="col-md-offset-4 col-md-10">
+			     <%= link_to 'Sign in with Facebook', "/auth/facebook", class: 'btn btn-primary btn-hg btn-embossed fb-sign-in' %>
+	       </div>
+	     </div>
+		 
+		<hr class="hr-dashed"></hr>
+		<div class="col-md-12 text-center" style="font-size: 15px;margin-bottom: 20px;">OR</div>
+			
 		<%= f.fields_for :user, User.new do |u| %>
 		
 			<div class="form-group">
