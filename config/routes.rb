@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   
   match 'auth/:provider/callback', to: 'sessions#create', via: [:post, :get], as: 'omniauth_callback'
   match 'auth/failure', to: redirect('/'), via: [:post, :get]
-  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:post, :get]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:delete]
 
 
 
