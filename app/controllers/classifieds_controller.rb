@@ -7,13 +7,11 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
-    # filters
-    if params[:filters].present?
-      session[:college_id] = params[:filters][:college_id]
-    end
-   
-    # search query
+    
+    # query
     query = params[:q].present? ? params[:q] : '*'
+    
+    # default params
     search_params = {}
     search_params[:operator] = 'or'
     search_params[:fields] = ["title^5", "description"]
@@ -24,14 +22,10 @@ class ClassifiedsController < ApplicationController
     search_params[:where][:sold] = false
     
     
-    if current_college
-      college_ids = College.search('*', where: {location: {near:
-        [current_college.latitude, current_college.longitude], within: "5km"}})
-        .map(&:id)
-      search_params[:where][:college_id] = college_ids
-    end
-    
+    # filters
     if params[:filters].present?
+      cookies[:college_id] = params[:filters][:college_id]
+      
       if params[:filters][:category_id].present?
         search_params[:where][:category_id] = params[:filters][:category_id]
       end
@@ -44,7 +38,13 @@ class ClassifiedsController < ApplicationController
         search_params[:where][:listing_type] = params[:filters][:listing_type]
       end
     end
-        
+    
+    # geo location
+    if current_college
+      college_ids = College.search('*', where: {location: {near: [current_college.latitude, current_college.longitude], within: "5km"}}).map(&:id)
+      search_params[:where][:college_id] = college_ids
+    end
+    
     @classifieds = Classified.search(query, search_params)
     
     respond_to do |format|

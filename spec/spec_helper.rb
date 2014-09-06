@@ -54,9 +54,9 @@ RSpec.configure do |config|
   end
   
   def current_college
-    return nil if session[:college_id] == 0 || session[:college_id] == '0'
+    return nil if cookies[:college_id] == 0 || cookies[:college_id] == '0'
     @current_college =
-      (College.find(session[:college_id]) if session[:college_id].present?) ||
+      (College.find(cookies[:college_id]) if cookies[:college_id].present?) ||
       current_user.try(:college) rescue nil
   end
   

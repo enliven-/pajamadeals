@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def current_college
     @current_college =
-      (College.find(session[:college_id]) if session[:college_id].present?) ||
+      (College.find(cookies[:college_id]) if cookies[:college_id].present?) ||
       current_user.try(:college)
   end
   helper_method :current_college

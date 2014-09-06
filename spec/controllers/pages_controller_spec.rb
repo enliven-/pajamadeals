@@ -10,7 +10,7 @@ describe PagesController, type: :controller do
     
     it 'redirects to classifieds#index if once visited home page' do
       college = create :college
-      session[:college_id] = college.id
+      cookies[:college_id] = college.id
       get :home
       
       expect(response.status).to eq(302)

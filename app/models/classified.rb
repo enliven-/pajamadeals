@@ -20,6 +20,9 @@ class Classified < ActiveRecord::Base
   def owner?(user)
     self.user == user
   end
+  
+  def self.search_r(params)
+  end
 
   private
 
