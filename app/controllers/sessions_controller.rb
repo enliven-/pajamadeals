@@ -6,12 +6,18 @@ class SessionsController < ApplicationController
      
      respond_to do |format|
        format.js
-       format.html { redirect_to root_path, notice: 'Signed in successfully.'}
+       format.html do
+         if !@user.mobile.present? || !@user.college.present?
+           redirect_to edit_user_path(@user)
+         else
+           redirect_to :back
+         end
+       end
      end
    end
 
    def destroy
      sign_out
-     redirect_to root_url
+     redirect_to :back
    end
 end

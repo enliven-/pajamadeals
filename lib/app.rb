@@ -11,6 +11,10 @@ class App
         'pajamadeals.dev'
       end
     end
+    
+    def domain
+      host
+    end
 
     def name
       'Pajama Deals'

@@ -7,7 +7,6 @@ class ClassifiedsController < ApplicationController
   # GET /classifieds
   # GET /classifieds.json
   def index
-    
     # query
     query = params[:q].present? ? params[:q] : '*'
     
@@ -59,7 +58,13 @@ class ClassifiedsController < ApplicationController
 
   def new
     @title = 'new classified'
-    @classified = Classified.new(listing_type: params[:listing_type])
+    @classified = Classified.new(listing_type: params[:listing_type],
+                                 title:       cookies[:classified_title],
+                                 category_id: cookies[:classified_category_id],
+                                 description: cookies[:classified_description],
+                                 image_cache: cookies[:classified_image],
+                                 price:       cookies[:classified_price],
+                                )
     @classified.build_user if !user_signed_in?
   end
 
@@ -80,6 +85,13 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       if @classified.save
+
+        cookies.delete(:classified_title, domain: 'pajamadeals.dev')
+        cookies.delete(:classified_category_id)
+        cookies.delete(:classified_description)
+        cookies.delete(:classified_image)
+        cookies.delete(:classified_price)
+
         format.html { redirect_to classifieds_url,
                       notice: 'Classified was successfully created.' }
         format.json { render :show, status: :created, location: @classified }
@@ -128,6 +140,7 @@ class ClassifiedsController < ApplicationController
   def classified_params
     params.require(:classified).permit(:title, :description, :category_id,
                                        :price, :image, :listing_type, :sold,
+                                       :image_cache,
                                        user_attributes: [:email, :mobile,
                                                          :name, :college_id,
                                                          :password]

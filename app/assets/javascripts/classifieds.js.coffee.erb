@@ -35,5 +35,13 @@ ready = ->
 		$('.user-fields').toggle()
 		$('#classified-submit').toggle()
 			
+	$('.fb-sign-up-classified').click (event) ->
+		$.cookie 'classified_title', $('#classified_title').val(),
+			domain: '<%= App.domain %>'
+		$.cookie 'classified_category_id', $('#classified_category_id').val()
+		$.cookie 'classified_description', $('#classified_description').val()
+		$.cookie 'classified_image', $('#classified_image').val()
+		$.cookie 'classified_price', $('#classified_price').val()
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
