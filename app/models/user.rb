@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
     where(auth.slice(:provider, :uid)).first_or_initialize do |user|
       user.provider    = auth.provider
       user.uid         = auth.uid
-      user.email       = auth.info.email
-      user.name        = auth.info.name
+      user.email       ||= auth.info.email
+      user.name        ||= auth.info.name
       user.oauth_token = auth.credentials.token
       user.oauth_token_expires_at = Time.at(auth.credentials.expires_at)
       user.save!

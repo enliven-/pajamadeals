@@ -5,6 +5,17 @@ class UsersController < ApplicationController
   end
   
   def update
+    
+    if !@user.mobile.present? && user = User.find_by(user_params[:mobile])
+      attributes = @user.attributes
+      attributes.delete("id")
+      attributes.delete("role")
+      @user.destroy
+      user.update_attributes attributes
+      @user = user
+      sign_in(@user)
+    end
+      
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to :back }

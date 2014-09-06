@@ -77,7 +77,7 @@ class ClassifiedsController < ApplicationController
     if !user_signed_in?
       user_attributes = classified_params.delete(:user_attributes)
       user = User.find_by(mobile: user_attributes[:mobile])
-      user = User.create(user_attributes.merge!(guest: true)) if !user.present?
+      user = User.create(user_attributes) if !user.present?
     end
     
     @classified = Classified.new(classified_params)
