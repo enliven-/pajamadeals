@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20140906171911) do
     t.string   "oauth_token"
     t.datetime "oauth_token_expires_at"
     t.integer  "role"
+    t.string   "devise_email"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
