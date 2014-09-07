@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to :back }
+        format.html { redirect_to root_url }
         format.js
       else
         format.html { render :edit }
