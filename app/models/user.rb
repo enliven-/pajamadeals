@@ -11,8 +11,9 @@ class User < ActiveRecord::Base
   include HasToken
   has_token
 
-  #validates :mobile, presence: true, uniqueness: true,
-   # format: { with: /\A[789]\d{9}\z/, message: 'Invalid number'}
+  validates :mobile, presence: true, uniqueness: true,
+    format: { with: /\A[789]\d{9}\z/, message: 'Invalid mobile number'}
+  validates :name, presence: true
     
   enum role: {
     admin: 1,
