@@ -15,7 +15,7 @@
 //= require jquery_ujs
 //= require flatuipro
 //= require twitter/bootstrap
-//= require turbolinks
+// require turbolinks
 //= require chartkick
 //= require js-routes
 //= require_tree .
