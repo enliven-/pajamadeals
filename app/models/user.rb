@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
     record.user == self
   end
   
+  def guest?
+    uid.present?
+  end
+  
   private
   
   before_create :save_role
