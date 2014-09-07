@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   
   def update
     
-    if !@user.mobile.present? && user = User.find_by(user_params[:mobile])
+    if !@user.mobile.present? && user = User.find_by(mobile: user_params[:mobile])
       attributes = @user.attributes
       attributes.delete("id")
       attributes.delete("role")
