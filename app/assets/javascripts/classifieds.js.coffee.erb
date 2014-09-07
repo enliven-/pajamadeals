@@ -35,6 +35,8 @@ ready = ->
 		$('.user-fields').toggle()
 		$('#classified-submit').toggle()
 			
+	# Store values if sign up clicked from classified_new page
+			
 	$('.fb-sign-up-classified').click (event) ->
 		$.cookie 'classified_title', $('#classified_title').val(),
 			domain: '<%= App.domain %>'
@@ -42,6 +44,68 @@ ready = ->
 		$.cookie 'classified_description', $('#classified_description').val()
 		$.cookie 'classified_image', $('#classified_image').val()
 		$.cookie 'classified_price', $('#classified_price').val()
+			
+	# Validations
+	
+	$("#new_classified").bootstrapValidator
+	  fexcluded: [
+	    ":disabled"
+	    ":hidden"
+	    ":not(:visible)"
+	  ]
+	  feedbackIcons:
+	    valid: "glyphicon glyphicon-ok"
+	    invalid: "glyphicon glyphicon-remove"
+	    validating: "glyphicon glyphicon-refresh"
+
+	  live: "enabled"
+	  message: "This value is not valid"
+	  submitButtons: 'button[type="submit"]'
+	  trigger: null
+	  fields:
+	    "classified[title]":
+	      validators:
+	        notEmpty:
+	          message: "The title is required"
+
+	    "classified[category_id]":
+	      validators:
+	        notEmpty:
+	          message: "The category is required"
+
+	    "classified[price]":
+	      validators:
+	        notEmpty:
+	          message: "The price is required"
+
+	        digits:
+	          message: "The price can contain digits only"
+
+	        greaterThen:
+	          message: "Please enter a value greater than or equal to 0"
+
+	    "classified[user_attributes][name]":
+	      validators:
+	        notEmpty:
+	          message: "The name is required"
+
+	    "classified[user_attributes][mobile]":
+	      validators:
+	        notEmpty:
+	          message: "The mobile number is required"
+
+	        digits:
+	          message: "The mobile number can contain digits only"
+
+	        stringLength:
+	          min: 10
+	          max: 10
+	          message: "Please enter a valid 10 digit mobile number"
+
+	    "classified[user_attributes][college_id]":
+	      validators:
+	        notEmpty:
+	          message: "The college is required"
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

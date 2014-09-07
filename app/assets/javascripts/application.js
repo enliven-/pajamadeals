@@ -109,3 +109,4 @@ $(document)
       $('.main').spin(false);
 	  $('.main').css('opacity', '1')
   })
+  
