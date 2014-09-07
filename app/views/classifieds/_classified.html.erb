@@ -1,6 +1,8 @@
 <div class="item">
 	<%= div_for classified, class: "box" do %>
-		<%= link_to (image_tag classified.image, class: 'image'), classified_path(classified) %>
+		<div style="min-height: 6px">
+			<%= link_to (image_tag classified.image, class: 'image'), classified_path(classified) if classified.image.present? %>
+		</div>
 		<div class="description">
 			<div class="title"><%= link_to classified.title, classified_path(classified) %></div>
 			<div class="price">Rs <%= classified.price %></div>
