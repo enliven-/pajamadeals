@@ -14,7 +14,6 @@
 //= require jquery-ui/button
 //= require jquery-ui/tooltip
 //= require jquery-ui/effect
-//= require flatuipro
 //= require jquery_ujs
 //= require twitter/bootstrap
 // require turbolinks
