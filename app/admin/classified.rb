@@ -5,7 +5,7 @@ ActiveAdmin.register Classified do
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
    permit_params :title, :description, :user_id, :college_id, :category_id,
-   :price, :list
+   :price, :list, :image
   #
   # or
   #
