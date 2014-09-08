@@ -4,7 +4,7 @@
 
 ready = ->
 	
-	# validations
+	# Form validations
 	
 	$("#edit_user").bootstrapValidator
 	  feedbackIcons:
