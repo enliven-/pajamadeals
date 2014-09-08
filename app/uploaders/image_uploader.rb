@@ -32,21 +32,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
-    process resize_to_fit: [50, 50]
-  end
-
-  version :index do
-    process resize_to_fit: [160, 160]
-  end
-
-  version :show do
-    process resize_to_fit: [450, 350]
-  end
-
-  version :s135x180 do
-    process resize_to_fit: [135, 180]
-  end
 
   # def default_url
 #     ActionController::Base.helpers.asset_path("fallback/" + "default_book1.png")
