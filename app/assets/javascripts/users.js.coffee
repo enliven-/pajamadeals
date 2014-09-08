@@ -25,10 +25,8 @@ ready = ->
 	      validators:
 	        notEmpty:
 	          message: "The mobile number is required"
-
 	        digits:
 	          message: "The mobile number can contain digits only"
-
 	        stringLength:
 	          min: 10
 	          max: 10
@@ -39,10 +37,10 @@ ready = ->
 	        emailAddress:
 	          message: "The input is not a valid email address"
 
-	    "user[college_id]":
-	      validators:
-	        notEmpty:
-	          message: "The college is required"
+	    # "user[college_id]":
+ # 	      validators:
+ # 	        notEmpty:
+ # 	          message: "The college is required"
 	
 
 $(document).ready(ready)

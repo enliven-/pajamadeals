@@ -63,10 +63,10 @@ ready = ->
 	        notEmpty:
 	          message: "The title is required"
 
-	    "classified[category_id]":
-	      validators:
-	        notEmpty:
-	          message: "The category is required"
+	    # "classified[category_id]":
+ # 	      validators:
+ # 	        notEmpty:
+ # 	          message: "The category is required"
 
 	    "classified[price]":
 	      validators:
@@ -88,19 +88,17 @@ ready = ->
 	      validators:
 	        notEmpty:
 	          message: "The mobile number is required"
-
 	        digits:
 	          message: "The mobile number can contain digits only"
-
 	        stringLength:
 	          min: 10
 	          max: 10
 	          message: "Please enter a valid 10 digit mobile number"
 
-	    "classified[user_attributes][college_id]":
-	      validators:
-	        notEmpty:
-	          message: "The college is required"
+	    # "classified[user_attributes][college_id]":
+# 	      validators:
+# 	        notEmpty:
+# 	          message: "The college is required"
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
