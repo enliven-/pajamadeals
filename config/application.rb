@@ -22,12 +22,5 @@ module Pajamadeals
     config.autoload_paths += Dir["#{config.root}/app/controllers/concerns",
                                  "#{config.root}/app/models/concerns",
                                  "#{config.root}/lib"]
-                                 
-   config.middleware.use Rack::Cors do
-         allow do
-           origins '*'
-           resource '*', headers: :any, methods: [:get, :post, :options]
-         end
-       end
   end
 end

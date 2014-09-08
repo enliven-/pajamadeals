@@ -53,6 +53,7 @@ gem 'kaminari'
 gem 'mongodb_logger'
 gem "mongo"
 gem "bson_ext"
+gem 'exception_notification'
 
 # view helper
 gem "therubyracer"
@@ -96,8 +97,3 @@ gem 'gem-open', group: :development
 # analytics and statistics
 gem 'chartkick'
 gem 'groupdate'
-
-# form helpers
-# gem 'wicked '
-
-gem 'rack-cors', :require => 'rack/cors'

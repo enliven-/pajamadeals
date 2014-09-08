@@ -94,4 +94,10 @@ Rails.application.configure do
     user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"]
   }
+  
+  config.middleware.use ExceptionNotification::Rack,
+    email: {
+      sender_address: ENV["GMAIL_USERNAME"],
+      exception_recipients: %w{bhushanlodha@gmail.com dreamz.unlimitid@gmail.com}
+    }
 end

@@ -116,6 +116,9 @@ GEM
       faraday
       multi_json
     erubis (2.7.0)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (2.2.1)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -220,7 +223,6 @@ GEM
       activerecord (>= 3.0)
     polyglot (0.3.5)
     rack (1.5.2)
-    rack-cors (0.2.9)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.2)
@@ -352,6 +354,7 @@ DEPENDENCIES
   chartkick
   coffee-rails (~> 4.0.0)
   database_cleaner
+  exception_notification
   factory_girl_rails
   faker
   font-awesome-rails
@@ -370,7 +373,6 @@ DEPENDENCIES
   mongodb_logger
   mysql2
   omniauth-facebook (~> 2.0.0)
-  rack-cors
   rails (= 4.1.4)
   rspec
   rspec-rails
