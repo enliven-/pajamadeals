@@ -1,7 +1,9 @@
 <%= div_for @classified, class: 'show' do %>
 	<div class="col-md-8 product box">
-		<%= image_tag @classified.image, class: 'image center-block' %>
-		<hr class="hr-dashed"></hr>
+		<% if @classified.image.present? %>
+			<%= image_tag @classified.image, class: 'image center-block' %>
+			<hr class="hr-dashed"></hr>
+		<% end %>
 		<div class="product-details">
 			<h6 class="title"><%= @classified.title %></h6>
 			<p>Details</p>
