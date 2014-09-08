@@ -97,3 +97,5 @@ gem 'gem-open', group: :development
 # analytics and statistics
 gem 'chartkick'
 gem 'groupdate'
+
+gem 'devise'
