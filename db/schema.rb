@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20140906171911) do
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
     t.integer  "listing_type"
     t.boolean  "sold",         default: false
   end
@@ -95,10 +94,8 @@ ActiveRecord::Schema.define(version: 20140906171911) do
     t.string   "oauth_token"
     t.datetime "oauth_token_expires_at"
     t.integer  "role"
-    t.string   "devise_email"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["mobile"], name: "index_users_on_mobile", unique: true, using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", unique: true, using: :btree
 
