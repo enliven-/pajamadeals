@@ -16,16 +16,6 @@ GIT
       sass-rails
 
 GIT
-  remote: git://github.com/reflection/designmodo-flatuipro-rails.git
-  revision: 6cd4f786662497c8650b9cbc3bd40495dfa49518
-  branch: flatuipro-1.2
-  specs:
-    designmodo-flatuipro-rails (1.2.5.0.branch)
-      jquery-rails (>= 2.2.1)
-      jquery-ui-rails (>= 4.0.3)
-      less-rails-bootstrap
-
-GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 1d93c5a77049b3d21d17c847ad0531d7714fa229
   branch: bootstrap3
@@ -177,8 +167,6 @@ GEM
     less-rails (2.5.0)
       actionpack (>= 3.1)
       less (~> 2.5.0)
-    less-rails-bootstrap (3.2.0)
-      less-rails (~> 2.5.0)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -364,7 +352,6 @@ DEPENDENCIES
   chartkick
   coffee-rails (~> 4.0.0)
   database_cleaner
-  designmodo-flatuipro-rails!
   factory_girl_rails
   faker
   font-awesome-rails
