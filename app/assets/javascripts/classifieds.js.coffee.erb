@@ -8,7 +8,8 @@ ready = ->
 	
 	$container = $('#classifieds')
 	$container.imagesLoaded ->
-  		$container.isotope itemSelector: ".item"
+		$container.isotope
+		  itemSelector: ".item"
 		
 	# Endless scrolling
 		
