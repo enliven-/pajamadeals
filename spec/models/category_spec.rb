@@ -24,4 +24,9 @@ describe Category do
     expect(category).to be_valid
     expect(category.save).to be_truthy
   end
+  
+  it 'has many classifieds' do
+    category = build :category
+    expect(category).to respond_to :classifieds
+  end
 end

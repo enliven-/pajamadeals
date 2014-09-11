@@ -62,4 +62,14 @@ describe Classified do
     expect(Classified.buy).to include(classified)
     expect(Classified.sell).not_to include(classified)
   end
+  
+  it 'has the right owner' do
+    user1 = create :user
+    user2 = create :user, mobile: '9999999898'
+    classified = create :classified, user: user1
+    
+    expect(classified.owner).to be user1
+    expect(classified.owner?(user1)).to be_truthy
+    expect(classified.owner?(user2)).to be_falsy
+  end
 end

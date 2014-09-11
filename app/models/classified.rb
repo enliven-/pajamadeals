@@ -15,14 +15,15 @@ class Classified < ActiveRecord::Base
   has_token
   
   mount_uploader :image, ImageUploader
+ 
+  def owner
+    user
+  end
   
   def owner?(user)
-    self.user == user
+    owner == user
   end
   
-  def self.search_r(params)
-  end
-
   private
 
   before_create :set_college
