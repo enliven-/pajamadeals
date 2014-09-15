@@ -15,14 +15,15 @@ $boxTextPadding: 6px 14px 7px;
 .item {
 	width: 20%;
 	/* Smartphones (portrait) ----------- */
-	@media only screen
-	and (max-width : 320px) {
+	@media only screen 
+	and (min-device-width : 320px) 
+	and (max-device-width : 480px) {
 		width: 50%;
 	}
 	
-	/* Smartphones (landscape) ----------- */
 	@media only screen 
-	and (min-width : 321px) {
+	and (min-device-width : 481px) 
+	and (max-device-width : 767px) {
 		width: 33.33%;
 	}
 	
