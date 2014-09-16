@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
          if !@user.mobile.present? || !@user.college.present?
            redirect_to edit_user_path(@user)
          else
-           redirect_to :back
+           redirect_to :back rescue(redirect_to root_path)
          end
        end
      end
