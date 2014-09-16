@@ -16,9 +16,9 @@ class User < ActiveRecord::Base
  #  validates :name, presence: true
     
   enum role: {
-    admin: 1,
+    admin:      1,
     ambassador: 2,
-    user: 3
+    user:       3
   }
 
   # facebook

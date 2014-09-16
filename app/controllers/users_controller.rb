@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   end
   
   def user_params
-    params.require(:user).permit(:mobile, :college_id, :name, :email)
+    params.require(:user).permit! #(:mobile, :college_id, :name, :email, :)
   end
   
   def authenticate_owner!(user)
