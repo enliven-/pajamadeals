@@ -36,7 +36,10 @@
 
     <%= javascript_include_tag "application" %>
 	
-    <%= render 'layouts/heap_analytics' if Rails.env.production? %>
+	<% if Rails.env.production?  %>
+	    <%= render 'layouts/heap_analytics' %>
+		<%= render 'layouts/mixpanel_analytics' %>
+	<% end %>
 	
   </head>
   <body>
