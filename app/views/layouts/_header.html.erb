@@ -12,9 +12,9 @@
 	  </div>
 	  
 	  <% if mobile_device? %>
-	 		<%= link_to raw('<strong>Sell things</strong>'), new_classified_path(listing_type: :sell), class: 'btn btn-danger btn-wide navbar-btn col-md-6' %>
+	 		<%= link_to raw('<strong>Sell</strong>'), new_classified_path(listing_type: :sell), class: 'btn btn-danger btn-wide navbar-btn col-md-6' %>
 
-	 		<%= link_to raw('<strong>Buy things</strong>'), new_classified_path(listing_type: :buy), class: 'btn btn-danger btn-wide navbar-btn col-md-6' %>
+	 		<%= link_to raw('<strong>Want</strong>'), new_classified_path(listing_type: :buy), class: 'btn btn-danger btn-wide navbar-btn col-md-6' %>
 		
 			<%= form_tag classifieds_path, class: 'navbar-form navbar-right', method: :get do %>
 				<div class="form-group">
