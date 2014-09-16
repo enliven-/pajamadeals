@@ -1,4 +1,5 @@
 class College < ActiveRecord::Base
+  default_scope { where(active: true) }
 
   has_many :users
   has_many :classifieds
