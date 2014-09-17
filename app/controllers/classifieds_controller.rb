@@ -38,11 +38,15 @@ class ClassifiedsController < ApplicationController
       end
     end
     
-    # geo location
-    if current_college
-      college_ids = College.search('*', where: {location: {near: [current_college.latitude, current_college.longitude], within: "5km"}}).map(&:id)
-      search_params[:where][:college_id] = college_ids
+    if cookies[:college_id].present?
+      search_params[:where][:college_id] = cookies[:college_id]
     end
+    #search_params[:where][:college_id] = 1
+    # geo location
+    # if current_college
+#       college_ids = College.search('*', where: {location: {near: [current_college.latitude, current_college.longitude], within: "5km"}}).map(&:id)
+#       search_params[:where][:college_id] = college_ids
+#     end
     
     @classifieds = Classified.search(query, search_params)
     
