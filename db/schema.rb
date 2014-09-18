@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916202440) do
+ActiveRecord::Schema.define(version: 20140918112939) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140916202440) do
     t.integer  "listing_type"
     t.boolean  "sold",         default: false
     t.string   "image"
+    t.boolean  "spam",         default: true
   end
 
   create_table "colleges", force: true do |t|
