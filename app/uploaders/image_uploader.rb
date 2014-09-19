@@ -5,6 +5,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
    #include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  
+  process quality: 10
 
   # Choose what kind of storage to use for this uploader:
   storage :file
