@@ -17,7 +17,7 @@ class ClassifiedsController < ApplicationController
     search_params[:page]         = params[:page]
     search_params[:per_page]     = 30
     search_params[:order]        = { created_at: :desc }
-    search_params[:where]        = { list: true }
+    search_params[:where]        = { list: true, deleted: false }
     search_params[:where][:sold] = false
     
     
@@ -123,7 +123,7 @@ class ClassifiedsController < ApplicationController
   end
 
   def destroy
-    @classified.update_attribute(:list, false)
+    @classified.update_attribute(:deleted, true)
     respond_to do |format|
       format.html { redirect_to classifieds_url,
                     notice: 'Classified was successfully deleted.' }

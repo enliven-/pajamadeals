@@ -120,4 +120,31 @@ describe ClassifiedsController, type: :controller do
       end
     end
   end
+  
+  describe "DELETE #destroy" do
+    before(:each) do
+      @user = create :user
+      sign_in @user
+    end
+    
+    it "verifies user ownership of the record" do
+      user2 = create :user, mobile: '9987612345'
+      classified = create :classified, user: user2
+      delete :destroy, id: classified
+      expect(response).to redirect_to(root_url)
+    end
+    
+    it "marks record as deleted" do
+      classified = create :classified, user: @user
+      delete :destroy, id: classified
+      expect(classified.reload.deleted?).to be_truthy
+    end
+    
+    it "persists the deleted record in database" do
+      classified = create :classified, user: @user
+      expect{
+        delete :destroy, id: classified
+      }.to_not change(Classified, :count)
+    end
+  end
 end

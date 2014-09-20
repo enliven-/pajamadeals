@@ -15,6 +15,11 @@ class Classified < ActiveRecord::Base
   has_token
   
   mount_uploader :image, ImageUploader
+  
+  scope :sold, -> { where(sold: true) }
+  scope :spam, -> { where(spam: true) }
+  scope :unlisted, -> { where(list: false) }
+  scope :deleted, -> { where(deleted: true) }
  
   def owner
     user
