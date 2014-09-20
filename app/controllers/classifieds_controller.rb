@@ -17,7 +17,7 @@ class ClassifiedsController < ApplicationController
     search_params[:page]         = params[:page]
     search_params[:per_page]     = 30
     search_params[:order]        = { created_at: :desc }
-    search_params[:where]        = { list: true, deleted: false }
+    search_params[:where]        = { list: true }
     search_params[:where][:sold] = false
     
     
