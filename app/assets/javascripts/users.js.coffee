@@ -36,6 +36,8 @@ ready = ->
 	      validators:
 	        emailAddress:
 	          message: "The input is not a valid email address"
+	        notEmpty:
+	          message: "The email is required"
 
 	    # "user[college_id]":
  # 	      validators:
