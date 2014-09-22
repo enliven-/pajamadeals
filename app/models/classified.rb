@@ -29,6 +29,11 @@ class Classified < ActiveRecord::Base
     owner == user
   end
   
+  def delete!
+    self.deleted = true
+    save
+  end
+  
   private
 
   before_create :set_college

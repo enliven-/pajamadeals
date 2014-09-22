@@ -72,4 +72,14 @@ describe Classified do
     expect(classified.owner?(user1)).to be_truthy
     expect(classified.owner?(user2)).to be_falsy
   end
+  
+  it "marks record deleted on delete!" do
+    classified = create :classified
+    
+    expect(classified.deleted?).to be_falsy
+    
+    classified.delete!
+    
+    expect(classified.deleted?).to be_truthy
+  end
 end
