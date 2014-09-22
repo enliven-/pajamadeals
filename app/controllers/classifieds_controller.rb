@@ -13,7 +13,7 @@ class ClassifiedsController < ApplicationController
     # default params
     search_params = {}
     search_params[:operator]     = 'or'
-    search_params[:fields]       = ["title^5", "description"]
+    search_params[:fields]       = ["title"]
     search_params[:page]         = params[:page]
     search_params[:per_page]     = 30
     search_params[:order]        = { created_at: :desc }
@@ -48,7 +48,7 @@ class ClassifiedsController < ApplicationController
 #       college_ids = College.search('*', where: {location: {near: [current_college.latitude, current_college.longitude], within: "5km"}}).map(&:id)
 #       search_params[:where][:college_id] = college_ids
 #     end
-    
+
     @classifieds = Classified.search(query, search_params)
     
     respond_to do |format|
