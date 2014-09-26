@@ -97,7 +97,7 @@ class ClassifiedsController < ApplicationController
         cookies.delete(:classified_description)
         cookies.delete(:classified_image)
         cookies.delete(:classified_price)
-
+        sleep(1)
         format.html { redirect_to classifieds_url,
                       notice: 'Classified was successfully created.' }
         format.json { render :show, status: :created, location: @classified }
