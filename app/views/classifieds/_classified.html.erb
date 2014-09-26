@@ -13,6 +13,7 @@
 		<div class="footer">
 			<div class="mobile">Call: &nbsp;<%= classified.user.mobile %></div>
 			<div class="college"><%= classified.college.abbr %>, <%= classified.college.city %></div>
+			<div class="date pull-right" style="color: lightgrey"><em><%= render_date classified.created_at %></em></div>
 			<div class="listing_type">
 				<%= render_listing_type_label(classified) %>
 				<% if classified.sold? %>
