@@ -1,35 +1,36 @@
-// Ask for mobile and college if they don't already exist
-<% if !@user.mobile.present? || !@user.college.present? %>
-	$('#user-form').html('<%= j render("users/form") %>')
-	$('#user-form').modal({
-		backdrop: false,
-		keyboard: false,
-	})
-
-	$(function() {
-	  return $('.inverse-dropdown-select').selectpicker({
-	    style: 'btn btn-default',
-	    menuStyle: 'dropdown-inverse'
-	  });
-	});
-<% end %>
-
-// update headers
-$('#user-session-links').html('<%= j render("layouts/user_session_links") %>')
-
-// Send ajax request to create classified if form exists
-if($('#new_classified').length > 0) { 
-	$.ajax({
-		url: '/classifieds',
-		type: 'POST',
-		dataType: 'html',
-		data: {
-			'[classified][listing_type]': $('#classified_listing_type').val()
-			'[classified][title]': $('#classified_title').val(),
-			'[classified][category_id]': $('#classified_category_id').val(),
-			'[classified][description]': $('#classified_description').val(),
-			'[classified][image]': $('#classified_image').val(),
-			'[classified][price]': $('#classified_price').val()
-		}
-	});
-}
+console.log("here");
+// // Ask for mobile and college if they don't already exist
+// <% if !@user.mobile.present? || !@user.college.present? %>
+// 	$('#user-form').html('<%= j render("users/form") %>')
+// 	$('#user-form').modal({
+// 		backdrop: false,
+// 		keyboard: false,
+// 	})
+//
+// 	$(function() {
+// 	  return $('.inverse-dropdown-select').selectpicker({
+// 	    style: 'btn btn-default',
+// 	    menuStyle: 'dropdown-inverse'
+// 	  });
+// 	});
+// <% end %>
+//
+// // update headers
+// $('#user-session-links').html('<%= j render("layouts/user_session_links") %>')
+//
+// // Send ajax request to create classified if form exists
+// if($('#new_classified').length > 0) {
+// 	$.ajax({
+// 		url: '/classifieds',
+// 		type: 'POST',
+// 		dataType: 'html',
+// 		data: {
+// 			'[classified][listing_type]': $('#classified_listing_type').val()
+// 			'[classified][title]': $('#classified_title').val(),
+// 			'[classified][category_id]': $('#classified_category_id').val(),
+// 			'[classified][description]': $('#classified_description').val(),
+// 			'[classified][image]': $('#classified_image').val(),
+// 			'[classified][price]': $('#classified_price').val()
+// 		}
+// 	});
+// }

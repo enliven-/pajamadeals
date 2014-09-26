@@ -6,7 +6,7 @@
 			<!-- <li><%= link_to 'Items you can sell', '#', class: 'disabled' %><li>
 			<li class="divider"></li> -->
 		    <li><%= link_to 'Sell listings', classifieds_path(filters: { user: true, listing_type: :sell }) %></li>
-		    <li><%= link_to 'Buy listings', classifieds_path(filters: { user: true, listing_type: :buy })%></li>
+		    <li><%= link_to 'Want listings', classifieds_path(filters: { user: true, listing_type: :buy })%></li>
 		    <li class="divider"></li>
 		    <li><%= link_to 'Settings', edit_user_path(current_user) %></li>
 			<li><%= link_to 'Sign out', signout_path, method: :delete %></li>

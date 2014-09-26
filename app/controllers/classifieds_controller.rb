@@ -79,24 +79,26 @@ class ClassifiedsController < ApplicationController
 
   def create
     
-    if !user_signed_in?
-      user_attributes = classified_params.delete(:user_attributes)
-      user = User.find_by(mobile: user_attributes[:mobile])
-      user = User.create(user_attributes.merge(
-      email: "#{SecureRandom.hex(10)}@guest.com")) if !user.present?
-    end
+    # if !user_signed_in?
+ #      user_attributes = classified_params.delete(:user_attributes)
+ #      user = User.find_by(mobile: user_attributes[:mobile])
+ #      user = User.create(user_attributes.merge(
+ #      email: "#{SecureRandom.hex(10)}@guest.com")) if !user.present?
+ #    end
     
     @classified = Classified.new(classified_params)
-    @classified.user = current_user || user
+    @classified.user = current_user # || user
 
     respond_to do |format|
       if @classified.save
+        
+        sign_in(@classified.user)
 
-        cookies.delete(:classified_title, domain: 'pajamadeals.dev')
-        cookies.delete(:classified_category_id)
-        cookies.delete(:classified_description)
-        cookies.delete(:classified_image)
-        cookies.delete(:classified_price)
+        # cookies.delete(:classified_title, domain: 'pajamadeals.dev')
+#         cookies.delete(:classified_category_id)
+#         cookies.delete(:classified_description)
+#         cookies.delete(:classified_image)
+#         cookies.delete(:classified_price)
 
         format.html { redirect_to classifieds_url,
                       notice: 'Classified was successfully created.' }
