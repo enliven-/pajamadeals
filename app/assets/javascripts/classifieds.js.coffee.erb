@@ -49,6 +49,7 @@ ready = ->
 	# Form Validations
 	
 	$("#new_classified").bootstrapValidator
+	  excluded: [':disabled', ':hidden', ':not(:visible)']
 	  feedbackIcons:
 	    valid: "glyphicon glyphicon-ok"
 	    invalid: "glyphicon glyphicon-remove"
