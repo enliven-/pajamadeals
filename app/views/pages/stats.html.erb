@@ -24,4 +24,3 @@
 } %>
 
 <h2>Classifieds/college pie chart</h2>
-<%= pie_chart Classified.group(:college_id).count.inject({ }) { |x, (k,v)| x[College.find(k).name] = v; x }%>
