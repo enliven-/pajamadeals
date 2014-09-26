@@ -9,10 +9,12 @@
 			<p>Details</p>
 			<table class="table">
 				<tbody>
-					<tr class="price">
-						<td>Price</td>
-						<td><%= render_price @classified.price %></td>
-					</tr>
+					<% if @classified.sell? %>
+						<tr class="price">
+							<td>Price</td>
+							<td><%= render_price @classified.price %></td>
+						</tr>
+					<% end %>
 					<tr class="description">
 						<td>Description</td>
 						<td><%= render_field @classified, :description %></td>
