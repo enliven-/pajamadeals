@@ -10,10 +10,13 @@ window.fbAsyncInit = ->
   FB.init(appId: '<%= Rails.env.production? ? ENV["FACEBOOK_APP_ID"] : "1496050790612397" %>', cookie: true)
 
   $('.fb-sign-in').click (e) ->
+	  console.log("in fb")
 	  e.preventDefault()
 	  FB.login ((response) ->
-		  window.location = '/auth/facebook/callback' if response.authResponse)
-		  , scope: 'email'
+		  $.ajax
+		  	url: '/auth/facebook/callback'
+			type: 'POST'
+		 ), scope: 'email'
 
   $('#sign_out').click (e) ->
     FB.getLoginStatus (response) ->
