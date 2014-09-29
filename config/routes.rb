@@ -24,7 +24,7 @@ Rails.application.routes.draw do
    root to: 'classifieds#index'
   # root to: 'pages#home'
   
-  match 'auth/:provider/callback', to: 'sessions#create', via: [:post, :get], as: 'omniauth_callback'
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:post, :get], as: 'auth_callback'
   match 'auth/failure', to: redirect('/'), via: [:post, :get]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:delete]
 

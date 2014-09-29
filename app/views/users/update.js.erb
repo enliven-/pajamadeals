@@ -1,1 +1,18 @@
-$('#user-form').modal('hide')
+console.log("here")
+$('#signup-modal').modal('hide');
+
+if($('#new_classified').length > 0) {
+	$.ajax({
+		url: '/classifieds',
+		type: 'POST',
+		dataType: 'html',
+		data: {
+			'[classified][listing_type]': $('#classified_listing_type').val()
+			'[classified][title]': $('#classified_title').val(),
+			'[classified][category_id]': $('#classified_category_id').val(),
+			'[classified][description]': $('#classified_description').val(),
+			'[classified][image]': $('#classified_image').val(),
+			'[classified][price]': $('#classified_price').val()
+		}
+	});
+}

@@ -5,20 +5,26 @@ jQuery ->
     url: "#{window.location.protocol}//connect.facebook.net/en_US/all.js"
     dataType: 'script'
     cache: true
+	status: true
+	cookie: true
+	xfbml: true
+
 
 window.fbAsyncInit = ->
-  FB.init(appId: '<%= Rails.env.production? ? ENV["FACEBOOK_APP_ID"] : "1496050790612397" %>', cookie: true)
+	FB.init(appId: '<%= Rails.env.production? ? ENV["FACEBOOK_APP_ID"] : "1496050790612397" %>', cookie: true)
 
-  $('.fb-sign-in').click (e) ->
-	  console.log("in fb")
-	  e.preventDefault()
-	  FB.login ((response) ->
-		  $.ajax
-		  	url: '/auth/facebook/callback'
-			type: 'POST'
-		 ), scope: 'email'
+	$('.fb-sign-in').click (e) ->
+		e.preventDefault()
+		FB.login ((response) ->
+			if response.authResponse
+				$.ajax
+					url: 'http://localhost:3000/auth/facebook/callback'
+					type: 'POST'
+				  ),
+				  scope: 'email'
 
-  $('#sign_out').click (e) ->
-    FB.getLoginStatus (response) ->
-      FB.logout() if response.authResponse
-    true
+	$('#sign_out').click (e) ->
+		FB.getLoginStatus (response) ->
+		  FB.logout() if response.authResponse
+
+		# window.location = '/auth/facebook/callback'

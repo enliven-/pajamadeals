@@ -4,7 +4,7 @@ class Classified < ActiveRecord::Base
   enum listing_type: { buy: 0, sell: 1 }
 
   validates :title, presence: true
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  #validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   belongs_to :user
   accepts_nested_attributes_for :user
