@@ -4,6 +4,7 @@ $('#user-session-links').html('<%= j render("layouts/user_session_links") %>')
 // unbind fb-sign event from 'create button'
 $('#create-classified').removeClass('fb-sign-in');
 $('#create-classified').unbind('click')
+$('#create-classified').val("Create")
 
 // Ask for mobile and college if they don't already exist
 <% if !@user.mobile.present? || !@user.college.present? %>

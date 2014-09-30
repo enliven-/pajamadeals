@@ -63,14 +63,7 @@ class ClassifiedsController < ApplicationController
 
   def new
     @title = 'new classified'
-    @classified = Classified.new(listing_type: params[:listing_type],
-                                 title:       cookies[:classified_title],
-                                 category_id: cookies[:classified_category_id],
-                                 description: cookies[:classified_description],
-                                 image_cache: cookies[:classified_image],
-                                 price:       cookies[:classified_price],
-                                )
-    @classified.build_user if !user_signed_in?
+    @classified = Classified.new(listing_type: params[:listing_type])
   end
 
   def edit
@@ -83,13 +76,11 @@ class ClassifiedsController < ApplicationController
 
     respond_to do |format|
       if @classified.save
-        
-        sign_in(@classified.user)
-
         format.html { redirect_to classified_url(@classified),
                       notice: 'Classified was successfully created.' }
         format.json { render :show, status: :created, location: @classified }
-        format.js { render js: "window.location.pathname='#{classified_path(@classified)}'"}
+        format.js   { render js:
+                   "window.location.pathname='#{classified_path(@classified)}'"}
         
       else
         format.html { render :new }
