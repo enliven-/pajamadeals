@@ -65,8 +65,11 @@
 		  	<h4 class="text-center" style="margin-bottom: 50px; margin-top: 50px">A place to conveniently buy/sell college stuff - used books, drafters, instruments, things required by hostelites like tables, utilities, etc.</h4>
 		<% end %>
 
-          <%= bootstrap_flash %>
-          <%= yield %>
+        <%= bootstrap_flash %>
+        <%= yield %>
+		  
+		  
+	    <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
     </div> <!-- /container -->
 	
      <%= render 'layouts/google_analytics' if Rails.env.production? %>

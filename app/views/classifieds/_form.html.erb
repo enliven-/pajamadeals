@@ -41,51 +41,11 @@
 		   	  	</div>
 		  	</div>
 		<% end %>
-	</div>
 		
-	<div class="user-fields" style="display:none">
-		<div class="col-md-12 header">
-			<h6>Tell us about you</h6>
-		</div>
-		
-	    <div class="form-group">
-	       <div class="col-md-offset-4 col-md-10">
-			     <%= link_to 'Sign in with Facebook', "/auth/facebook", class: 'btn btn-primary btn-hg btn-embossed fb-sign-in fb-sign-up-classified' %>
+	    <div class="form-group" style="margin-top:15px">
+	       <div class="col-md-offset-2 col-md-10">
+			     <%= f.submit "#{user_signed_in? ? 'Create' : 'Sign in with facebook and Continue' }", class: "btn btn-primary btn-wide btn-embossed #{'fb-sign-in' if !user_signed_in?}", id: 'create-classified' %>
 	       </div>
-	     </div>
-		 
-		<hr class="hr-dashed"></hr>
-		<div class="col-md-12 text-center" style="font-size: 15px;margin-bottom: 20px;">OR</div>
-			
-		<%= f.fields_for :user, User.new do |u| %>
-		
-			<div class="form-group">
-				<%= u.label :name, class: 'col-md-2 control-label' %>
-				<div class="col-md-10">
-					<%= u.text_field :name, class: 'form-control' %>
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<%= u.label :mobile, class: 'col-md-2 control-label' %>
-				<div class="col-md-10">
-					<%= u.text_field :mobile, class: 'form-control' %>
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<%= u.label :college, class: 'col-md-2 control-label' %>
-				<div class="col-md-10">
-                    <%= u.select :college_id, College.order(name: :asc).select(:id, :name).collect { |college| [college.name, college.id] }, {}, { class: 'inverse-dropdown-select' } %>
-                </div>
-			</div>		
-		<% end %>
+	    </div>
 	</div>
-		
-    <div class="form-group">
-       <div class="col-md-offset-2 col-md-10">
-		      <%= f.submit "Create", class: 'btn btn-wide btn-lg btn-primary btn-embossed', id: 'classified-submit', style: "#{'display:none' if !user_signed_in?}" %>
-		   	  <%= submit_tag "Next >", class: 'btn btn-wide btn-lg btn-primary btn-embossed', id: 'classified-next-step', style: "#{'display:none' if user_signed_in?}" %>
-       </div>
-     </div>
 <% end %>

@@ -63,14 +63,7 @@ class ClassifiedsController < ApplicationController
 
   def new
     @title = 'new classified'
-    @classified = Classified.new(listing_type: params[:listing_type],
-                                 title:       cookies[:classified_title],
-                                 category_id: cookies[:classified_category_id],
-                                 description: cookies[:classified_description],
-                                 image_cache: cookies[:classified_image],
-                                 price:       cookies[:classified_price],
-                                )
-    @classified.build_user if !user_signed_in?
+    @classified = Classified.new(listing_type: params[:listing_type])
   end
 
   def edit
@@ -78,29 +71,17 @@ class ClassifiedsController < ApplicationController
   end
 
   def create
-    
-    if !user_signed_in?
-      user_attributes = classified_params.delete(:user_attributes)
-      user = User.find_by(mobile: user_attributes[:mobile])
-      user = User.create(user_attributes.merge(
-      email: "#{SecureRandom.hex(10)}@guest.com")) if !user.present?
-    end
-    
     @classified = Classified.new(classified_params)
-    @classified.user = current_user || user
+    @classified.user = current_user
 
     respond_to do |format|
       if @classified.save
-
-        cookies.delete(:classified_title, domain: 'pajamadeals.dev')
-        cookies.delete(:classified_category_id)
-        cookies.delete(:classified_description)
-        cookies.delete(:classified_image)
-        cookies.delete(:classified_price)
-        sleep(1)
-        format.html { redirect_to classifieds_url,
+        format.html { redirect_to classified_url(@classified),
                       notice: 'Classified was successfully created.' }
         format.json { render :show, status: :created, location: @classified }
+        format.js   { render js:
+                   "window.location.pathname='#{classified_path(@classified)}'"}
+        
       else
         format.html { render :new }
         format.json { render json: @classified.errors,
