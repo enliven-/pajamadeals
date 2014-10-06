@@ -39,9 +39,7 @@ class ClassifiedsController < ApplicationController
       end
     end
     
-    if cookies[:college_id].present?
-      search_params[:where][:college_id] = cookies[:college_id]
-    end
+    search_params[:where][:college_id] = current_college.id if current_college
     #search_params[:where][:college_id] = 1
     # geo location
     # if current_college

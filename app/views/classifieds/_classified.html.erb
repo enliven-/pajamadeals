@@ -6,7 +6,7 @@
 		<div class="description">
 			<div class="title"><%= link_to classified.title, classified_path(classified) %></div>
 			<% if classified.sell? %>
-				<div class="price">Rs <%= classified.price %></div>
+				<div class="price"><%= classified.price.to_i > 0 ? 'Rs ' + classified.price : 'Free' %></div>
 			<% end %>
 		</div>
 		<hr class="hr-dashed"></hr>
