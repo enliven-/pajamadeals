@@ -11,6 +11,8 @@ jQuery ->
 
 
 window.fbAsyncInit = ->
+	app_id = "<%= Rails.env.production? ? ENV['FACEBOOK_APP_ID'] : '1496050790612397' %>"
+	console.log(app_id);
 	FB.init(appId: "<%= Rails.env.production? ? ENV['FACEBOOK_APP_ID'] : '1496050790612397' %>", cookie: true)
 
 	$('.fb-sign-in').click (e) ->
