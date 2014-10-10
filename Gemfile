@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 # ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
 gem 'mysql2'
@@ -62,6 +62,7 @@ gem 'font-awesome-rails'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 gem 'jquery-ui-rails'
 gem 'js-routes', require: 'js_routes'
+gem 'browser'
 
 # test helper
 gem 'faker'
