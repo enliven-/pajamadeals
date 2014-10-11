@@ -1,0 +1,9 @@
+<p class="lead intro">
+	<strong>
+		Lorem ipsum dallar sit mat
+	</strong>
+</p>
+
+<div class="select-college">
+	<%= select_tag :college, options_from_collection_for_select(College.order(name: :asc), :id, :name), prompt: "Select college" %>
+</div>

@@ -1,0 +1,10 @@
+<%= div_for classified, class: "box", style: "padding:6px" do %>
+	<div class="pull-right">
+		<div class="date" style="color: lightgrey"><em><%= render_date classified.created_at %></em></div>
+		<div class="college"><%= classified.college.abbr %>, <%= classified.college.city %></div>
+	</div>
+		<div class="title"><%= link_to classified.title, classified_path(classified) %></div>
+	<div class="footer">
+		<div class="mobile">Call: &nbsp;<%= classified.user.mobile %></div>
+	</div>
+<% end %>

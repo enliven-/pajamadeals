@@ -55,15 +55,7 @@
 
     <div class="container main">
 		
-		<% if !mobile_device? %>
-		  <%= render partial: 'layouts/secondary_nav' %>
-		<% end %>
-		  
-		<% if mobile_device? %>
-			<p class="text-center" style="font-size: 16px;">A place to conveniently buy/sell college stuff - used books, drafters, etc.</p>
-		<% else %>
-		  	<h4 class="text-center" style="margin-bottom: 50px; margin-top: 50px">A place to conveniently buy/sell college stuff - used books, drafters, instruments, things required by hostelites like tables, utilities, etc.</h4>
-		<% end %>
+		<h4 class="text-center" style="margin-bottom: 50px; margin-top: 50px">A place to conveniently buy/sell college stuff - used books, drafters, instruments, things required by hostelites like tables, utilities, etc.</h4>
 
         <%= bootstrap_flash %>
         <%= yield %>
