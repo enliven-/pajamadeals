@@ -37,7 +37,7 @@
 	</div>
 	<div class="user col-md-3 box">
 		<p><%= @classified.buy? ? "Buyer" : "Seller" %><%= " (you)" if @classified.owner?(current_user) %></p>
-		<div class="name"><%= @classified.user.name %></div>
+		<!-- <div class="name"><%= @classified.user.name %></div> -->
 		<div class="mobile">+91 <%= @classified.user.mobile %></div>
 		<div class="college"><%= @classified.college.abbr %>, <%= @classified.college.city %></div>
 		<% if user_signed_in? && current_user.owner?(@classified) %>
