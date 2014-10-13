@@ -1,17 +1,10 @@
-.navbar {
-	min-height: 0px !important;
-	padding: 6px !important;
-}
+.mobile {
+	.navbar-form {
+		border: none;
+		margin: 0;
+	}
 
-.navbar-form{
-	border: none;
-}
-
-.navbar-toggle {
-	padding: 0px !important;
-	margin: 0px !important;
-}
-
-.classified {
-	padding: 6px 10px;
+	.classified {
+		padding: 6px 10px;
+	}
 }
