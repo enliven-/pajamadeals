@@ -1,37 +1,67 @@
-<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+<!-- <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 	<div class="navbar-header">
-	  	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	      <span class="sr-only">Toggle navigation</span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
+		<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
 	    </button>
+
 		<%= form_tag classifieds_path, class: 'navbar-form navbar-right', method: :get do %>
 			<div class="form-group">
 				<div class="input-group">
 					<%= search_field_tag :q, '', placeholder: 'Search', class: 'form-control' %>
 			   	 	<span class="input-group-btn">
-						<%= button_tag raw('<span class="fui-search"></span>'), class: 'btn' %>							
+						<%= button_tag raw('<span class="fui-search"></span>'), class: 'btn' %>
 					</span>
 			 	</div>
 	    	 </div>
  	    <% end %>
 	</div>
+</nav> -->
 
-	<div class="collapse width navbar-collapse" id="bs-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>	          
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Separated link</a></li>
-        <li class="divider"></li>
-        <li><a href="#">One more separated link</a></li>
+<div class="navbar navbar-default navbar-fixed-top">
+  <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  
+  <%= form_tag classifieds_path, class: 'navbar-form', method: :get do %>
+		<div class="input-group">
+			<%= search_field_tag :q, '', placeholder: 'Search', class: 'form-control' %>
+	   	 	<span class="input-group-btn">
+				<%= button_tag raw('<span class="fui-search"></span>'), class: 'btn' %>
+			</span>
+		</div>
+  <% end %>
+</div>
+
+<nav id="myNavmenu" class="navmenu navbar-default navmenu-default navmenu-fixed-right offcanvas" role="navigation">
+      <a class="navmenu-brand" href="#">Project name</a>
+      <ul class="nav navmenu-nav">
+        <li><a href="../navmenu/">Slide in</a></li>
+        <li class="active"><a href="./">Push</a></li>
+        <li><a href="../navmenu-reveal/">Reveal</a></li>
+        <li><a href="../navbar-offcanvas/">Off canvas navbar</a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-</nav>
+      <ul class="nav navmenu-nav">
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown open">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">Nav header</li>
+            <li><a href="#">Separated link</a></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
 
 
 <div id="classifieds">
