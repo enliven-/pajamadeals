@@ -1,0 +1,5 @@
+<% for category in Category.order(name: :asc) %>
+	<%= link_to classifieds_path(category_id: category.id), class: 'btn btn-default btn-embossed ui-block' do %>
+		<div><%= i(category.fa_icon_label, class: 'icon')%></div><%= category.name %>
+	<% end %>
+<% end %>

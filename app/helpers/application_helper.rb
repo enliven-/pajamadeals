@@ -22,6 +22,16 @@ module ApplicationHelper
         flash_type.to_s
     end
   end
+  
+  def i(icon, options = {})    
+    options[:class] = "fa fa-#{icon}#{' icon-white' if options[:white]} #{options[:class]}"
+    nosep = options.delete(:nosep)
+    content_tag(:i, '', options) + (nosep ? '' : ' ')
+  end
+  
+  def render_menu(options, &block)
+    
+  end
  
 
 end

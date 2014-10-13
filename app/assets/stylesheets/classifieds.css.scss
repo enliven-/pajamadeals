@@ -6,10 +6,11 @@ $boxTextPadding: 6px 14px 7px;
 
 .box {
 	border-radius: 6px;
-	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+	//box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 	background: #fff;
 	font-size: 12px;
 	margin: 6px;
+	opacity: 0.9;
 }
 
 .item {

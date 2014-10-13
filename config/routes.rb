@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   mount MongodbLogger::Server.new, at: "/logs"
 
   get 'pages/home'
-  get 'pages/navbar'
+  get 'pages/categories'
   
   match 'stats', to: 'pages#stats', via: :get
   match 'privacypolicy', to: 'pages#privacypolicy', via: :get
