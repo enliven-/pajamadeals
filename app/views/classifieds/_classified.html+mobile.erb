@@ -1,10 +1,9 @@
-<%= div_for classified, class: "box", style: "padding:6px" do %>
-	<div class="pull-right">
-		<div class="date" style="color: lightgrey"><em><%= render_date classified.created_at %></em></div>
-		<div class="college"><%= classified.college.abbr %>, <%= classified.college.city %></div>
-	</div>
-		<div class="title"><%= link_to classified.title, classified_path(classified) %></div>
-	<div class="footer">
-		<div class="mobile">Call: &nbsp;<%= classified.user.mobile %></div>
+<%= div_for classified, class: "box" do %>
+	<div class="price pull-right"><%= render_price classified.price if classified.sell? %></div>
+	<div class="title"><%= link_to classified.title, classified_path(classified) %></div>
+	<div>
+		<span class="college"><%= classified.college.abbr %>, <%= classified.college.city %></span>&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+		<span class="mobile"><i class="fa fa-phone"></i>&nbsp;-&nbsp;<%= classified.user.mobile %></span>
+		<div class="date pull-right" style="color: lightgrey"><em><%= render_date classified.created_at %></em></div>
 	</div>
 <% end %>

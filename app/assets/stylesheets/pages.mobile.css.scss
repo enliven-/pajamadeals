@@ -6,7 +6,28 @@ body {
 	background-size: cover;
 }
 
+%vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 .intro {
 	color: white;
 	text-align: center;
+	position: relative;
+	margin-top: 75%;
+	vertical-align: middle;
+	text-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+}
+
+.black-box {
+	border-radius: 6px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+	background: black;
+	font-size: 12px;
+	padding: 20px;
+	opacity: 0.7;
 }

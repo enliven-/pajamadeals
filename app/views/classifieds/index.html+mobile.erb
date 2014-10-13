@@ -1,20 +1,23 @@
-<nav class="navbar" role="navigation">
-	<div class="form-group">
-		<div class="input-group">
-			<%= search_field_tag :q, '', placeholder: 'Search', class: 'form-control' %>
-		    <span class="input-group-btn">
-				<%= button_tag raw('<span class="fui-search"></span>'), class: 'btn' %>							
-			</span>
-			<span>
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+	<%= form_tag classifieds_path, class: 'navbar-form navbar-right', method: :get do %>
+		<div class="form-group">
+			<div class="input-group">
+				<%= search_field_tag :q, '', placeholder: 'Search', class: 'form-control' %>
+			    <span class="input-group-btn">
+					<%= button_tag raw('<span class="fui-search"></span>'), class: 'btn' %>							
+				</span>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 			        <span class="sr-only">Toggle navigation</span>
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
-			    </button>
-			</span>
-		</div>
-	</div>
+				 </button>
+			 </div>
+	     </div>
+ 	<% end %>
+
+			
+	
 	
 	<div id="container">
 		<div class="collapse width navbar-collapse" id="bs-navbar-collapse-1">
@@ -37,11 +40,5 @@
 </div>
 
 <style>
-.collapse.width {
-   // height: 			auto;
-    -webkit-transition: width 2s ease;
-    -moz-transition:    width 2s ease;
-    -o-transition:      width 2s ease;
-    transition:		    width 2s ease;
-}
+
 </style>

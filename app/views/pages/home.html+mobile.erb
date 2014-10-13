@@ -1,9 +1,9 @@
 <p class="lead intro">
 	<strong>
-		Lorem ipsum dallar sit mat
+		Classifieds for Colleges
 	</strong>
 </p>
 
-<div class="select-college">
-	<%= select_tag :college, options_from_collection_for_select(College.order(name: :asc), :id, :name), prompt: "Select college" %>
+<div class="select-college black-box col-md-12">
+	<%= select_tag :college, options_from_collection_for_select(College.order(name: :asc), :id, :name), prompt: "Select your college", class: 'form-control' %>
 </div>
