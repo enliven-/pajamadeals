@@ -19,3 +19,8 @@
 body {
 	background-color: #e5e9ea;
 }
+
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
