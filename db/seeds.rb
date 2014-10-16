@@ -41,6 +41,7 @@ users = []
 CSV.foreach("#{Rails.root}/db/books.csv") do |row|
   rows << row
 end
+day = 5
 
 methods = [:capitalize, :downcase, :upcase]
 
@@ -54,7 +55,7 @@ methods = [:capitalize, :downcase, :upcase]
                        )
 end
 
-32.times do |n|
+20.times do |n|
   p n
   row = rows.sample
   Classified.create(
@@ -65,7 +66,7 @@ end
                     price: row[8],
                     user: users.sample,
                     fake: true,
-                    created_at: (Date.today - rand(9).days)
+                    created_at: (Date.today - rand(day).days)
                    )
 end
 
@@ -81,32 +82,32 @@ end
 #                     created_at: (Date.today - rand(35).days)
 #                    )
 # end
-#
-# # mit
-#
-# 78.times do
-#   users << User.create(mobile: '9' + Faker::Number.number(9),
-#                        college: College.find(4),
-#                        name: 'foo bar',
-#                        fake: true
-#                        )
-# end
-#
-# 97.times do |n|
-#   p n
-#   row = rows.sample
-#   Classified.create(
-#                     listing_type: [:sell, :buy].sample,
-#                     title: row[1].send(methods.sample),
-#                     description: "#{row[4]}, #{row[3]} publication",
-#                     category_id: 1,
-#                     price: row[8],
-#                     user: users.sample,
-#                     fake: true,
-#                     created_at: (Date.today - rand(22).days)
-#                    )
-# end
-#
+
+# mit
+
+20.times do
+  users << User.create(mobile: '9' + Faker::Number.number(9),
+                       college: College.find(4),
+                       name: 'foo bar',
+                       fake: true
+                       )
+end
+
+30.times do |n|
+  p n
+  row = rows.sample
+  Classified.create(
+                    listing_type: [:sell, :buy].sample,
+                    title: row[1].send(methods.sample),
+                    description: "#{row[4]}, #{row[3]} publication",
+                    category_id: 1,
+                    price: row[8],
+                    user: users.sample,
+                    fake: true,
+                    created_at: (Date.today - rand(day).days)
+                   )
+end
+
 # 31.times do |n|
 #   p n
 #   Classified.create(
@@ -119,44 +120,54 @@ end
 #                     created_at: (Date.today - rand(22).days)
 #                    )
 # end
-#
-# # ndmvp
-#
-# 80.times do
-#   users << User.create(mobile: '9' + Faker::Number.number(9),
-#                        college: College.find(3),
-#                        name: 'foo bar',
-#                        fake: true
-#                        )
-# end
-#
-# 103.times do |n|
-#   p n
-#   row = rows.sample
-#   Classified.create(
-#                     listing_type: [:sell, :buy].sample,
-#                     title: row[1].send(methods.sample),
-#                     description: "#{row[4]}, #{row[3]} publication",
-#                     category_id: 1,
-#                     price: row[8],
-#                     user: users.sample,
-#                     fake: true,
-#                     created_at: (Date.today - rand(23).days)
-#                    )
-# end
-#
-# 40.times do |n|
-#   p n
-#   Classified.create(
-#                     listing_type: :sell,
-#                     title: ['Drafer', 'drafter', 'omega drafter', 'mini drafter', 'apron', 'boiler suit'].sample,
-#                     category_id: 6,
-#                     price: [80, 100, 120].sample,
-#                     user: users.sample,
-#                     fake: true,
-#                     created_at: (Date.today - rand(23).days)
-#                    )
-# end
-#
-#
-#
+
+# ndmvp
+
+20.times do
+  users << User.create(mobile: '9' + Faker::Number.number(9),
+                       college: College.find(3),
+                       name: 'foo bar',
+                       fake: true
+                       )
+end
+
+20.times do |n|
+  p n
+  row = rows.sample
+  Classified.create(
+                    listing_type: [:sell, :buy].sample,
+                    title: row[1].send(methods.sample),
+                    description: "#{row[4]}, #{row[3]} publication",
+                    category_id: 1,
+                    price: row[8],
+                    user: users.sample,
+                    fake: true,
+                    created_at: (Date.today - rand(day).days)
+                   )
+end
+
+# vit
+
+20.times do
+  users << User.create(mobile: '9' + Faker::Number.number(9),
+                       college: College.find(1),
+                       name: 'foo bar',
+                       college: College.all.sample,
+                       fake: true
+                       )
+end
+
+34.times do |n|
+  p n
+  row = rows.sample
+  Classified.create(
+                    listing_type: [:sell, :buy].sample,
+                    title: row[1].send(methods.sample),
+                    description: "#{row[4]}, #{row[3]} publication",
+                    category_id: 1,
+                    price: row[8],
+                    user: users.sample,
+                    fake: true,
+                    created_at: (Date.today - rand(day).days)
+                   )
+end
