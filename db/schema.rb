@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20141013025257) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",        default: true
-    t.string   "fa_icon_label"
+    t.boolean  "active",     default: true
+    t.string   "fa_icon"
   end
 
   create_table "classifieds", force: true do |t|
