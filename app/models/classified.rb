@@ -37,5 +37,10 @@ class Classified < ActiveRecord::Base
   def set_college
     self.college ||= user.college
   end
+  
+  before_create :titleize_title
+  def titleize_title
+    self.title = self.title.titleize
+  end
 
 end
