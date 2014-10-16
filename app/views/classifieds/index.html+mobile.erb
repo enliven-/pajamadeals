@@ -25,20 +25,19 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-	  <%= link_to App.logo, root_path, class: 'navmenu-brand' %>
-      <ul class="nav navmenu-nav">
-        <li><%= link_to 'Post an Ad (free)', new_classified_path %></li>
-      </ul>
-	  <hr class="hr-dashed"></hr>
-      <ul class="nav navmenu-nav">
-        <li><%= link_to College.first.try(:name), '#' %></li>
-		<li><%= link_to Category.first.try(:name), '#' %></li>
-      </ul>
-	  <hr class="hr-dashed"></hr>
-	  <%= render partial: 'layouts/user_session_links' %>
-    </nav>
-
-
+  <%= link_to App.logo, root_path, class: 'navmenu-brand' %>
+  <ul class="nav navmenu-nav">
+    <li><%= link_to 'Post an Ad (free)', new_classified_path %></li>
+  </ul>
+  <hr class="hr-dashed"></hr>
+  <ul class="nav navmenu-nav">
+    <li><%= link_to College.first.try(:name), '#' %></li>
+	<li><%= link_to Category.first.try(:name), '#' %></li>
+  </ul>
+  <hr class="hr-dashed"></hr>
+  <%= render partial: 'layouts/user_session_links' %>
+</nav>
+		
 <div id="classifieds">
 	<%= render @classifieds %>
 </div>
