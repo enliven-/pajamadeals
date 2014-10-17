@@ -31,11 +31,13 @@
   </ul>
   <hr class="hr-dashed"></hr>
   <ul class="nav navmenu-nav">
-		<li><a><%= select_tag 'filters[college_id]', options_from_collection_for_select(College.order(name: :asc), :id, :name), prompt: "Select your college", class: '', onchange: "window.location.replace('/classifieds?filters[college_id]='+this.value)" %></a></li>
-		<li><a>Categories<a></li>
-		<div class="list-group">
+		<li><a><%= select_tag 'filters[college_id]', options_from_collection_for_select(College.order(name: :asc), :id, :name, current_college.try(:id)), prompt: "Select your college", onchange: "window.location.replace('/classifieds?filters[college_id]='+this.value)" %></a></li>
+		<li><a>Categories&nbsp;<%= i('arrow-down')%></a></li>
+		<div class="list-group categories">
 			<% for category in Category.all %>
-				<%= link_to category.name, classifieds_path(filters: { category_id: category.id }), class: 'list-group-item' %>
+				<%= link_to classifieds_path(filters: { category_id: category.id }), class: 'list-group-item' do %>
+					<%= i(category.fa_icon) %>&nbsp;<%= category.name %>
+				<% end %>
 			<% end %>
 		</div>
   </ul>

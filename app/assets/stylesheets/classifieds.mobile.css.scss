@@ -13,13 +13,21 @@
 		line-height: 1.3;
 	}
 	
-	.box {
-		//border-radius: 0px;
-	}
-	
 	select#filters_college_id {
 		border: none;
 		background-color: inherit;
 		padding: 0px;
+		overflow: hidden;
+		text-overflow: hidden;
+	}
+	
+	.categories {
+		margin-left: 40px;
+		margin-top: 0px;
+		
+		.list-group-item {
+			background-color: inherit;
+			border: none;
+		}
 	}
 }
