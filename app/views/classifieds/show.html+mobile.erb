@@ -1,0 +1,63 @@
+<div class="container">
+	<div class="col-md-12">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+		  
+  
+		  <%= link_to App.logo, root_path, class: 'navbar-brand' %>
+		</div>
+	</div>
+</div>
+
+<%= div_for @classified, class: 'show' do %>
+	<div class="col-md-8 product box">
+		<% if @classified.image.present? %>
+			<%= image_tag @classified.image, class: 'image center-block' %>
+			<hr class="hr-dashed"></hr>
+		<% end %>
+		<div class="product-details">
+			<h6 class="title"><%= @classified.title %></h6>
+			<p>Details</p>
+			<table class="table">
+				<tbody>
+					<% if @classified.sell? %>
+						<tr class="price">
+							<td>Price</td>
+							<td><%= render_price @classified.price %></td>
+						</tr>
+					<% end %>
+					<tr class="description">
+						<td>Description</td>
+						<td><%= render_field @classified, :description %></td>
+					</tr>
+					<tr class="category">
+						<td>Category</td>
+						<td><%= @classified.category.name %></td>
+					</tr>
+					<tr class="date">
+						<td>Posted on</td>
+						<td><%= render_date @classified.created_at %></td>
+					</tr>
+					<tr class="listing_type">
+						<td>Listing type</td>
+						<td><%= render_listing_type_label(@classified) %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="user col-md-3 box">
+		<p><%= @classified.buy? ? "Buyer" : "Seller" %><%= " (you)" if @classified.owner?(current_user) %></p>
+		<!-- <div class="name"><%= @classified.user.name %></div> -->
+		<div class="mobile">+91 <%= @classified.user.mobile %></div>
+		<div class="college"><%= @classified.college.abbr %>, <%= @classified.college.city %></div>
+		<% if user_signed_in? && current_user.owner?(@classified) %>
+			<div class="classified-edit-buttons">
+				<div>
+					<%= link_to render_mark_text(@classified), classified_path(classified: { sold: true }), method: :put, class: 'btn btn-sm btn-primary mark-sold' if @classified.sell? && !@classified.sold? %>
+					<%= link_to 'Delete', classified_path, method: :delete, class: 'btn btn-sm btn-danger mark-delete' %>
+				</div>
+			</div>
+		<% end %>
+		
+	</div>
+<% end %>
