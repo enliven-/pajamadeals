@@ -5,5 +5,16 @@
 </p>
 
 <div class="select-college black-box col-md-12">
-	<%= select_tag :college, options_from_collection_for_select(College.order(name: :asc), :id, :name), prompt: "Select your college", class: 'form-control' %>
+    <div class="form-group">
+        <div class="input-group">
+  		  <%= form_tag classifieds_path, class: 'navbar-form', method: :get do %>
+  				<div class="input-group">
+  					<%= select_tag 'filters[college_id]', options_from_collection_for_select(College.order(name: :asc), :id, :name), prompt: "Select your college", class: 'form-control', onchange: "window.location.replace('/classifieds?filters[college_id]='+this.value)" %>
+  			   	 	<span class="input-group-btn">
+  						<%= button_tag 'Go', class: 'btn btn-primary' %>
+  					</span>
+  				</div>
+  		  <% end %>			
+		</div>
+	</div>
 </div>

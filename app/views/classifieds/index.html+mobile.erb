@@ -31,7 +31,7 @@
   </ul>
   <hr class="hr-dashed"></hr>
   <ul class="nav navmenu-nav">
-		<li><%= select_tag :college, options_from_collection_for_select(College.order(name: :asc), :id, :name), prompt: "Select your college", class: 'form-control' %></li>
+		<li><%= select_tag 'filters[college_id]', options_from_collection_for_select(College.order(name: :asc), :id, :name), prompt: "Select your college", class: 'form-control', onchange: "window.location.replace('/classifieds?filters[college_id]='+this.value)" %></li>
 		<li>Categories</li>
 	<ul class="nav navmenu-nav">
 		<% for category in Category.all %>
