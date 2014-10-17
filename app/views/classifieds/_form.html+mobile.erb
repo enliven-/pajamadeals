@@ -1,0 +1,57 @@
+<%= form_for @classified, html: { class: 'form-horizontal', multipart: true } do |f| %>
+	<%= f.hidden_field :listing_type, value: @classified.listing_type %>
+	<div class="classified-fields">
+		<div class="col-md-12 header">
+			<h6>Tell us about the item</h6>
+		</div>
+		<div class="form-group">
+		  	<%= f.label :title, class: 'col-md-2 control-label' %>
+	   	 	<div class="col-md-10">
+				<%= f.text_field :title, class: 'form-control' %>
+	   	  	</div>
+	  	</div>
+
+		<div class="form-group">
+		  	<%= f.label :category, class: 'col-md-2 control-label' %>
+	   	 	<div class="col-md-10">
+				<%= f.select :category_id, Category.order(name: :asc).select(:name, :id).collect { |category| [category.name, category.id] } %>
+	   	  	</div>
+	  	</div>
+		
+		<div class="form-group">
+		  	<%= f.label :listing_type, class: 'col-md-2 control-label' %>
+	   	 	<div class="col-md-10">
+				<%= f.select :listing_type, Classified.listing_types.map { |type| [type.first.titleize, type.last]} %>
+	   	  	</div>
+	  	</div>
+
+		<div class="form-group">
+		  	<%= f.label :description, class: 'col-md-2 control-label' %>
+	   	 	<div class="col-md-10">
+				<%= f.text_area :description, class: 'form-control', rows: 4 %>
+	   	  	</div>
+	  	</div>
+		<div class="sell-fields">
+			<div class="form-group">
+			  	<%= f.label :image, class: 'col-md-2 control-label' %>
+		   	 	<div class="col-md-10">
+					<%= f.file_field :image, class: 'form-control' %>
+					<%= f.hidden_field :image_cache %>
+					<p class="help-block">Having an image drastically improves the chances of selling your item. Please consider uploading an image.</p>
+		   	  	</div>
+		  	</div>
+
+			<div class="form-group">
+			  	<%= f.label :price, "Price (Rs)", class: 'col-md-2 control-label' %>
+		   	 	<div class="col-md-10">
+					<%= f.text_field :price, class: 'form-control' %>
+		   	  	</div>
+		  	</div>
+		</div>
+	    <div class="form-group" style="margin-top:15px">
+	       <div class="col-md-offset-2 col-md-10">
+			     <%= f.submit "#{user_signed_in? ? 'Create' : 'Sign in with facebook and Continue' }", class: "btn btn-primary btn-embossed #{'fb-sign-in' if !user_signed_in?}", id: 'create-classified' %>
+	       </div>
+	    </div>
+	</div>
+<% end %>
