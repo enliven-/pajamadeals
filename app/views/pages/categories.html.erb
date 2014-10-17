@@ -26,9 +26,10 @@
   <%= render partial: 'layouts/user_session_links' %>
 </nav>
 
+<%= link_to 'Post an Ad (free)', new_classified_path ,class: 'btn btn-danger', style: 'width:100%;margin-bottom: 20px' %>
 
 <% for category in Category.order(name: :asc) %>
-	<%= link_to classifieds_path(category_id: category.id), class: 'btn btn-default btn-embossed ui-block' do %>
+	<%= link_to classifieds_path(category_id: category.id), class: 'btn btn-info btn-embossed ui-block' do %>
 		<div><%= i(category.fa_icon, class: 'icon')%></div><%= category.name %>
 	<% end %>
 <% end %>

@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   
   def home
     @title = 'Classifieds for students'
-    redirect_to classifieds_path if current_college
+    redirect_to pages_categories_path if current_college
   end
   
   def stats
