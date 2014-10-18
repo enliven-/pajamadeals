@@ -25,7 +25,7 @@ class App
     end
     
     def logo
-      'Pajama Deals'
+      'pajamadeals'
     end
 
     def sender_email
