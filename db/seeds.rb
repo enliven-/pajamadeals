@@ -41,12 +41,12 @@ users = []
 CSV.foreach("#{Rails.root}/db/books.csv") do |row|
   rows << row
 end
-day = 5
+day = 0
 
 methods = [:capitalize, :downcase, :upcase]
 
 # viit
-20.times do
+5.times do
   users << User.create(mobile: '9' + Faker::Number.number(9),
                        college: College.find(2),
                        name: 'foo bar',
@@ -55,7 +55,7 @@ methods = [:capitalize, :downcase, :upcase]
                        )
 end
 
-20.times do |n|
+7.times do |n|
   p n
   row = rows.sample
   Classified.create(
@@ -85,7 +85,7 @@ end
 
 # mit
 
-20.times do
+3.times do
   users << User.create(mobile: '9' + Faker::Number.number(9),
                        college: College.find(4),
                        name: 'foo bar',
@@ -93,7 +93,7 @@ end
                        )
 end
 
-30.times do |n|
+4.times do |n|
   p n
   row = rows.sample
   Classified.create(
@@ -123,7 +123,7 @@ end
 
 # ndmvp
 
-20.times do
+7.times do
   users << User.create(mobile: '9' + Faker::Number.number(9),
                        college: College.find(3),
                        name: 'foo bar',
@@ -131,7 +131,7 @@ end
                        )
 end
 
-20.times do |n|
+6.times do |n|
   p n
   row = rows.sample
   Classified.create(
@@ -148,7 +148,7 @@ end
 
 # vit
 
-20.times do
+8.times do
   users << User.create(mobile: '9' + Faker::Number.number(9),
                        college: College.find(1),
                        name: 'foo bar',
@@ -157,7 +157,7 @@ end
                        )
 end
 
-34.times do |n|
+8.times do |n|
   p n
   row = rows.sample
   Classified.create(
