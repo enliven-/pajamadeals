@@ -2,7 +2,7 @@
 	<div class="pull-right"></div>
 	<div class="title"><%= link_to classified.title, classified_path(classified) %></div>
 	<div class="price"><%= render_price classified.price %></div>
-	<div class="mobile"><%= i('phone') %> +91-<%= classified.user.mobile %></div>
+	<div class="mobile"><a href="tel:<%= render_mobile_number classified.user.mobile %>"><%= i('phone') %> <%= render_mobile_number classified.user.mobile %></a></div>
 	<div>
 		<span class="type"><%= classified.sell? ? 'For sale' : 'Needed' %></span>&nbsp;&middot;&nbsp;
 		<span class="date">Posted on <%= render_date classified.created_at %></span>		
