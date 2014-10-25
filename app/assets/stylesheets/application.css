@@ -21,9 +21,9 @@ body {
 	padding-top: 70px;
 }
 
-html,
-body {
-  overflow-x: hidden; /* Prevent scroll on narrow devices */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .mobile.container {
