@@ -31,7 +31,7 @@
   </ul>
   <hr class="hr-dashed"></hr>
   <ul class="nav navmenu-nav">
-		<li><a><%= select_tag 'filters[college_id]', options_from_collection_for_select(College.order(name: :asc), :id, :name, current_college.try(:id)), class: 'canvas-select' ,prompt: "Select your college", onchange: "window.location.replace('/classifieds?filters[college_id]='+this.value)" %></a></li>
+		<li><a><%= select_tag 'filters[college_id]', options_from_collection_for_select(College.order(name: :asc), :id, :abbr_with_city, current_college.try(:id)), class: 'canvas-select' ,prompt: "Select your college", onchange: "window.location.replace('/classifieds?filters[college_id]='+this.value)" %></a></li>
 		<li><a>Categories&nbsp;<%= i('arrow-down')%></a></li>
 		<div class="list-group categories">
 			<% for category in Category.all %>
