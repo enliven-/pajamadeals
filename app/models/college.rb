@@ -8,7 +8,11 @@ class College < ActiveRecord::Base
   has_token
 
   def name_with_abbr_and_city
-    "#{name} (#{abbr}), #{city}"
+    "#{name} (#{abbr_with_city})"
+  end
+  
+  def abbr_with_city
+    "#{abbr}, #{city}"
   end
   
   # location

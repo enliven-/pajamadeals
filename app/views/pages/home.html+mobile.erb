@@ -3,13 +3,15 @@
 <p class="" style="text-align:center;color:white;margin-bottom:0px;font-size:1.2em">
 		<em>Classifieds for Colleges</em>
 </p>
+
 <p style="text-align:center;color:white;font-size:0.9em;margin-left:5px;margin-right:5px">Buy and sell college stuff within your campus<p>
-<div class="select-college black-box col-md-12">
+	
+<div class="select-college col-md-12">
     <div class="form-group">
-        <div class="input-group">
+        <div class="input-group" style="margin-left: auto;margin-right: auto;">
   		  <%= form_tag classifieds_path, class: 'navbar-form', method: :get do %>
   				<div class="input-group">
-  					<%= select_tag 'filters[college_id]', options_from_collection_for_select(College.order(name: :asc), :id, :name), prompt: "Select your college", class: 'form-control', onchange: "window.location.replace('/pages/categories?filters[college_id]='+this.value)" %>
+  					<%= select_tag 'filters[college_id]', options_from_collection_for_select(College.order(name: :asc), :id, :abbr_with_city), prompt: "Select your college", class: 'form-control', onchange: "window.location.replace('/pages/categories?filters[college_id]='+this.value)" %>
   			   	 	<span class="input-group-btn">
   						<%= button_tag 'Go', class: 'btn btn-primary' %>
   					</span>
