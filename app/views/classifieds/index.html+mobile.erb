@@ -31,11 +31,16 @@
   </ul>
   <hr class="hr-dashed"></hr>
   <ul class="nav navmenu-nav">
-		<li><a><%= select_tag 'filters[college_id]', options_from_collection_for_select(College.order(name: :asc), :id, :abbr_with_city, current_college.try(:id)), class: 'canvas-select' ,prompt: "Select your college", onchange: "window.location.replace('/classifieds?filters[college_id]='+this.value)" %></a></li>
+		<li><a>
+			<div class="input-group">
+				<div class="input-group-addon" style="background:none; border:none;color:inherit"><%= i('university')%></div>
+				<%= select_tag 'filters[college_id]', options_from_collection_for_select(College.order(name: :asc), :id, :abbr_with_city, current_college.try(:id)), class: 'canvas-select form-control' ,prompt: "Select your college", onchange: "window.location.replace('/classifieds?filters[college_id]='+this.value)" %>
+			</div>
+		</a></li>
 		<li><a>Categories&nbsp;<%= i('arrow-down')%></a></li>
 		<div class="list-group categories">
 			<% for category in Category.all %>
-				<%= link_to classifieds_path(filters: { category_id: category.id }), class: 'list-group-item' do %>
+				<%= link_to classifieds_path(filters: { category_id: category.id }), class: "list-group-item #{'current' if @category_id.to_i == category.id}" do %>
 					<%= i(category.fa_icon) %>&nbsp;<%= category.name %>
 				<% end %>
 			<% end %>

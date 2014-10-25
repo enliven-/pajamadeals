@@ -27,6 +27,7 @@ class ClassifiedsController < ApplicationController
       
       if params[:filters][:category_id].present?
         search_params[:where][:category_id] = params[:filters][:category_id]
+        @category_id = params[:filters][:category_id]
       end
       
       if params[:filters][:user]
