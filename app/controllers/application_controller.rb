@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
     request.variant = :mobile if browser.mobile?
   end
   
+  def filtering_params
+    cookies.permanent[:college_id] = params[:filters][:college_id] if params[:filters].present? && params[:filters][:college_id].present?
+  end
+  before_action :filtering_params
+  
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id].present?
   end

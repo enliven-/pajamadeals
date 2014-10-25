@@ -24,7 +24,6 @@ class ClassifiedsController < ApplicationController
     
     # filters
     if params[:filters].present?
-      cookies[:college_id] = params[:filters][:college_id]
       
       if params[:filters][:category_id].present?
         search_params[:where][:category_id] = params[:filters][:category_id]
