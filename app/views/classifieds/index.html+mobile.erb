@@ -39,7 +39,7 @@
 		</a></li>
 		<li><a>Categories&nbsp;<%= i('arrow-down')%></a></li>
 		<div class="list-group categories">
-			<% for category in Category.all %>
+			<% for category in Category.all.order(name: :asc) %>
 				<%= link_to classifieds_path(filters: { category_id: category.id }), class: "list-group-item #{'current' if @category_id.to_i == category.id}" do %>
 					<%= i(category.fa_icon) %>&nbsp;<%= category.name %>
 				<% end %>
