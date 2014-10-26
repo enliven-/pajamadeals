@@ -5,8 +5,7 @@
 	<div class="mobile"><a href="tel:<%= render_mobile_number classified.user.mobile %>"><%= i('phone') %> <%= render_mobile_number classified.user.mobile %></a></div>
 	<div class="date pull-right" style="color: lightgrey; margin-top: -5px"><em><%= render_date classified.created_at %></em></div>		
 	
-	<div style="margin-top:-5px">
-		
-		<span class="type"><%= classified.sell? ? 'For sale' : 'Needed' %></span>
+	<div class="college" style="margin-top:-5px">
+		<%= i('map-marker') %><%= classified.college.abbr_with_city %>
 	</div>
 <% end %>

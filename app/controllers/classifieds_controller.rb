@@ -20,6 +20,7 @@ class ClassifiedsController < ApplicationController
     search_params[:where]        = { list: true }
     search_params[:where][:sold] = false
     search_params[:where][:deleted] = false
+    search_params[:where][:listing_type] = :sell
     
     
     # filters

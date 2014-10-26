@@ -33,8 +33,9 @@
   <ul class="nav navmenu-nav">
 		<li><a>
 			<div class="input-group">
-				<div class="input-group-addon" style="background:none; border:none;color:inherit"><%= i('university')%></div>
+				<div class="input-group-addon" style="background:none; border:none;color:inherit"><%= i('map-marker')%></div>
 				<%= select_tag 'filters[college_id]', options_from_collection_for_select(College.order(name: :asc), :id, :abbr_with_city, current_college.try(:id)), class: 'canvas-select form-control' ,prompt: "Select your college", onchange: "window.location.replace('/classifieds?filters[college_id]='+this.value)" %>
+				<div class="input-group-addon" style="background:none; border:none;color:inherit"><%= i('edit') %></div>
 			</div>
 		</a></li>
 		<li><a>Categories&nbsp;<%= i('arrow-down')%></a></li>
