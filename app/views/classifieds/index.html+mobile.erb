@@ -50,6 +50,8 @@
   <hr class="hr-dashed"></hr>
   <%= render partial: 'layouts/user_session_links' %>
 </nav>
+
+<%= link_to 'Post an Ad (free)', new_classified_path ,class: 'btn btn-danger', style: 'width:100%;margin-bottom: 20px' %>
 		
 <div id="classifieds">
 	<%= render @classifieds %>
