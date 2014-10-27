@@ -99,13 +99,13 @@ $('#el').spin('flower', 'red');
 
 }));
 
-$(document)
-  .ajaxStart(function () {
-	  $('.main').css('opacity', '0.2')
-      $('.main').spin();
-  })
-  .ajaxStop(function () {
-      $('.main').spin(false);
-	  $('.main').css('opacity', '1')
-  })
+// $(document)
+//   .ajaxStart(function () {
+// 	  $('.main').css('opacity', '0.2')
+//       $('.main').spin();
+//   })
+//   .ajaxStop(function () {
+//       $('.main').spin(false);
+// 	  $('.main').css('opacity', '1')
+//   })
   

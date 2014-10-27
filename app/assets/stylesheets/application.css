@@ -18,19 +18,4 @@
 
 body {
 	background-color: #e5e9ea;
-	padding-top: 70px;
-}
-
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-.mobile.container {
-	padding-left: 6px;
-	padding-right: 6px;
-}
-
-.logo {
-	font-size: 1.2em;
 }

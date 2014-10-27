@@ -4,3 +4,33 @@
 	<%= render @classifieds %>
 </div>
 <%= paginate @classifieds %>
+
+<script>
+var $container;
+
+$container = $('#classifieds');
+
+$container.imagesLoaded(function() {
+  return $container.isotope({
+    itemSelector: ".item"
+  });
+});
+
+if ($('nav.pagination').length) {
+  $container.infinitescroll({
+    navSelector: "nav.pagination",
+    nextSelector: "nav.pagination a[rel=next]",
+    itemSelector: ".item",
+    finishedMsg: '',
+    speed: 'fast',
+    pixelsFromNavToBottom: -Math.round($(window).height() * 0.9),
+    bufferPx: 1000
+  }, function(newElements) {
+    var $newElems;
+    $newElems = $(newElements);
+    return $newElems.imagesLoaded(function() {
+      return $container.isotope("appended", $newElems);
+    });
+  });
+}
+</script>

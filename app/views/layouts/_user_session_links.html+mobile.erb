@@ -1,0 +1,14 @@
+<ul class="nav navmenu-nav">
+	<% if user_signed_in? %>
+	    <li><%= link_to 'Listings', classifieds_path(filters: { user: true }) %></li>
+		<li><%= link_to 'Profile settings', edit_user_path(current_user) %></li>
+		<li><%= link_to 'Sign out', signout_path, method: :delete %></li>
+		<li class="divider"></li>
+		<% if !current_user.user? %>
+			<li><%= link_to 'Dashboard', admin_dashboard_path if current_user.admin? %></li>
+			<li><%= link_to 'Stats', stats_path %></li>
+		<% end %>		
+	<% else %>
+		<li><%= link_to 'Sign in with Facebook', "/auth/facebook", class: 'fb-sign-in' %></li>
+<% end %>
+</ul>

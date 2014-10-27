@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
     request.variant = :mobile if browser.mobile?
   end
   
+  def mobile_browser?
+    true if browser.mobile?
+  end
+  helper_method :mobile_browser?
+  
   def filtering_params
     cookies.permanent[:college_id] = params[:filters][:college_id] if params[:filters].present? && params[:filters][:college_id].present?
   end
