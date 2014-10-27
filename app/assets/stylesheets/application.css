@@ -30,3 +30,7 @@ html, body {
 	padding-left: 6px;
 	padding-right: 6px;
 }
+
+.logo {
+	font-size: 1.2em;
+}
