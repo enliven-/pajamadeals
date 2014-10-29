@@ -3,25 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-
-	# Classified multi-step form
-			
-	$('#classified-next-step').click (event) ->
-		event.preventDefault()
-		$('.classified-fields').toggle()
-		$(event.target).toggle()
-		$('.user-fields').toggle()
-		$('#classified-submit').toggle()
-			
-	# Store values if sign up clicked from classified_new page
-			
-	$('.fb-sign-up-classified').click (event) ->
-		$.cookie 'classified_title', $('#classified_title').val(),
-			domain: '<%= App.domain %>'
-		$.cookie 'classified_category_id', $('#classified_category_id').val()
-		$.cookie 'classified_description', $('#classified_description').val()
-		$.cookie 'classified_image', $('#classified_image').val()
-		$.cookie 'classified_price', $('#classified_price').val()
 			
 	# Form Validations
 	
@@ -42,10 +23,15 @@ ready = ->
 	        notEmpty:
 	          message: "The title is required"
 
-	    # "classified[category_id]":
- # 	      validators:
- # 	        notEmpty:
- # 	          message: "The category is required"
+	    "classified[category_id]":
+ 	      validators:
+ 	        notEmpty:
+ 	          message: "The category is required"
+			  
+	    "classified[listing_type]":
+ 	      validators:
+ 	        notEmpty:
+ 	          message: "You want to buy or sell it"
 
 	    "classified[price]":
 	      validators:

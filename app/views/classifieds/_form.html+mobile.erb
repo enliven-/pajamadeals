@@ -14,14 +14,14 @@
 		<div class="form-group">
 		  	<%= f.label :category, class: 'col-md-2 control-label' %>
 	   	 	<div class="col-md-10">
-				<%= f.select :category_id, Category.order(name: :asc).select(:name, :id).collect { |category| [category.name, category.id] } %>
+				<%= f.select :category_id, Category.order(name: :asc).select(:name, :id).collect { |category| [category.name, category.id] }, include_blank: true %>
 	   	  	</div>
 	  	</div>
 		
 		<div class="form-group">
 		  	<%= f.label :listing_type, class: 'col-md-2 control-label' %>
 	   	 	<div class="col-md-10">
-				<%= f.select :listing_type, Classified.listing_types.map { |type| [type.first.titleize, type.last]} %>
+				<%= f.select :listing_type, Classified.listing_types.map { |type| [type.first.titleize, type.last]}, include_blank: true %>
 	   	  	</div>
 	  	</div>
 
