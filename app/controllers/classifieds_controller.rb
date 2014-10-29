@@ -13,13 +13,13 @@ class ClassifiedsController < ApplicationController
     
     # default params
     search_params = {}
-    search_params[:operator]     = 'or'
-    search_params[:fields]       = ["title"]
-    search_params[:page]         = params[:page]
-    search_params[:per_page]     = 30
-    search_params[:order]        = { created_at: :desc }
-    search_params[:where]        = { list: true }
-    search_params[:where][:sold] = false
+    search_params[:operator]        = 'or'
+    search_params[:fields]          = ["title"]
+    search_params[:page]            = params[:page]
+    search_params[:per_page]        = 30
+    search_params[:order]           = { created_at: :desc }
+    search_params[:where]           = { list: true }
+    search_params[:where][:sold]    = false
     search_params[:where][:deleted] = false
     search_params[:where][:listing_type] = :sell
     
