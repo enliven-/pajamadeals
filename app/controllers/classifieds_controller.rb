@@ -2,7 +2,8 @@ class ClassifiedsController < ApplicationController
   before_action :set_classified, only: [:show, :edit, :update, :destroy,
                                         :contact_seller, :booth_pickup]
   before_action ->{ authenticate_owner!(set_classified) },
-                  only: [:edit, :update, :destroy]
+                  only: [:edit, :update, :destroy]               
+  before_action :sanitize_params, only: [:create, :update]
     
   # GET /classifieds
   # GET /classifieds.json
@@ -113,11 +114,6 @@ class ClassifiedsController < ApplicationController
     end
   end
 
-
-  def autocomplete
-    render json: Classified.search(params[:query], fields: [:title], limit: 10).map(&:title)
-  end
-
   private
 
   def set_classified
@@ -132,5 +128,9 @@ class ClassifiedsController < ApplicationController
                                                          :name, :college_id,
                                                          :password]
                                        )
+  end
+  
+  def sanitize_params
+    params[:classified][:listing_type] = params[:classified][:listing_type].to_i
   end
 end
