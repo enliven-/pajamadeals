@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   end
   
   resources :users
+  
+  resources :orders, only: [:create, :delete, :show]
 
   root to: 'pages#home'
     
