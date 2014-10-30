@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   #  :omniauthable, omniauth_providers: [:facebook],
 
   has_many :classifieds
+  has_many :sell_orders, class_name: 'Order', foreign_key: :seller_id
+  has_many :buy_orders,  class_name: 'Order', foreign_key: :buyer_id
+  has_many :deliveries,  class_name: 'Order', foreign_key: :handler_id
   belongs_to :college
 
   include HasToken

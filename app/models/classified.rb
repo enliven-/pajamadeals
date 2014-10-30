@@ -3,6 +3,7 @@ class Classified < ActiveRecord::Base
   
   enum listing_type: { buy: 0, sell: 1 }
 
+  has_many :orders
   belongs_to :user
   accepts_nested_attributes_for :user
   belongs_to :college

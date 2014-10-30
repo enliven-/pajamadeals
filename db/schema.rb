@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013025257) do
+ActiveRecord::Schema.define(version: 20141030133611) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -66,6 +66,17 @@ ActiveRecord::Schema.define(version: 20141013025257) do
     t.string   "latitude"
     t.string   "longitude"
     t.boolean  "active",     default: true
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
+    t.integer  "classified_id"
+    t.integer  "handler_id"
+    t.integer  "college_id"
+    t.integer  "status",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
