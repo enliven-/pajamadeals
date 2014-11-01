@@ -47,6 +47,6 @@ ready = ->
 	          max: 10
 	          message: "Please enter a valid 10 digit mobile number"
 		  
-#
-# $(document).ready(ready)
-# $(document).on('page:load', ready)
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
