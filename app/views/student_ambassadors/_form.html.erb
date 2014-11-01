@@ -114,12 +114,11 @@
     	<%= f.text_field :f2_mobile, class: 'form-control', placeholder: 'Mobile number' %>
 	</span>
 	  <div class="col-md-offset-2 col-md-10">
-	   	 <%= f.check_box :recommend, { checked: true }, true, false %>&nbsp;
-		 <%= f.label 'Do you want us to let them know you recommended them?', style: 'font-weight: 300' %>
+		  <%= f.label style: 'font-weight: 300' do %>
+		   	 <%= f.check_box :recommend, { checked: true }, true, false %>
+			 Do you want us to let them know you recommended them?
+		  <% end %>
 	  </div>
-  </div>
-  <div class="form-group">
-	  
   </div>
   
   <div class="form-group" style="margin-top:15px">
