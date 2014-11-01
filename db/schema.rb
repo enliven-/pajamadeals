@@ -103,6 +103,10 @@ ActiveRecord::Schema.define(version: 20141101040105) do
     t.text     "q6"
     t.text     "q7"
     t.text     "q8"
+    t.string   "f1_name"
+    t.string   "f1_mobile"
+    t.string   "f2_name"
+    t.string   "f2_mobile"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
