@@ -6,6 +6,14 @@ class CreateStudentAmbassadors < ActiveRecord::Migration
       t.string :year
       t.string :branch
       t.string :college
+      t.text :q1
+      t.text :q2
+      t.text :q3
+      t.text :q4
+      t.text :q5
+      t.text :q6
+      t.text :q7
+      t.text :q8
 
       t.timestamps
     end
