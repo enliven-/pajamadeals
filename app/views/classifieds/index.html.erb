@@ -8,7 +8,7 @@
 		  	<h4 class="text-center" style="margin-bottom: 50px; margin-top: 50px">A place to conveniently buy/sell college stuff - used books, drafters, instruments, things required by hostelites like tables, utilities, etc.</h4>
 		<% end %>
 
-<div class="alert alert-warning" role="alert" style="<%= 'font-size:12px;' if mobile_device? %>"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;If you can't find the thing you want to buy, post it <%= link_to 'here', new_classified_path(listing_type: :buy) %> and we'll try our best to find you a seller in 24 hours.</div>
+<div class="alert alert-warning" role="alert" style="<%= 'font-size:12px;' if mobile_device? %>"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;We are hiring student ambassadors in your college! <%= link_to 'Click here', sa_path %> to check out an exciting opportunity at Pajamadeals.</div>
 
 <div id="classifieds">
 	<%= render @classifieds %>
