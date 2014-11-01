@@ -23,18 +23,7 @@
     	<%= f.text_field :mobile, class: 'form-control' %>
 	</div>
   </div>
-  <div class="form-group">
-    <%= f.label :year, class: 'col-md-2 control-label' %>
-	<div class="col-md-7">
-    	<%= f.select :year, [["FE", "FE"], ["SE", "SE"], ["TE", "TE"]], { include_blank: true }, class: 'form-control' %>
-	</div>
-  </div>
-  <div class="form-group">
-    <%= f.label :branch, class: 'col-md-2 control-label' %>
-	<div class="col-md-7">
-    	<%= f.select :branch, [["Biotech Engineering", "Biotech Engineering"], ["Chemical Engineering", "Chemical Engineering"], ["Computer Engineering", "Computer Engineering"], ["Electronics Engineering", "Electronics Engineering"], ["Entc Engineering", "Entc Engineering"], ["Industrial Engineering", "Industrial Engineering"], ["Information Technology", "Information Technology"], ["Instrumentation Engineering", "Instrumentation Engineering"], ["Mechanical Engineering", "Mechanical Engineering"], ["Petroleum Engineering", "Petroleum Engineering"], ["Petrochemical Engineering", "Petrochemical Engineering"], ["Production Engineering", "Production Engineering"], ["Polymer Engineering", "Polymer Engineering"], ["Other", "Other"]], { include_blank: true }, class: 'form-control' %>
-	</div>
-  </div>
+  
   <div class="form-group">
     <%= f.label :college, class: 'col-md-2 control-label' %>
 	<div class="col-md-7">
@@ -44,10 +33,23 @@
   </div>
   
   <div class="form-group">
+    <%= f.label :branch, class: 'col-md-2 control-label' %>
+	<div class="col-md-7">
+    	<%= f.select :branch, [["Biotech Engineering", "Biotech Engineering"], ["Chemical Engineering", "Chemical Engineering"], ["Computer Engineering", "Computer Engineering"], ["Electronics Engineering", "Electronics Engineering"], ["Entc Engineering", "Entc Engineering"], ["Industrial Engineering", "Industrial Engineering"], ["Information Technology", "Information Technology"], ["Instrumentation Engineering", "Instrumentation Engineering"], ["Mechanical Engineering", "Mechanical Engineering"], ["Petroleum Engineering", "Petroleum Engineering"], ["Petrochemical Engineering", "Petrochemical Engineering"], ["Production Engineering", "Production Engineering"], ["Polymer Engineering", "Polymer Engineering"], ["Other", "Other"]], { include_blank: true }, class: 'form-control' %>
+	</div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :year, class: 'col-md-2 control-label' %>
+	<div class="col-md-7">
+    	<%= f.select :year, [["FE", "FE"], ["SE", "SE"], ["TE", "TE"]], { include_blank: true }, class: 'form-control' %>
+	</div>
+  </div>
+  
+  <div class="form-group">
 	<div class="col-md-7 col-md-offset-2">
 		<p class="help-block">What is the dream company you would like to work for irrespective of your branch? Why?</p>
-    	<%= f.text_area :q1, class: 'form-control' %>
-		
+    	<%= f.text_area :q1, class: 'form-control' %>		
 	</div>
   </div>
   
