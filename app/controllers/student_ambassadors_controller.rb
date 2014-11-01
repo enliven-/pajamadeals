@@ -12,6 +12,18 @@ module InheritedResources
 end
 
 class StudentAmbassadorsController < InheritedResources::Base
+  
+  def create
+    @sa = StudentAmbassador.new(resource_params)
+
+    respond_to do |format|
+      if @sa.save
+          format.js
+      else
+          format.js { alert("Something went wrong, we are sorry for inconvinence")}
+      end
+    end
+  end
 
   private
   
