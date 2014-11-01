@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @student_ambassador.name %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @student_ambassador.mobile %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @student_ambassador.year %>
+</p>
+
+<p>
+  <strong>Branch:</strong>
+  <%= @student_ambassador.branch %>
+</p>
+
+<p>
+  <strong>College:</strong>
+  <%= @student_ambassador.college %>
+</p>
+
+<%= link_to 'Edit', edit_student_ambassador_path(@student_ambassador) %> |
+<%= link_to 'Back', student_ambassadors_path %>

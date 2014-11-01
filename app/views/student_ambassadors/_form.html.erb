@@ -1,0 +1,49 @@
+<%= form_for @student_ambassador, html: { class: 'form-horizontal' } do |f| %>
+  <% if @student_ambassador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student_ambassador.errors.count, "error") %> prohibited this ambassador_application from being saved:</h2>
+
+      <ul>
+      <% @student_ambassador.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, class: 'col-md-2 control-label' %>
+	<div class="col-md-4">
+    	<%= f.text_field :name, class: 'form-control' %>
+	</div>
+  </div>
+  <div class="form-group">
+    <%= f.label :mobile, class: 'col-md-2 control-label' %>
+	<div class="col-md-4">
+    	<%= f.text_field :mobile, class: 'form-control' %>
+	</div>
+  </div>
+  <div class="form-group">
+    <%= f.label :year, class: 'col-md-2 control-label' %>
+	<div class="col-md-10">
+    	<%= f.select :year, [["FE", "FE"], ["SE", "SE"], ["TE", "TE"]], class: 'form-control', include_blank: true %>
+	</div>
+  </div>
+  <div class="form-group">
+    <%= f.label :branch, class: 'col-md-2 control-label' %>
+	<div class="col-md-10">
+    	<%= f.select :branch, [["Mechanical Engineering", "Mechanical Engineering"]], class: 'form-control', include_blank: true %>
+	</div>
+  </div>
+  <div class="form-group">
+    <%= f.label :college, class: 'col-md-2 control-label' %>
+	<div class="col-md-4">
+    	<%= f.text_field :college, class: 'form-control' %>
+	</div>
+  </div>
+  <div class="form-group" style="margin-top:15px">
+     <div class="col-md-offset-2 col-md-10">
+	     <%= f.submit "Apply", class: "btn btn-primary btn-wide btn-embossed" %>
+     </div>
+  </div>
+<% end %>

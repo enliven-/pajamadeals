@@ -108,4 +108,28 @@ $(document)
       $('.main').spin(false);
 	  $('.main').css('opacity', '1')
   })
+
+  $("#new_student_ambassador").bootstrapValidator({
+    excluded: [':disabled', ':hidden', ':not(:visible)'],
+    feedbackIcons: {
+      valid: "glyphicon glyphicon-ok",
+      invalid: "glyphicon glyphicon-remove",
+      validating: "glyphicon glyphicon-refresh"
+    },
+    live: "enabled",
+    message: "This value is not valid",
+    submitButtons: 'input[type="submit"]',
+    trigger: null,
+    fields: {
+      "student_ambassador[name]": {
+        validators: {
+          notEmpty: {
+            message: "The name is required"
+          }
+        }
+      }
+    }
+  });
+
+
   

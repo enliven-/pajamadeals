@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :student_ambassadors
+
   ActiveAdmin.routes(self)
   #devise_for :users , controllers: {registrations: 'users/registrations',
    #                                 passwords:     'users/passwords'
