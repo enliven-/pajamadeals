@@ -1,0 +1,33 @@
+<h1>Listing student_ambassadors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Year</th>
+      <th>Branch</th>
+      <th>College</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @student_ambassadors.each do |student_ambassador| %>
+      <tr>
+        <td><%= student_ambassador.name %></td>
+        <td><%= student_ambassador.mobile %></td>
+        <td><%= student_ambassador.year %></td>
+        <td><%= student_ambassador.branch %></td>
+        <td><%= student_ambassador.college %></td>
+        <td><%= link_to 'Show', student_ambassador %></td>
+        <td><%= link_to 'Edit', edit_student_ambassador_path(student_ambassador) %></td>
+        <td><%= link_to 'Destroy', student_ambassador, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student ambassador', new_student_ambassador_path %>

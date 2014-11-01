@@ -1,0 +1,130 @@
+<%= form_for @student_ambassador, html: { class: 'form-horizontal' }, remote: true do |f| %>
+  <% if @student_ambassador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student_ambassador.errors.count, "error") %> prohibited this ambassador_application from being saved:</h2>
+
+      <ul>
+      <% @student_ambassador.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, class: 'col-md-2 control-label' %>
+	<div class="col-md-7">
+    	<%= f.text_field :name, class: 'form-control' %>
+	</div>
+  </div>
+  <div class="form-group">
+    <%= f.label :mobile, class: 'col-md-2 control-label' %>
+	<div class="col-md-7">
+    	<%= f.text_field :mobile, class: 'form-control' %>
+	</div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :college, class: 'col-md-2 control-label' %>
+	<div class="col-md-7">
+    	<%= f.text_field :college, class: 'form-control' %>
+		<p class="hel-block"></p>
+	</div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :branch, class: 'col-md-2 control-label' %>
+	<div class="col-md-7">
+    	<%= f.select :branch, [["Biotech Engineering", "Biotech Engineering"], ["Chemical Engineering", "Chemical Engineering"], ["Computer Engineering", "Computer Engineering"], ["Electronics Engineering", "Electronics Engineering"], ["Entc Engineering", "Entc Engineering"], ["Industrial Engineering", "Industrial Engineering"], ["Information Technology", "Information Technology"], ["Instrumentation Engineering", "Instrumentation Engineering"], ["Mechanical Engineering", "Mechanical Engineering"], ["Petroleum Engineering", "Petroleum Engineering"], ["Petrochemical Engineering", "Petrochemical Engineering"], ["Production Engineering", "Production Engineering"], ["Polymer Engineering", "Polymer Engineering"], ["Other", "Other"]], { include_blank: true }, class: 'form-control' %>
+	</div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :year, class: 'col-md-2 control-label' %>
+	<div class="col-md-7">
+    	<%= f.select :year, [["FE", "FE"], ["SE", "SE"], ["TE", "TE"]], { include_blank: true }, class: 'form-control' %>
+	</div>
+  </div>
+  
+  <div class="form-group">
+	<div class="col-md-7 col-md-offset-2">
+		<p class="help-block">What is the dream company you would like to work for irrespective of your branch? Why?</p>
+    	<%= f.text_area :q1, class: 'form-control' %>		
+	</div>
+  </div>
+  
+  <div class="form-group">
+	<div class="col-md-7 col-md-offset-2">	
+		<p class="help-block">If you could trade places with any other person for a week, famous or not, living or dead, real or fictional, with whom would it be?</p>
+		<%= f.text_area :q2, class: 'form-control' %>
+	</div>
+  </div>
+  
+  <div class="form-group">
+	<div class="col-md-7 col-md-offset-2">
+		<p class="help-block">If you had only six months left to live, what would you do with the time?</p>
+    	<%= f.text_area :q3, class: 'form-control' %>
+	</div>
+  </div>
+  
+  <div class="form-group">
+	<div class="col-md-7 col-md-offset-2">
+		<p class="help-block">What kind of people do you dislike?</p>
+		<%= f.text_area :q4, class: 'form-control' %>
+	</div>
+  </div>
+  
+  <div class="form-group">
+	<div class="col-md-7 col-md-offset-2">
+		<p class="help-block">On a scale of 1 to 10, how happy are you?</p>
+    	<%= f.text_area :q5, class: 'form-control' %>
+	</div>
+  </div>
+  
+  <div class="form-group">
+	<div class="col-md-7 col-md-offset-2">
+		<p class="help-block">What are your top 3 strengths?</p>
+    	<%= f.text_area :q6, class: 'form-control' %>
+	</div>
+  </div>
+  
+  <div class="form-group">
+	<div class="col-md-7 col-md-offset-2">
+		<p class="help-block">What are top 3 things that you'd like to improve yourself in?</p>
+    	<%= f.text_area :q7, class: 'form-control' %>
+	</div>
+  </div>
+  
+  <div class="form-group"> 
+      <p class="help-block col-md-offset-2 col-md-10">Provide us the name and contact of two friends from your college you'll enjoy working with. We will forward this link to them too.</p>
+	 <%= f.label :f1_name, 'Friend 1', class: 'col-md-2 control-label' %>
+	<span class="col-md-4">
+	  	<%= f.text_field :f1_name, class: 'form-control', placeholder: 'Name' %>
+	</span>
+	<span class="col-md-3">
+    	<%= f.text_field :f1_mobile, class: 'form-control', placeholder: 'Mobile number' %>
+	</span>
+  </div>
+  <div class="form-group">
+	 <%= f.label :f2_name, 'Friend 2', class: 'col-md-2 control-label' %>
+	<span class="col-md-4">
+	  	<%= f.text_field :f2_name, class: 'form-control', placeholder: 'Name' %>
+	</span>
+	<span class="col-md-3">
+    	<%= f.text_field :f2_mobile, class: 'form-control', placeholder: 'Mobile number' %>
+	</span>
+	  <div class="col-md-offset-2 col-md-10">
+	   	 <%= f.check_box :recommend, { checked: true }, true, false %>&nbsp;
+		 <%= f.label 'Do you want us to let them know you recommended them?', style: 'font-weight: 300' %>
+	  </div>
+  </div>
+  <div class="form-group">
+	  
+  </div>
+  
+  <div class="form-group" style="margin-top:15px">
+     <div class="col-md-offset-2 col-md-10">
+	     <%= f.submit "Apply", class: "btn btn-primary btn-wide btn-embossed" %>
+     </div>
+  </div>
+<% end %>

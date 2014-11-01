@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :student_ambassadors
+  match 'sa', to: 'student_ambassadors#new', via: :get
+
   ActiveAdmin.routes(self)
   #devise_for :users , controllers: {registrations: 'users/registrations',
    #                                 passwords:     'users/passwords'

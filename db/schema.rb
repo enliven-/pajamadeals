@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930115004) do
+ActiveRecord::Schema.define(version: 20141101040105) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -28,11 +28,22 @@ ActiveRecord::Schema.define(version: 20140930115004) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
+  create_table "ambassador_applications", force: true do |t|
+    t.string   "name"
+    t.string   "mobile"
+    t.string   "year"
+    t.string   "branch"
+    t.string   "college"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active",     default: true
+    t.string   "fa_icon"
   end
 
   create_table "classifieds", force: true do |t|
@@ -65,6 +76,40 @@ ActiveRecord::Schema.define(version: 20140930115004) do
     t.string   "latitude"
     t.string   "longitude"
     t.boolean  "active",     default: true
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
+    t.integer  "classified_id"
+    t.integer  "handler_id"
+    t.integer  "college_id"
+    t.integer  "status",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "student_ambassadors", force: true do |t|
+    t.string   "name"
+    t.string   "mobile"
+    t.string   "year"
+    t.string   "branch"
+    t.string   "college"
+    t.text     "q1"
+    t.text     "q2"
+    t.text     "q3"
+    t.text     "q4"
+    t.text     "q5"
+    t.text     "q6"
+    t.text     "q7"
+    t.text     "q8"
+    t.string   "f1_name"
+    t.string   "f1_mobile"
+    t.string   "f2_name"
+    t.string   "f2_mobile"
+    t.boolean  "recommend"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
