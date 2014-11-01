@@ -18,6 +18,7 @@ class CreateStudentAmbassadors < ActiveRecord::Migration
       t.string :f1_mobile
       t.string :f2_name
       t.string :f2_mobile
+      t.boolean :recommend
 
       t.timestamps
     end

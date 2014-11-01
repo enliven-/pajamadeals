@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20141101040105) do
     t.string   "f1_mobile"
     t.string   "f2_name"
     t.string   "f2_mobile"
+    t.boolean  "recommend"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

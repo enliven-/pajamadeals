@@ -60,7 +60,7 @@
   <div class="form-group">
 	<div class="col-md-7 col-md-offset-2">
     	<%= f.text_area :q3, class: 'form-control' %>
-		<p class="hel-block">If you had only six months left to live, what would you do with the time?</p>
+		<p class="help-block">If you had only six months left to live, what would you do with the time?</p>
 	</div>
   </div>
   
@@ -90,6 +90,44 @@
     	<%= f.text_area :q7, class: 'form-control' %>
 		<p class="hel-block">What are top 3 things that you'd like to improve yourself in?</p>
 	</div>
+  </div>
+  
+    <p class="lead col-md-offset-2" style="font-size:16px">Provide us the name and contact of two friends from your college you'll enjoy working with. We will forward this link to them too.</p>
+  
+  <div class="form-group">
+	 <%= f.label :f1_name, 'Friend 1', class: 'col-md-2 control-label' %>
+	<span class="col-md-3">
+	  	<%= f.text_field :f1_name, class: 'form-control', placeholder: 'Name' %>
+	</span>
+	<span class="col-md-3">
+    	<%= f.text_field :f1_mobile, class: 'form-control', placeholder: 'Mobile number' %>
+	</span>
+  </div>
+  <div class="form-group">
+	 <%= f.label :f2_name, 'Friend 2', class: 'col-md-2 control-label' %>
+	<span class="col-md-3">
+	  	<%= f.text_field :f2_name, class: 'form-control', placeholder: 'Name' %>
+	</span>
+	<span class="col-md-3">
+    	<%= f.text_field :f2_mobile, class: 'form-control', placeholder: 'Mobile number' %>
+	</span>
+  </div>
+
+<!--  label class="checkbox" for="checkbox1">
+    <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
+    Checkbox
+  </label> -->
+
+<!--  <label class="checkbox" for="checkbox1">
+    <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
+    Checkbox
+  </label> -->
+  
+  <div class="form-group">
+	  <div class="col-md-offset-2 col-md-10">
+     	 <%= f.check_box :recommend, {}, true, false %>&nbsp;
+		 <%= f.label 'Do you want us to let them know you recommended them?' %>
+	  </div>
   </div>
   
   <div class="form-group" style="margin-top:15px">
